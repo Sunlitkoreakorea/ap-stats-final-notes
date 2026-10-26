@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률 개념 정리와 연습 문제 73개, 실험 설계도 그리기, 용어 카드.">
+<meta name="theme-color" content="#1C2745">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>AP Stats 기말 노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Myeongjo:wght@700;800&family=Nanum+Pen+Script&family=STIX+Two+Text:ital@0;1&display=swap">
+<style>
+/* Layout: 모눈 노트 위에 한 열로 쌓인 학습 노트. 형광펜(라임) = 핵심, 빨간 펜 = 시험 메모, 파란 펜 = 도식 */
+:root{
+  --paper:#F6F7F2;
+  --grid:rgba(47,79,181,.075);
+  --card:#FFFFFF;
+  --ink:#1C2745;
+  --ink-soft:#4E5878;
+  --ink-faint:#7A839E;
+  --line:#DADFE8;
+  --hl:rgba(222,240,72,.9);
+  --hl-solid:#DDEF48;
+  --pen:#D2344A;
+  --blue:#2F4FB5;
+  --blue-bg:rgba(47,79,181,.08);
+  --ok:#1B8457;
+  --ok-bg:rgba(27,132,87,.1);
+  --bad:#C0392B;
+  --bad-bg:rgba(192,57,43,.09);
+  --shadow:0 1px 2px rgba(28,39,69,.06),0 6px 20px rgba(28,39,69,.06);
+  --f-display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-pen:"Nanum Pen Script","Comic Sans MS",cursive;
+  --f-math:"STIX Two Text","Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
+    --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
+    --ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
+  --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
+  --ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px;
+  color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
+.brand span{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:.06em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tab{border:0;background:transparent;padding:7px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--ink-soft)}
+.tab:hover{color:var(--ink);background:var(--blue-bg)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+
+main{padding-block:28px 80px}
+.panel[hidden]{display:none!important}
+
+/* typography */
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.3;margin:0}
+h2{font-size:1.65rem;font-weight:800}
+h3{font-size:1.18rem;font-weight:800;margin-top:6px}
+.mk{background:linear-gradient(transparent 52%,var(--hl) 52%);padding:0 .12em}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.lead{color:var(--ink-soft);max-width:68ch}
+.pen{font-family:var(--f-pen);color:var(--pen);font-size:1.35em;line-height:1.1}
+.m{font-family:var(--f-math);font-style:italic;font-size:1.06em}
+.mr{font-family:var(--f-math);font-size:1.06em}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-family:var(--f-math);font-size:.92em;line-height:1.15;margin:0 .12em}
+.fr>i{font-style:normal;padding:0 .2em}
+.fr>i:first-child{border-bottom:1px solid currentColor}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end;margin-bottom:28px}
+.hero h1{font-size:clamp(1.9rem,4.6vw,2.8rem);font-weight:800;letter-spacing:-.02em}
+.hero .note{font-family:var(--f-pen);color:var(--pen);font-size:1.5rem;line-height:1.2;transform:rotate(-2deg);justify-self:end;max-width:300px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px;min-width:110px}
+.stat b{display:block;font-family:var(--f-mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.78rem;color:var(--ink-faint)}
+
+/* sub nav */
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 22px}
+.chip{border:1px solid var(--line);background:var(--card);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+.chip:hover{border-color:var(--ink-faint);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--hl-solid);border-color:var(--hl-solid);color:#1C2745}
+.chip .n{font-family:var(--f-mono);font-size:.75rem;opacity:.7;margin-left:4px}
+
+/* sections */
+.sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px clamp(18px,3vw,32px);margin-bottom:18px;box-shadow:var(--shadow)}
+.sec>*+*{margin-top:14px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sec-head .num{font-family:var(--f-mono);color:var(--blue);font-size:.85rem}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--blue-bg);font-weight:600;font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em}
+tr:last-child td{border-bottom:0}
+td.term{font-weight:600;white-space:nowrap}
+td.term small{display:block;font-weight:400;color:var(--ink-faint);font-size:.8rem}
+.gloss{font-family:var(--f-pen);color:var(--pen);font-size:1.18rem;margin-left:6px;font-weight:400}
+ul.clean{margin:0;padding-left:1.15em}
+ul.clean li+li{margin-top:4px}
+.callout{border-left:3px solid var(--blue);background:var(--blue-bg);padding:12px 16px;border-radius:0 10px 10px 0}
+.callout.warn{border-color:var(--pen);background:color-mix(in srgb,var(--pen) 8%,transparent)}
+.callout b.tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:block;color:var(--blue);margin-bottom:2px}
+.callout.warn b.tag{color:var(--pen)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid2>*{min-width:0}
+.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.box h4{margin:0 0 6px;font-size:.98rem}
+.formula{font-family:var(--f-math);font-size:1.12rem;padding:10px 14px;background:var(--paper);border-radius:8px;overflow-x:auto;white-space:nowrap}
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pr{border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:relative}
+.pr.star::after{content:"필수";position:absolute;top:10px;right:12px;font-family:var(--f-pen);color:var(--pen);font-size:1.15rem}
+.pr h4{margin:0 0 4px;font-size:1rem}
+.pr p{font-size:.92rem;color:var(--ink-soft)}
+.episode{border:1.5px dashed var(--line);border-radius:12px;padding:16px 18px;font-size:.95rem}
+.episode dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0 0}
+.episode dt{font-weight:600;color:var(--blue);font-size:.88rem}
+.episode dd{margin:0}
+
+/* mini tools */
+.tool{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--paper)}
+.tool-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.field{display:flex;flex-direction:column;gap:3px;font-size:.8rem;color:var(--ink-faint)}
+.field input,.field select,.field textarea{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.95rem;color:var(--ink);min-width:0}
+.field input[type=number]{width:84px;font-family:var(--f-mono)}
+.outs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.out{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;min-width:0}
+.out span{color:var(--ink-faint);font-family:var(--f-body);font-size:.78rem;margin-right:6px}
+.btn{border:1px solid var(--line);background:var(--card);padding:7px 14px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.88rem}
+.btn:hover{border-color:var(--ink-faint)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.primary:hover{opacity:.9}
+.btn.ghost{background:transparent}
+canvas{display:block;width:100%;height:220px;margin-top:12px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
+
+/* practice */
+.prac{display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:start}
+.prac>*{min-width:0}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 74px);display:flex;flex-direction:column;gap:14px}
+.side .sec{padding:16px;margin:0}
+.score-big{font-family:var(--f-mono);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.score-big small{font-size:.9rem;color:var(--ink-faint)}
+.bar{height:6px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:999px;transition:width .3s}
+.unitline{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(32px,1fr));gap:5px}
+.qn{aspect-ratio:1;border:1px solid var(--line);background:var(--card);border-radius:6px;font-family:var(--f-mono);font-size:.75rem;cursor:pointer;padding:0;max-width:100%}
+.qn.right{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.qn.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.qn.cur{outline:2px solid var(--ink);outline-offset:1px}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:24px clamp(18px,3vw,30px)}
+.qmeta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.pill{font-size:.74rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--blue-bg);color:var(--blue)}
+.pill.src{background:transparent;border:1px solid var(--line);color:var(--ink-soft);font-weight:500}
+.pill.st-right{background:var(--ok-bg);color:var(--ok)}
+.pill.st-wrong{background:var(--bad-bg);color:var(--bad)}
+.qtext{font-size:1.05rem;line-height:1.8}
+.choices{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.choice{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--card);padding:11px 14px;border-radius:10px;cursor:pointer;font-size:.97rem;line-height:1.55}
+.choice:hover:not(:disabled){border-color:var(--ink-faint);background:var(--blue-bg)}
+.choice .key{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:.75rem;color:var(--ink-faint)}
+.choice:disabled{cursor:default}
+.choice.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.choice.is-right .key{background:var(--ok);border-color:var(--ok);color:#fff}
+.choice.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.choice.is-wrong .key{background:var(--bad);border-color:var(--bad);color:#fff}
+.tf{flex-direction:row}
+.tf .choice{flex:1;justify-content:center;font-weight:600}
+.numrow{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.numrow input{flex:1;min-width:150px;max-width:280px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;font-family:var(--f-mono);font-size:1rem}
+.numhint{font-size:.8rem;color:var(--ink-faint);margin-top:6px}
+textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;resize:vertical;line-height:1.6}
+.feedback{margin-top:18px;border-radius:10px;padding:12px 16px;font-weight:600}
+.feedback.right{background:var(--ok-bg);color:var(--ok)}
+.feedback.wrong{background:var(--bad-bg);color:var(--bad)}
+.feedback.neutral{background:var(--blue-bg);color:var(--blue)}
+.explain{margin-top:12px;border-top:1px dashed var(--line);padding-top:14px;color:var(--ink);font-size:.95rem}
+.explain .eyebrow{display:block;margin-bottom:6px}
+.explain .steps{margin:6px 0 0;padding-left:1.2em}
+.hintbox{margin-top:14px;font-family:var(--f-pen);color:var(--pen);font-size:1.3rem;line-height:1.3}
+.qnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+.qnav .mid{display:flex;gap:8px;flex-wrap:wrap}
+.empty{text-align:center;padding:40px 10px;color:var(--ink-soft)}
+
+/* diagram */
+.dg-layout{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+.dg-layout>*{min-width:0}
+.dg-form{display:flex;flex-direction:column;gap:12px}
+.dg-form .field textarea{min-height:76px;resize:vertical;line-height:1.5}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--card);padding:8px;cursor:pointer;font-weight:600;font-size:.86rem;color:var(--ink-soft)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.dg-canvas{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px}
+.dg-canvas svg{display:block;min-width:640px;width:100%;height:auto}
+.dg-canvas text{font-family:var(--f-body);fill:var(--ink)}
+.dg-box{fill:var(--card);stroke:var(--blue);stroke-width:1.6}
+.dg-box.ra{stroke:var(--pen);stroke-dasharray:5 3}
+.dg-box.cmp{fill:var(--blue-bg)}
+.dg-arrow{stroke:var(--blue);stroke-width:1.5;fill:none}
+.dg-arrow.ra{stroke:var(--pen)}
+.dg-note{font-family:var(--f-pen)!important;fill:var(--pen)!important;font-size:19px}
+.lbl{cursor:default}
+.dg-blank .lbl{cursor:pointer}
+.lbl .q{opacity:0;fill:var(--pen)!important;font-weight:700;font-size:18px}
+.dg-blank .lbl .t{opacity:0}
+.dg-blank .lbl .q{opacity:1}
+.dg-blank .lbl.rev .t{opacity:1}
+.dg-blank .lbl.rev .q{opacity:0}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.93rem;cursor:pointer}
+.check:last-child{border-bottom:0}
+.check input{margin-top:5px;accent-color:var(--ok);width:16px;height:16px;flex:none}
+
+/* cards */
+.fc-stage{display:flex;flex-direction:column;align-items:center;gap:16px}
+.flash{width:min(560px,100%);aspect-ratio:16/10;max-width:100%;perspective:1200px;cursor:pointer;border:0;background:transparent;padding:0}
+.flash-inner{position:relative;width:100%;height:100%;transition:transform .5s cubic-bezier(.3,.7,.3,1);transform-style:preserve-3d}
+.flash.flipped .flash-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:8px}
+.face.back{transform:rotateY(180deg);background:var(--paper)}
+.face .term-en{font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,4.5vw,2.2rem)}
+.face .term-ko{font-family:var(--f-pen);color:var(--pen);font-size:1.6rem}
+.face .def{font-size:1rem;line-height:1.65;max-width:44ch}
+.face .tap{position:absolute;bottom:12px;font-size:.75rem;color:var(--ink-faint)}
+.face .cat{position:absolute;top:14px;left:16px}
+.fc-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
+.fc-count{font-family:var(--f-mono);font-size:.85rem;color:var(--ink-soft);min-width:64px;text-align:center}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero .note{justify-self:start}
+  .prac,.dg-layout{grid-template-columns:1fr}
+  .side{position:static}
+  .grid2,.principles{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>AP Stats 기말 노트</b><span>2026-2 · AP STATISTICS I</span></div>
+    <nav class="tabs" role="tablist" aria-label="섹션">
+      <button class="tab" role="tab" id="tab-learn" data-tab="learn" aria-selected="true">개념 정리</button>
+      <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false">문제 풀기</button>
+      <button class="tab" role="tab" id="tab-diagram" data-tab="diagram" aria-selected="false">실험 설계도</button>
+      <button class="tab" role="tab" id="tab-cards" data-tab="cards" aria-selected="false">용어 카드</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ 개념 정리 ============ -->
+<section class="panel" id="panel-learn" role="tabpanel" aria-labelledby="tab-learn">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Chap 3 Collecting Data · Experiments · Chap 4 Probability</p>
+      <h1>표본추출, <span class="mk">실험 설계</span>, 확률을<br>노트 한 권으로 정리</h1>
+      <div class="stats" id="heroStats"></div>
+    </div>
+    <p class="note">완전 무작위 설계(CRD)<br>그리는 거 기말고사 나온다!</p>
+  </div>
+
+  <div class="subnav" role="group" aria-label="단원">
+    <button class="chip" data-unit="samp" aria-pressed="true">Ch.3 자료 수집·표본추출</button>
+    <button class="chip" data-unit="exp" aria-pressed="false">실험 설계</button>
+    <button class="chip" data-unit="prob" aria-pressed="false">Ch.4 확률</button>
+  </div>
+
+  <!-- Ch.3 자료 수집 -->
+  <div id="unit-samp">
+    <div class="callout" style="margin-bottom:18px"><b class="tag">출처</b>이 단원은 중간고사 때 정리한 Ch3 프린트(1–4쪽) 내용입니다. 실험 설계(5–7쪽)는 다음 탭에 있어요.</div>
+    <article class="sec">
+      <div class="sec-head"><span class="num">3.1</span><h2>자료 수집의 세 가지 접근</h2></div>
+      <p class="lead">"Garbage in, garbage out." 통계적 결론의 질은 그 밑바탕이 되는 자료의 질만큼만 좋습니다.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>접근</th><th>무엇을 하나</th><th>할 수 있는 결론</th></tr></thead>
+        <tbody>
+          <tr><td class="term">Census<small>전수조사</small></td><td>모집단의 <b>모든 개체</b>에서 자료를 수집</td><td>이상적으로 들리지만 비싸고 비현실적. 측정 오류가 쌓여 잘 설계한 표본보다 부정확할 수도 있음</td></tr>
+          <tr><td class="term">Observational study<small>관찰연구</small></td><td>처치 없이 관찰·기록. 가장 흔한 형태가 <b>survey</b>(설문조사)</td><td><b>association</b>은 찾지만 causation은 입증 못 함. <b>confounding(lurking) variable</b>이 늘 위협</td></tr>
+          <tr><td class="term">Experiment<small>실험</small></td><td>연구자가 <b>treatment</b>를 의도적으로 부과하고 반응을 관찰</td><td>random assignment가 있으면 <b>causation</b>을 보일 수 있음</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><b class="tag">프린트 빈칸</b>관찰연구의 가장 흔한 형태 = survey · 찾을 수 있는 것 = association · 항상 위협 = confounding variables · 실험에서 부과하는 것 = treatment · 입증할 수 있는 것 = causation</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3.2</span><h2>나쁜 표본추출과 편향 <span class="gloss">How to sample badly</span></h2></div>
+      <p><b>Bias</b>: 표본 설계가 모집단의 어떤 부분을 <span class="mk">체계적으로 과대 또는 과소 대표</span>해서 결론이 현실을 반영하지 못하는 상태.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>종류</th><th>뜻</th><th>예</th></tr></thead>
+        <tbody>
+          <tr><td class="term">Voluntary response</td><td>스스로 참여를 선택한 표본. 강한 의견을 가진 사람이 훨씬 많이 응답</td><td>학교 웹사이트 투표, 방송 call-in</td></tr>
+          <tr><td class="term">Convenience</td><td>가장 만나기 쉬운 사람을 고름. 쉽게 닿는 것은 대표하는 것이 아님</td><td>급식실 앞 지나가는 학생</td></tr>
+          <tr><td class="term">Undercoverage</td><td>일부 집단이 추출 과정에서 체계적으로 빠짐 (선택될 확률이 0이거나 낮음)</td><td>유선전화 번호부로만 조사</td></tr>
+          <tr><td class="term">Nonresponse bias</td><td>선택은 됐지만 응답하지 않음. 무응답자는 응답자와 다를 수 있음</td><td>우편 설문의 낮은 회수율</td></tr>
+          <tr><td class="term">Response bias</td><td>응답은 했지만 부정확하게 답함 (의도적이든 무의식이든)</td><td>민감한 질문(지각 횟수, 음주)에 거짓말</td></tr>
+          <tr><td class="term">Wording bias</td><td>질문 문구가 특정 답으로 유도</td><td>"…을 개선할 필요가 없다고 생각하지 않으십니까?"</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><b class="tag">자주 헷갈리는 쌍</b><b>Undercoverage</b> = 선택될 기회 자체가 없었다. <b>Nonresponse</b> = 선택은 됐지만 참여하지 않았다. <b>Response bias</b>는 응답했지만 부정확, <b>Wording bias</b>는 질문 문구가 원인.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3.3</span><h2>좋은 표본추출: Random sampling</h2></div>
+      <p>편향의 근본적인 해결책은 무작위 추출입니다. 우연으로 선택되면 어떤 집단도 체계적으로 유리하지 않습니다.</p>
+      <div class="grid2">
+        <div class="box"><h4>Sampling variability</h4><p>같은 모집단에서 뽑은 서로 다른 무작위 표본은 서로 다른 statistic을 만든다. 무작위 추출의 피할 수 없는 결과.</p></div>
+        <div class="box"><h4>Sampling error</h4><p>표본 statistic과 실제 parameter의 차이. 결함이 아니라 표본만 관찰하는 데서 오는 자연스러운 결과.</p></div>
+      </div>
+      <div class="callout"><b class="tag">핵심</b>sampling variability와 sampling error는 예측하고 수량화할 수 있지만 <b>bias는 그렇지 못합니다</b>. 표본 크기를 키우면 variability는 줄지만 bias는 사라지지 않아요.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3.4</span><h2>네 가지 무작위 추출법</h2></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>방법</th><th>절차</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr><td class="term">SRS<small>Simple Random Sample</small></td><td>크기 n인 <b>가능한 모든 표본이 같은 확률</b>로 뽑힘</td><td>가장 기본. 난수표·난수 생성기 사용</td></tr>
+          <tr><td class="term">Stratified<small>층화추출</small></td><td>비슷한(homogeneous) 개체끼리 <b>층(strata)</b>으로 나누고 <b>각 층에서 SRS</b> → 합침</td><td>층 기준: 나이·성별·학년 등. 비례 배분(proportional)은 층 크기에 비례해서 뽑음</td></tr>
+          <tr><td class="term">Cluster<small>군집추출</small></td><td>다양한(heterogeneous) 구성의 <b>군집</b>으로 나누고 군집 몇 개를 무작위로 골라 <b>그 안의 전원</b> 조사</td><td>자연스러운 집단(반·학교·동네)의 목록만 있을 때</td></tr>
+          <tr><td class="term">Systematic<small>계통추출</small></td><td>처음 k개 중 하나를 무작위로 고르고 이후 <b>k번째마다</b> 포함</td><td>k ≈ N / n</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><b class="tag">Stratified vs Cluster</b>Stratified: 층 안은 비슷, 층끼리는 다름 → <b>모든 층</b>에서 일부를 뽑음. Cluster: 군집 안이 다양(모집단의 축소판) → <b>일부 군집</b>을 골라 <b>전원</b> 조사.</div>
+      <h3>예제: KMLA 450명(학년당 150명, 학년마다 10반)에서 30명</h3>
+      <div class="tbl-wrap"><table><tbody>
+        <tr><td class="term">SRS</td><td>001–450 번호. 난수표에서 세 자리씩 읽어 001–450이면 선택, 450 초과·000·중복은 건너뛰고 30명까지</td></tr>
+        <tr><td class="term">Stratified</td><td>학년이 strata. 학년마다 001–150 번호, 각 학년에서 SRS로 10명씩 (150:150:150 → 10:10:10)</td></tr>
+        <tr><td class="term">Cluster</td><td>15명씩 30개 반이 군집. 반에 01–30 번호, 두 자리 난수로 2개 반을 뽑아 전원 조사 (2 × 15 = 30명)</td></tr>
+        <tr><td class="term">Systematic</td><td>1–450 번호, k = 450/30 = 15. 01–15 중 시작 번호(예: 7) → 7, 22, 37, …, 마지막 7 + 15×29 = 442</td></tr>
+      </tbody></table></div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3.5</span><h2>Random sampling method 적용 <span class="gloss">시험 필출! 넷 중 하나</span></h2></div>
+      <p class="lead">선생님 공지: chap3 마지막 페이지의 추출법 적용은 반드시 나오고 네 방법 중 하나가 나옵니다. 넷 다 쓸 수 있어야 해요.</p>
+      <div class="tool">
+        <b style="font-size:.95rem">난수표 읽기 도구</b>
+        <p style="font-size:.85rem;color:var(--ink-soft);margin-top:2px">내가 읽은 결과가 맞는지 확인하세요. 자릿수는 가장 큰 레이블에 맞춰 자동으로 정해집니다.</p>
+        <div class="tool-row" style="margin-top:10px">
+          <label class="field" style="flex:1;min-width:220px">난수 줄<input type="text" id="rdDigits" value="89392 23212 74483 36590 25956 36544"></label>
+          <label class="field">레이블 최대<input type="number" id="rdN" value="50" min="1" max="99999"></label>
+          <label class="field">뽑을 수<input type="number" id="rdK" value="8" min="1" max="200"></label>
+        </div>
+        <div class="outs" id="rdOut"></div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>방법</th><th>답안에 순서대로 쓸 것</th><th>감점 포인트</th></tr></thead>
+        <tbody>
+          <tr><td class="term">SRS</td><td>① 전체에 번호(자릿수 = N의 자릿수) ② 무작위 시작점 ③ 자릿수만큼 왼쪽→오른쪽으로 읽기 ④ 범위 밖·000·중복 건너뜀 ⑤ n명까지</td><td>자릿수 틀림, 번호 안 붙임, 중복 허용, 건너뛰는 규칙 누락</td></tr>
+          <tr><td class="term">Stratified</td><td>① 층 정의(층 안이 비슷한 기준) ② 층별 인원(n × N<sub>h</sub>/N) ③ 각 층 안에서 번호 붙여 SRS ④ 합치기</td><td>층 근거 없음, 배분 계산 없음, "각 층에서" 빠뜨림</td></tr>
+          <tr><td class="term">Cluster</td><td>① 군집 정의(자연스러운 집단) ② 군집에 번호 ③ 군집 c개 선택(c = n ÷ 군집 크기) ④ 뽑힌 군집 전원 조사</td><td>군집 안에서 일부만 뽑음, 개인에게 번호, 군집 수 계산 누락</td></tr>
+          <tr><td class="term">Systematic</td><td>① 1–N 번호 ② k = N ÷ n ③ 난수로 1–k 중 시작 ④ 시작, 시작+k, 시작+2k, …</td><td>시작을 1로 고정, 시작이 k 초과, 마지막 번호가 N 초과</td></tr>
+        </tbody>
+      </table></div>
+      <h3>영어 답안 템플릿 (KMLA 450명 → 30명)</h3>
+      <div class="grid2">
+        <div class="box"><h4>SRS</h4><p style="font-size:.92rem">"Label all 450 students 001 to 450. Starting at a randomly chosen place in the random digit table, read three-digit numbers from left to right. Select the student whose label matches each number from 001 to 450. Skip numbers greater than 450, 000, and any repeats. Continue until 30 different students have been selected."</p></div>
+        <div class="box"><h4>Stratified</h4><p style="font-size:.92rem">"Divide the students into three strata by grade, since students in the same grade are similar. Within each grade, label the students 001 to 150. Using the random digit table, select an SRS of 10 students from each grade (skipping numbers above 150 and repeats). Combine the three groups to get the 30 students."</p></div>
+        <div class="box"><h4>Cluster</h4><p style="font-size:.92rem">"The 450 students are in 30 homerooms of 15 students (each homeroom is a cluster). Label the homerooms 01 to 30. Using the random digit table, read two-digit numbers and select 2 different homerooms (skipping numbers outside 01–30 and repeats). Survey every student in the 2 selected homerooms."</p></div>
+        <div class="box"><h4>Systematic</h4><p style="font-size:.92rem">"Label the students 1 to 450. The sampling interval is k = 450/30 = 15. Use the random digit table to choose a random starting number between 01 and 15. If the start is 7, select students 7, 22, 37, …, every 15th student, until 30 students are selected (the last is 442)."</p></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="samp">Ch.3 문제 풀러 가기 →</button></p>
+    </article>
+  </div>
+
+  <!-- 확률 -->
+  <div id="unit-prob" hidden>
+    <article class="sec">
+      <div class="sec-head"><span class="num">0</span><h2>Counting and Notation <span class="gloss">경우의 수</span></h2></div>
+      <p class="lead">정수 <span class="m">r</span>, <span class="m">n</span>이 <span class="mr">0 ≤ <span class="m">r</span> ≤ <span class="m">n</span></span>일 때 쓰는 세 가지 공식입니다.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>개념</th><th>공식</th><th>언제 쓰나</th></tr></thead>
+        <tbody>
+          <tr><td class="term">Factorial <span class="m">n</span>!</td><td class="mr"><span class="m">n</span>! = <span class="m">n</span>(<span class="m">n</span>−1)⋯2·1, &nbsp;0! = 1</td><td><span class="m">n</span>개를 일렬로 나열</td></tr>
+          <tr><td class="term">Permutation <sub>n</sub>P<sub>r</sub></td><td class="mr"><span class="m">n</span>(<span class="m">n</span>−1)⋯(<span class="m">n</span>−<span class="m">r</span>+1) = <span class="fr"><i>n!</i><i>(n−r)!</i></span></td><td><span class="m">r</span>개를 뽑아서 <b>순서대로</b> 나열 &nbsp;(= <sub>n</sub>C<sub>r</sub> × <span class="m">r</span>!)</td></tr>
+          <tr><td class="term">Combination <sub>n</sub>C<sub>r</sub></td><td class="mr"><span class="fr"><i>n!</i><i>r!(n−r)!</i></span></td><td><span class="m">r</span>개를 뽑기만 함 (순서 무관)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tool">
+        <div class="tool-row">
+          <label class="field">n<input type="number" id="cn" value="12" min="0" max="30"></label>
+          <label class="field">r<input type="number" id="cr" value="2" min="0" max="30"></label>
+          <span style="font-size:.85rem;color:var(--ink-soft)">숫자를 바꾸면 바로 계산됩니다.</span>
+        </div>
+        <div class="outs" id="countOut"></div>
+      </div>
+      <ul class="clean">
+        <li><b>Sampling with replacement</b>: 뽑은 것을 다시 넣고 다음 것을 뽑음. <span class="pen">뽑고 다시 넣고 뽑고</span></li>
+        <li><b>Sampling without replacement</b>: 뽑은 것을 다시 넣지 않음. 위의 순열·조합 공식은 모두 <b>비복원</b>을 가정합니다.</li>
+      </ul>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">0-2</span><h2>Sets and Probability Notation</h2></div>
+      <p><b>Sample space</b> <span class="m">S</span>는 가능한 모든 결과의 집합<span class="gloss">모든 결과들의 집합</span>, <b>event</b> <span class="m">A</span>는 <span class="m">S</span>의 부분집합입니다.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>표기</th><th>뜻</th></tr></thead>
+        <tbody>
+          <tr><td class="mr">P(<span class="m">A</span>)</td><td>사건 <span class="m">A</span>가 일어날 확률</td></tr>
+          <tr><td class="mr"><span class="m">A</span><sup>c</sup></td><td>Not <span class="m">A</span>; <span class="m">A</span>의 여사건 (complement)</td></tr>
+          <tr><td class="mr"><span class="m">A</span> ∪ <span class="m">B</span></td><td><span class="m">A</span> or <span class="m">B</span></td></tr>
+          <tr><td class="mr"><span class="m">A</span> ∩ <span class="m">B</span></td><td>Both <span class="m">A</span> and <span class="m">B</span></td></tr>
+          <tr><td class="mr"><span class="m">A</span> ∩ <span class="m">B</span> = ∅</td><td><span class="m">A</span>와 <span class="m">B</span>는 <b>disjoint</b> (= mutually exclusive). 동시에 일어날 수 없음</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><b class="tag">노트 정정</b>필기에는 disjoint 칸이 <span class="mr">A∩B ≠ ∅</span>로 적혀 있는데, disjoint는 교집합이 <b>비어 있다</b>는 뜻이라 <span class="mr">A∩B = ∅</span>가 맞습니다.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">1</span><h2>Understanding Probability</h2></div>
+      <p>확률은 사건이 일어날 가능성을 나타내는 수치이고, 다음을 만족합니다.</p>
+      <div class="grid2">
+        <div class="box"><h4>확률의 조건</h4><ul class="clean">
+          <li><span class="mr">0 ≤ P(<span class="m">A</span>) ≤ 1</span></li>
+          <li>불가능한 사건(impossible): <span class="mr">P(<span class="m">A</span>) = 0</span></li>
+          <li>반드시 일어나는 사건(certain): <span class="mr">P(<span class="m">A</span>) = 1</span></li>
+        </ul></div>
+        <div class="box"><h4>두 가지 관점</h4><ul class="clean">
+          <li><b>Theoretical</b> P(<span class="m">A</span>) = <span class="fr"><i>A에 속한 결과 수</i><i>표본공간의 전체 결과 수</i></span></li>
+          <li><b>Empirical</b> P̂(<span class="m">A</span>) = <span class="fr"><i>처음 n번 중 A가 나온 횟수</i><i>전체 시행 횟수</i></span></li>
+        </ul></div>
+      </div>
+      <h3>The Law of Large Numbers <span class="gloss">시험 안 나옴 (참고)</span></h3>
+      <p>독립이고 같은 분포를 따르는 시행을 계속 늘리면, 사건의 <span class="mk">상대도수가 진짜 확률에 가까워집니다</span>. <span class="m">X<sub>i</sub></span> = 1(<span class="m">i</span>번째에 <span class="m">A</span> 발생), 0(아니면)이라 하면 <span class="mr">p̂<sub>n</sub> = <span class="fr"><i>1</i><i>n</i></span> Σ <span class="m">X<sub>i</sub></span></span>.</p>
+      <div class="grid2">
+        <div class="box"><h4>Weak LLN</h4><div class="formula">lim<sub>n→∞</sub> P(|p̂<sub>n</sub> − p| &gt; ε) = 0</div><p style="margin-top:8px;font-size:.92rem;color:var(--ink-soft)">n이 커질수록, 정해 둔 오차 ε보다 크게 벗어날 확률이 0으로 갑니다.</p></div>
+        <div class="box"><h4>Strong LLN</h4><div class="formula">P(lim<sub>n→∞</sub> p̂<sub>n</sub> = p) = 1</div><p style="margin-top:8px;font-size:.92rem;color:var(--ink-soft)">확률 1로, 관측된 상대도수의 수열 자체가 p로 수렴합니다.</p></div>
+      </div>
+      <div class="tool">
+        <div class="tool-row">
+          <b style="font-size:.95rem">동전 던지기 시뮬레이터</b>
+          <button class="btn" data-flip="10">+10번</button>
+          <button class="btn" data-flip="100">+100번</button>
+          <button class="btn" data-flip="1000">+1000번</button>
+          <button class="btn ghost" id="flipReset">처음부터</button>
+        </div>
+        <canvas id="lln" aria-label="던진 횟수에 따른 앞면 비율 그래프"></canvas>
+        <div class="outs" id="llnOut"></div>
+      </div>
+      <div class="callout"><b class="tag">The Gambler's Fallacy</b>독립적인 무작위 과정에서 과거 결과가 "균형을 맞추는" 결과를 더 잘 나오게 만든다고 믿는 오류. 앞면이 5번 연속 나와도 다음 번 뒷면 확률은 여전히 <span class="fr"><i>1</i><i>2</i></span>입니다. LLN은 "장기적으로" 수렴한다는 말이지, 짧은 구간에서 보정해 준다는 말이 아닙니다.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2</span><h2>Basic Probability Rules</h2></div>
+      <div class="tbl-wrap"><table>
+        <tbody>
+          <tr><td class="term">부분집합</td><td class="mr"><span class="m">A</span> ⊂ <span class="m">B</span> &nbsp;⇒&nbsp; P(<span class="m">A</span>) ≤ P(<span class="m">B</span>)</td></tr>
+          <tr><td class="term">Complement Rule</td><td class="mr">P(<span class="m">A</span><sup>c</sup>) = 1 − P(<span class="m">A</span>)</td></tr>
+          <tr><td class="term">Addition Rule</td><td class="mr">P(<span class="m">A</span> ∪ <span class="m">B</span>) = P(<span class="m">A</span>) + P(<span class="m">B</span>) − P(<span class="m">A</span> ∩ <span class="m">B</span>)</td></tr>
+          <tr><td class="term">Disjoint일 때</td><td class="mr">P(<span class="m">A</span> ∩ <span class="m">B</span>) = 0 &nbsp;⇒&nbsp; P(<span class="m">A</span> ∪ <span class="m">B</span>) = P(<span class="m">A</span>) + P(<span class="m">B</span>)</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Problem set #1에서 같이 쓰는 도구</h3>
+      <div class="grid2">
+        <div class="box"><h4>교집합의 범위</h4><p class="mr">max(0, P(<span class="m">A</span>)+P(<span class="m">B</span>)−1) ≤ P(<span class="m">A</span>∩<span class="m">B</span>) ≤ min(P(<span class="m">A</span>), P(<span class="m">B</span>))</p><p style="font-size:.9rem;color:var(--ink-soft);margin-top:6px">왼쪽은 P(A∪B) ≤ 1에서, 오른쪽은 A∩B ⊂ A, A∩B ⊂ B에서 나옵니다.</p></div>
+        <div class="box"><h4>드모르간 법칙</h4><p class="mr">(<span class="m">A</span> ∪ <span class="m">B</span>)<sup>c</sup> = <span class="m">A</span><sup>c</sup> ∩ <span class="m">B</span><sup>c</sup>, &nbsp; (<span class="m">A</span> ∩ <span class="m">B</span>)<sup>c</sup> = <span class="m">A</span><sup>c</sup> ∪ <span class="m">B</span><sup>c</sup></p><p style="font-size:.9rem;color:var(--ink-soft);margin-top:6px">"적어도 하나" 문제는 여사건(아무것도 안 일어남)으로 바꾸면 쉬워집니다.</p></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="ps1">Problem set #1 풀러 가기 →</button></p>
+    </article>
+  </div>
+
+  <!-- 실험 설계 -->
+  <div id="unit-exp" hidden>
+    <article class="sec">
+      <div class="sec-head"><span class="num">2</span><h2>Planning and Conducting Experiments</h2></div>
+      <p class="lead">관찰연구(observational study)는 두 변수가 <b>연관되어 있다(associated)</b>는 것까지만 보여 줍니다. 연관은 인과가 아닙니다. 한쪽이 다른 쪽을 <b>일으킨다</b>고 주장하려면 실험이 필요합니다.</p>
+      <div class="callout"><b class="tag">실험의 정의</b>실험은 조건을 조작하고(manipulates conditions), <span class="mk">피험자를 그 조건에 무작위로 배정하고</span>(randomly assigns), 그룹 간 반응을 비교합니다(compares responses). <b>인과적 결론을 뒷받침할 수 있는 유일한 설계</b>입니다.</div>
+      <div class="episode">
+        <p><b>예시: 태현이의 수면 실험</b> &nbsp;<span class="pen">관찰 → 연관성 / 실험 → 인과</span></p>
+        <p style="margin-top:6px;color:var(--ink-soft)">1년 반의 기숙사 생활에서 수면시간과 집중력 사이의 상관관계를 봤고(관찰연구), "더 긴 수면이 높은 집중력을 만든다"를 보이려고 실험을 계획했다.</p>
+        <dl>
+          <dt>Subjects</dt><dd>자원한 친구 28명 (experimental units)</dd>
+          <dt>Random assignment</dt><dd>주사위를 던져 3의 배수 → 8시간, 나머지 1 → 6시간, 나머지 2 → 4시간 (9명 / 9명 / 10명)</dd>
+          <dt>Factor</dt><dd>수면 시간</dd>
+          <dt>Levels</dt><dd>8시간, 6시간, 4시간 (기상 7:30 고정, 취침 11:30 / 1:30 / 3:30)</dd>
+          <dt>Response</dt><dd>10분간 외운 영어 단어 수 → 평균 29개, 25개, 24개</dd>
+          <dt>Confounding</dt><dd>4시간 그룹만 늦게까지 깨어 있으려고 <b>커피·에너지 드링크</b>를 마심 → 카페인 효과와 수면 효과를 분리할 수 없음</dd>
+          <dt>주의할 점</dt><dd>원래 잠이 적은 사람(short sleeper) 같은 개인차가 있어서 replication(충분한 인원)이 중요함</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-1</span><h2>Key Vocabulary</h2></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>용어</th><th>정의</th></tr></thead>
+        <tbody id="vocabBody"></tbody>
+      </table></div>
+      <div class="callout warn"><b class="tag">핵심</b>Confounding은 관찰연구가 인과를 증명할 수 없는 가장 큰 이유입니다. 실험은 <b>random assignment</b>로 confounding을 막습니다.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-2</span><h2>Principles of Experimental Design</h2></div>
+      <div class="principles">
+        <div class="pr star"><h4>(1) Control</h4><p>처치 이외의 모든 변수를 그룹 간에 최대한 같게 유지. 그룹 사이의 체계적인 차이는 처치 하나뿐이어야 합니다.</p></div>
+        <div class="pr star"><h4>(2) Randomization <span class="mk">가장 중요</span></h4><p>실험 단위를 처치 그룹에 무작위로 배정. 알려진 것이든 아니든 confounding 변수가 우연에 의해 그룹 간에 고르게 퍼집니다.</p></div>
+        <div class="pr star"><h4>(3) Replication</h4><p>충분히 많은 피험자에게 처치를 반복 적용. 한 명의 특이한 피험자 때문에 생긴 우연한 차이가 아니라 진짜 차이가 보이게 합니다. <span class="pen">실험할 땐 subject가 충분해야 함</span></p></div>
+        <div class="pr"><h4>(4) Blocking — Reducing Variability</h4><p>실험 단위들이 중요한 면에서 서로 다를 때(예: 성별에 따라 새 공부법 반응이 다름), 무작위 배정 <b>전에</b> 비슷한 단위끼리 묶어 잡음을 줄입니다.</p></div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-3</span><h2>Design of Experiment</h2></div>
+      <h3>(1) Completely Randomized Design <span class="gloss">이거 그리는 거 기말고사 나온다</span></h3>
+      <div class="dg-canvas" id="miniCRD"></div>
+      <p>모든 피험자를 처치 그룹에 <b>한 번에</b> 무작위 배정합니다. 배정 방법: 주사위, 동전, random digit table, 이름표 섞어 뽑기.</p>
+      <h3>(2) Randomized Block Design</h3>
+      <div class="dg-canvas" id="miniRBD"></div>
+      <div class="grid2">
+        <div class="box"><h4>언제 쓰나</h4><p>반응에 영향을 줄 것 같은 특성(성별, 학년, 기존 실력 등)으로 <b>뚜렷하게 나뉘는 기준이 있을 때</b>.</p></div>
+        <div class="box"><h4>헷갈리는 포인트</h4><p>블록으로 나누는 건 <b>무작위가 아님</b>(특성으로 나눔). 무작위 배정은 <b>각 블록 안에서</b> 따로 합니다. 결과도 블록 안에서 비교합니다.</p></div>
+      </div>
+      <p><button class="btn primary" data-go="diagram">설계도 직접 그려 보기 →</button></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">P1</span><h2>Problem 1 · 클래식 음악 실험</h2></div>
+      <p>연구자가 공부하면서 클래식 음악을 들으면 시험 점수가 오르는지 알고 싶어 고등학생 60명을 모집했다.</p>
+      <div class="tbl-wrap"><table><tbody>
+        <tr><td class="term">Factor</td><td>공부할 때의 음악 조건 (클래식 음악을 듣는지)</td></tr>
+        <tr><td class="term">Levels</td><td>클래식 음악 들음 / 음악 없음 (2개)</td></tr>
+        <tr><td class="term">Treatments</td><td>요인이 하나라 처치 = 수준: ① 클래식 음악 들으며 공부 ② 음악 없이 공부</td></tr>
+        <tr><td class="term">Response</td><td>시험 점수</td></tr>
+        <tr><td class="term">Blinding</td><td>피험자는 음악을 듣는지 스스로 알기 때문에 피험자 blind는 불가능 → double-blind도 불가능. 다만 채점자가 누가 어느 그룹인지 모르게 하는 것(평가자 blind)은 가능합니다.</td></tr>
+        <tr><td class="term">Confounding 후보</td><td>배경지식, 평소 듣는 음악 취향, 학생의 기본 실력, 평소 학습 태도. 학생이 그룹을 스스로 고르면 이런 요인이 처치와 엉켜 버리므로 무작위 배정으로 고르게 퍼뜨려야 합니다.</td></tr>
+      </tbody></table></div>
+      <div class="callout warn"><b class="tag">노트 보완</b>필기의 Treatments 칸에는 "Listening to classical music" 하나만 적혀 있는데, 비교 대상인 "음악 없이 공부"도 처치에 포함해서 두 개로 쓰는 게 정확합니다.</div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 문제 풀기 ============ -->
+<section class="panel" id="panel-practice" role="tabpanel" aria-labelledby="tab-practice" hidden>
+  <div class="sec-head" style="margin-bottom:6px"><h2>문제 풀기</h2></div>
+  <p class="lead" style="margin-bottom:12px">Problem set #1, 노트의 Problem, 그리고 단원별 확인 문제. 답은 분수(<span class="mono">7/10</span>)나 소수(<span class="mono">0.7</span>) 둘 다 됩니다. 푼 기록은 이 브라우저에 저장됩니다.</p>
+  <div class="subnav" id="qfilters" role="group" aria-label="문제 범위"></div>
+  <div class="prac">
+    <aside class="side">
+      <div class="sec">
+        <p class="eyebrow">점수</p>
+        <p class="score-big" id="scoreBig">0<small> / 0</small></p>
+        <div class="bar"><i id="scoreBar" style="width:0"></i></div>
+        <div id="unitScores"></div>
+      </div>
+      <div class="sec">
+        <p class="eyebrow" style="margin-bottom:8px">문제 목록</p>
+        <div class="qgrid" id="qgrid"></div>
+        <button class="btn ghost" id="resetAll" style="margin-top:12px;width:100%">기록 초기화</button>
+      </div>
+    </aside>
+    <div id="qarea"></div>
+  </div>
+</section>
+
+<!-- ============ 실험 설계도 ============ -->
+<section class="panel" id="panel-diagram" role="tabpanel" aria-labelledby="tab-diagram" hidden>
+  <div class="sec-head" style="margin-bottom:6px"><h2>실험 설계도 그리기</h2></div>
+  <p class="lead" style="margin-bottom:16px">시나리오를 고르거나 직접 입력하면 설계도가 그려집니다. <b>빈칸 모드</b>로 바꾸면 칸이 가려지니 종이에 먼저 그려 보고, 칸을 눌러 하나씩 확인하세요.</p>
+  <div class="dg-layout">
+    <div class="sec dg-form" style="margin:0">
+      <label class="field">시나리오
+        <select id="dgScenario"></select>
+      </label>
+      <div>
+        <p class="field" style="margin-bottom:4px">설계 종류</p>
+        <div class="seg" role="group" aria-label="설계 종류">
+          <button id="dgCRD" data-design="crd" aria-pressed="true">완전 무작위 (CRD)</button>
+          <button id="dgRBD" data-design="rbd" aria-pressed="false">블록 (RBD)</button>
+        </div>
+      </div>
+      <div class="tool-row">
+        <label class="field" style="flex:1">피험자<input id="dgSubj" type="text"></label>
+        <label class="field">인원<input id="dgN" type="number" min="2" max="999"></label>
+      </div>
+      <label class="field">처치 (한 줄에 하나, 대조군 포함)<textarea id="dgTreat"></textarea></label>
+      <div id="dgBlockFields">
+        <label class="field">블록 기준<input id="dgBlockVar" type="text"></label>
+        <label class="field" style="margin-top:10px">블록 (이름:인원, 한 줄에 하나)<textarea id="dgBlocks"></textarea></label>
+      </div>
+      <label class="field">반응변수 (비교할 것)<input id="dgResp" type="text"></label>
+      <div class="seg" role="group" aria-label="보기 모드">
+        <button id="dgShow" aria-pressed="true">전체 보기</button>
+        <button id="dgBlank" aria-pressed="false">빈칸 모드</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+      <div class="dg-canvas" id="dgOut"></div>
+      <p id="dgWarn" class="callout warn" hidden></p>
+      <div class="sec" style="margin:0">
+        <p class="eyebrow">만점 체크리스트 · 내 그림에 있는지 확인</p>
+        <div id="dgChecklist" style="margin-top:6px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 용어 카드 ============ -->
+<section class="panel" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
+  <div class="sec-head" style="margin-bottom:6px"><h2>용어 카드</h2></div>
+  <p class="lead" style="margin-bottom:12px">카드를 누르면 뒤집힙니다. 외운 카드는 "알아요"로 표시해 두고, "모르는 것만"으로 다시 돌려 보세요. 키보드: ← → 이동, 스페이스 뒤집기.</p>
+  <div class="subnav" id="fcFilters" role="group" aria-label="카드 범위"></div>
+  <div class="fc-stage">
+    <button class="flash" id="flash" aria-label="카드 뒤집기">
+      <div class="flash-inner">
+        <div class="face front"><span class="pill cat" id="fcCat"></span><div class="term-en" id="fcEn"></div><div class="term-ko" id="fcKo"></div><span class="tap">눌러서 뒤집기</span></div>
+        <div class="face back"><div class="def" id="fcDef"></div><span class="tap">눌러서 앞면으로</span></div>
+      </div>
+    </button>
+    <div class="fc-controls">
+      <button class="btn" id="fcPrev" aria-label="이전 카드">←</button>
+      <span class="fc-count" id="fcCount"></span>
+      <button class="btn" id="fcNext" aria-label="다음 카드">→</button>
+    </div>
+    <div class="fc-controls">
+      <button class="btn" id="fcKnow">알아요 ✓</button>
+      <button class="btn ghost" id="fcShuffle">섞기</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const F=(a,b)=>`<span class="fr"><i>${a}</i><i>${b}</i></span>`;
+const M=s=>`<span class="m">${s}</span>`;
+const R=s=>`<span class="mr">${s}</span>`;
+
+/* ---------- storage ---------- */
+const KEY="apstat-notes-v1";
+let store={answers:{},known:[],tab:"learn"};
+try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+
+/* ---------- vocabulary (shared by table + cards) ---------- */
+const VOCAB=[
+ {en:"Subject / Participant",sub:"Experimental unit",ko:"피험자·실험 단위",cat:"exp",def:"실험이 실시되는 개체. 사람일 때 subject 또는 participant라고 부릅니다."},
+ {en:"Factor",sub:"Explanatory variable",ko:"내가 조절할 애들",cat:"exp",def:"실험자가 의도적으로 수준을 바꾸는 변수."},
+ {en:"Levels",ko:"factor가 가지는 값",cat:"exp",def:"실험자가 한 요인에 대해 고른 구체적인 값들."},
+ {en:"Treatment",ko:"실험 대상자가 하는 행위",cat:"exp",def:"실험 단위가 받는, 모든 요인의 특정 수준들의 조합."},
+ {en:"Response variable",ko:"결과",cat:"exp",def:"측정해서 처치 그룹끼리 비교하는 결과."},
+ {en:"Control group",ko:"실험을 받지 않는 그룹",cat:"exp",def:"처치를 받지 않거나 표준(기준) 처치를 받는 그룹. 다른 처치의 효과를 비교하는 기준점."},
+ {en:"Placebo",ko:"가짜 처치",cat:"exp",def:"실제 처치처럼 보이는 가짜 처치. 대조군에게 줘서 유효 성분만 빼고 모든 조건을 같게 만듭니다."},
+ {en:"Placebo effect",ko:"믿음만으로 생기는 효과",cat:"exp",def:"처치 자체가 아니라, 처치를 받고 있다는 믿음 때문에 반응변수에 생기는 실제 변화. 그래서 플라시보를 받는 대조군이 필요합니다."},
+ {en:"Blinding",ko:"피험자가 모름",cat:"exp",def:"피험자가 어떤 처치를 받았는지 모르는 것. 플라시보 효과가 결과를 왜곡하지 못하게 합니다."},
+ {en:"Double-blinding",ko:"피험자도 평가자도 모름",cat:"exp",def:"피험자와 결과를 측정하는 사람 모두 누가 어떤 처치를 받았는지 모르는 것. 양쪽의 편향을 모두 없앱니다."},
+ {en:"Confounding",ko:"효과가 엉켜서 분리 불가",cat:"exp",def:"여러 요인이 너무 얽혀 있어서 각각의 효과를 분리할 수 없는 상태. 관찰연구가 인과를 증명하지 못하는 핵심 이유."},
+ {en:"Control",ko:"조건 통제",cat:"design",def:"처치 이외의 모든 변수를 그룹 간에 최대한 같게 유지하는 원리."},
+ {en:"Randomization",ko:"무작위 배정",cat:"design",def:"실험 단위를 처치 그룹에 무작위로 배정. 가장 중요한 원리로, confounding 변수를 그룹 간에 고르게 퍼뜨립니다."},
+ {en:"Replication",ko:"충분한 반복",cat:"design",def:"충분히 많은 피험자에게 처치를 적용해서, 결과가 한 명의 특이한 피험자 때문이 아니게 하는 원리."},
+ {en:"Blocking",ko:"비슷한 것끼리 묶기",cat:"design",def:"무작위 배정 전에 중요한 특성이 비슷한 실험 단위끼리 묶어서 변동(잡음)을 줄이는 방법."},
+ {en:"Completely Randomized Design",ko:"완전 무작위 설계",cat:"design",def:"모든 피험자를 한 번에 처치 그룹들에 무작위 배정하는 설계."},
+ {en:"Randomized Block Design",ko:"랜덤 블록 설계",cat:"design",def:"먼저 특성으로 블록을 나누고(무작위 X), 각 블록 안에서 따로 처치에 무작위 배정하는 설계."},
+ {en:"Observational study",ko:"관찰연구",cat:"samp",def:"처치를 주지 않고 관찰·기록만 하는 연구. 가장 흔한 형태는 survey. 연관성(association)은 보여 주지만 인과는 증명하지 못합니다."},
+ {en:"Census",ko:"전수조사",cat:"samp",def:"모집단의 모든 개체에서 자료를 수집. 비싸고 비현실적이며, 측정 오류가 쌓여 잘 설계한 표본보다 부정확할 수도 있습니다."},
+ {en:"Bias",ko:"편향",cat:"samp",def:"표본 설계가 모집단의 어떤 부분을 체계적으로 과대 또는 과소 대표해서 결론이 현실을 반영하지 못하는 상태. 표본을 키워도 사라지지 않습니다."},
+ {en:"Voluntary response sample",ko:"자발적 응답 표본",cat:"samp",def:"스스로 참여를 선택한 표본. 강한 의견을 가진 사람이 훨씬 많이 응답해 극단적 의견이 과대 대표됩니다. 예: 웹사이트 투표."},
+ {en:"Convenience sample",ko:"편의 표본",cat:"samp",def:"가장 만나기 쉬운 사람을 고른 표본. 예: 급식실 앞 지나가는 학생."},
+ {en:"Undercoverage",ko:"선택될 기회 자체가 없음",cat:"samp",def:"모집단의 일부 집단이 추출 과정에서 체계적으로 빠짐(선택될 확률이 0이거나 낮음). 예: 유선전화 번호부로만 조사."},
+ {en:"Nonresponse bias",ko:"선택됐지만 응답 안 함",cat:"samp",def:"선택은 됐지만 응답하지 않은 사람들이 응답한 사람들과 다를 수 있어서 생기는 편향. 예: 우편 설문의 낮은 회수율."},
+ {en:"Response bias",ko:"부정확한 응답",cat:"samp",def:"응답자가 의도적이든 무의식이든 부정확하게 답함. 예: 민감한 질문에 거짓말."},
+ {en:"Wording bias",ko:"질문 문구가 유도",cat:"samp",def:"질문의 문구가 응답자를 특정 답으로 유도해서 생기는 편향."},
+ {en:"Sampling variability",ko:"표본마다 statistic이 다름",cat:"samp",def:"같은 모집단에서 뽑은 서로 다른 무작위 표본은 서로 다른 statistic을 만든다. 예측하고 수량화할 수 있습니다."},
+ {en:"Sampling error",ko:"statistic − parameter",cat:"samp",def:"표본 statistic과 실제 parameter의 차이. 결함이 아니라 표본만 관찰하는 데서 오는 자연스러운 결과."},
+ {en:"SRS",sub:"Simple Random Sample",ko:"단순 무작위 표본",cat:"samp",def:"크기 n인 가능한 모든 표본이 같은 확률로 뽑히는 방법."},
+ {en:"Stratified random sample",ko:"층화추출",cat:"samp",def:"비슷한 개체끼리 층(strata)으로 나누고 각 층에서 SRS를 뽑아 합치는 방법. 모든 층에서 일부를 뽑습니다."},
+ {en:"Cluster sample",ko:"군집추출",cat:"samp",def:"내부가 다양한 군집으로 나누고 군집 몇 개를 무작위로 골라 그 안의 전원을 조사하는 방법."},
+ {en:"Systematic sample",ko:"계통추출",cat:"samp",def:"처음 k개 중 하나를 무작위로 고르고 이후 k번째마다 포함하는 방법. k ≈ N / n."},
+ {en:"Sample space",ko:"모든 결과들의 집합",cat:"prob",def:"가능한 모든 결과를 모은 집합 S. 사건(event)은 S의 부분집합."},
+ {en:"Disjoint",sub:"Mutually exclusive",ko:"서로 배반",cat:"prob",def:"두 사건이 동시에 일어날 수 없음. A∩B = ∅ 이고 P(A∩B) = 0."},
+ {en:"Complement",ko:"여사건",cat:"prob",def:"A가 일어나지 않는 사건 Aᶜ. P(Aᶜ) = 1 − P(A)."},
+ {en:"Theoretical probability",ko:"이론적 확률",cat:"prob",def:"수학적 모델로 정한 확률 = (A에 속한 결과 수) / (표본공간 전체 결과 수)."},
+ {en:"Empirical probability",ko:"경험적 확률",cat:"prob",def:"실제 데이터나 반복 시행에서 관측한 상대도수 = (A가 나온 횟수) / (전체 시행 횟수)."},
+ {en:"Law of Large Numbers",ko:"큰 수의 법칙",cat:"prob",def:"독립·동일분포 시행 횟수가 늘어나면 상대도수가 진짜 확률에 가까워진다는 법칙."},
+ {en:"Gambler's Fallacy",ko:"도박사의 오류",cat:"prob",def:"독립적인 무작위 과정에서 과거 결과가 균형을 맞추는 결과를 더 잘 나오게 만든다고 믿는 오류."},
+ {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
+];
+$("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
+
+/* ---------- question bank ---------- */
+const PS="Problem set #1";
+const Q=[
+ // Ch.3 Collecting data
+ {id:"s-1",unit:"samp",set:"samp",src:"3.1 자료 수집",type:"mc",q:"500명에게 수면 시간과 BMI를 설문했다. 이 연구는?",choices:["Census","Observational study (survey)","Experiment","Cluster sample"],answer:1,explain:"처치를 부과하지 않고 설문으로 관찰만 했으니 관찰연구(survey). 연관은 찾지만 인과는 입증 못 합니다."},
+ {id:"s-2",unit:"samp",set:"samp",src:"3.1 자료 수집",type:"mc",q:"학생 60명을 무작위로 두 조로 나눠 한 조에만 새 학습법을 적용했다. 이 연구는?",choices:["Census","Observational study","Experiment","Systematic sample"],answer:2,explain:"처치를 부과하고 random assignment를 했으니 experiment → 인과 결론 가능."},
+ {id:"s-3",unit:"samp",set:"samp",src:"3.1 자료 수집",type:"mc",q:"여름에 아이스크림 판매량과 수영장 사고 건수가 함께 늘었다는 관찰연구로 \"아이스크림이 사고를 일으킨다\"고 결론내릴 수 있나?",choices:["있다. 상관이 강하면 인과다","없다. 기온·계절 같은 confounding variable이 둘 다 높였을 수 있다","있다. 표본이 충분히 크면 된다","없다. census가 아니기 때문이다"],answer:1,explain:"관찰연구는 association만 보여 줍니다. 인과를 보려면 처치를 부과하고 random assignment를 한 실험이 필요해요."},
+ {id:"s-4",unit:"samp",set:"samp",src:"3.2 편향",type:"mc",q:"학교 웹사이트에 설문 링크를 올리고 응답한 학생만 집계했다. 어떤 편향인가?",choices:["Voluntary response","Convenience","Undercoverage","Wording bias"],answer:0,explain:"스스로 참여를 선택 → voluntary response. 강한 의견을 가진 사람이 과대 대표됩니다."},
+ {id:"s-5",unit:"samp",set:"samp",src:"3.2 편향",type:"mc",q:"급식실 앞에서 지나가던 학생 20명을 조사했다. 어떤 편향인가?",choices:["Nonresponse","Convenience","Response bias","Undercoverage"],answer:1,explain:"만나기 쉬운 사람을 고른 convenience sample."},
+ {id:"s-6",unit:"samp",set:"samp",src:"3.2 편향",type:"mc",q:"유선전화 번호부에서만 뽑아 전화 조사를 했다. 휴대폰만 쓰는 사람은 어떻게 되나?",choices:["Nonresponse bias","Response bias","Undercoverage","Voluntary response"],answer:2,explain:"선택될 기회 자체가 없음 → undercoverage."},
+ {id:"s-7",unit:"samp",set:"samp",src:"3.2 편향",type:"mc",q:"무작위로 뽑은 1,000가구에 우편 설문을 보냈는데 150가구만 회신했다. 가장 걱정되는 편향은?",choices:["Undercoverage","Nonresponse bias","Voluntary response","Wording bias"],answer:1,explain:"선택은 됐지만 응답하지 않음 → nonresponse bias."},
+ {id:"s-8",unit:"samp",set:"samp",src:"3.2 편향",type:"mc",q:"\"훌륭한 급식을 개선할 필요가 없다고 생각하지 않으십니까?\" 이 질문의 문제는?",choices:["Response bias","Wording bias","Convenience","Undercoverage"],answer:1,explain:"질문 문구가 특정 답으로 유도 → wording bias."},
+ {id:"s-9",unit:"samp",set:"samp",src:"3.2 편향",type:"tf",q:"Undercoverage는 선택된 사람이 응답을 거부해서 생기는 편향이다.",answer:false,explain:"그건 nonresponse bias. undercoverage는 일부 집단이 선택될 기회 자체가 없거나 낮은 경우예요."},
+ {id:"s-10",unit:"samp",set:"samp",src:"3.3 Random sampling",type:"mc",q:"같은 학교에서 무작위로 뽑은 두 표본의 지지율이 54%와 51%였다. 가장 적절한 설명은?",choices:["표본 설계에 bias가 있다는 증거다","sampling variability로 자연스러운 현상이다","둘 중 하나는 잘못 뽑은 것이다","census를 해야만 한다"],answer:1,explain:"무작위 표본마다 statistic이 다른 것은 sampling variability. 예측·수량화할 수 있고, bias와는 다릅니다."},
+ {id:"s-11",unit:"samp",set:"samp",src:"3.3 Random sampling",type:"tf",q:"편향된 방법으로 뽑은 표본이라도 크기를 충분히 키우면 편향이 사라진다.",answer:false,explain:"표본 크기를 키우면 variability는 줄지만 bias는 그대로입니다."},
+ {id:"s-12",unit:"samp",set:"samp",src:"3.4 추출법",type:"tf",q:"Stratified sampling에서는 각 층 안의 개체들이 서로 비슷하도록 층을 나눈다.",answer:true,explain:"층(strata)은 homogeneous하게. 군집(cluster)은 내부가 다양하게 구성됩니다."},
+ {id:"s-13",unit:"samp",set:"samp",src:"3.4 추출법",type:"mc",q:"한 교육청의 학교 120곳 중 6곳을 무작위로 뽑아, 뽑힌 학교의 모든 학생에게 설문했다. 이 추출법은?",choices:["SRS","Stratified","Cluster","Systematic"],answer:2,explain:"군집(학교)을 무작위로 고르고 그 안의 전원을 조사 → cluster."},
+ {id:"s-14",unit:"samp",set:"samp",src:"3.4 추출법",type:"mc",q:"1학년 200명, 2학년 300명, 3학년 100명인 학교에서 비례 배분 층화추출로 60명을 뽑는다. 학년별 인원은?",choices:["20, 20, 20","20, 30, 10","15, 35, 10","30, 20, 10"],answer:1,explain:"600명 중 1/3 : 1/2 : 1/6 → 60 × 각 비율 = 20, 30, 10명. 각 학년에서 SRS."},
+ {id:"s-15",unit:"samp",set:"samp",src:"3.4 추출법",type:"num",q:"학생 450명에서 30명을 계통추출한다. 시작 번호가 7일 때 <b>마지막(30번째)</b>으로 뽑히는 번호는?",answer:442,answerText:"442",hint:"k = 450/30 먼저 구하기",explain:"k = 450/30 = 15. 7, 22, 37, … 마지막은 7 + 15 × 29 = 442."},
+ {id:"s-16",unit:"samp",set:"samp",src:"3.4 난수표",type:"mc",q:"AP 통계 수강생 50명 중 8명을 SRS로 뽑는다. 레이블 01–50, Row 01 <span class=\"mono\">89392 23212 74483 36590 25956 36544</span>을 왼쪽부터 두 자리씩 읽으면 뽑히는 8명은?",choices:["89, 39, 22, 32, 12, 74, 48, 33","39, 22, 32, 12, 48, 33, 25, 44","39, 22, 32, 12, 48, 33, 25, 36","3, 9, 2, 2, 3, 2, 1, 2"],answer:1,explain:"89✗ 39 22 32 12 74✗ 48 33 65✗ 90✗ 25 95✗ 63✗ 65✗ 44 → 39, 22, 32, 12, 48, 33, 25, 44. 범위 밖은 건너뜁니다."},
+ {id:"s-17",unit:"samp",set:"samp-app",src:"3.5 적용 · SRS",type:"mc",q:"동아리 회원 80명 중 6명을 SRS로 뽑는다. 레이블 01–80, 난수 줄 <span class=\"mono\">94019 01890 86430 46818 41365</span>을 왼쪽부터 읽으면?",choices:["01, 18, 43, 04, 68, 41","01, 18, 43, 04, 68, 18","94, 01, 90, 18, 86, 43","01, 18, 90, 43, 04, 68"],answer:0,hint:"00, 81–99, 중복은 건너뛰기",explain:"94✗ 01 90✗ 18 90✗ 86✗ 43 04 68 18(중복)✗ 41 → 01, 18, 43, 04, 68, 41."},
+ {id:"s-18",unit:"samp",set:"samp-app",src:"3.5 적용 · Stratified",type:"mc",q:"10학년 60명, 11학년 50명, 12학년 40명(총 150명)에서 학년별 비례 배분 층화추출로 15명을 뽑는다. 학년별 인원은?",choices:["5, 5, 5","6, 5, 4","7, 5, 3","6, 6, 3"],answer:1,explain:"15 × 60/150 = 6, 15 × 50/150 = 5, 15 × 40/150 = 4. 각 학년 안에서 따로 번호를 붙여 SRS."},
+ {id:"s-19",unit:"samp",set:"samp-app",src:"3.5 적용 · Cluster",type:"num",q:"반이 40개, 반마다 25명인 학교에서 학생 100명을 반 단위 군집추출로 조사하려 한다. 몇 개 반을 뽑아야 하나?",answer:4,answerText:"4개 반",explain:"100 ÷ 25 = 4. 반에 01–40 번호를 붙이고(개인이 아니라 반에) 4개 반을 뽑아 전원 조사."},
+ {id:"s-20",unit:"samp",set:"samp-app",src:"3.5 적용 · Cluster",type:"mc",q:"(이어서) 레이블 01–40, 난수 줄 <span class=\"mono\">09629 60225 94098 43805</span>을 두 자리씩 읽으면 뽑히는 반은?",choices:["9, 62, 96, 2","9, 2, 25, 9","9, 2, 25, 38","9, 2, 25, 40"],answer:2,explain:"09 62✗ 96✗ 02 25 94✗ 09(중복)✗ 84✗ 38 → 9, 2, 25, 38반. 뽑힌 반의 학생 전원 조사."},
+ {id:"s-21",unit:"samp",set:"samp-app",src:"3.5 적용 · Systematic",type:"num",q:"명단 360명에서 24명을 계통추출한다. 난수 줄 <span class=\"mono\">88377 04252 22108</span>을 두 자리씩 읽어 01–k 중 처음 들어오는 수를 시작으로 할 때, <b>마지막</b>으로 뽑히는 번호는?",answer:355,answerText:"355",hint:"k = 360/24, 그다음 시작 번호 찾기",explain:"k = 15. 88✗ 37✗ 70✗ 42✗ 52✗ 22✗ 10 → 시작 10. 10, 25, 40, … 마지막 10 + 15 × 23 = 355."},
+ {id:"s-22",unit:"samp",set:"samp-app",src:"3.5 적용 · 서술",type:"open",q:"KMLA 450명(학년당 150명, 학년마다 10반, 반당 15명)에서 30명을 뽑는 방법을 SRS, Stratified, Cluster, Systematic 중 하나 골라 영어로 서술하세요.",model:`<ul class="clean"><li><b>SRS</b>: Label all 450 students 001 to 450. Starting at a randomly chosen place in the random digit table, read three-digit numbers left to right, skipping numbers above 450, 000, and repeats, until 30 students are selected.</li><li><b>Stratified</b>: Strata = grade (similar within). Label each grade 001–150 and select an SRS of 10 from each grade; combine.</li><li><b>Cluster</b>: Clusters = 30 homerooms of 15. Label homerooms 01–30, select 2 different homerooms, survey every student in them.</li><li><b>Systematic</b>: Label 1–450, k = 450/30 = 15, choose a random start from 01–15, then every 15th student (start 7 → 7, 22, …, 442).</li></ul>`},
+
+ // Problem set #1
+ {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
+  q:`${R("P("+M("A")+") = 0.25")}, ${R("P("+M("B")+") = 0.9")}일 때 ${R("P("+M("A")+"∩"+M("B")+")")}가 가질 수 있는 <b>가장 작은 값</b>은?`,
+  choices:["0","0.15","0.225","0.25"],answer:1,
+  hint:"P(A∪B)는 1을 넘을 수 없어요.",
+  explain:`<ol class="steps"><li>Addition rule: P(A∩B) = P(A) + P(B) − P(A∪B) = 1.15 − P(A∪B)</li><li>P(A∪B) ≤ 1 이므로 P(A∩B) ≥ 1.15 − 1 = <b>0.15</b></li><li>A∩B ⊂ A 이므로 P(A∩B) ≤ P(A) = 0.25 → 0.15 ≤ P(A∩B) ≤ 0.25</li></ol><p style="margin-top:8px">0.225 = 0.25 × 0.9는 A, B가 <b>독립</b>일 때만 성립해요. 문제에 독립 조건이 없으니 쓸 수 없습니다.</p>`},
+ {id:"ps1-2",unit:"prob",set:"ps1",src:PS+" · (2)",type:"num",
+  q:`${R("P("+M("A")+") = "+F(1,2))}, ${R("P("+M("B")+") = "+F(2,3))}, ${R("P("+M("A")+"<sup>c</sup>∩"+M("B")+"<sup>c</sup>) = "+F(1,5))}일 때 ${R("P("+M("A")+" ∪ "+M("B")+"<sup>c</sup>)")}의 값은?`,
+  answer:7/10,answerText:"7/10",
+  hint:"A∪Bᶜ의 여사건은 Aᶜ∩B 예요.",
+  explain:`<ol class="steps"><li>드모르간: (A∪Bᶜ)ᶜ = Aᶜ∩B, 그래서 P(A∪Bᶜ) = 1 − P(Aᶜ∩B)</li><li>P(Aᶜ∩B) = P(Aᶜ) − P(Aᶜ∩Bᶜ) = 1/2 − 1/5 = 3/10</li><li>P(A∪Bᶜ) = 1 − 3/10 = <b>7/10</b></li></ol><p style="margin-top:8px">검산: P(A∩Bᶜ) = P(Bᶜ) − P(Aᶜ∩Bᶜ) = 1/3 − 1/5 = 2/15 이고, P(A)+P(Bᶜ)−P(A∩Bᶜ) = 1/2 + 1/3 − 2/15 = 7/10. 노트처럼 P(A)+P(Bᶜ) = 5/6에서 바로 빼면 교집합을 빼는 단계가 빠집니다.</p>`},
+ {id:"ps1-3",unit:"prob",set:"ps1",src:PS+" · (3)",type:"num",
+  q:`수학 교사 12명, 과학 교사 10명, 영어 교사 8명 중 <b>비복원</b>으로 4명을 뽑는다. 가능한 모든 표본 중 세 과목 교사가 <b>모두 포함되는</b> 표본은 몇 개인가?`,
+  answer:12960,answerText:"12960",
+  hint:"4명 중 세 과목이 다 있으려면, 한 과목만 2명이고 나머지는 1명씩이에요.",
+  explain:`<ol class="steps"><li>수학 2명: <sub>12</sub>C<sub>2</sub>·10·8 = 66·80 = 5280</li><li>과학 2명: 12·<sub>10</sub>C<sub>2</sub>·8 = 12·45·8 = 4320</li><li>영어 2명: 12·10·<sub>8</sub>C<sub>2</sub> = 120·28 = 3360</li><li>합계 = <b>12960</b> (전체 <sub>30</sub>C<sub>4</sub> = 27405개 중)</li></ol>`},
+ {id:"ps1-3b",unit:"prob",set:"ps1",src:PS+" · (3) 응용",type:"num",
+  q:`(3)에서 4명을 무작위로 뽑을 때, 세 과목 교사가 모두 포함될 <b>확률</b>은? (분수 또는 소수 셋째 자리)`,
+  answer:12960/27405,answerText:"96/203 ≈ 0.473",tol:0.001,
+  hint:"(3)의 답 ÷ 전체 경우의 수 30C4",
+  explain:`<p>12960 / <sub>30</sub>C<sub>4</sub> = 12960 / 27405 = <b>96/203 ≈ 0.473</b></p>`},
+ {id:"ps1-4",unit:"prob",set:"ps1",src:PS+" · (4)",type:"num",
+  q:`KTX 열차 A, B가 제시간에 도착하는 사건을 각각 ${M("A")}, ${M("B")}라 하자. ${R("P("+M("A")+") = 0.9")}, ${R("P("+M("B")+") = 0.85")}, ${R("P("+M("A")+"∩"+M("B")+") = 0.8")}일 때, <b>적어도 하나</b>가 제시간에 올 확률은?`,
+  answer:0.95,answerText:"0.95",
+  hint:"'적어도 하나' = A ∪ B",
+  explain:`<p>P(A∪B) = 0.9 + 0.85 − 0.8 = <b>0.95</b></p>`},
+ {id:"ps1-5",unit:"prob",set:"ps1",src:PS+" · (5)",type:"mc",
+  q:`공정한 동전을 계속 던질 때, <b>세 번째 앞면</b>이 정확히 ${M("n")}번째 던짐에서 나올 확률은? (${R(M("n")+" ≥ 3")})`,
+  choices:[`${R("<sub>n</sub>C<sub>3</sub> ("+F(1,2)+")<sup>n</sup>")}`,`${R("<sub>n−1</sub>C<sub>2</sub> ("+F(1,2)+")<sup>n</sup>")}`,`${R("("+F(1,2)+")<sup>3</sup>")}`,`${R("<sub>n−1</sub>C<sub>3</sub> ("+F(1,2)+")<sup>n</sup>")}`],answer:1,
+  hint:"n번째는 반드시 앞면이어야 해요. 그 전 n−1번에는 앞면이 몇 번?",
+  explain:`<ol class="steps"><li>n번째 던짐 = 앞면 (확률 1/2)</li><li>앞의 n−1번 중 정확히 2번이 앞면: <sub>n−1</sub>C<sub>2</sub> (1/2)<sup>n−1</sup></li><li>곱하면 <b><sub>n−1</sub>C<sub>2</sub> (1/2)<sup>n</sup> = (n−1)(n−2)/2<sup>n+1</sup></b></li></ol><p style="margin-top:8px"><sub>n</sub>C<sub>3</sub>을 쓰면 마지막이 앞면이라는 조건이 빠져서, 세 번째 앞면이 n번째보다 먼저 나오는 경우까지 세게 됩니다.</p>`},
+ {id:"ps1-6",unit:"prob",set:"ps1",src:PS+" · (6)",type:"num",
+  q:`빨간 공 3개, 초록 공 2개, 노란 공 1개가 든 항아리에서 비복원으로 3개를 뽑는다. <b>적어도 한 색이 뽑히지 않을</b> 확률은?`,
+  answer:7/10,answerText:"7/10",
+  hint:"여사건 = 세 색이 모두 뽑힘",
+  explain:`<ol class="steps"><li>전체: <sub>6</sub>C<sub>3</sub> = 20</li><li>세 색 모두: 3·2·1 = 6 → 확률 6/20 = 3/10</li><li>답 = 1 − 3/10 = <b>7/10</b></li></ol>`},
+ {id:"ps1-7",unit:"prob",set:"ps1",src:PS+" · (7)",type:"mc",
+  q:`흰색·검은색·빨간색 카운터가 각각 1부터 ${M("n")}까지 번호가 붙어 ${M("n")}개씩 있다. 비복원으로 2개를 뽑을 때, 두 카운터가 <b>같은 색이거나 같은 번호</b>일 확률은?`,
+  choices:[`${F("n","3n−1")}`,`${F("n+1","3n−1")}`,`${F("n+2","3n")}`,`${F(1,3)}`],answer:1,
+  hint:"같은 색이면서 같은 번호인 두 카운터는 존재할 수 없어요 (서로 배반).",
+  explain:`<ol class="steps"><li>전체: <sub>3n</sub>C<sub>2</sub> = 3n(3n−1)/2</li><li>같은 색: 3·<sub>n</sub>C<sub>2</sub> = 3n(n−1)/2</li><li>같은 번호: n·<sub>3</sub>C<sub>2</sub> = 3n</li><li>둘은 disjoint → 합 = 3n(n−1)/2 + 3n = 3n(n+1)/2</li><li>확률 = <b>(n+1)/(3n−1)</b></li></ol>`},
+
+ // LLN T/F (page 2)
+ {id:"lln-1",unit:"prob",set:"lln",src:"Problem 1) T/F · (1)",type:"tf",q:"확률이 0.50이라는 것은 결과의 정확히 절반이 성공이라는 뜻이다.",answer:false,explain:"확률은 장기적인 상대도수입니다. 10번 던져서 정확히 5번이 나온다는 보장은 없어요."},
+ {id:"lln-2",unit:"prob",set:"lln",src:"Problem 1) T/F · (2)",type:"tf",q:"확률이 아주 낮은 사건은 일어날 수 없다.",answer:false,explain:"일어날 수 없는 사건은 확률이 정확히 0일 때뿐입니다. 확률이 낮아도 0보다 크면 일어날 수 있어요."},
+ {id:"lln-3",unit:"prob",set:"lln",src:"Problem 1) T/F · (3)",type:"tf",q:"공정한 동전이 다섯 번 연속 앞면이 나왔다면, 다음에는 뒷면이 나올 가능성이 더 크다.",answer:false,explain:"각 던짐은 독립이라 다음 뒷면 확률은 여전히 1/2입니다. 이렇게 믿는 것이 Gambler's Fallacy."},
+ {id:"lln-4",unit:"prob",set:"lln",src:"Problem 1) T/F · (4)",type:"tf",q:"표본이 크면 항상 상대도수가 진짜 확률에 더 가까워진다.",answer:false,explain:"LLN은 '경향'과 '확률적 수렴'을 말합니다. 특정 큰 표본이 작은 표본보다 항상 더 가깝다는 보장은 없어요. '항상'이 틀린 부분."},
+ {id:"lln-5",unit:"prob",set:"lln",src:"LLN 확인",type:"tf",q:"Strong Law of Large Numbers에 따르면, 확률 1로 관측 상대도수의 수열이 p로 수렴한다.",answer:true,explain:"P(lim p̂ₙ = p) = 1 이 Strong LLN의 내용입니다."},
+ {id:"lln-6",unit:"prob",set:"lln",src:"이론 vs 경험",type:"mc",q:"동전을 100번 던져 앞면이 54번 나왔다. 0.54는 어떤 확률인가?",choices:["Theoretical probability","Empirical probability","Conditional probability","Sample space"],answer:1,explain:"실제 시행에서 관측한 상대도수이므로 empirical probability (P̂)입니다. 이론적 확률은 0.5."},
+
+ // counting & rules
+ {id:"cnt-1",unit:"prob",set:"rules",src:"Counting",type:"num",q:"서로 다른 책 5권을 책꽂이에 일렬로 꽂는 방법의 수는?",answer:120,answerText:"5! = 120",explain:"n개를 일렬로 나열 → 5! = 120"},
+ {id:"cnt-2",unit:"prob",set:"rules",src:"Counting",type:"num",q:"7명 중에서 회장 1명, 부회장 1명을 뽑는 방법의 수는?",answer:42,answerText:"₇P₂ = 42",explain:"역할이 다르니 순서가 있음 → 순열 ₇P₂ = 7·6 = 42"},
+ {id:"cnt-3",unit:"prob",set:"rules",src:"Counting",type:"num",q:"10명 중에서 대표 3명을 뽑는 방법의 수는?",answer:120,answerText:"₁₀C₃ = 120",explain:"역할 구분이 없으니 순서 무관 → 조합 ₁₀C₃ = 720/6 = 120"},
+ {id:"cnt-4",unit:"prob",set:"rules",src:"Counting",type:"mc",q:`${R("<sub>n</sub>P<sub>r</sub>")}과 ${R("<sub>n</sub>C<sub>r</sub>")}의 관계로 옳은 것은?`,choices:[`${R("<sub>n</sub>P<sub>r</sub> = <sub>n</sub>C<sub>r</sub> × "+M("r")+"!")}`,`${R("<sub>n</sub>C<sub>r</sub> = <sub>n</sub>P<sub>r</sub> × "+M("r")+"!")}`,`${R("<sub>n</sub>P<sub>r</sub> = <sub>n</sub>C<sub>r</sub> × "+M("n")+"!")}`,`${R("<sub>n</sub>P<sub>r</sub> = <sub>n</sub>C<sub>r</sub>")}`],answer:0,explain:"r개를 고른 다음(nCr) 그 r개를 일렬로 나열(r!)하면 순열이 됩니다."},
+ {id:"rule-1",unit:"prob",set:"rules",src:"Rules",type:"num",q:`${R("P("+M("A")+") = 0.3")}일 때 ${R("P("+M("A")+"<sup>c</sup>)")}는?`,answer:0.7,answerText:"0.7",explain:"Complement rule: 1 − 0.3 = 0.7"},
+ {id:"rule-2",unit:"prob",set:"rules",src:"Rules",type:"num",q:`${M("A")}, ${M("B")}가 disjoint이고 ${R("P("+M("A")+") = 0.2")}, ${R("P("+M("B")+") = 0.45")}일 때 ${R("P("+M("A")+"∪"+M("B")+")")}는?`,answer:0.65,answerText:"0.65",explain:"Disjoint면 P(A∩B) = 0 → 0.2 + 0.45 = 0.65"},
+ {id:"rule-3",unit:"prob",set:"rules",src:"Rules",type:"num",q:`${R("P("+M("A")+") = 0.6")}, ${R("P("+M("B")+") = 0.5")}, ${R("P("+M("A")+"∪"+M("B")+") = 0.8")}일 때 ${R("P("+M("A")+"∩"+M("B")+")")}는?`,answer:0.3,answerText:"0.3",explain:"Addition rule 변형: P(A∩B) = 0.6 + 0.5 − 0.8 = 0.3"},
+ {id:"rule-4",unit:"prob",set:"rules",src:"Notation",type:"mc",q:`"${M("A")}와 ${M("B")}는 disjoint이다"를 기호로 바르게 쓴 것은?`,choices:[R(M("A")+" ∩ "+M("B")+" ≠ ∅"),R(M("A")+" ∩ "+M("B")+" = ∅"),R(M("A")+" ∪ "+M("B")+" = "+M("S")),R(M("A")+" ⊂ "+M("B"))],answer:1,explain:"교집합이 공집합, 즉 동시에 일어날 수 없다는 뜻입니다."},
+ {id:"rule-5",unit:"prob",set:"rules",src:"Rules",type:"tf",q:`${R(M("A")+" ⊂ "+M("B"))}이면 ${R("P("+M("A")+") ≤ P("+M("B")+")")}이다.`,answer:true,explain:"A가 B 안에 포함되면 A의 결과는 모두 B의 결과이기도 하므로 확률이 더 클 수 없습니다."},
+ {id:"rule-6",unit:"prob",set:"rules",src:"Theoretical",type:"num",q:"공정한 주사위를 한 번 던져 3의 배수가 나올 확률은?",answer:1/3,answerText:"1/3",explain:"{3, 6} → 2/6 = 1/3"},
+ {id:"rule-7",unit:"prob",set:"rules",src:"Sampling",type:"mc",q:"카드 한 장을 뽑아 확인한 뒤 다시 넣고 섞어서 또 뽑았다. 이 방식은?",choices:["Sampling without replacement","Sampling with replacement","Permutation","Blocking"],answer:1,explain:"뽑은 것을 다시 넣고 다음을 뽑으므로 복원 추출(with replacement)."},
+
+ // experiments: basics
+ {id:"exp-1",unit:"exp",set:"vocab",src:"개념",type:"mc",q:"관찰연구(observational study)로 보일 수 있는 것은?",choices:["두 변수 사이의 인과관계","두 변수 사이의 연관성(association)","처치 효과의 크기","플라시보 효과"],answer:1,explain:"관찰연구는 연관성까지만. Association is not causation."},
+ {id:"exp-2",unit:"exp",set:"vocab",src:"개념",type:"mc",q:"인과적 결론을 뒷받침할 수 있는 유일한 연구 설계는?",choices:["설문조사","관찰연구","무작위 배정을 사용한 실험","사례 연구"],answer:2,explain:"조건을 조작하고, 무작위 배정하고, 반응을 비교하는 실험만 인과를 주장할 수 있습니다."},
+ {id:"tae-1",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험에서 <b>factor</b>는?",choices:["외운 영어 단어 수","수면 시간","친구 28명","커피 섭취"],answer:1,explain:"실험자가 조절하는 변수 = 수면 시간."},
+ {id:"tae-2",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"num",q:"태현이 실험에서 factor의 <b>level</b>은 몇 개인가?",answer:3,answerText:"3 (8·6·4시간)",explain:"8시간, 6시간, 4시간 → 3개"},
+ {id:"tae-3",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험의 <b>response variable</b>은?",choices:["취침 시각","수면 시간","10분 동안 외운 영어 단어 수","주사위 눈"],answer:2,explain:"측정해서 그룹끼리 비교한 결과 = 외운 단어 수 (평균 29, 25, 24개)."},
+ {id:"tae-4",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"4시간 그룹만 늦게까지 깨어 있으려고 커피와 에너지 드링크를 마셨다. 이 카페인은 무엇에 해당하나?",choices:["Response variable","Level","Confounding variable","Placebo"],answer:2,explain:"카페인 효과와 수면 시간 효과가 얽혀 분리할 수 없으니 confounding variable입니다."},
+ {id:"tae-5",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"주사위를 던져 3의 배수/나머지 1/나머지 2로 그룹을 나눈 것은 어떤 원리인가?",choices:["Control","Randomization","Blocking","Blinding"],answer:1,explain:"우연에 맡겨 그룹을 정했으니 random assignment, 즉 randomization."},
+ {id:"tae-6",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험에서 experimental unit은?",choices:["수면 시간","자원한 친구 28명","영어 단어 50개","기숙사"],answer:1,explain:"실험이 실시되는 개체 = 친구 28명 (사람이라 subject라고도 부름)."},
+
+ // vocab
+ {id:"voc-1",unit:"exp",set:"vocab",src:"Vocabulary",type:"mc",q:"Placebo effect의 정의로 옳은 것은?",choices:["가짜 처치 그 자체","처치를 받고 있다는 믿음 때문에 반응에 생기는 실제 변화","대조군이 아무것도 받지 않는 것","평가자의 편향"],answer:1,explain:"믿음만으로 생기는 실제 변화. 그래서 플라시보를 받는 대조군이 필요합니다."},
+ {id:"voc-2",unit:"exp",set:"vocab",src:"Vocabulary",type:"mc",q:"Double-blinding이란?",choices:["피험자만 처치를 모름","평가자만 처치를 모름","피험자와 결과를 측정하는 사람 모두 처치를 모름","실험을 두 번 반복함"],answer:2,explain:"양쪽 모두 모르게 해서 양쪽의 편향을 없앱니다."},
+ {id:"voc-3",unit:"exp",set:"vocab",src:"Vocabulary",type:"tf",q:"Blinding은 플라시보 효과가 결과를 왜곡하는 것을 막는다.",answer:true,explain:"피험자가 자기 처치를 모르면 믿음에 의한 차이가 그룹 간에 생기지 않습니다."},
+ {id:"voc-4",unit:"exp",set:"vocab",src:"Vocabulary",type:"mc",q:"Control group의 역할은?",choices:["가장 효과가 좋은 처치를 받는 그룹","다른 처치의 효과를 비교하는 기준점","블록을 나누는 기준","결과를 측정하는 사람들"],answer:1,explain:"처치를 받지 않거나 기준 처치를 받아 비교의 기준이 됩니다."},
+ {id:"voc-5",unit:"exp",set:"vocab",src:"Vocabulary",type:"mc",q:"Treatment의 정의는?",choices:["실험자가 조절하는 변수","측정하는 결과","실험 단위가 받는, 모든 요인의 특정 수준들의 조합","무작위 배정 방법"],answer:2,explain:"요인이 하나면 처치 = 수준이지만, 요인이 여러 개면 수준들의 조합이 처치가 됩니다."},
+ {id:"voc-6",unit:"exp",set:"vocab",src:"Vocabulary",type:"num",q:"요인 A의 수준이 3개, 요인 B의 수준이 2개인 실험에서 처치는 모두 몇 개인가?",answer:6,answerText:"3 × 2 = 6",explain:"처치 = 수준의 조합 → 3 × 2 = 6개"},
+
+ // principles & designs
+ {id:"pr-1",unit:"exp",set:"design",src:"Principles",type:"mc",q:"실험 설계 원리 중 '가장 중요한(single most important)' 것은?",choices:["Control","Randomization","Replication","Blocking"],answer:1,explain:"무작위 배정은 알려진 것이든 아니든 confounding 변수를 그룹 간에 고르게 퍼뜨립니다."},
+ {id:"pr-2",unit:"exp",set:"design",src:"Principles",type:"mc",q:"Replication의 목적은?",choices:["처치 이외의 변수를 같게 유지","피험자가 처치를 모르게 함","결과가 한 명의 특이한 피험자 때문이 아니도록 충분한 인원에게 적용","비슷한 피험자끼리 묶음"],answer:2,explain:"충분히 많은 실험 단위에 반복해야 진짜 차이가 드러납니다."},
+ {id:"pr-3",unit:"exp",set:"design",src:"Principles",type:"mc",q:"Control 원리의 내용은?",choices:["대조군을 반드시 둔다","처치 이외의 모든 변수를 그룹 간에 최대한 같게 유지한다","무작위로 배정한다","표본을 크게 한다"],answer:1,explain:"그룹 사이의 체계적인 차이는 처치 하나뿐이어야 합니다."},
+ {id:"pr-4",unit:"exp",set:"design",src:"Blocking",type:"mc",q:"Blocking을 하는 이유는?",choices:["confounding을 완전히 없애려고","실험 단위의 알려진 차이로 생기는 변동(잡음)을 줄여 처치 효과를 잘 보려고","피험자 수를 늘리려고","무작위 배정을 대신하려고"],answer:1,explain:"블록은 변동을 줄이는 도구. 무작위 배정을 대신하지 않고, 블록 안에서 여전히 무작위 배정합니다."},
+ {id:"pr-5",unit:"exp",set:"design",src:"RBD",type:"tf",q:"Randomized block design에서는 피험자를 블록에 무작위로 배정한다.",answer:false,explain:"블록은 성별 같은 특성으로 나눕니다(무작위 X). 무작위 배정은 각 블록 안에서 처치에 대해 합니다."},
+ {id:"pr-6",unit:"exp",set:"design",src:"RBD",type:"mc",q:"성별로 블록을 나눈 실험에서 무작위 배정은 어디에서 일어나나?",choices:["전체 피험자를 블록에 나눌 때","각 블록 안에서 처치 그룹을 정할 때","결과를 비교할 때","일어나지 않는다"],answer:1,explain:"남자 블록 안에서 한 번, 여자 블록 안에서 한 번 따로 무작위 배정합니다."},
+ {id:"pr-7",unit:"exp",set:"design",src:"설계 구분",type:"mc",q:"새 공부법 실험에서 학생 40명을 남·여로 나눈 뒤, 각 성별 안에서 동전을 던져 새 공부법/기존 공부법을 배정했다. 이 설계는?",choices:["Completely randomized design","Randomized block design","Observational study","Matched pairs 없이 불가능"],answer:1,explain:"특성(성별)으로 먼저 나누고 그 안에서 무작위 배정 → RBD."},
+ {id:"pr-8",unit:"exp",set:"design",src:"설계 구분",type:"mc",q:"학생 60명 모두에게 번호를 붙이고 random digit table로 30명을 골라 음악 그룹, 나머지를 무음악 그룹으로 정했다. 이 설계는?",choices:["Completely randomized design","Randomized block design","Observational study","Stratified sampling"],answer:0,explain:"전체를 한 번에 무작위 배정 → CRD."},
+
+ // Problem 1 classical music
+ {id:"p1-a",unit:"exp",set:"p1",src:"Problem 1 · (a)",type:"mc",q:"클래식 음악 실험(고등학생 60명)의 <b>treatments</b>로 가장 정확한 것은?",choices:["클래식 음악 듣기","시험 점수","클래식 음악 들으며 공부 / 음악 없이 공부","고등학생 60명"],answer:2,explain:"비교 대상인 '음악 없이 공부'도 처치입니다. 요인 하나, 수준 두 개 → 처치 두 개."},
+ {id:"p1-b",unit:"exp",set:"p1",src:"Problem 1 · (b)",type:"mc",q:"이 실험의 blinding에 대한 설명으로 옳은 것은?",choices:["피험자 blind, double-blind 모두 가능","피험자 blind는 불가능하지만 double-blind는 가능","피험자 blind는 불가능해서 double-blind도 불가능하다. 단, 채점자만 모르게 하는 것은 가능","blinding은 이 실험과 관계없다"],answer:2,explain:"학생은 자기가 음악을 듣는지 압니다. 그래서 double-blind는 안 되지만, 점수를 매기는 사람이 그룹을 모르게 할 수는 있어요."},
+ {id:"p1-c",unit:"exp",set:"p1",src:"Problem 1 · (c)",type:"open",q:"이 실험에서 가능한 confounding variable을 두 가지 이상 쓰고, 어떻게 막을 수 있는지 한 줄로 쓰세요.",
+  model:`<ul class="clean"><li>학생의 기존 실력(평균 성적), 배경지식</li><li>평소 학습 태도, 평소 음악을 들으며 공부하는 습관</li><li>공부한 장소·시간이 그룹마다 다르면 그것도 confounding</li></ul><p style="margin-top:8px"><b>막는 법</b>: 학생이 그룹을 고르게 하지 말고 무작위 배정(randomization)하고, 공부 시간·장소·시험지는 모든 그룹에 같게(control).</p>`},
+ {id:"dg-1",unit:"exp",set:"design",src:"설계도 서술",type:"open",q:"클래식 음악 실험(60명)을 completely randomized design으로 설계하는 과정을 단계별로 쓰세요. (종이에 도식도 그려 보세요.)",
+  model:`<ol class="steps"><li>60명에게 1–60 번호를 붙인다.</li><li>random digit table(또는 이름표 섞어 뽑기)로 서로 다른 번호 30개를 뽑아 Group 1, 나머지 30명은 Group 2.</li><li>Group 1: 클래식 음악을 들으며 공부 / Group 2: 음악 없이 공부. 공부 시간·장소·자료는 같게.</li><li>같은 시험을 보고 두 그룹의 평균 시험 점수를 비교한다.</li></ol><p style="margin-top:8px">도식은 <b>실험 설계도</b> 탭의 "클래식 음악" 시나리오에서 확인하세요.</p>`}
+];
+
+const SETS=[
+ {key:"all",label:"전체",fn:()=>true},
+ {key:"samp",label:"Ch.3 표본추출",fn:q=>q.unit==="samp"},
+ {key:"sampapp",label:"추출법 적용 (필출)",fn:q=>q.set==="samp-app"},
+ {key:"exp",label:"실험 설계",fn:q=>q.unit==="exp"},
+ {key:"prob",label:"Ch.4 확률",fn:q=>q.unit==="prob"},
+ {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
+ {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
+ {key:"tae",label:"태현이 실험",fn:q=>q.set==="tae"},
+ {key:"wrong",label:"틀린 문제",fn:q=>store.answers[q.id]&&store.answers[q.id].status==="wrong"}
+];
+let curSet="all", list=Q.slice(), idx=0, hintOn=false;
+
+function parseNum(s){
+  s=String(s).trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+  let m=s.match(/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/);
+  if(m) return parseFloat(m[1])/parseFloat(m[2]);
+  m=s.match(/^(-?\d*\.?\d+)%$/);
+  if(m) return parseFloat(m[1])/100;
+  if(/^-?\d*\.?\d+$/.test(s)) return parseFloat(s);
+  return NaN;
+}
+function isCorrectNum(q,v){
+  const tol=q.tol!=null?q.tol:(Number.isInteger(q.answer)?1e-9:0.0005);
+  return Math.abs(v-q.answer)<=tol;
+}
+
+function renderFilters(){
+  $("#qfilters").innerHTML=SETS.map(s=>{
+    const n=Q.filter(s.fn).length;
+    return `<button class="chip" data-set="${s.key}" aria-pressed="${s.key===curSet}">${s.label}<span class="n">${n}</span></button>`;
+  }).join("");
+}
+function applySet(key,keepId){
+  curSet=key;
+  const s=SETS.find(x=>x.key===key)||SETS[0];
+  list=Q.filter(s.fn);
+  idx=0;
+  if(keepId){const i=list.findIndex(q=>q.id===keepId); if(i>=0) idx=i;}
+  hintOn=false;
+  renderFilters(); renderGrid(); renderQ(); renderScore();
+}
+function renderScore(){
+  const a=store.answers;
+  const done=Q.filter(q=>a[q.id]);
+  const right=done.filter(q=>a[q.id].status==="right").length;
+  $("#scoreBig").innerHTML=`${right}<small> / ${done.length} 푼 문제 · 전체 ${Q.length}</small>`;
+  $("#scoreBar").style.width=(done.length?right/done.length*100:0)+"%";
+  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률"]].map(([u,l])=>{
+    const qs=Q.filter(q=>q.unit===u), d=qs.filter(q=>a[q.id]), r=d.filter(q=>a[q.id].status==="right").length;
+    return `<div class="unitline"><span>${l}</span><span class="mono">${r}/${d.length} · 남은 ${qs.length-d.length}</span></div>`;
+  }).join("");
+  renderHeroStats();
+}
+function renderHeroStats(){
+  const a=store.answers, done=Q.filter(q=>a[q.id]).length, right=Q.filter(q=>a[q.id]&&a[q.id].status==="right").length;
+  const wrong=done-right;
+  $("#heroStats").innerHTML=`<div class="stat"><b>${Q.length}</b><span>연습 문제</span></div><div class="stat"><b>${done}</b><span>푼 문제</span></div><div class="stat"><b>${done?Math.round(right/done*100):0}%</b><span>정답률</span></div><div class="stat"><b>${wrong}</b><span>다시 볼 문제</span></div>`;
+}
+function renderGrid(){
+  $("#qgrid").innerHTML=list.map((q,i)=>{
+    const st=store.answers[q.id]?store.answers[q.id].status:"";
+    return `<button class="qn ${st} ${i===idx?"cur":""}" data-i="${i}" aria-label="${i+1}번 문제">${i+1}</button>`;
+  }).join("");
+}
+function renderQ(){
+  const area=$("#qarea");
+  if(!list.length){
+    area.innerHTML=`<div class="qcard empty"><p style="font-size:1.05rem;font-weight:600">${curSet==="wrong"?"틀린 문제가 없습니다.":"문제가 없습니다."}</p><p style="margin-top:6px">${curSet==="wrong"?"다른 범위의 문제를 풀어 보세요.":""}</p><p style="margin-top:14px"><button class="btn primary" data-set-go="all">전체 문제 보기</button></p></div>`;
+    return;
+  }
+  const q=list[idx], rec=store.answers[q.id];
+  const unitLabel={prob:"Ch.4 확률",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
+  const typeLabel={mc:"객관식",tf:"True / False",num:"답 입력",open:"서술형 · 자가 채점"}[q.type];
+  let body="";
+  if(q.type==="mc"){
+    body=`<div class="choices">${q.choices.map((c,i)=>{
+      let cls="";
+      if(rec){ if(i===q.answer) cls="is-right"; else if(rec.given===i) cls="is-wrong"; }
+      return `<button class="choice ${cls}" data-c="${i}" ${rec?"disabled":""}><span class="key">${"ABCD"[i]}</span><span>${c}</span></button>`;
+    }).join("")}</div>`;
+  }else if(q.type==="tf"){
+    body=`<div class="choices tf">${[true,false].map(v=>{
+      let cls="";
+      if(rec){ if(v===q.answer) cls="is-right"; else if(rec.given===v) cls="is-wrong"; }
+      return `<button class="choice ${cls}" data-tf="${v}" ${rec?"disabled":""}>${v?"True":"False"}</button>`;
+    }).join("")}</div>`;
+  }else if(q.type==="num"){
+    body=`<div class="numrow"><input id="numIn" inputmode="decimal" autocomplete="off" placeholder="예: 7/10 또는 0.7" value="${rec?String(rec.given).replace(/"/g,"&quot;"):""}" ${rec?"disabled":""} aria-label="답"><button class="btn primary" id="numGo" ${rec?"disabled":""}>정답 확인</button></div><p class="numhint">분수, 소수, 정수 모두 됩니다. 소수는 셋째 자리까지 쓰면 충분해요.</p>`;
+  }else if(q.type==="open"){
+    body=`<textarea class="open" id="openIn" placeholder="먼저 직접 써 보고 모범 답안과 비교하세요.">${rec&&rec.given?rec.given:""}</textarea>`;
+  }
+  let fb="";
+  if(rec){
+    if(q.type==="open"){
+      fb=`<div class="feedback ${rec.status}">${rec.status==="right"?"맞았다고 표시했어요.":"다시 볼 문제로 표시했어요."}</div><div class="explain"><span class="eyebrow">모범 답안</span>${q.model}</div>`;
+    }else{
+      const ansTxt=q.type==="mc"?`${"ABCD"[q.answer]}`:q.type==="tf"?(q.answer?"True":"False"):q.answerText;
+      fb=`<div class="feedback ${rec.status}">${rec.status==="right"?"정답입니다.":"오답입니다. 정답: "+ansTxt}</div>${q.explain?`<div class="explain"><span class="eyebrow">해설</span>${q.explain}</div>`:""}`;
+    }
+  }else if(q.type==="open" && q._reveal){
+    fb=`<div class="explain"><span class="eyebrow">모범 답안</span>${q.model}</div><div class="feedback neutral" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">내 답은 어땠나요? <button class="btn" data-self="right">맞았어요</button><button class="btn" data-self="wrong">다시 볼래요</button></div>`;
+  }
+  const hint=(!rec && q.hint)?(hintOn?`<p class="hintbox">힌트: ${q.hint}</p>`:""):"";
+  const st=rec?`<span class="pill st-${rec.status}">${rec.status==="right"?"맞음":"틀림"}</span>`:"";
+  area.innerHTML=`<article class="qcard">
+    <div class="qmeta"><span class="pill">${unitLabel}</span><span class="pill src">${q.src}</span><span class="pill src">${typeLabel}</span>${st}<span style="margin-left:auto;font-family:var(--f-mono);font-size:.8rem;color:var(--ink-faint)">${idx+1} / ${list.length}</span></div>
+    <div class="qtext">${q.q}</div>
+    ${body}${hint}${fb}
+    <div class="qnav">
+      <button class="btn" id="qPrev" ${idx===0?"disabled":""}>← 이전</button>
+      <div class="mid">
+        ${!rec&&q.hint&&!hintOn?`<button class="btn ghost" id="qHint">힌트 보기</button>`:""}
+        ${!rec&&q.type==="open"&&!q._reveal?`<button class="btn" id="qReveal">모범 답안 보기</button>`:""}
+        ${rec?`<button class="btn ghost" id="qRetry">다시 풀기</button>`:""}
+      </div>
+      <button class="btn primary" id="qNext" ${idx===list.length-1?"disabled":""}>다음 →</button>
+    </div>
+  </article>`;
+  const ni=$("#numIn"); if(ni&&!rec) ni.focus({preventScroll:true});
+}
+function record(q,given,ok){
+  store.answers[q.id]={status:ok?"right":"wrong",given:given};
+  save(); renderGrid(); renderQ(); renderScore();
+}
+function go(i){ if(i<0||i>=list.length) return; idx=i; hintOn=false; renderGrid(); renderQ(); }
+
+$("#qfilters").addEventListener("click",e=>{const b=e.target.closest("[data-set]"); if(b) applySet(b.dataset.set);});
+$("#qgrid").addEventListener("click",e=>{const b=e.target.closest("[data-i]"); if(b) go(+b.dataset.i);});
+$("#qarea").addEventListener("click",e=>{
+  const q=list[idx];
+  const t=e.target;
+  const sg=t.closest("[data-set-go]"); if(sg){applySet(sg.dataset.setGo);return;}
+  if(!q) return;
+  const c=t.closest("[data-c]"); if(c&&!c.disabled){const i=+c.dataset.c; record(q,i,i===q.answer); return;}
+  const tf=t.closest("[data-tf]"); if(tf&&!tf.disabled){const v=tf.dataset.tf==="true"; record(q,v,v===q.answer); return;}
+  if(t.closest("#numGo")){checkNum(); return;}
+  if(t.closest("#qPrev")){go(idx-1);return;}
+  if(t.closest("#qNext")){go(idx+1);return;}
+  if(t.closest("#qHint")){hintOn=true;renderQ();return;}
+  if(t.closest("#qReveal")){const ta=$("#openIn"); q._draft=ta?ta.value:""; q._reveal=true; renderQ(); const t2=$("#openIn"); if(t2) t2.value=q._draft; return;}
+  const self=t.closest("[data-self]"); if(self){const ta=$("#openIn"); q._reveal=false; record(q,ta?ta.value:"",self.dataset.self==="right"); return;}
+  if(t.closest("#qRetry")){delete store.answers[q.id]; q._reveal=false; save(); renderGrid(); renderQ(); renderScore(); return;}
+});
+$("#qarea").addEventListener("keydown",e=>{ if(e.key==="Enter"&&e.target.id==="numIn"){e.preventDefault();checkNum();} });
+function checkNum(){
+  const q=list[idx], inp=$("#numIn"); if(!inp) return;
+  const v=parseNum(inp.value);
+  if(isNaN(v)){
+    let w=$("#numWarn");
+    if(!w){w=document.createElement("p");w.id="numWarn";w.className="numhint";w.style.color="var(--bad)";inp.parentElement.after(w);}
+    w.textContent="숫자로 읽을 수 없어요. 7/10, 0.7, 12960 같은 형식으로 써 주세요.";
+    return;
+  }
+  record(q,inp.value.trim(),isCorrectNum(q,v));
+}
+let resetArmed=null;
+$("#resetAll").addEventListener("click",e=>{
+  const b=e.currentTarget;
+  if(resetArmed){clearTimeout(resetArmed);resetArmed=null;store.answers={};save();b.textContent="기록 초기화";applySet(curSet);return;}
+  b.textContent="한 번 더 누르면 초기화";
+  resetArmed=setTimeout(()=>{resetArmed=null;b.textContent="기록 초기화";},3000);
+});
+
+/* ---------- tabs ---------- */
+const TABS=["learn","practice","diagram","cards"];
+function showTab(name,push){
+  if(!TABS.includes(name)) name="learn";
+  $$(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===name));
+  TABS.forEach(n=>{$("#panel-"+n).hidden=n!==name;});
+  store.tab=name; save();
+  if(push){try{history.replaceState(null,"","#"+name);}catch(e){}}
+  if(name==="learn") drawLLN();
+  window.scrollTo({top:0});
+}
+$$(".tab").forEach(t=>t.addEventListener("click",()=>showTab(t.dataset.tab,true)));
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]"); if(!g) return;
+  showTab(g.dataset.go,true);
+  if(g.dataset.filter) applySet(g.dataset.filter);
+});
+$$(".subnav [data-unit]").forEach(b=>b.addEventListener("click",()=>{
+  $$(".subnav [data-unit]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  ["samp","exp","prob"].forEach(u=>{$("#unit-"+u).hidden=b.dataset.unit!==u;});
+  if(b.dataset.unit==="prob") drawLLN();
+}));
+
+/* ---------- random digit table reader ---------- */
+function renderRD(){
+  const digits=($("#rdDigits").value||"").replace(/\D/g,"");
+  const N=parseInt($("#rdN").value,10), K=parseInt($("#rdK").value,10), out=$("#rdOut");
+  if(!digits||isNaN(N)||N<1||isNaN(K)||K<1){out.innerHTML=`<div class="out">난수 줄, 레이블 최대, 뽑을 수를 입력하세요.</div>`;return;}
+  const w=String(N).length, picked=[], marks=[];
+  for(let i=0;i+w<=digits.length&&picked.length<K;i+=w){
+    const s=digits.slice(i,i+w), v=parseInt(s,10);
+    if(v<1||v>N) marks.push(`${s}✗`);
+    else if(picked.includes(s)) marks.push(`${s}(중복)✗`);
+    else {picked.push(s); marks.push(`<b>${s}</b>✓`);}
+  }
+  out.innerHTML=`<div class="out"><span>${w}자리씩</span>${marks.join(" ")}</div><div class="out"><span>선택 ${picked.length}/${K}</span>${picked.join(", ")||"없음"}${picked.length<K?" · 난수가 더 필요해요":""}</div>`;
+}
+["#rdDigits","#rdN","#rdK"].forEach(id=>$(id).addEventListener("input",renderRD)); renderRD();
+
+/* ---------- counting tool ---------- */
+function fact(n){let r=1n;for(let i=2n;i<=BigInt(n);i++) r*=i;return r;}
+function fmt(b){return b.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+function renderCount(){
+  let n=parseInt($("#cn").value,10), r=parseInt($("#cr").value,10);
+  const out=$("#countOut");
+  if(isNaN(n)||isNaN(r)||n<0||r<0||n>30){out.innerHTML=`<div class="out">0 ≤ r ≤ n ≤ 30 범위로 입력하세요.</div>`;return;}
+  if(r>n){out.innerHTML=`<div class="out">r은 n보다 클 수 없어요.</div>`;return;}
+  const P=fact(n)/fact(n-r), C=P/fact(r);
+  out.innerHTML=`<div class="out"><span>${n}!</span>${fmt(fact(n))}</div><div class="out"><span>${n}P${r}</span>${fmt(P)}</div><div class="out"><span>${n}C${r}</span>${fmt(C)}</div><div class="out"><span>${r}!</span>${fmt(fact(r))}</div>`;
+}
+$("#cn").addEventListener("input",renderCount); $("#cr").addEventListener("input",renderCount); renderCount();
+
+/* ---------- LLN simulator ---------- */
+let flips=[], heads=0;
+function addFlips(k){for(let i=0;i<k;i++){const h=Math.random()<0.5?1:0;heads+=h;flips.push(heads/(flips.length+1));} drawLLN();}
+function resetFlips(){flips=[];heads=0;addFlips(200);}
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function drawLLN(){
+  const cv=$("#lln"); if(!cv||cv.offsetParent===null) return;
+  const dpr=window.devicePixelRatio||1, w=cv.clientWidth, h=cv.clientHeight;
+  cv.width=w*dpr; cv.height=h*dpr;
+  const ctx=cv.getContext("2d"); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
+  const pad={l:40,r:14,t:14,b:26}, W=w-pad.l-pad.r, H=h-pad.t-pad.b;
+  const ink=cssVar("--ink-faint"), line=cssVar("--line"), blue=cssVar("--blue"), pen=cssVar("--pen");
+  const y=v=>pad.t+(1-v)*H, n=flips.length;
+  ctx.font="11px "+cssVar("--f-mono"); ctx.fillStyle=ink; ctx.strokeStyle=line; ctx.lineWidth=1;
+  [0,0.25,0.5,0.75,1].forEach(v=>{ctx.beginPath();ctx.moveTo(pad.l,y(v));ctx.lineTo(w-pad.r,y(v));ctx.stroke();ctx.fillText(v.toFixed(2),4,y(v)+4);});
+  ctx.strokeStyle=pen; ctx.setLineDash([5,4]); ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(pad.l,y(.5));ctx.lineTo(w-pad.r,y(.5));ctx.stroke(); ctx.setLineDash([]);
+  if(n){
+    ctx.strokeStyle=blue; ctx.lineWidth=1.8; ctx.beginPath();
+    const step=Math.max(1,Math.floor(n/W));
+    for(let i=0;i<n;i+=step){const x=pad.l+(i/(Math.max(n-1,1)))*W; i?ctx.lineTo(x,y(flips[i])):ctx.moveTo(x,y(flips[i]));}
+    ctx.lineTo(pad.l+W,y(flips[n-1])); ctx.stroke();
+    ctx.fillStyle=blue; ctx.beginPath(); ctx.arc(pad.l+W,y(flips[n-1]),3.5,0,Math.PI*2); ctx.fill();
+  }
+  ctx.fillStyle=ink; ctx.fillText("1",pad.l,h-8); const lab=n+"번"; ctx.fillText(lab,w-pad.r-ctx.measureText(lab).width,h-8);
+  ctx.fillStyle=pen; ctx.fillText("p = 0.5",w-pad.r-52,y(.5)-6);
+  const ph=n?heads/n:0;
+  $("#llnOut").innerHTML=`<div class="out"><span>던진 횟수</span>${n.toLocaleString()}</div><div class="out"><span>앞면</span>${heads.toLocaleString()}</div><div class="out"><span>p̂</span>${ph.toFixed(4)}</div><div class="out"><span>|p̂ − 0.5|</span>${Math.abs(ph-.5).toFixed(4)}</div>`;
+}
+$$("[data-flip]").forEach(b=>b.addEventListener("click",()=>addFlips(+b.dataset.flip)));
+$("#flipReset").addEventListener("click",resetFlips);
+window.addEventListener("resize",()=>{drawLLN();});
+try{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",drawLLN);}catch(e){}
+new MutationObserver(drawLLN).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+/* ---------- diagram generator ---------- */
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function wrapText(s,maxUnits){
+  const units=ch=>/[ᄀ-￿]/.test(ch)?1:0.56;
+  const lines=[]; let cur="", cu=0;
+  const words=String(s).split(/(\s+)/);
+  for(const w of words){
+    let wu=0; for(const ch of w) wu+=units(ch);
+    if(cu+wu>maxUnits && cur.trim()){lines.push(cur.trim()); cur=""; cu=0; if(/^\s+$/.test(w)) continue;}
+    if(wu>maxUnits){ for(const ch of w){const u=units(ch); if(cu+u>maxUnits){lines.push(cur);cur="";cu=0;} cur+=ch;cu+=u;} }
+    else {cur+=w;cu+=wu;}
+  }
+  if(cur.trim()) lines.push(cur.trim());
+  if(lines.length>2){lines.length=2; lines[1]=lines[1].replace(/.$/,"…");}
+  return lines;
+}
+function box(x,y,w,h,lines,opt={}){
+  const cls=opt.cls||"";
+  const cx=x+w/2, cy=y+h/2;
+  const all=[];
+  lines.forEach((ln,li)=>{ if(ln==null) return; const sub=li>0&&opt.sub; wrapText(ln,(w-14)/(sub?11.5:13)).forEach(t=>all.push({t,sub})); });
+  const lh=16, start=cy-(all.length-1)*lh/2+5;
+  const texts=all.map((o,i)=>`<text x="${cx}" y="${start+i*lh}" text-anchor="middle" font-size="${o.sub?12:13.5}" ${o.sub?'style="fill:var(--ink-soft)"':'font-weight="600"'}>${esc(o.t)}</text>`).join("");
+  return `<g class="lbl"><rect class="dg-box ${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/><g class="t">${texts}</g><text class="q" x="${cx}" y="${cy+6}" text-anchor="middle">?</text></g>`;
+}
+function arrow(x1,y1,x2,y2,cls=""){
+  const mx=(x1+x2)/2;
+  return `<path class="dg-arrow ${cls}" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2-6},${y2}" marker-end="url(#ah${cls?"-"+cls:""})"/>`;
+}
+function defs(){
+  return `<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--blue)"/></marker><marker id="ah-ra" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--pen)"/></marker></defs>`;
+}
+function split(n,k){const base=Math.floor(n/k), extra=n%k; return Array.from({length:k},(_,i)=>base+(i>=k-extra?1:0));}
+function diagram(cfg){
+  const T=cfg.treatments.length;
+  if(cfg.design==="crd"){
+    const rowH=66, H=Math.max(T*rowH+30,180), W=900, cy=H/2;
+    const sizes=split(cfg.n,T);
+    let s=defs();
+    s+=box(10,cy-34,140,68,["Subjects",`${cfg.n}명 ${cfg.subj}`],{sub:true});
+    s+=arrow(150,cy,190,cy,"ra");
+    s+=box(190,cy-30,130,60,["Random","assignment"],{cls:"ra"});
+    const ys=cfg.treatments.map((_,i)=>15+i*rowH+rowH/2+(H-30-T*rowH)/2);
+    ys.forEach((y,i)=>{
+      s+=arrow(320,cy,370,y,"ra");
+      s+=box(370,y-25,120,50,[`Group ${i+1}`,`${sizes[i]}명`],{sub:true});
+      s+=arrow(490,y,530,y);
+      s+=box(530,y-25,190,50,[cfg.treatments[i]]);
+      s+=arrow(720,y,760,cy);
+    });
+    s+=box(760,cy-40,130,80,["Compare",cfg.response],{cls:"cmp",sub:true});
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="완전 무작위 설계 도식">${s}</svg>`;
+  }
+  // RBD
+  const blocks=cfg.blocks, rowH=56, gap=26, W=1000;
+  const blockH=T*rowH, H=blocks.length*blockH+(blocks.length-1)*gap+50;
+  let s=defs(); const cy=H/2+10;
+  s+=box(10,cy-34,120,68,["Subjects",`${cfg.n}명 ${cfg.subj}`],{sub:true});
+  s+=`<text class="dg-note" x="140" y="22">${esc(cfg.blockVar||"특성")}(으)로 나눔 · 무작위 X</text>`;
+  blocks.forEach((b,bi)=>{
+    const top=40+bi*(blockH+gap), by=top+blockH/2;
+    const sizes=split(b.n,T);
+    s+=arrow(130,cy,170,by);
+    s+=box(170,by-30,120,60,[`Block ${bi+1}`,`${b.name} · ${b.n}명`],{sub:true});
+    s+=arrow(290,by,320,by,"ra");
+    s+=box(320,by-26,110,52,["Random","assignment"],{cls:"ra"});
+    cfg.treatments.forEach((t,i)=>{
+      const y=top+i*rowH+rowH/2;
+      s+=arrow(430,by,470,y,"ra");
+      s+=box(470,y-21,105,42,[`Group ${i+1}`,`${sizes[i]}명`],{sub:true});
+      s+=arrow(575,y,605,y);
+      s+=box(605,y-21,190,42,[t]);
+      s+=arrow(795,y,835,by);
+    });
+    s+=box(835,by-34,155,68,["Compare",cfg.response],{cls:"cmp",sub:true});
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="랜덤 블록 설계 도식">${s}</svg>`;
+}
+
+const SCEN={
+  music:{label:"클래식 음악 실험 (Problem 1)",design:"crd",subj:"고등학생",n:60,treatments:["클래식 음악 들으며 공부","음악 없이 공부"],blockVar:"성별",blocks:"남학생:30\n여학생:30",response:"시험 점수"},
+  sleep:{label:"태현이 수면 실험",design:"crd",subj:"친구",n:28,treatments:["8시간 수면","6시간 수면","4시간 수면"],blockVar:"성별",blocks:"남:14\n여:14",response:"외운 영어 단어 수"},
+  tech:{label:"새 공부법 실험 (성별 블록)",design:"rbd",subj:"학생",n:40,treatments:["새로운 공부법","기존 공부법"],blockVar:"성별",blocks:"남학생:20\n여학생:20",response:"시험 점수 향상"},
+  drug:{label:"신약 실험 (플라시보 대조군)",design:"crd",subj:"환자",n:90,treatments:["신약 A","신약 B","Placebo (대조군)"],blockVar:"나이대",blocks:"50세 미만:45\n50세 이상:45",response:"증상 개선 정도"},
+  custom:{label:"직접 입력",design:"crd",subj:"피험자",n:30,treatments:["Treatment 1","Treatment 2","Control group"],blockVar:"기준",blocks:"Block A:15\nBlock B:15",response:"반응변수"}
+};
+let dg={design:"crd",blank:false};
+$("#dgScenario").innerHTML=Object.entries(SCEN).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join("");
+function loadScenario(k){
+  const s=SCEN[k];
+  $("#dgSubj").value=s.subj; $("#dgN").value=s.n; $("#dgTreat").value=s.treatments.join("\n");
+  $("#dgBlockVar").value=s.blockVar; $("#dgBlocks").value=s.blocks; $("#dgResp").value=s.response;
+  setDesign(s.design);
+}
+function setDesign(d){
+  dg.design=d;
+  $$(".seg [data-design]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.design===d));
+  $("#dgBlockFields").hidden=d!=="rbd";
+  renderDiagram();
+}
+function readCfg(){
+  const treatments=$("#dgTreat").value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,6);
+  const blocks=$("#dgBlocks").value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,4).map(l=>{
+    const m=l.match(/^(.*?)[:：]\s*(\d+)\s*$/); return m?{name:m[1].trim()||"Block",n:+m[2]}:{name:l,n:0};
+  });
+  let n=parseInt($("#dgN").value,10); if(isNaN(n)||n<1) n=0;
+  return {design:dg.design,subj:$("#dgSubj").value.trim()||"피험자",n,treatments,blocks,blockVar:$("#dgBlockVar").value.trim(),response:$("#dgResp").value.trim()||"반응변수"};
+}
+function renderDiagram(){
+  const cfg=readCfg(), warn=[];
+  if(cfg.treatments.length<2) warn.push("처치를 두 줄 이상 입력하세요 (비교할 대상이 있어야 실험입니다).");
+  if(cfg.design==="rbd"){
+    if(cfg.blocks.length<2) warn.push("블록을 두 개 이상 입력하세요. 형식: 남학생:30");
+    const sum=cfg.blocks.reduce((a,b)=>a+b.n,0);
+    if(cfg.blocks.length&&sum!==cfg.n) warn.push(`블록 인원 합(${sum}명)이 전체 인원(${cfg.n}명)과 다릅니다.`);
+  }
+  const w=$("#dgWarn"); w.hidden=!warn.length; w.innerHTML=warn.map(esc).join("<br>");
+  if(cfg.treatments.length<1){$("#dgOut").innerHTML="";return;}
+  if(cfg.design==="rbd"&&!cfg.blocks.length){$("#dgOut").innerHTML="";return;}
+  const out=$("#dgOut"); out.innerHTML=diagram(cfg);
+  out.classList.toggle("dg-blank",dg.blank);
+  renderChecklist(cfg);
+}
+function renderChecklist(cfg){
+  const items=[
+    `피험자와 인원을 썼다 (${cfg.n}명 ${cfg.subj})`,
+    `<b>Random assignment</b>를 화살표 위에 표시했다`,
+    `각 그룹의 인원을 썼다 (${split(cfg.n||0,Math.max(cfg.treatments.length,1)).join(" / ")}명)`,
+    `각 그룹이 받는 처치를 썼다 (대조군·플라시보 포함)`,
+    `마지막에 무엇을 비교하는지 썼다 (Compare ${esc(cfg.response)})`
+  ];
+  if(cfg.design==="rbd"){
+    items.splice(1,0,`블록 기준을 썼고, 블록 배정은 <b>무작위가 아님</b>을 드러냈다 (${esc(cfg.blockVar||"기준")})`);
+    items.push(`<b>각 블록 안에서</b> 따로 무작위 배정하고, 블록 안에서 비교했다`);
+  }
+  items.push(`무작위 배정 방법을 한 줄로 설명했다 (번호 붙이기 → random digit table / 주사위 / 이름표 섞기)`);
+  $("#dgChecklist").innerHTML=items.map((t,i)=>`<label class="check"><input type="checkbox" id="dgc-${cfg.design}-${i}"><span>${t}</span></label>`).join("");
+}
+$("#dgScenario").addEventListener("change",e=>loadScenario(e.target.value));
+$$(".seg [data-design]").forEach(b=>b.addEventListener("click",()=>setDesign(b.dataset.design)));
+["#dgSubj","#dgN","#dgTreat","#dgBlockVar","#dgBlocks","#dgResp"].forEach(id=>$(id).addEventListener("input",()=>{
+  if($("#dgScenario").value!=="custom"){/* 편집하면 그대로 두고 다시 그림 */}
+  renderDiagram();
+}));
+$("#dgShow").addEventListener("click",()=>{dg.blank=false;$("#dgShow").setAttribute("aria-pressed","true");$("#dgBlank").setAttribute("aria-pressed","false");renderDiagram();});
+$("#dgBlank").addEventListener("click",()=>{dg.blank=true;$("#dgShow").setAttribute("aria-pressed","false");$("#dgBlank").setAttribute("aria-pressed","true");renderDiagram();});
+$("#dgOut").addEventListener("click",e=>{ if(!dg.blank) return; const g=e.target.closest(".lbl"); if(g) g.classList.toggle("rev"); });
+loadScenario("music");
+
+// small diagrams on the concept page
+$("#miniCRD").innerHTML=diagram({design:"crd",subj:"Subjects",n:30,treatments:["Treatment 1","Treatment 2","Control group"],response:"Response"});
+$("#miniRBD").innerHTML=diagram({design:"rbd",subj:"Subjects",n:60,treatments:["Treatment 1","Treatment 2","Control group"],blocks:[{name:"남",n:30},{name:"여",n:30}],blockVar:"예) 성별",response:"Response"});
+
+/* ---------- flashcards ---------- */
+const FCSETS=[{k:"all",l:"전체"},{k:"samp",l:"표본추출"},{k:"exp",l:"실험 용어"},{k:"design",l:"설계 원리"},{k:"prob",l:"확률"},{k:"unknown",l:"모르는 것만"}];
+let fcSet="all", fcList=[], fcI=0;
+function fcFilter(){
+  fcList=VOCAB.filter(v=>fcSet==="all"||(fcSet==="unknown"?!store.known.includes(v.en):v.cat===fcSet));
+  if(fcI>=fcList.length) fcI=0;
+  $("#fcFilters").innerHTML=FCSETS.map(s=>{
+    const n=VOCAB.filter(v=>s.k==="all"||(s.k==="unknown"?!store.known.includes(v.en):v.cat===s.k)).length;
+    return `<button class="chip" data-fc="${s.k}" aria-pressed="${s.k===fcSet}">${s.l}<span class="n">${n}</span></button>`;
+  }).join("");
+  renderCard();
+}
+function renderCard(){
+  $("#flash").classList.remove("flipped");
+  const c=fcList[fcI];
+  const catL={prob:"확률",exp:"실험 용어",design:"설계 원리",samp:"표본추출"};
+  if(!c){$("#fcEn").textContent="다 외웠어요";$("#fcKo").textContent="전체 카드에서 복습해 보세요";$("#fcDef").textContent="";$("#fcCat").textContent="";$("#fcCount").textContent="0 / 0";$("#fcKnow").disabled=true;return;}
+  $("#fcKnow").disabled=false;
+  $("#fcEn").textContent=c.en; $("#fcKo").textContent=c.ko; $("#fcDef").textContent=c.def; $("#fcCat").textContent=catL[c.cat];
+  $("#fcCount").textContent=`${fcI+1} / ${fcList.length}`;
+  const k=store.known.includes(c.en); $("#fcKnow").textContent=k?"알아요 취소":"알아요 ✓";
+}
+$("#fcFilters").addEventListener("click",e=>{const b=e.target.closest("[data-fc]"); if(b){fcSet=b.dataset.fc;fcI=0;fcFilter();}});
+$("#flash").addEventListener("click",()=>$("#flash").classList.toggle("flipped"));
+$("#fcPrev").addEventListener("click",()=>{if(fcList.length){fcI=(fcI-1+fcList.length)%fcList.length;renderCard();}});
+$("#fcNext").addEventListener("click",()=>{if(fcList.length){fcI=(fcI+1)%fcList.length;renderCard();}});
+$("#fcShuffle").addEventListener("click",()=>{for(let i=fcList.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcList[i],fcList[j]]=[fcList[j],fcList[i]];}fcI=0;renderCard();});
+$("#fcKnow").addEventListener("click",()=>{
+  const c=fcList[fcI]; if(!c) return;
+  const i=store.known.indexOf(c.en);
+  if(i>=0) store.known.splice(i,1); else store.known.push(c.en);
+  save();
+  if(fcSet==="unknown"){fcFilter();} else {const cur=fcI; fcFilter(); fcI=cur; fcI=(fcI+1)%Math.max(fcList.length,1); renderCard();}
+});
+document.addEventListener("keydown",e=>{
+  if($("#panel-cards").hidden) return;
+  if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+  if(e.key==="ArrowRight"){e.preventDefault();$("#fcNext").click();}
+  else if(e.key==="ArrowLeft"){e.preventDefault();$("#fcPrev").click();}
+  else if(e.key===" "&&document.activeElement.id!=="flash"){e.preventDefault();$("#flash").classList.toggle("flipped");}
+});
+
+/* ---------- init ---------- */
+applySet("all");
+fcFilter();
+const h=(location.hash||"").slice(1);
+showTab(TABS.includes(h)?h:"learn",false);
+resetFlips();
+})();
+</script>
+
+</body>
+</html>
