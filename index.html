@@ -26,6 +26,7 @@
   --pen:#D2344A;
   --blue:#2F4FB5;
   --blue-bg:rgba(47,79,181,.08);
+  --star:#D99A00;
   --ok:#1B8457;
   --ok-bg:rgba(27,132,87,.1);
   --bad:#C0392B;
@@ -41,14 +42,14 @@
   :root:not([data-theme="light"]){
     --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
     --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
-    --ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
+    --star:#F2C94C;--ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
   --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
-  --ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
+  --star:#F2C94C;--ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -174,6 +175,13 @@ canvas{display:block;width:100%;height:220px;margin-top:12px;border-radius:8px;b
 .unitline{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:10px}
 .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(32px,1fr));gap:5px}
 .qn{aspect-ratio:1;border:1px solid var(--line);background:var(--card);border-radius:6px;font-family:var(--f-mono);font-size:.75rem;cursor:pointer;padding:0;max-width:100%}
+.qn{position:relative}
+.qn.starred::after{content:"★";position:absolute;top:-6px;right:-3px;font-size:.78rem;line-height:1;color:var(--star)}
+.starbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:2px 11px;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+.starbtn:hover{border-color:var(--ink-faint);color:var(--ink)}
+.starbtn .st{font-size:1rem;line-height:1;color:var(--ink-faint)}
+.starbtn[aria-pressed="true"]{border-color:var(--star);background:color-mix(in srgb,var(--star) 16%,transparent);color:var(--ink)}
+.starbtn[aria-pressed="true"] .st{color:var(--star)}
 .qn.right{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
 .qn.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
 .qn.cur{outline:2px solid var(--ink);outline-offset:1px}
@@ -664,7 +672,7 @@ const R=s=>`<span class="mr">${s}</span>`;
 
 /* ---------- storage ---------- */
 const KEY="apstat-notes-v1";
-let store={answers:{},known:[],tab:"learn"};
+let store={answers:{},known:[],stars:[],tab:"learn"};
 try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
 
@@ -849,6 +857,7 @@ const SETS=[
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"태현이 실험",fn:q=>q.set==="tae"},
+ {key:"star",label:"★ 별표",fn:q=>store.stars.includes(q.id)},
  {key:"wrong",label:"틀린 문제",fn:q=>store.answers[q.id]&&store.answers[q.id].status==="wrong"}
 ];
 let curSet="all", list=Q.slice(), idx=0, hintOn=false;
@@ -903,13 +912,14 @@ function renderHeroStats(){
 function renderGrid(){
   $("#qgrid").innerHTML=list.map((q,i)=>{
     const st=store.answers[q.id]?store.answers[q.id].status:"";
-    return `<button class="qn ${st} ${i===idx?"cur":""}" data-i="${i}" aria-label="${i+1}번 문제">${i+1}</button>`;
+    const sr=store.stars.includes(q.id);
+    return `<button class="qn ${st} ${sr?"starred":""} ${i===idx?"cur":""}" data-i="${i}" aria-label="${i+1}번 문제${sr?", 별표":""}">${i+1}</button>`;
   }).join("");
 }
 function renderQ(){
   const area=$("#qarea");
   if(!list.length){
-    area.innerHTML=`<div class="qcard empty"><p style="font-size:1.05rem;font-weight:600">${curSet==="wrong"?"틀린 문제가 없습니다.":"문제가 없습니다."}</p><p style="margin-top:6px">${curSet==="wrong"?"다른 범위의 문제를 풀어 보세요.":""}</p><p style="margin-top:14px"><button class="btn primary" data-set-go="all">전체 문제 보기</button></p></div>`;
+    area.innerHTML=`<div class="qcard empty"><p style="font-size:1.05rem;font-weight:600">${curSet==="wrong"?"틀린 문제가 없습니다.":curSet==="star"?"별표한 문제가 없습니다.":"문제가 없습니다."}</p><p style="margin-top:6px">${curSet==="wrong"?"다른 범위의 문제를 풀어 보세요.":curSet==="star"?"문제 카드 오른쪽 위의 ☆ 버튼으로 나중에 다시 볼 문제를 표시하세요.":""}</p><p style="margin-top:14px"><button class="btn primary" data-set-go="all">전체 문제 보기</button></p></div>`;
     return;
   }
   const q=list[idx], rec=store.answers[q.id];
@@ -947,7 +957,7 @@ function renderQ(){
   const hint=(!rec && q.hint)?(hintOn?`<p class="hintbox">힌트: ${q.hint}</p>`:""):"";
   const st=rec?`<span class="pill st-${rec.status}">${rec.status==="right"?"맞음":"틀림"}</span>`:"";
   area.innerHTML=`<article class="qcard">
-    <div class="qmeta"><span class="pill">${unitLabel}</span><span class="pill src">${q.src}</span><span class="pill src">${typeLabel}</span>${st}<span style="margin-left:auto;font-family:var(--f-mono);font-size:.8rem;color:var(--ink-faint)">${idx+1} / ${list.length}</span></div>
+    <div class="qmeta"><span class="pill">${unitLabel}</span><span class="pill src">${q.src}</span><span class="pill src">${typeLabel}</span>${st}<span style="margin-left:auto;display:flex;align-items:center;gap:10px"><span style="font-family:var(--f-mono);font-size:.8rem;color:var(--ink-faint)">${idx+1} / ${list.length}</span><button class="starbtn" data-star aria-pressed="${store.stars.includes(q.id)}" aria-label="나중에 다시 볼 문제로 별표"><span class="st">${store.stars.includes(q.id)?"★":"☆"}</span>별표</button></span></div>
     <div class="qtext">${q.q}</div>
     ${body}${hint}${fb}
     <div class="qnav">
@@ -966,6 +976,14 @@ function record(q,given,ok){
   store.answers[q.id]={status:ok?"right":"wrong",given:given};
   save(); renderGrid(); renderQ(); renderScore();
 }
+function toggleStar(id,btn){
+  const i=store.stars.indexOf(id);
+  if(i>=0) store.stars.splice(i,1); else store.stars.push(id);
+  save();
+  const on=i<0;
+  btn.setAttribute("aria-pressed",on); btn.querySelector(".st").textContent=on?"★":"☆";
+  renderFilters(); renderGrid();
+}
 function go(i){ if(i<0||i>=list.length) return; idx=i; hintOn=false; renderGrid(); renderQ(); }
 
 $("#qfilters").addEventListener("click",e=>{const b=e.target.closest("[data-set]"); if(b) applySet(b.dataset.set);});
@@ -975,6 +993,7 @@ $("#qarea").addEventListener("click",e=>{
   const t=e.target;
   const sg=t.closest("[data-set-go]"); if(sg){applySet(sg.dataset.setGo);return;}
   if(!q) return;
+  const stb=t.closest("[data-star]"); if(stb){toggleStar(q.id,stb);return;}
   const c=t.closest("[data-c]"); if(c&&!c.disabled){const i=+c.dataset.c; record(q,i,i===q.answer); return;}
   const tf=t.closest("[data-tf]"); if(tf&&!tf.disabled){const v=tf.dataset.tf==="true"; record(q,v,v===q.answer); return;}
   if(t.closest("#numGo")){checkNum(); return;}
