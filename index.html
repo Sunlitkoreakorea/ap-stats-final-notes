@@ -690,7 +690,7 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
       <p class="lead">관찰연구(observational study)는 두 변수가 <b>연관되어 있다(associated)</b>는 것까지만 보여 줍니다. 연관은 인과가 아닙니다. 한쪽이 다른 쪽을 <b>일으킨다</b>고 주장하려면 실험이 필요합니다.</p>
       <div class="callout"><b class="tag">실험의 정의</b>실험은 조건을 조작하고(manipulates conditions), <span class="mk">피험자를 그 조건에 무작위로 배정하고</span>(randomly assigns), 그룹 간 반응을 비교합니다(compares responses). <b>인과적 결론을 뒷받침할 수 있는 유일한 설계</b>입니다.</div>
       <div class="episode">
-        <p><b>예시: 태현이의 수면 실험</b> &nbsp;<span class="pen">관찰 → 연관성 / 실험 → 인과</span></p>
+        <p><b>예시: 현성이의 수면 실험</b> &nbsp;<span class="pen">관찰 → 연관성 / 실험 → 인과</span></p>
         <p style="margin-top:6px;color:var(--ink-soft)">1년 반의 기숙사 생활에서 수면시간과 집중력 사이의 상관관계를 봤고(관찰연구), "더 긴 수면이 높은 집중력을 만든다"를 보이려고 실험을 계획했다.</p>
         <dl>
           <dt>Subjects</dt><dd>자원한 친구 28명 (experimental units)</dd>
@@ -1039,12 +1039,12 @@ const Q=[
  // experiments: basics
  {id:"exp-1",unit:"exp",set:"vocab",src:"개념",type:"mc",q:"관찰연구(observational study)로 보일 수 있는 것은?",choices:["두 변수 사이의 인과관계","두 변수 사이의 연관성(association)","처치 효과의 크기","플라시보 효과"],answer:1,explain:"관찰연구는 연관성까지만. Association is not causation."},
  {id:"exp-2",unit:"exp",set:"vocab",src:"개념",type:"mc",q:"인과적 결론을 뒷받침할 수 있는 유일한 연구 설계는?",choices:["설문조사","관찰연구","무작위 배정을 사용한 실험","사례 연구"],answer:2,explain:"조건을 조작하고, 무작위 배정하고, 반응을 비교하는 실험만 인과를 주장할 수 있습니다."},
- {id:"tae-1",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험에서 <b>factor</b>는?",choices:["외운 영어 단어 수","수면 시간","친구 28명","커피 섭취"],answer:1,explain:"실험자가 조절하는 변수 = 수면 시간."},
- {id:"tae-2",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"num",q:"태현이 실험에서 factor의 <b>level</b>은 몇 개인가?",answer:3,answerText:"3 (8·6·4시간)",explain:"8시간, 6시간, 4시간 → 3개"},
- {id:"tae-3",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험의 <b>response variable</b>은?",choices:["취침 시각","수면 시간","10분 동안 외운 영어 단어 수","주사위 눈"],answer:2,explain:"측정해서 그룹끼리 비교한 결과 = 외운 단어 수 (평균 29, 25, 24개)."},
- {id:"tae-4",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"4시간 그룹만 늦게까지 깨어 있으려고 커피와 에너지 드링크를 마셨다. 이 카페인은 무엇에 해당하나?",choices:["Response variable","Level","Confounding variable","Placebo"],answer:2,explain:"카페인 효과와 수면 시간 효과가 얽혀 분리할 수 없으니 confounding variable입니다."},
- {id:"tae-5",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"주사위를 던져 3의 배수/나머지 1/나머지 2로 그룹을 나눈 것은 어떤 원리인가?",choices:["Control","Randomization","Blocking","Blinding"],answer:1,explain:"우연에 맡겨 그룹을 정했으니 random assignment, 즉 randomization."},
- {id:"tae-6",unit:"exp",set:"tae",src:"태현이 수면 실험",type:"mc",q:"태현이 실험에서 experimental unit은?",choices:["수면 시간","자원한 친구 28명","영어 단어 50개","기숙사"],answer:1,explain:"실험이 실시되는 개체 = 친구 28명 (사람이라 subject라고도 부름)."},
+ {id:"tae-1",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"mc",q:"현성이 실험에서 <b>factor</b>는?",choices:["외운 영어 단어 수","수면 시간","친구 28명","커피 섭취"],answer:1,explain:"실험자가 조절하는 변수 = 수면 시간."},
+ {id:"tae-2",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"num",q:"현성이 실험에서 factor의 <b>level</b>은 몇 개인가?",answer:3,answerText:"3 (8·6·4시간)",explain:"8시간, 6시간, 4시간 → 3개"},
+ {id:"tae-3",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"mc",q:"현성이 실험의 <b>response variable</b>은?",choices:["취침 시각","수면 시간","10분 동안 외운 영어 단어 수","주사위 눈"],answer:2,explain:"측정해서 그룹끼리 비교한 결과 = 외운 단어 수 (평균 29, 25, 24개)."},
+ {id:"tae-4",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"mc",q:"4시간 그룹만 늦게까지 깨어 있으려고 커피와 에너지 드링크를 마셨다. 이 카페인은 무엇에 해당하나?",choices:["Response variable","Level","Confounding variable","Placebo"],answer:2,explain:"카페인 효과와 수면 시간 효과가 얽혀 분리할 수 없으니 confounding variable입니다."},
+ {id:"tae-5",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"mc",q:"주사위를 던져 3의 배수/나머지 1/나머지 2로 그룹을 나눈 것은 어떤 원리인가?",choices:["Control","Randomization","Blocking","Blinding"],answer:1,explain:"우연에 맡겨 그룹을 정했으니 random assignment, 즉 randomization."},
+ {id:"tae-6",unit:"exp",set:"tae",src:"현성이 수면 실험",type:"mc",q:"현성이 실험에서 experimental unit은?",choices:["수면 시간","자원한 친구 28명","영어 단어 50개","기숙사"],answer:1,explain:"실험이 실시되는 개체 = 친구 28명 (사람이라 subject라고도 부름)."},
 
  // vocab
  {id:"voc-1",unit:"exp",set:"vocab",src:"Vocabulary",type:"mc",q:"Placebo effect의 정의로 옳은 것은?",choices:["가짜 처치 그 자체","처치를 받고 있다는 믿음 때문에 반응에 생기는 실제 변화","대조군이 아무것도 받지 않는 것","평가자의 편향"],answer:1,explain:"믿음만으로 생기는 실제 변화. 그래서 플라시보를 받는 대조군이 필요합니다."},
@@ -1084,7 +1084,7 @@ const SETS=[
  {key:"monty",label:"몬티홀",fn:q=>q.set==="monty"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
- {key:"tae",label:"태현이 실험",fn:q=>q.set==="tae"},
+ {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
  {key:"star",label:"★ 별표",fn:q=>store.stars.includes(q.id)},
  {key:"wrong",label:"틀린 문제",fn:q=>store.answers[q.id]&&store.answers[q.id].status==="wrong"}
 ];
@@ -1469,7 +1469,7 @@ function diagram(cfg){
 
 const SCEN={
   music:{label:"클래식 음악 실험 (Problem 1)",design:"crd",subj:"고등학생",n:60,treatments:["클래식 음악 들으며 공부","음악 없이 공부"],blockVar:"성별",blocks:"남학생:30\n여학생:30",response:"시험 점수"},
-  sleep:{label:"태현이 수면 실험",design:"crd",subj:"친구",n:28,treatments:["8시간 수면","6시간 수면","4시간 수면"],blockVar:"성별",blocks:"남:14\n여:14",response:"외운 영어 단어 수"},
+  sleep:{label:"현성이 수면 실험",design:"crd",subj:"친구",n:28,treatments:["8시간 수면","6시간 수면","4시간 수면"],blockVar:"성별",blocks:"남:14\n여:14",response:"외운 영어 단어 수"},
   tech:{label:"새 공부법 실험 (성별 블록)",design:"rbd",subj:"학생",n:40,treatments:["새로운 공부법","기존 공부법"],blockVar:"성별",blocks:"남학생:20\n여학생:20",response:"시험 점수 향상"},
   drug:{label:"신약 실험 (플라시보 대조군)",design:"crd",subj:"환자",n:90,treatments:["신약 A","신약 B","Placebo (대조군)"],blockVar:"나이대",blocks:"50세 미만:45\n50세 이상:45",response:"증상 개선 정도"},
   custom:{label:"직접 입력",design:"crd",subj:"피험자",n:30,treatments:["Treatment 1","Treatment 2","Control group"],blockVar:"기준",blocks:"Block A:15\nBlock B:15",response:"반응변수"}
