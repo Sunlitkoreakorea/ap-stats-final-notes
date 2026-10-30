@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀 개념 정리와 연습 문제 104개, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·기댓값 개념 정리와 연습 문제 117개, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -310,6 +310,7 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
     <button class="chip" data-unit="exp" aria-pressed="false">실험 설계</button>
     <button class="chip" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
     <button class="chip" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
+    <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값</button>
   </div>
 
   <!-- Ch.3 자료 수집 -->
@@ -683,6 +684,111 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
     </article>
   </div>
 
+  <!-- Ch.4 확률변수·기댓값 -->
+  <div id="unit-rv" hidden>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 4 프린트 7쪽: 2. Random Variables. 확률변수, 이산·연속, 확률분포, 기댓값.</div>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-1</span><h2>What is a Random Variable? <span class="gloss">확률변수</span></h2></div>
+      <p class="lead">확률변수는 <b>무작위 과정의 결과를 숫자로 나타낸 변수</b>입니다. 변수는 대문자(<span class="m">X</span>, <span class="m">Y</span>), 그 변수가 가지는 구체적인 값은 소문자(<span class="m">x</span>, <span class="m">y</span>)로 씁니다.</p>
+      <div class="box">
+        <h4>예: 동전을 3번 던진다. X = 앞면의 수</h4>
+        <p style="font-size:.92rem">X가 가질 수 있는 값: <b>0, 1, 2, 3</b>. 각 값의 확률은 8가지 결과(HHH, HHT, …)를 세어 구한 것입니다.</p>
+        <div class="tbl-wrap" style="margin-top:8px"><table>
+          <thead><tr><th>x</th><th class="mono">0</th><th class="mono">1</th><th class="mono">2</th><th class="mono">3</th></tr></thead>
+          <tbody><tr><td class="term">P(X = x)</td><td class="mono">1/8</td><td class="mono">3/8</td><td class="mono">3/8</td><td class="mono">1/8</td></tr></tbody>
+        </table></div>
+        <p style="font-size:.88rem;color:var(--ink-soft);margin-top:6px">확률을 전부 더하면 1/8 + 3/8 + 3/8 + 1/8 = 1 입니다. (표는 직접 계산해서 넣었어요.)</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-2</span><h2>Discrete vs Continuous</h2></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th></th><th>(1) Discrete 이산</th><th>(2) Continuous 연속</th></tr></thead>
+        <tbody>
+          <tr><td class="term">값</td><td>셀 수 있는(countable) 값, 보통 정수</td><td>구간 안의 <b>모든</b> 값(셀 수 없음). 보통 <b>측정</b>으로 얻음</td></tr>
+          <tr><td class="term">예</td><td>앞면의 수, 형제 수, 한 시간 동안 도착하는 차의 수</td><td>키, 1마일 달리는 시간, 과자 봉지의 무게</td></tr>
+          <tr><td class="term">기술 방법</td><td><b>확률분포</b>(값 목록과 각 확률)</td><td><b>밀도곡선</b>(density curve). 확률 = 곡선 아래 <b>넓이</b></td></tr>
+          <tr><td class="term">조건</td><td class="mr">0 ≤ P(X = x) ≤ 1 &nbsp;그리고&nbsp; Σ P(X = x<sub>i</sub>) = 1</td><td class="mr">곡선 아래 전체 넓이 = 1</td></tr>
+          <tr><td class="term">한 점의 확률</td><td>값마다 자기 확률이 있음</td><td class="mr"><b>P(X = x) = 0</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid2">
+        <div class="box">
+          <h4>연속확률변수의 확률 = 넓이</h4>
+          <div class="formula" style="font-size:1rem">P(a ≤ X ≤ b) = ∫<sub>a</sub><sup>b</sup> f(x) dx</div>
+          <svg viewBox="0 0 300 130" role="img" aria-label="밀도곡선과 a에서 b까지의 넓이" style="width:100%;max-width:340px;display:block;margin-top:8px">
+            <defs><clipPath id="rvclip"><rect x="110" y="0" width="85" height="130"/></clipPath></defs>
+            <path d="M10,105 C60,105 90,15 150,15 C210,15 240,105 290,105 Z" clip-path="url(#rvclip)" style="fill:var(--hl);stroke:none"/>
+            <path d="M10,105 C60,105 90,15 150,15 C210,15 240,105 290,105" style="fill:none;stroke:var(--blue);stroke-width:2"/>
+            <line x1="10" y1="105" x2="290" y2="105" style="stroke:var(--ink-faint);stroke-width:1"/>
+            <line x1="110" y1="105" x2="110" y2="99" style="stroke:var(--ink);stroke-width:1.5"/>
+            <line x1="195" y1="105" x2="195" y2="99" style="stroke:var(--ink);stroke-width:1.5"/>
+            <text x="110" y="122" text-anchor="middle" font-size="13" style="fill:var(--ink)">a</text>
+            <text x="195" y="122" text-anchor="middle" font-size="13" style="fill:var(--ink)">b</text>
+            <text x="152" y="82" text-anchor="middle" font-size="13" style="fill:var(--ink)">넓이 = 확률</text>
+          </svg>
+        </div>
+        <div class="box">
+          <h4>왜 한 점의 확률이 0인가</h4>
+          <p style="font-size:.92rem">한 점에는 폭이 없으니 곡선 아래 <b>넓이가 0</b>입니다. 그래서 정확히 키가 170.00000…cm일 확률은 0이에요. 확률이 0이어도 불가능하다는 뜻은 아니고, 구간으로 물어야 의미가 있습니다.</p>
+          <p style="font-size:.9rem;color:var(--ink-soft);margin-top:8px">같은 이유로 연속확률변수에서는 P(a ≤ X ≤ b) = P(a &lt; X &lt; b) 입니다. 끝점을 포함해도 넓이가 안 변해요.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-3</span><h2>Expected Value (Mean) <span class="gloss">기댓값 = 장기 평균</span></h2></div>
+      <p>기댓값은 같은 과정을 <b>여러 번 반복했을 때 X의 장기적인 평균</b>입니다. 값에 확률을 곱해서 모두 더합니다.</p>
+      <div class="formula">μ<sub>X</sub> = E(X) = Σ x<sub>i</sub> · P(X = x<sub>i</sub>)</div>
+      <div class="callout"><b class="tag">해석</b>E(X)는 한 번의 결과가 아니라 반복했을 때의 평균입니다. 그래서 X가 실제로 가질 수 없는 값일 수도 있어요. (동전 3번의 앞면 수 평균 = 1.5개) 큰 수의 법칙과 같은 맥락입니다.</div>
+      <div class="grid2">
+        <div class="box">
+          <h4>Problem 1 · 오렌지 농장</h4>
+          <p style="font-size:.92rem;color:var(--ink-soft)">나무 한 그루당 오렌지 수의 분포가 아래와 같을 때, 평균 몇 개가 열리나?</p>
+          <div class="tbl-wrap" style="margin-top:8px"><table>
+            <thead><tr><th>오렌지 수</th><th class="mono">25</th><th class="mono">30</th><th class="mono">35</th><th class="mono">40</th></tr></thead>
+            <tbody><tr><td class="term">확률</td><td class="mono">0.1</td><td class="mono">0.4</td><td class="mono">0.3</td><td class="mono">0.2</td></tr></tbody>
+          </table></div>
+          <p class="mr" style="margin-top:8px">E(X) = 25(0.1) + 30(0.4) + 35(0.3) + 40(0.2)<br>= 2.5 + 12 + 10.5 + 8 = <b>33개</b></p>
+        </div>
+        <div class="box">
+          <h4>Problem 2 · 카니발 구슬 게임</h4>
+          <p style="font-size:.92rem;color:var(--ink-soft)">빨강 3, 파랑 2, 흰색 5개가 든 주머니에서 <b>비복원</b>으로 2개를 뽑는다. 둘 다 빨강이면 $10, 파랑이 정확히 1개면 $3, 그 외 $0. 참가비 $2. X = 순이익, E(X)는?</p>
+          <div class="tbl-wrap" style="margin-top:8px"><table>
+            <thead><tr><th>경우</th><th>확률</th><th>순이익 x</th></tr></thead>
+            <tbody>
+              <tr><td class="term">둘 다 빨강</td><td class="mono">C(3,2)/C(10,2) = 3/45</td><td class="mono">10 − 2 = <b>8</b></td></tr>
+              <tr><td class="term">파랑 정확히 1개</td><td class="mono">2×8/45 = 16/45</td><td class="mono">3 − 2 = <b>1</b></td></tr>
+              <tr><td class="term">그 외</td><td class="mono">1 − 3/45 − 16/45 = 26/45</td><td class="mono">0 − 2 = <b>−2</b></td></tr>
+            </tbody>
+          </table></div>
+          <p class="mr" style="margin-top:8px">E(X) = 8·<span class="fr"><i>3</i><i>45</i></span> + 1·<span class="fr"><i>16</i><i>45</i></span> − 2·<span class="fr"><i>26</i><i>45</i></span> = <span class="fr"><i>24+16−52</i><i>45</i></span> = <b>−4/15 ≈ −0.267</b></p>
+        </div>
+      </div>
+      <div class="callout warn"><b class="tag">주의</b>Problem 2는 값이 <b>상금이 아니라 순이익</b>입니다. 참가비 $2를 반드시 빼야 해요(8, 1, −2). E(X) ≈ −$0.27이므로 이 게임은 여러 번 하면 한 판당 평균 약 27센트씩 잃는, 참가자에게 불리한 게임입니다.</div>
+      <div class="tool">
+        <b style="font-size:.95rem">기댓값 계산기</b>
+        <p style="font-size:.85rem;color:var(--ink-soft);margin-top:2px">한 줄에 "값, 확률"을 쓰세요. 확률은 0.4나 3/45처럼 분수도 됩니다. 분포 조건(확률 합 = 1)도 같이 확인해 줍니다.</p>
+        <div class="tool-row" style="margin-top:10px">
+          <button class="btn" data-evp="orange">오렌지 (문제 1)</button>
+          <button class="btn" data-evp="carnival">카니발 (문제 2)</button>
+          <button class="btn" data-evp="coin">동전 3번</button>
+        </div>
+        <label class="field" for="evIn" style="margin-top:10px">값, 확률 (한 줄에 하나)
+          <textarea id="evIn" rows="5" style="font-family:var(--f-mono);resize:vertical">25, 0.1
+30, 0.4
+35, 0.3
+40, 0.2</textarea>
+        </label>
+        <div class="outs" id="evOut"></div>
+        <div id="evBars" style="margin-top:10px;display:flex;flex-direction:column;gap:4px"></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="rv">확률변수 문제 풀러 가기 →</button></p>
+    </article>
+  </div>
+
   <!-- 실험 설계 -->
   <div id="unit-exp" hidden>
     <article class="sec">
@@ -905,6 +1011,11 @@ const VOCAB=[
  {en:"Partition",ko:"분할 (피자 조각)",cat:"prob",def:"표본공간을 서로 disjoint이면서 합집합이 S인 사건들 B₁, …, Bₙ으로 쪼갠 것."},
  {en:"Law of total probability",ko:"전체확률의 법칙",cat:"prob",def:"partition B₁, …, Bₙ에 대해 P(A) = P(A|B₁)P(B₁) + ⋯ + P(A|Bₙ)P(Bₙ). 베이즈 공식의 분모."},
  {en:"Bayes' theorem",ko:"베이즈 정리",cat:"prob",def:"P(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / [P(A|B₁)P(B₁) + ⋯ + P(A|Bₙ)P(Bₙ)]. P(A|B)를 알 때 P(B|A)를 구하는 공식."},
+ {en:"Random variable",ko:"확률변수",cat:"prob",def:"무작위 과정의 결과를 숫자로 나타낸 변수. 변수는 대문자(X, Y), 구체적인 값은 소문자(x, y)로 씁니다. 예: 동전 3번에서 나온 앞면의 수."},
+ {en:"Discrete random variable",ko:"이산확률변수",cat:"prob",def:"셀 수 있는 값(보통 정수)을 가지고 값마다 자기 확률이 있는 확률변수. 확률분포로 기술하며 0 ≤ P(X=x) ≤ 1, ΣP(X=xᵢ) = 1."},
+ {en:"Continuous random variable",ko:"연속확률변수",cat:"prob",def:"구간 안의 모든 값을 가질 수 있는(셀 수 없는) 확률변수. 보통 측정으로 얻고, 한 점의 확률은 0, 확률은 밀도곡선 아래 넓이."},
+ {en:"Density curve",ko:"밀도곡선",cat:"prob",def:"연속확률변수를 기술하는 곡선. 구간의 확률 = 그 구간 위의 곡선 아래 넓이이고, 전체 넓이는 1입니다."},
+ {en:"Expected value",sub:"Mean",ko:"기댓값 = 장기 평균",cat:"prob",def:"같은 과정을 많이 반복했을 때 X의 장기적인 평균. μ = E(X) = Σ xᵢ P(X=xᵢ). X가 가질 수 없는 값일 수도 있습니다."},
  {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
 ];
 $("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
@@ -972,6 +1083,21 @@ const Q=[
  {id:"mh-7",unit:"cond",set:"monty",src:"Monty Hall · 호스트가 모르는 경우",type:"mc",q:`문 3개·차 1대 기본형에서, 호스트가 차의 위치를 <b>모르고</b> 남은 두 문 중 하나를 무작위로 열었는데 마침 2번 문에서 연필이 나왔다. 이때 3번 문으로 바꾸면 차를 얻을 확률은?`,choices:["1/3","1/2","2/3","1"],answer:1,explain:`호스트가 차를 피해서 연 것이 아니라 우연히 연필이 나온 경우입니다. P(2번을 열고 연필) = 1/2 × 2/3 = 1/3, P(그리고 3번이 차) = 1/2 × 1/3 = 1/6 → (1/6)/(1/3) = <b>1/2</b>. 바꾸나 유지나 같아요. 호스트가 정답을 알고 일부러 피한다는 조건이 2/3를 만듭니다.`},
  {id:"mh-8",unit:"cond",set:"monty",src:"Monty Hall · 서술형",type:"open",q:`문 3개·차 1대 몬티홀에서 참가자가 1번을 고르고 호스트가 2번을 열어 연필을 보여줬다. 3번으로 바꿀 때 차를 얻을 확률을 <b>조건부확률로 정당화</b>해서 영어로 설명하세요. (Explain your answer in words and justify it with conditional probability.)`,
   model:`<ol class="steps"><li>Let C<sub>i</sub> be "the car is behind door i" and O<sub>2</sub> be "the host opens door 2 and shows a pencil". P(C<sub>i</sub>) = 1/3 for each door.</li><li>If the car is behind door 1, the host can open door 2 or 3, so P(O<sub>2</sub>|C<sub>1</sub>) = 1/2. If it is behind door 2, P(O<sub>2</sub>|C<sub>2</sub>) = 0. If it is behind door 3, the host must open door 2, so P(O<sub>2</sub>|C<sub>3</sub>) = 1.</li><li>By the law of total probability, P(O<sub>2</sub>) = (1/2)(1/3) + 0 + (1)(1/3) = 1/2.</li><li>P(C<sub>3</sub>|O<sub>2</sub>) = P(O<sub>2</sub>∩C<sub>3</sub>) / P(O<sub>2</sub>) = (1/3)/(1/2) = <b>2/3</b>, while staying wins with probability 1/3. So the contestant should switch.</li></ol><p style="margin-top:8px"><b>말로 설명</b>: 처음 고른 문이 맞을 확률은 1/3이고 호스트가 연필을 열어도 이 확률은 그대로입니다. 호스트가 정답을 알고 연필만 열기 때문에, 나머지 2/3가 남은 한 문으로 모입니다.</p>`},
+
+ // Ch.4 확률변수 · 기댓값
+ {id:"rv-1",unit:"rv",set:"rv",src:"2-2 Discrete vs Continuous",type:"mc",q:`다음 중 <b>이산확률변수</b>는?`,choices:["사람의 키","1마일을 달리는 시간","한 시간 동안 도착하는 차의 수","과자 봉지의 무게"],answer:2,explain:`셀 수 있는 정수 값을 가지는 것은 차의 수. 키·시간·무게는 측정해서 얻는 연속확률변수입니다.`},
+ {id:"rv-2",unit:"rv",set:"rv",src:"2-2 Discrete vs Continuous",type:"mc",q:`다음 중 <b>연속확률변수</b>는?`,choices:["형제의 수","동전 3번에서 나온 앞면의 수","1마일을 달리는 데 걸린 시간","주사위의 눈"],answer:2,explain:`연속확률변수는 구간 안의 모든 값을 가질 수 있고 보통 측정으로 얻습니다. 시간이 그 예예요.`},
+ {id:"rv-3",unit:"rv",set:"rv",src:"2-2 Continuous",type:"tf",q:`연속확률변수 X에 대해 어떤 한 값 x를 정확히 가질 확률 P(X = x)는 0이다.`,answer:true,explain:`한 점은 폭이 없어서 밀도곡선 아래 넓이가 0입니다. 그래서 연속확률변수는 구간(P(a ≤ X ≤ b))으로 확률을 구해요.`},
+ {id:"rv-4",unit:"rv",set:"rv",src:"2-2 Continuous",type:"num",q:`연속확률변수의 밀도곡선 아래 <b>전체 넓이</b>는?`,answer:1,answerText:"1",explain:`전체 확률이 1이므로 밀도곡선 아래 전체 넓이는 1입니다. (이산에서 ΣP(X = x<sub>i</sub>) = 1인 것과 같은 조건)`},
+ {id:"rv-5",unit:"rv",set:"rv",src:"2-2 확률분포",type:"mc",q:`다음 중 올바른 확률분포(값 x = 1, 2, 3)인 것은? (확률이 차례로 P(1), P(2), P(3))`,choices:["0.2, 0.3, 0.4","0.5, 0.3, 0.2","0.6, 0.5, −0.1","0.4, 0.4, 0.4"],answer:1,explain:`0 ≤ P ≤ 1 이고 합이 1이어야 합니다. 합이 0.9(첫째), 1.0(둘째 ✓), 음수 포함(셋째), 합이 1.2(넷째).`},
+ {id:"rv-6",unit:"rv",set:"rv",src:"2-2 확률분포",type:"num",q:`이산확률변수 X의 분포가 P(X = 1) = 0.2, P(X = 2) = 0.3, P(X = 3) = a, P(X = 4) = 0.1 이다. a는?`,answer:0.4,answerText:"0.4",explain:`확률의 합 = 1 → 0.2 + 0.3 + a + 0.1 = 1 → a = <b>0.4</b>.`},
+ {id:"rv-7",unit:"rv",set:"rv",src:"Problem 1 · 오렌지",type:"num",q:`나무당 오렌지 수 X의 분포: 25개(0.1), 30개(0.4), 35개(0.3), 40개(0.2). 나무 한 그루에서 평균 몇 개가 열릴 것으로 기대되나? (E(X))`,answer:33,answerText:"33",explain:`E(X) = 25(0.1) + 30(0.4) + 35(0.3) + 40(0.2) = 2.5 + 12 + 10.5 + 8 = <b>33개</b>.`},
+ {id:"rv-8",unit:"rv",set:"rv",src:"2-3 기댓값",type:"num",q:`동전을 3번 던질 때 앞면의 수 X의 기댓값 E(X)는? (P(X=0..3) = 1/8, 3/8, 3/8, 1/8)`,answer:1.5,answerText:"1.5",explain:`E(X) = 0·(1/8) + 1·(3/8) + 2·(3/8) + 3·(1/8) = 12/8 = <b>1.5</b>. 1.5개는 한 번에 나올 수 없는 값이지만 반복했을 때의 평균입니다.`},
+ {id:"rv-9",unit:"rv",set:"rv",src:"Problem 2 · 카니발",type:"num",q:`빨강 3, 파랑 2, 흰색 5개가 든 주머니에서 <b>비복원</b>으로 2개를 뽑는다. <b>파랑이 정확히 1개</b>일 확률은?`,answer:16/45,answerText:"16/45 ≈ 0.356",explain:`파랑 1개(2가지) × 파랑이 아닌 8개 중 1개(8가지) = 16가지. 전체 <sub>10</sub>C<sub>2</sub> = 45 → <b>16/45 ≈ 0.356</b>.`},
+ {id:"rv-10",unit:"rv",set:"rv",src:"Problem 2 · 카니발",type:"num",q:`(위와 같은 주머니) 둘 다 빨강이면 $10, 파랑이 정확히 1개면 $3, 그 외 $0을 받고 참가비는 $2이다. 순이익 X의 기댓값 E(X)는? (분수 또는 소수)`,answer:-4/15,answerText:"−4/15 ≈ −0.267",tol:0.001,hint:"순이익 = 상금 − 참가비: 8, 1, −2",explain:`P(둘 다 빨강) = 3/45 (순이익 8), P(파랑 1개) = 16/45 (순이익 1), P(그 외) = 26/45 (순이익 −2).<br>E(X) = (8·3 + 1·16 − 2·26)/45 = (24 + 16 − 52)/45 = −12/45 = <b>−4/15 ≈ −0.267</b>.`},
+ {id:"rv-11",unit:"rv",set:"rv",src:"Problem 2 · 카니발",type:"mc",q:`카니발 게임의 E(X) = −4/15 ≈ −0.267의 올바른 해석은?`,choices:["한 판을 하면 항상 정확히 $0.27을 잃는다","여러 번 하면 한 판당 평균 약 27센트씩 잃는다","이길 확률이 −4/15이다","참가자가 이기는 경우는 없다"],answer:1,explain:`기댓값은 장기 평균입니다. 한 판의 결과는 +8, +1, −2 중 하나지만, 아주 많이 반복하면 평균이 −0.267에 가까워져요.`},
+ {id:"rv-12",unit:"rv",set:"rv",src:"2-3 기댓값",type:"tf",q:`기댓값 E(X)는 X가 실제로 가질 수 있는 값 중 하나여야 한다.`,answer:false,explain:`동전 3번의 앞면 수 평균 1.5처럼, 기댓값은 가능한 값이 아니어도 됩니다. 반복했을 때의 평균이기 때문이에요.`},
+ {id:"rv-13",unit:"rv",set:"rv",src:"응용 · 주사위 게임",type:"num",q:`공정한 주사위를 던져 6이 나오면 $6를 받고, 그 외에는 $1를 잃는다. 순이익 X의 기댓값은? (분수 또는 소수)`,answer:1/6,answerText:"1/6 ≈ 0.167",tol:0.001,explain:`x = 6(확률 1/6), x = −1(확률 5/6). E(X) = 6·(1/6) − 1·(5/6) = 1 − 5/6 = <b>1/6 ≈ $0.167</b>. 플레이어에게 유리한 게임이에요.`},
 
  // Problem set #1
  {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
@@ -1082,6 +1208,7 @@ const SETS=[
  {key:"cond",label:"Ch.4 조건부·독립",fn:q=>q.unit==="cond"},
  {key:"bayes",label:"베이즈",fn:q=>q.set==="bayes"},
  {key:"monty",label:"몬티홀",fn:q=>q.set==="monty"},
+ {key:"rv",label:"확률변수·기댓값",fn:q=>q.unit==="rv"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
@@ -1091,7 +1218,7 @@ const SETS=[
 let curSet="all", list=Q.slice(), idx=0, hintOn=false;
 
 function parseNum(s){
-  s=String(s).trim().replace(/,/g,"").replace(/\s+/g,"");
+  s=String(s).trim().replace(/−/g,"-").replace(/,/g,"").replace(/\s+/g,"");
   if(!s) return NaN;
   let m=s.match(/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/);
   if(m) return parseFloat(m[1])/parseFloat(m[2]);
@@ -1126,7 +1253,7 @@ function renderScore(){
   const right=done.filter(q=>a[q.id].status==="right").length;
   $("#scoreBig").innerHTML=`${right}<small> / ${done.length} 푼 문제 · 전체 ${Q.length}</small>`;
   $("#scoreBar").style.width=(done.length?right/done.length*100:0)+"%";
-  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"]].map(([u,l])=>{
+  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"],["rv","Ch.4 확률변수"]].map(([u,l])=>{
     const qs=Q.filter(q=>q.unit===u), d=qs.filter(q=>a[q.id]), r=d.filter(q=>a[q.id].status==="right").length;
     return `<div class="unitline"><span>${l}</span><span class="mono">${r}/${d.length} · 남은 ${qs.length-d.length}</span></div>`;
   }).join("");
@@ -1151,7 +1278,7 @@ function renderQ(){
     return;
   }
   const q=list[idx], rec=store.answers[q.id];
-  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
+  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",rv:"Ch.4 확률변수",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
   const typeLabel={mc:"객관식",tf:"True / False",num:"답 입력",open:"서술형 · 자가 채점"}[q.type];
   let body="";
   if(q.type==="mc"){
@@ -1271,9 +1398,10 @@ document.addEventListener("click",e=>{
 });
 $$(".subnav [data-unit]").forEach(b=>b.addEventListener("click",()=>{
   $$(".subnav [data-unit]").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  ["samp","exp","prob","cond"].forEach(u=>{$("#unit-"+u).hidden=b.dataset.unit!==u;});
+  ["samp","exp","prob","cond","rv"].forEach(u=>{$("#unit-"+u).hidden=b.dataset.unit!==u;});
   if(b.dataset.unit==="prob") drawLLN();
   if(b.dataset.unit==="cond") renderBayes();
+  if(b.dataset.unit==="rv") renderEV();
 }));
 
 /* ---------- random digit table reader ---------- */
@@ -1305,6 +1433,29 @@ function renderBayes(){
   note.textContent="막대: 양성 판정자 중 초록 = 진짜 환자, 빨강 = 건강한데 양성(위양성)";
 }
 ["#bp","#bs","#bf"].forEach(id=>$(id).addEventListener("input",renderBayes)); renderBayes();
+
+/* ---------- Expected value calculator ---------- */
+const EVP={orange:"25, 0.1\n30, 0.4\n35, 0.3\n40, 0.2",carnival:"8, 3/45\n1, 16/45\n-2, 26/45",coin:"0, 1/8\n1, 3/8\n2, 3/8\n3, 1/8"};
+function renderEV(){
+  const rows=[], bad=[];
+  ($("#evIn").value||"").split("\n").map(s=>s.trim()).filter(Boolean).forEach((ln,i)=>{
+    const parts=ln.split(/[,\s]+/).filter(Boolean);
+    const x=parseNum(parts[0]||""), p=parseNum(parts[1]||"");
+    if(parts.length<2||isNaN(x)||isNaN(p)) bad.push(i+1); else rows.push({x,p});
+  });
+  const out=$("#evOut"), bars=$("#evBars");
+  if(bad.length){out.innerHTML=`<div class="out">${bad.join(", ")}번째 줄을 "값, 확률" 형식으로 써 주세요.</div>`;bars.innerHTML="";return;}
+  if(!rows.length){out.innerHTML=`<div class="out">값과 확률을 입력하세요.</div>`;bars.innerHTML="";return;}
+  const sum=rows.reduce((a,r)=>a+r.p,0), ev=rows.reduce((a,r)=>a+r.x*r.p,0);
+  const inRange=rows.every(r=>r.p>=0&&r.p<=1), okSum=Math.abs(sum-1)<1e-9;
+  const f=v=>(Math.round(v*10000)/10000).toString();
+  out.innerHTML=`<div class="out"><span>ΣP</span>${f(sum)}</div><div class="out"><span>분포 조건</span>${inRange&&okSum?"만족 ✓":(!inRange?"확률이 0~1을 벗어남":"합이 1이 아님")}</div><div class="out"><span>E(X)</span><b>${f(ev)}</b></div>`;
+  const mx=Math.max(...rows.map(r=>r.p),1e-9);
+  bars.innerHTML=rows.map(r=>`<div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.8rem"><span style="width:44px;text-align:right;color:var(--ink-soft)">${f(r.x)}</span><span style="height:12px;border-radius:3px;background:var(--blue);width:${Math.max(0,r.p/mx*60)}%;min-width:2px"></span><span style="color:var(--ink-faint)">${f(r.p)}</span></div>`).join("");
+}
+$("#evIn").addEventListener("input",renderEV);
+$$("[data-evp]").forEach(b=>b.addEventListener("click",()=>{$("#evIn").value=EVP[b.dataset.evp];renderEV();}));
+renderEV();
 
 /* ---------- Monty Hall simulator ---------- */
 let mh={games:0,stay:0,sw:0};
