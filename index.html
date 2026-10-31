@@ -3,241 +3,281 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·기댓값 개념 정리와 연습 문제 117개, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수, 개념 정리와 연습 문제 117개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>AP Stats 기말 노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Myeongjo:wght@700;800&family=Nanum+Pen+Script&family=STIX+Two+Text:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Pen+Script&family=STIX+Two+Text:ital@0;1&display=swap">
 <style>
-/* Layout: 모눈 노트 위에 한 열로 쌓인 학습 노트. 형광펜(라임) = 핵심, 빨간 펜 = 시험 메모, 파란 펜 = 도식 */
+/* Layout: 왼쪽 사이드바(데스크톱) / 하단 탭바(모바일) 앱 셸. 시험지 파랑 + 형광펜 라임 + 빨간 펜 필기. OMR은 한국 시험 답안지의 붉은 인쇄 톤. */
 :root{
-  --paper:#F6F7F2;
-  --grid:rgba(47,79,181,.075);
-  --card:#FFFFFF;
-  --ink:#1C2745;
-  --ink-soft:#4E5878;
-  --ink-faint:#7A839E;
-  --line:#DADFE8;
-  --hl:rgba(222,240,72,.9);
-  --hl-solid:#DDEF48;
-  --pen:#D2344A;
-  --blue:#2F4FB5;
-  --blue-bg:rgba(47,79,181,.08);
-  --star:#D99A00;
-  --ok:#1B8457;
-  --ok-bg:rgba(27,132,87,.1);
-  --bad:#C0392B;
-  --bad-bg:rgba(192,57,43,.09);
-  --shadow:0 1px 2px rgba(28,39,69,.06),0 6px 20px rgba(28,39,69,.06);
-  --f-display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --bg:#F2F4F9; --surface:#FFFFFF; --surface-2:#F6F7FB;
+  --ink:#10152A; --ink-2:#434A68; --ink-3:#7780A0;
+  --line:#E1E5EF; --line-2:#C9CFE0;
+  --accent:#2646D9; --accent-bg:rgba(38,70,217,.08); --accent-line:rgba(38,70,217,.24); --on-accent:#FFFFFF;
+  --hl:#DEF247; --hl-soft:rgba(222,242,71,.6);
+  --pen:#E0364D; --star:#D99A00;
+  --ok:#12805A; --ok-bg:rgba(18,128,90,.1);
+  --bad:#C8372D; --bad-bg:rgba(200,55,45,.09);
+  --hero-bg:#10152A; --hero-ink:#FFFFFF; --hero-ink-2:rgba(255,255,255,.72);
+  --omr-paper:#FFF6F2; --omr-line:#E9BDB1; --omr-ink:#BD4A3E; --omr-fill:#17171F; --omr-fill-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(16,21,42,.05);
+  --shadow-lg:0 12px 34px rgba(16,21,42,.10);
   --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --f-pen:"Nanum Pen Script","Comic Sans MS",cursive;
   --f-math:"STIX Two Text","Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  /* 이전 규칙에서 쓰던 이름 */
+  --paper:var(--bg); --card:var(--surface); --ink-soft:var(--ink-2); --ink-faint:var(--ink-3);
+  --blue:var(--accent); --blue-bg:var(--accent-bg); --hl-solid:var(--hl); --f-display:var(--f-body);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
-    --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
-    --star:#F2C94C;--ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+    --bg:#0C101F; --surface:#141A2D; --surface-2:#1A2138;
+    --ink:#E8EBF6; --ink-2:#AEB5CE; --ink-3:#7F88A6;
+    --line:#252D47; --line-2:#37416A;
+    --accent:#8CA2FF; --accent-bg:rgba(140,162,255,.13); --accent-line:rgba(140,162,255,.32); --on-accent:#0C101F;
+    --hl:#D4E94A; --hl-soft:rgba(212,233,74,.26);
+    --pen:#FF7587; --star:#F2C94C;
+    --ok:#4CC98E; --ok-bg:rgba(76,201,142,.14); --bad:#FF7F70; --bad-bg:rgba(255,127,112,.14);
+    --hero-bg:#1B2447; --hero-ink:#FFFFFF; --hero-ink-2:rgba(255,255,255,.72);
+    --omr-paper:#241C22; --omr-line:#5B3C39; --omr-ink:#F0907F; --omr-fill:#F3EDE8; --omr-fill-ink:#17171F;
+    --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-lg:0 12px 34px rgba(0,0,0,.35);
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#111726;--grid:rgba(160,185,255,.05);--card:#182035;--ink:#E5E9F3;--ink-soft:#AAB2C9;--ink-faint:#7D86A0;--line:#2A3350;
-  --hl:rgba(214,232,70,.26);--hl-solid:#C9DB45;--pen:#FF6F80;--blue:#93A9FF;--blue-bg:rgba(147,169,255,.1);
-  --star:#F2C94C;--ok:#4CC98E;--ok-bg:rgba(76,201,142,.12);--bad:#FF7A6B;--bad-bg:rgba(255,122,107,.12);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+  --bg:#0C101F; --surface:#141A2D; --surface-2:#1A2138;
+  --ink:#E8EBF6; --ink-2:#AEB5CE; --ink-3:#7F88A6;
+  --line:#252D47; --line-2:#37416A;
+  --accent:#8CA2FF; --accent-bg:rgba(140,162,255,.13); --accent-line:rgba(140,162,255,.32); --on-accent:#0C101F;
+  --hl:#D4E94A; --hl-soft:rgba(212,233,74,.26);
+  --pen:#FF7587; --star:#F2C94C;
+  --ok:#4CC98E; --ok-bg:rgba(76,201,142,.14); --bad:#FF7F70; --bad-bg:rgba(255,127,112,.14);
+  --hero-bg:#1B2447; --hero-ink:#FFFFFF; --hero-ink-2:rgba(255,255,255,.72);
+  --omr-paper:#241C22; --omr-line:#5B3C39; --omr-ink:#F0907F; --omr-fill:#F3EDE8; --omr-fill-ink:#17171F;
+  --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-lg:0 12px 34px rgba(0,0,0,.35);
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{
-  background-color:var(--paper);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:22px 22px;
-  color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 button,input,textarea,select{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
-.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-block:10px}
-.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
-.brand b{font-family:var(--f-display);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
-.brand span{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:.06em}
-.tabs{display:flex;gap:4px;flex-wrap:wrap}
-.tab{border:0;background:transparent;padding:7px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--ink-soft)}
-.tab:hover{color:var(--ink);background:var(--blue-bg)}
-.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
-
-main{padding-block:28px 80px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+p{margin:0}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.3;margin:0;font-family:var(--f-body)}
+h2{font-size:1.4rem;font-weight:700;letter-spacing:-.015em}
+h3{font-size:1.1rem;font-weight:700;margin-top:6px}
 .panel[hidden]{display:none!important}
 
-/* typography */
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.3;margin:0}
-h2{font-size:1.65rem;font-weight:800}
-h3{font-size:1.18rem;font-weight:800;margin-top:6px}
-.mk{background:linear-gradient(transparent 52%,var(--hl) 52%);padding:0 .12em}
-p{margin:0}
-.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
-.lead{color:var(--ink-soft);max-width:68ch}
-.pen{font-family:var(--f-pen);color:var(--pen);font-size:1.35em;line-height:1.1}
+/* ---------- app shell ---------- */
+.app{display:grid;grid-template-columns:272px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto;background:var(--surface);border-right:1px solid var(--line);
+  padding:calc(24px + env(safe-area-inset-top,0px)) 14px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:20px;z-index:50}
+.sb-brand{display:flex;gap:12px;align-items:center;padding:0 8px}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--hero-bg);display:grid;place-items:center;flex:none}
+.logo svg{width:22px;height:22px}
+.sb-brand b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.sb-brand span{font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);letter-spacing:.08em}
+.sb-nav{display:flex;flex-direction:column;gap:2px}
+.sb-label{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;color:var(--ink-3);padding:14px 12px 5px;text-transform:uppercase}
+.tab{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;padding:9px 12px;border-radius:10px;cursor:pointer;font-weight:600;font-size:.93rem;color:var(--ink-2);text-align:left}
+.tab .ic,.ic{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab:hover{background:var(--surface-2);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab .badge{margin-left:auto;font-family:var(--f-mono);font-size:.66rem;font-weight:500;padding:1px 8px;border-radius:999px;background:var(--hl);color:#10152A;white-space:nowrap}
+.tab[aria-selected="true"] .badge{background:var(--hl);color:#10152A}
+.sb-sub{display:flex;flex-direction:column;gap:1px;margin:2px 0 6px 21px;padding-left:12px;border-left:1px solid var(--line)}
+.unit{border:0;background:transparent;text-align:left;padding:6px 10px;border-radius:8px;font-size:.85rem;color:var(--ink-2);cursor:pointer;line-height:1.45}
+.unit:hover{color:var(--ink);background:var(--surface-2)}
+.unit[aria-pressed="true"]{background:var(--hl-soft);color:var(--ink);font-weight:600}
+.sb-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;padding:0 8px}
+.sb-prog{font-size:.78rem;color:var(--ink-2)}
+.sb-prog .bar{margin-top:6px}
+.theme-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;border-radius:10px;padding:7px 12px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--ink-2)}
+.theme-btn:hover{border-color:var(--ink-3);color:var(--ink)}
+.stage{min-width:0}
+.mbar{display:none}
+.wrap{max-width:960px;margin:0 auto;padding-block:36px 96px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.bottombar{display:none}
+.scrim{display:none}
+
+/* ---------- 공통 타이포 ---------- */
+.mk{background:linear-gradient(transparent 56%,var(--hl) 56%);padding:0 .1em}
+.eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.lead{color:var(--ink-2);max-width:68ch}
+.pen{font-family:var(--f-pen);color:var(--pen);font-size:1.3em;line-height:1.1}
+.gloss{font-family:var(--f-pen);color:var(--pen);font-size:1.15rem;margin-left:6px;font-weight:400}
 .m{font-family:var(--f-math);font-style:italic;font-size:1.06em}
 .mr{font-family:var(--f-math);font-size:1.06em}
 .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-family:var(--f-math);font-size:.92em;line-height:1.15;margin:0 .12em}
 .fr>i{font-style:normal;padding:0 .2em}
 .fr>i:first-child{border-bottom:1px solid currentColor}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.sol{margin:8px 0 0;padding-left:1.25em}
-.sol li+li{margin-top:4px}
-.stackbar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--line);margin-top:10px}
-.stackbar i{display:block;height:100%}
 .hat{position:relative;display:inline-block}
 .hat::before{content:"^";position:absolute;left:50%;top:-.42em;transform:translateX(-50%);font-family:var(--f-math);font-style:normal;font-size:.85em;line-height:1}
+.page-head{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.page-head h2,.panel>.sec-head h2{font-size:1.9rem;font-weight:700;letter-spacing:-.025em}
+.panel>.sec-head{margin-bottom:6px}
+.h-sec{font-size:1.1rem;font-weight:700;margin:30px 0 12px}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end;margin-bottom:28px}
-.hero h1{font-size:clamp(1.9rem,4.6vw,2.8rem);font-weight:800;letter-spacing:-.02em}
-.hero .note{font-family:var(--f-pen);color:var(--pen);font-size:1.5rem;line-height:1.2;transform:rotate(-2deg);justify-self:end;max-width:300px}
-.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px;min-width:110px}
-.stat b{display:block;font-family:var(--f-mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
-.stat span{font-size:.78rem;color:var(--ink-faint)}
-
-/* sub nav */
-.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 22px}
-.chip{border:1px solid var(--line);background:var(--card);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
-.chip:hover{border-color:var(--ink-faint);color:var(--ink)}
-.chip[aria-pressed="true"]{background:var(--hl-solid);border-color:var(--hl-solid);color:#1C2745}
-.chip .n{font-family:var(--f-mono);font-size:.75rem;opacity:.7;margin-left:4px}
-
-/* sections */
-.sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px clamp(18px,3vw,32px);margin-bottom:18px;box-shadow:var(--shadow)}
+/* ---------- 카드·본문 구성요소 ---------- */
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px clamp(18px,3vw,32px);margin-bottom:16px;box-shadow:var(--shadow)}
 .sec>*+*{margin-top:14px}
-.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.sec-head .num{font-family:var(--f-mono);color:var(--blue);font-size:.85rem}
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;font-size:.93rem}
-th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
-th{background:var(--blue-bg);font-weight:600;font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em}
+.sec-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sec-head .num{font-family:var(--f-mono);font-size:.74rem;color:var(--accent);background:var(--accent-bg);border-radius:6px;padding:2px 8px;letter-spacing:.02em}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface-2);font-weight:600;font-size:.78rem;color:var(--ink-2);letter-spacing:.03em}
 tr:last-child td{border-bottom:0}
 td.term{font-weight:600;white-space:nowrap}
-td.term small{display:block;font-weight:400;color:var(--ink-faint);font-size:.8rem}
-.gloss{font-family:var(--f-pen);color:var(--pen);font-size:1.18rem;margin-left:6px;font-weight:400}
+td.term small{display:block;font-weight:400;color:var(--ink-3);font-size:.78rem}
 ul.clean{margin:0;padding-left:1.15em}
 ul.clean li+li{margin-top:4px}
-.callout{border-left:3px solid var(--blue);background:var(--blue-bg);padding:12px 16px;border-radius:0 10px 10px 0}
-.callout.warn{border-color:var(--pen);background:color-mix(in srgb,var(--pen) 8%,transparent)}
-.callout b.tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:block;color:var(--blue);margin-bottom:2px}
+.sol{margin:8px 0 0;padding-left:1.25em}
+.sol li+li{margin-top:4px}
+.callout{background:var(--accent-bg);border:1px solid var(--accent-line);padding:12px 16px;border-radius:12px}
+.callout.warn{background:color-mix(in srgb,var(--pen) 8%,transparent);border-color:color-mix(in srgb,var(--pen) 28%,transparent)}
+.callout b.tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;display:block;color:var(--accent);margin-bottom:2px}
 .callout.warn b.tag{color:var(--pen)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid2>*{min-width:0}
-.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.box h4{margin:0 0 6px;font-size:.98rem}
-.formula{font-family:var(--f-math);font-size:1.12rem;padding:10px 14px;background:var(--paper);border-radius:8px;overflow-x:auto;white-space:nowrap}
+.box{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface)}
+.box h4{margin:0 0 6px;font-size:.96rem;font-weight:700}
+.formula{font-family:var(--f-math);font-size:1.12rem;padding:10px 14px;background:var(--surface-2);border-radius:10px;overflow-x:auto;white-space:nowrap}
 .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.pr{border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:relative}
+.pr{border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
 .pr.star::after{content:"필수";position:absolute;top:10px;right:12px;font-family:var(--f-pen);color:var(--pen);font-size:1.15rem}
 .pr h4{margin:0 0 4px;font-size:1rem}
-.pr p{font-size:.92rem;color:var(--ink-soft)}
-.episode{border:1.5px dashed var(--line);border-radius:12px;padding:16px 18px;font-size:.95rem}
+.pr p{font-size:.92rem;color:var(--ink-2)}
+.episode{border:1.5px dashed var(--line-2);border-radius:14px;padding:16px 18px;font-size:.95rem}
 .episode dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0 0}
-.episode dt{font-weight:600;color:var(--blue);font-size:.88rem}
+.episode dt{font-weight:600;color:var(--accent);font-size:.86rem}
 .episode dd{margin:0}
+.bar{height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:999px;transition:width .35s}
+.stackbar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--line);margin-top:10px}
+.stackbar i{display:block;height:100%}
 
-/* mini tools */
-.tool{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--paper)}
+/* ---------- 도구·폼·버튼 ---------- */
+.tool{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface-2)}
 .tool-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.field{display:flex;flex-direction:column;gap:3px;font-size:.8rem;color:var(--ink-faint)}
-.field input,.field select,.field textarea{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.95rem;color:var(--ink);min-width:0}
+.field{display:flex;flex-direction:column;gap:3px;font-size:.8rem;color:var(--ink-3)}
+.field input,.field select,.field textarea{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:.95rem;color:var(--ink);min-width:0}
 .field input[type=number]{width:84px;font-family:var(--f-mono)}
 .outs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.out{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;min-width:0}
-.out span{color:var(--ink-faint);font-family:var(--f-body);font-size:.78rem;margin-right:6px}
-.btn{border:1px solid var(--line);background:var(--card);padding:7px 14px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.88rem}
-.btn:hover{border-color:var(--ink-faint)}
-.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.primary:hover{opacity:.9}
+.out{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:6px 12px;font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;min-width:0}
+.out span{color:var(--ink-3);font-family:var(--f-body);font-size:.78rem;margin-right:6px}
+.btn{border:1px solid var(--line);background:var(--surface);padding:8px 15px;border-radius:10px;cursor:pointer;font-weight:600;font-size:.88rem;line-height:1.4}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.lime{background:var(--hl);color:#10152A;border-color:var(--hl)}
+.btn.lime:hover{filter:brightness(1.04)}
 .btn.ghost{background:transparent}
-canvas{display:block;width:100%;height:220px;margin-top:12px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
-
-/* practice */
-.prac{display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:start}
-.prac>*{min-width:0}
-.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 74px);display:flex;flex-direction:column;gap:14px}
-.side .sec{padding:16px;margin:0}
-.score-big{font-family:var(--f-mono);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
-.score-big small{font-size:.9rem;color:var(--ink-faint)}
-.bar{height:6px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:6px}
-.bar i{display:block;height:100%;background:var(--ok);border-radius:999px;transition:width .3s}
-.unitline{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:10px}
-.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(32px,1fr));gap:5px}
-.qn{aspect-ratio:1;border:1px solid var(--line);background:var(--card);border-radius:6px;font-family:var(--f-mono);font-size:.75rem;cursor:pointer;padding:0;max-width:100%}
-.qn{position:relative}
-.qn.starred::after{content:"★";position:absolute;top:-6px;right:-3px;font-size:.78rem;line-height:1;color:var(--star)}
-.starbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:2px 11px;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--ink-soft)}
-.starbtn:hover{border-color:var(--ink-faint);color:var(--ink)}
-.starbtn .st{font-size:1rem;line-height:1;color:var(--ink-faint)}
+.btn:disabled{opacity:.45;cursor:default}
+canvas{display:block;width:100%;height:220px;margin-top:12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.chip{border:1px solid var(--line);background:var(--surface);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.86rem;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{font-family:var(--f-mono);font-size:.72rem;opacity:.7;margin-left:4px}
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 20px}
+.subnav.strip{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--surface);padding:8px;cursor:pointer;font-weight:600;font-size:.84rem;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pill{font-size:.72rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--accent-bg);color:var(--accent);white-space:nowrap}
+.pill.src{background:transparent;border:1px solid var(--line);color:var(--ink-2);font-weight:500}
+.pill.st-right{background:var(--ok-bg);color:var(--ok)}
+.pill.st-wrong{background:var(--bad-bg);color:var(--bad)}
+.starbtn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 11px;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--ink-2)}
+.starbtn:hover{border-color:var(--ink-3);color:var(--ink)}
+.starbtn .st{font-size:1rem;line-height:1;color:var(--ink-3)}
 .starbtn[aria-pressed="true"]{border-color:var(--star);background:color-mix(in srgb,var(--star) 16%,transparent);color:var(--ink)}
 .starbtn[aria-pressed="true"] .st{color:var(--star)}
+
+/* ---------- 홈 ---------- */
+.home-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;margin-bottom:6px}
+.hero-card{background:var(--hero-bg);color:var(--hero-ink);border-radius:20px;padding:30px clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.hero-card .eyebrow{color:var(--hero-ink-2)}
+.hero-card h1{font-size:clamp(1.9rem,4.2vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.18}
+.hero-card .mk{background:var(--hl);color:#10152A;padding:0 .2em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-sub{color:var(--hero-ink-2);max-width:44ch}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.hero-pen{position:absolute;right:20px;bottom:14px;font-family:var(--f-pen);color:#FF8C9B;font-size:1.35rem;line-height:1.1;transform:rotate(-4deg);text-align:right}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tile .k{font-size:.78rem;color:var(--ink-3)}
+.tile b{font-family:var(--f-mono);font-size:1.7rem;font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums}
+.tile b small{font-size:.85rem;color:var(--ink-3);font-weight:400}
+.tile .go{margin-top:auto;font-size:.78rem;font-weight:600;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.unit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.ucard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.ucard h4{font-size:1rem;font-weight:700;margin:0}
+.ucard p{font-size:.85rem;color:var(--ink-2)}
+.ucard .meta{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.74rem;color:var(--ink-3)}
+.ucard .acts{display:flex;gap:8px;margin-top:auto}
+
+/* ---------- 문제 풀기 ---------- */
+.prac{display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:start}
+.prac>*{min-width:0}
+.side{position:sticky;top:20px;display:flex;flex-direction:column;gap:14px}
+.side .sec{padding:16px;margin:0}
+.score-big{font-family:var(--f-mono);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.score-big small{font-size:.85rem;color:var(--ink-3)}
+.unitline{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-2);margin-top:10px}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(32px,1fr));gap:5px}
+.qn{aspect-ratio:1;border:1px solid var(--line);background:var(--surface);border-radius:8px;font-family:var(--f-mono);font-size:.74rem;cursor:pointer;padding:0;max-width:100%;position:relative}
+.qn.starred::after{content:"★";position:absolute;top:-6px;right:-3px;font-size:.78rem;line-height:1;color:var(--star)}
 .qn.right{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
 .qn.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
 .qn.cur{outline:2px solid var(--ink);outline-offset:1px}
-.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:24px clamp(18px,3vw,30px)}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(18px,3vw,30px)}
 .qmeta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.pill{font-size:.74rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--blue-bg);color:var(--blue)}
-.pill.src{background:transparent;border:1px solid var(--line);color:var(--ink-soft);font-weight:500}
-.pill.st-right{background:var(--ok-bg);color:var(--ok)}
-.pill.st-wrong{background:var(--bad-bg);color:var(--bad)}
 .qtext{font-size:1.05rem;line-height:1.8}
 .choices{display:flex;flex-direction:column;gap:8px;margin-top:18px}
-.choice{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--card);padding:11px 14px;border-radius:10px;cursor:pointer;font-size:.97rem;line-height:1.55}
-.choice:hover:not(:disabled){border-color:var(--ink-faint);background:var(--blue-bg)}
-.choice .key{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:.75rem;color:var(--ink-faint)}
+.choice{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);padding:11px 14px;border-radius:12px;cursor:pointer;font-size:.97rem;line-height:1.55}
+.choice:hover:not(:disabled){border-color:var(--ink-3);background:var(--surface-2)}
+.choice .key{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--ink-3)}
 .choice:disabled{cursor:default}
 .choice.is-right{border-color:var(--ok);background:var(--ok-bg)}
-.choice.is-right .key{background:var(--ok);border-color:var(--ok);color:#fff}
+.choice.is-right .key{background:var(--ok);border-color:var(--ok);color:var(--on-accent)}
 .choice.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
-.choice.is-wrong .key{background:var(--bad);border-color:var(--bad);color:#fff}
+.choice.is-wrong .key{background:var(--bad);border-color:var(--bad);color:var(--on-accent)}
 .tf{flex-direction:row}
 .tf .choice{flex:1;justify-content:center;font-weight:600}
 .numrow{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
-.numrow input{flex:1;min-width:150px;max-width:280px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;font-family:var(--f-mono);font-size:1rem}
-.numhint{font-size:.8rem;color:var(--ink-faint);margin-top:6px}
-textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;resize:vertical;line-height:1.6}
-.feedback{margin-top:18px;border-radius:10px;padding:12px 16px;font-weight:600}
+.numrow input{flex:1;min-width:150px;max-width:280px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;font-family:var(--f-mono);font-size:1rem}
+.numhint{font-size:.8rem;color:var(--ink-3);margin-top:6px}
+textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;resize:vertical;line-height:1.6}
+.feedback{margin-top:18px;border-radius:12px;padding:12px 16px;font-weight:600}
 .feedback.right{background:var(--ok-bg);color:var(--ok)}
 .feedback.wrong{background:var(--bad-bg);color:var(--bad)}
-.feedback.neutral{background:var(--blue-bg);color:var(--blue)}
-.explain{margin-top:12px;border-top:1px dashed var(--line);padding-top:14px;color:var(--ink);font-size:.95rem}
+.feedback.neutral{background:var(--accent-bg);color:var(--accent)}
+.explain{margin-top:12px;border-top:1px dashed var(--line-2);padding-top:14px;color:var(--ink);font-size:.95rem}
 .explain .eyebrow{display:block;margin-bottom:6px}
 .explain .steps{margin:6px 0 0;padding-left:1.2em}
 .hintbox{margin-top:14px;font-family:var(--f-pen);color:var(--pen);font-size:1.3rem;line-height:1.3}
 .qnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
 .qnav .mid{display:flex;gap:8px;flex-wrap:wrap}
-.empty{text-align:center;padding:40px 10px;color:var(--ink-soft)}
+.empty{text-align:center;padding:40px 10px;color:var(--ink-2)}
 
-/* diagram */
+/* ---------- 실험 설계도 ---------- */
 .dg-layout{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
 .dg-layout>*{min-width:0}
 .dg-form{display:flex;flex-direction:column;gap:12px}
 .dg-form .field textarea{min-height:76px;resize:vertical;line-height:1.5}
-.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.seg button{flex:1;border:0;background:var(--card);padding:8px;cursor:pointer;font-weight:600;font-size:.86rem;color:var(--ink-soft)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.dg-canvas{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px}
+.dg-canvas{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:10px}
 .dg-canvas svg{display:block;min-width:640px;width:100%;height:auto}
 .dg-canvas text{font-family:var(--f-body);fill:var(--ink)}
-.dg-box{fill:var(--card);stroke:var(--blue);stroke-width:1.6}
+.dg-box{fill:var(--surface);stroke:var(--accent);stroke-width:1.6}
 .dg-box.ra{stroke:var(--pen);stroke-dasharray:5 3}
-.dg-box.cmp{fill:var(--blue-bg)}
-.dg-arrow{stroke:var(--blue);stroke-width:1.5;fill:none}
+.dg-box.cmp{fill:var(--accent-bg)}
+.dg-arrow{stroke:var(--accent);stroke-width:1.5;fill:none}
 .dg-arrow.ra{stroke:var(--pen)}
 .dg-note{font-family:var(--f-pen)!important;fill:var(--pen)!important;font-size:19px}
 .lbl{cursor:default}
@@ -247,31 +287,181 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
 .dg-blank .lbl .q{opacity:1}
 .dg-blank .lbl.rev .t{opacity:1}
 .dg-blank .lbl.rev .q{opacity:0}
-.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.93rem;cursor:pointer}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line-2);font-size:.93rem;cursor:pointer}
 .check:last-child{border-bottom:0}
 .check input{margin-top:5px;accent-color:var(--ok);width:16px;height:16px;flex:none}
 
-/* cards */
+/* ---------- 용어 카드 ---------- */
 .fc-stage{display:flex;flex-direction:column;align-items:center;gap:16px}
 .flash{width:min(560px,100%);aspect-ratio:16/10;max-width:100%;perspective:1200px;cursor:pointer;border:0;background:transparent;padding:0}
 .flash-inner{position:relative;width:100%;height:100%;transition:transform .5s cubic-bezier(.3,.7,.3,1);transform-style:preserve-3d}
 .flash.flipped .flash-inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:8px}
-.face.back{transform:rotateY(180deg);background:var(--paper)}
-.face .term-en{font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,4.5vw,2.2rem)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:8px}
+.face.back{transform:rotateY(180deg);background:var(--surface-2)}
+.face .term-en{font-weight:700;letter-spacing:-.02em;font-size:clamp(1.5rem,4.5vw,2.2rem)}
 .face .term-ko{font-family:var(--f-pen);color:var(--pen);font-size:1.6rem}
 .face .def{font-size:1rem;line-height:1.65;max-width:44ch}
-.face .tap{position:absolute;bottom:12px;font-size:.75rem;color:var(--ink-faint)}
+.face .tap{position:absolute;bottom:12px;font-size:.75rem;color:var(--ink-3)}
 .face .cat{position:absolute;top:14px;left:16px}
 .fc-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
-.fc-count{font-family:var(--f-mono);font-size:.85rem;color:var(--ink-soft);min-width:64px;text-align:center}
+.fc-count{font-family:var(--f-mono);font-size:.85rem;color:var(--ink-2);min-width:64px;text-align:center}
 
-@media (max-width:820px){
-  .hero{grid-template-columns:1fr}
-  .hero .note{justify-self:start}
+/* ---------- 실전 모의고사 ---------- */
+.ex-intro{display:flex;flex-direction:column;gap:16px}
+.ex-hero{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:14px}
+.ex-hero h2{font-size:1.9rem;font-weight:700;letter-spacing:-.025em}
+.ex-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:6px 0}
+.fact{background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.fact b{display:block;font-family:var(--f-mono);font-size:1.3rem;font-weight:500}
+.fact span{font-size:.8rem;color:var(--ink-3)}
+.ex-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin-bottom:14px;position:sticky;top:12px;z-index:5;box-shadow:var(--shadow)}
+.ex-title{display:flex;flex-direction:column;line-height:1.3;margin-right:auto}
+.ex-title b{font-size:1.02rem;font-weight:700}
+.ex-title span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
+.ex-meta{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums}
+.ex-meta .bar{width:110px}
+.ex-confirm{flex-basis:100%;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:color-mix(in srgb,var(--pen) 9%,transparent);border:1px solid color-mix(in srgb,var(--pen) 30%,transparent);border-radius:12px;padding:10px 14px;font-size:.9rem}
+.ex-confirm span{margin-right:auto}
+.ex-body{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start}
+.ex-q{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px clamp(18px,3vw,34px);box-shadow:var(--shadow)}
+.ex-qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.ex-num{font-family:var(--f-mono);font-size:1.7rem;font-weight:500;line-height:1;margin-right:4px}
+.ex-qhead .starbtn{margin-left:auto}
+.ex-stem{font-family:var(--f-math);font-size:1.1rem;line-height:1.75;padding:12px 16px;background:var(--surface-2);border-radius:12px;margin-bottom:12px}
+.ex-text{font-family:var(--f-math);font-size:1.14rem;line-height:1.78}
+.ex-text p+p{margin-top:.7em}
+.ex-fig{margin:16px 0;display:flex;flex-direction:column;align-items:center;gap:12px;overflow-x:auto}
+.ex-choices{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.ex-ch{display:flex;gap:14px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--surface);padding:12px 14px;border-radius:14px;cursor:pointer;font-family:var(--f-math);font-size:1.08rem;line-height:1.55;width:100%}
+.ex-ch:hover{border-color:var(--ink-3)}
+.ex-ch .bub{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--omr-ink);color:var(--omr-ink);display:grid;place-items:center;font-family:var(--f-mono);font-size:.78rem;margin-top:1px;transition:background .15s,color .15s}
+.ex-ch.on{border-color:var(--ink);background:var(--surface-2)}
+.ex-ch.on .bub{background:var(--omr-fill);color:var(--omr-fill-ink);border-color:var(--omr-fill)}
+.ex-ch .txt{min-width:0}
+.ex-frq{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.ex-part{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface-2)}
+.ex-part label{font-family:var(--f-math);font-size:1.04rem}
+.ex-part input{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 13px;font-family:var(--f-mono);font-size:1rem;max-width:260px}
+.ex-nav{position:sticky;top:96px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.exn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:7px}
+.exn{aspect-ratio:1;border-radius:50%;border:1.5px solid var(--omr-ink);color:var(--omr-ink);background:transparent;font-family:var(--f-mono);font-size:.7rem;cursor:pointer;padding:0;position:relative}
+.exn.ans{background:var(--omr-fill);color:var(--omr-fill-ink);border-color:var(--omr-fill)}
+.exn.frq{border-radius:9px}
+.exn.cur{outline:2px solid var(--accent);outline-offset:2px}
+.exn.flag::after{content:"⚑";position:absolute;top:-8px;right:-5px;font-size:.72rem;color:var(--pen)}
+.ex-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:.74rem;color:var(--ink-3)}
+.ex-legend i{display:inline-block;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--omr-ink);vertical-align:-1px;margin-right:4px}
+.ex-legend i.f{background:var(--omr-fill);border-color:var(--omr-fill)}
+/* 시험지 표·그래프 */
+.xt{border-collapse:collapse;font-family:var(--f-math);font-size:.98rem;width:auto;margin:0 auto}
+.xt th,.xt td{border:1px solid var(--line-2);padding:5px 13px;text-align:center;background:var(--surface);white-space:nowrap}
+.xt th{background:var(--surface-2);font-weight:600}
+.xt td.rh,.xt th.rh{text-align:left;font-weight:600}
+.xt caption{font-weight:700;padding-bottom:6px;font-size:.98rem}
+.xchart{width:100%;max-width:560px;height:auto}
+.xchart .cg{stroke:var(--line);stroke-width:1}
+.xchart .cb{fill:var(--accent);fill-opacity:.82;stroke:var(--accent);stroke-width:1}
+.xchart text{font-family:var(--f-body);fill:var(--ink-2);font-size:11px}
+.xchart .cv{fill:var(--ink);font-size:11px}
+.xchart .ct{font-weight:700;font-size:12px;fill:var(--ink)}
+.xchart .cl{font-size:11.5px;fill:var(--ink)}
+.mini-t .xt{font-size:.86rem}
+.mini-t .xt th,.mini-t .xt td{padding:3px 9px}
+
+/* OMR 답안지 */
+.omr{background:var(--omr-paper);border:1px solid var(--omr-line);border-radius:12px;padding:24px clamp(14px,3vw,30px);color:var(--omr-ink);box-shadow:var(--shadow-lg)}
+.omr-head{display:flex;flex-wrap:wrap;gap:14px 32px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--omr-ink);padding-bottom:14px;margin-bottom:18px}
+.omr-title{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
+.omr-title b{display:block;font-size:1.4rem;letter-spacing:.06em;font-weight:500;margin-top:2px}
+.omr-fields{display:flex;gap:22px;flex-wrap:wrap}
+.omr-field{display:flex;flex-direction:column;gap:3px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase}
+.omr-field input,.omr-field span{border:0;border-bottom:1.5px solid var(--omr-ink);background:transparent;color:var(--omr-ink);font-family:var(--f-body);font-size:.95rem;min-width:120px;padding:2px 2px;outline:none;letter-spacing:0;text-transform:none}
+.omr-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:6px 22px}
+.omr-col{display:flex;flex-direction:column}
+.omr-row{display:flex;align-items:center;gap:7px;padding:3px 0;border-bottom:1px dashed var(--omr-line);min-height:34px}
+.omr-n{width:27px;text-align:right;font-family:var(--f-mono);font-size:.8rem;flex:none}
+.omr-b{width:24px;height:24px;border-radius:50%;border:1.4px solid var(--omr-ink);display:grid;place-items:center;font-family:var(--f-mono);font-size:.62rem;color:var(--omr-ink);flex:none;position:relative}
+.omr-b.on{background:var(--omr-fill);color:var(--omr-fill-ink);border-color:var(--omr-fill)}
+.omr-b.on.good{background:var(--ok);border-color:var(--ok);color:var(--omr-fill-ink)}
+.omr-b.on.miss{background:var(--bad);border-color:var(--bad);color:var(--omr-fill-ink)}
+.omr-b.key{border:2.6px solid var(--ok);color:var(--ok);font-weight:700}
+.omr-m{margin-left:auto;font-family:var(--f-mono);font-size:.82rem;width:16px;text-align:center}
+.omr-row.no .omr-n{color:var(--bad);font-weight:700}
+.omr-row.no .omr-m{color:var(--bad)}
+.omr-row.ok .omr-m{color:var(--ok)}
+.omr-row.skip .omr-n{opacity:.55}
+.omr-row.frq{gap:10px}
+.omr-frq{font-size:.78rem;border:1.2px dashed var(--omr-ink);border-radius:8px;padding:2px 9px;font-family:var(--f-body)}
+.omr.anim .omr-b.on{animation:omrfill .32s cubic-bezier(.3,.8,.3,1) both;animation-delay:var(--d,0ms)}
+.omr.anim .omr-m,.omr.anim .omr-b.key{animation:omrpop .35s ease-out both;animation-delay:var(--d,0ms)}
+@keyframes omrfill{from{transform:scale(.3);opacity:0}60%{transform:scale(1.18);opacity:1}to{transform:scale(1)}}
+@keyframes omrpop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.omr-foot{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;padding-top:12px;border-top:1px solid var(--omr-line);font-size:.76rem}
+.omr-foot i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1.4px solid var(--omr-ink);vertical-align:-2px;margin-right:5px}
+.omr-foot i.f{background:var(--omr-fill);border-color:var(--omr-fill)}
+.omr-foot i.g{background:var(--ok);border-color:var(--ok)}
+.omr-foot i.r{background:var(--bad);border-color:var(--bad)}
+.omr-foot i.k{border:2.4px solid var(--ok)}
+.ex-score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.sc{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.sc b{display:block;font-family:var(--f-mono);font-size:1.75rem;font-weight:500;line-height:1.25}
+.sc b small{font-size:.85rem;color:var(--ink-3);font-weight:400}
+.sc span{font-size:.8rem;color:var(--ink-3)}
+.ex-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.tp-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr 62px;gap:12px;align-items:center;font-size:.88rem;padding:5px 0}
+.tp-row .mono{text-align:right;color:var(--ink-2)}
+.rv-list{display:flex;flex-direction:column;gap:8px}
+details.rv{border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+details.rv>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 16px;font-size:.9rem}
+details.rv>summary::-webkit-details-marker{display:none}
+details.rv>summary::after{content:"+";margin-left:auto;font-family:var(--f-mono);color:var(--ink-3)}
+details.rv[open]>summary::after{content:"−"}
+.rv-body{padding:4px 18px 18px;display:flex;flex-direction:column;gap:12px;border-top:1px dashed var(--line-2)}
+.rv-ch{display:flex;gap:10px;align-items:flex-start;padding:7px 11px;border-radius:10px;font-family:var(--f-math);font-size:1.02rem;border:1px solid transparent}
+.rv-ch .bub{flex:none;width:22px;height:22px;border-radius:50%;border:1.4px solid var(--omr-ink);color:var(--omr-ink);display:grid;place-items:center;font-family:var(--f-mono);font-size:.66rem;margin-top:2px}
+.rv-ch.is-key{background:var(--ok-bg);border-color:var(--ok)}
+.rv-ch.is-key .bub{border:2.4px solid var(--ok);color:var(--ok)}
+.rv-ch.is-mine{background:var(--bad-bg);border-color:var(--bad)}
+.rv-ch.is-mine .bub{background:var(--bad);border-color:var(--bad);color:var(--omr-fill-ink)}
+.rv-ch.is-mine.is-key{background:var(--ok-bg);border-color:var(--ok)}
+.rv-ch.is-mine.is-key .bub{background:var(--ok);border-color:var(--ok);color:var(--omr-fill-ink)}
+.rv-ex{font-size:.94rem;background:var(--surface-2);border-radius:12px;padding:12px 14px}
+
+/* ---------- 반응형 ---------- */
+@media (max-width:960px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:fixed;inset:0 auto 0 0;width:min(300px,86vw);transform:translateX(-102%);transition:transform .25s ease;box-shadow:var(--shadow-lg)}
+  body.nav-open .sidebar{transform:none}
+  .scrim{display:block;position:fixed;inset:0;z-index:45;background:rgba(10,13,28,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+  body.nav-open .scrim{opacity:1;pointer-events:auto}
+  .mbar{display:flex;align-items:center;gap:12px;position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+  .mbar .logo{width:30px;height:30px;border-radius:9px}
+  .mbar .logo svg{width:18px;height:18px}
+  .mbar b{font-size:.98rem;font-weight:700;margin-right:auto}
+  .mbar .iconbtn{border:1px solid var(--line);background:var(--surface);border-radius:10px;width:36px;height:36px;display:grid;place-items:center;cursor:pointer;color:var(--ink-2)}
+  .wrap{padding-block:22px calc(96px + env(safe-area-inset-bottom,0px))}
+  .bottombar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));gap:2px}
+  .bottombar .tab,.bottombar .mbtn{flex:1;flex-direction:column;gap:2px;padding:6px 2px;font-size:.68rem;text-align:center;justify-content:center;align-items:center;border-radius:10px}
+  .bottombar .mbtn{display:flex;border:0;background:transparent;color:var(--ink-2);cursor:pointer;font-weight:600}
+  .bottombar .tab .badge{display:none}
+  .home-hero{grid-template-columns:1fr}
   .prac,.dg-layout{grid-template-columns:1fr}
   .side{position:static}
   .grid2,.principles{grid-template-columns:1fr}
+  .ex-body{grid-template-columns:1fr}
+  .ex-nav{position:static;order:2}
+  .ex-top{top:calc(56px + env(safe-area-inset-top,0px))}
+  .tp-row{grid-template-columns:1fr 62px}
+  .tp-row .bar{grid-column:1/-1;order:3}
+  .hero-pen{display:none}
+}
+@media (max-width:520px){
+  .tiles{grid-template-columns:1fr 1fr}
+  .ex-meta .bar{display:none}
+  .omr-cols{grid-template-columns:1fr 1fr;gap:6px 14px}
+  .omr-row{gap:4px}
+  .omr-b{width:21px;height:21px;font-size:.56rem}
+  .omr-n{width:22px;font-size:.74rem}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -280,32 +470,73 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
 
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <div class="brand"><b>AP Stats 기말 노트</b><span>2026-2 · AP STATISTICS I</span></div>
-    <nav class="tabs" role="tablist" aria-label="섹션">
-      <button class="tab" role="tab" id="tab-learn" data-tab="learn" aria-selected="true">개념 정리</button>
-      <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false">문제 풀기</button>
-      <button class="tab" role="tab" id="tab-diagram" data-tab="diagram" aria-selected="false">실험 설계도</button>
-      <button class="tab" role="tab" id="tab-cards" data-tab="cards" aria-selected="false">용어 카드</button>
-    </nav>
+<div class="app">
+<aside class="sidebar" id="sidebar" aria-label="메뉴">
+  <div class="sb-brand">
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="4.5" height="9" rx="1.2" fill="#DEF247"/><rect x="9.75" y="7" width="4.5" height="14" rx="1.2" fill="#fff"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.2" fill="#DEF247"/></svg></span>
+    <div><b>AP Stats 기말 노트</b><span>2026-2 · AP STATISTICS I</span></div>
   </div>
+  <nav class="sb-nav" role="tablist" aria-label="섹션">
+    <button class="tab" role="tab" id="tab-home" data-tab="home" aria-selected="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>홈</button>
+    <p class="sb-label">학습</p>
+    <button class="tab" role="tab" id="tab-learn" data-tab="learn" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3z"/><path d="M4 17a3 3 0 013-3h12"/></svg>개념 정리</button>
+    <div class="sb-sub" role="group" aria-label="단원">
+      <button class="unit" data-unit="samp" aria-pressed="true">Ch.3 자료 수집·표본추출</button>
+      <button class="unit" data-unit="exp" aria-pressed="false">실험 설계</button>
+      <button class="unit" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
+      <button class="unit" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
+      <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값</button>
+    </div>
+    <p class="sb-label">연습</p>
+    <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제 풀기<span class="badge" id="sbPrac"></span></button>
+    <button class="tab" role="tab" id="tab-exam" data-tab="exam" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.4"/><circle cx="15" cy="9" r="1.4"/><circle cx="9" cy="15" r="1.4"/><circle cx="15" cy="15" r="1.4"/></svg>실전 모의고사<span class="badge" id="sbExam">OMR</span></button>
+    <p class="sb-label">도구</p>
+    <button class="tab" role="tab" id="tab-diagram" data-tab="diagram" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="5" rx="1"/><rect x="15" y="3" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M9 6.5h3v11h3M12 5.5h3"/></svg>실험 설계도</button>
+    <button class="tab" role="tab" id="tab-cards" data-tab="cards" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 012 2v12"/></svg>용어 카드</button>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-prog" id="sbProg"></div>
+    <button class="theme-btn" id="themeBtn" type="button"><svg class="ic" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span id="themeLbl">화면 모드</span></button>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+<div class="stage">
+<header class="mbar">
+  <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="4.5" height="9" rx="1.2" fill="#DEF247"/><rect x="9.75" y="7" width="4.5" height="14" rx="1.2" fill="#fff"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.2" fill="#DEF247"/></svg></span>
+  <b>AP Stats 기말 노트</b>
+  <button class="iconbtn" id="themeBtn2" type="button" aria-label="화면 모드 전환"><svg class="ic" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg></button>
 </header>
-
 <main class="wrap">
+
+<!-- ============ 홈 ============ -->
+<section class="panel" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+  <div class="home-hero">
+    <div class="hero-card">
+      <p class="eyebrow">Chap 3 · Experiments · Chap 4 Probability</p>
+      <h1>기말고사까지,<br><span class="mk">한 문제씩.</span></h1>
+      <p class="hero-sub" id="homeSub"></p>
+      <div class="hero-cta">
+        <button class="btn lime" data-go="exam" id="homeExam">실전 모의고사 시작</button>
+        <button class="btn" data-go="practice" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.35)" id="homePrac">문제 풀기</button>
+      </div>
+      <p class="hero-pen">CRD 그리는 거<br>기말고사 나온다!</p>
+    </div>
+    <div class="tiles" id="homeTiles"></div>
+  </div>
+  <h3 class="h-sec">단원별 진행</h3>
+  <div class="unit-grid" id="unitGrid"></div>
+</section>
+
+
 
 <!-- ============ 개념 정리 ============ -->
 <section class="panel" id="panel-learn" role="tabpanel" aria-labelledby="tab-learn">
-  <div class="hero">
-    <div>
-      <p class="eyebrow">Chap 3 Collecting Data · Experiments · Chap 4 Probability</p>
-      <h1>표본추출, <span class="mk">실험 설계</span>, 확률을<br>노트 한 권으로 정리</h1>
-      <div class="stats" id="heroStats"></div>
-    </div>
-    <p class="note">완전 무작위 설계(CRD)<br>그리는 거 기말고사 나온다!</p>
+  <div class="page-head">
+    <p class="eyebrow">개념 정리</p>
+    <h2>표본추출 · 실험 설계 · 확률</h2>
+    <p class="lead">프린트 필기를 단원별로 정리했습니다. <span class="pen">CRD 그리는 거 기말고사 나온다!</span></p>
   </div>
-
-  <div class="subnav" role="group" aria-label="단원">
+  <div class="subnav strip" role="group" aria-label="단원">
     <button class="chip" data-unit="samp" aria-pressed="true">Ch.3 자료 수집·표본추출</button>
     <button class="chip" data-unit="exp" aria-pressed="false">실험 설계</button>
     <button class="chip" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
@@ -882,6 +1113,12 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
   </div>
 </section>
 
+
+<!-- ============ 실전 모의고사 (OMR) ============ -->
+<section class="panel" id="panel-exam" role="tabpanel" aria-labelledby="tab-exam" hidden>
+  <div id="exArea"></div>
+</section>
+
 <!-- ============ 실험 설계도 ============ -->
 <section class="panel" id="panel-diagram" role="tabpanel" aria-labelledby="tab-diagram" hidden>
   <div class="sec-head" style="margin-bottom:6px"><h2>실험 설계도 그리기</h2></div>
@@ -949,6 +1186,16 @@ textarea.open{width:100%;min-height:96px;margin-top:16px;border:1px solid var(--
 </section>
 
 </main>
+</div>
+<nav class="bottombar" aria-label="빠른 이동">
+  <button class="tab" data-tab="home" aria-selected="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>홈</button>
+  <button class="tab" data-tab="learn" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3z"/><path d="M4 17a3 3 0 013-3h12"/></svg>개념</button>
+  <button class="tab" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제</button>
+  <button class="tab" data-tab="exam" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.4"/><circle cx="15" cy="9" r="1.4"/><circle cx="9" cy="15" r="1.4"/><circle cx="15" cy="15" r="1.4"/></svg>모의고사</button>
+  <button class="mbtn" id="menuBtn" type="button" aria-label="메뉴 열기"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>메뉴</button>
+</nav>
+</div>
+
 
 <script>
 (function(){
@@ -960,8 +1207,10 @@ const R=s=>`<span class="mr">${s}</span>`;
 
 /* ---------- storage ---------- */
 const KEY="apstat-notes-v1";
-let store={answers:{},known:[],stars:[],tab:"learn"};
+let store={answers:{},known:[],stars:[],tab:"home",unit:"samp",exam:{}};
 try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){}
+store.exam=Object.assign({ans:{},frq:{},flags:[],cur:1,sec:0,phase:"intro",name:""},store.exam||{});
+if(!Array.isArray(store.stars)) store.stars=[];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
 
 /* ---------- vocabulary (shared by table + cards) ---------- */
@@ -1259,11 +1508,7 @@ function renderScore(){
   }).join("");
   renderHeroStats();
 }
-function renderHeroStats(){
-  const a=store.answers, done=Q.filter(q=>a[q.id]).length, right=Q.filter(q=>a[q.id]&&a[q.id].status==="right").length;
-  const wrong=done-right;
-  $("#heroStats").innerHTML=`<div class="stat"><b>${Q.length}</b><span>연습 문제</span></div><div class="stat"><b>${done}</b><span>푼 문제</span></div><div class="stat"><b>${done?Math.round(right/done*100):0}%</b><span>정답률</span></div><div class="stat"><b>${wrong}</b><span>다시 볼 문제</span></div>`;
-}
+function renderHeroStats(){renderShellStats();}
 function renderGrid(){
   $("#qgrid").innerHTML=list.map((q,i)=>{
     const st=store.answers[q.id]?store.answers[q.id].status:"";
@@ -1380,29 +1625,37 @@ $("#resetAll").addEventListener("click",e=>{
 });
 
 /* ---------- tabs ---------- */
-const TABS=["learn","practice","diagram","cards"];
+const TABS=["home","learn","practice","exam","diagram","cards"];
+const UNITK=["samp","exp","prob","cond","rv"];
 function showTab(name,push){
-  if(!TABS.includes(name)) name="learn";
+  if(!TABS.includes(name)) name="home";
   $$(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===name));
   TABS.forEach(n=>{$("#panel-"+n).hidden=n!==name;});
   store.tab=name; save();
   if(push){try{history.replaceState(null,"","#"+name);}catch(e){}}
   if(name==="learn") drawLLN();
+  if(name==="exam") exRender();
+  if(name==="home") renderShellStats();
+  document.body.classList.remove("nav-open");
   window.scrollTo({top:0});
 }
+function showUnit(u){
+  if(!UNITK.includes(u)) u="samp";
+  $$("[data-unit]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.unit===u));
+  UNITK.forEach(k=>{$("#unit-"+k).hidden=k!==u;});
+  store.unit=u; save();
+  if(u==="prob") drawLLN();
+  if(u==="cond") renderBayes();
+  if(u==="rv") renderEV();
+}
 $$(".tab").forEach(t=>t.addEventListener("click",()=>showTab(t.dataset.tab,true)));
+$$("[data-unit]").forEach(b=>b.addEventListener("click",()=>{showTab("learn",true);showUnit(b.dataset.unit);}));
 document.addEventListener("click",e=>{
-  const g=e.target.closest("[data-go]"); if(!g) return;
-  showTab(g.dataset.go,true);
-  if(g.dataset.filter) applySet(g.dataset.filter);
+  const g=e.target.closest("[data-go]");
+  if(g){showTab(g.dataset.go,true);if(g.dataset.filter)applySet(g.dataset.filter);return;}
+  const ug=e.target.closest("[data-unit-go]");
+  if(ug){showTab("learn",true);showUnit(ug.dataset.unitGo);}
 });
-$$(".subnav [data-unit]").forEach(b=>b.addEventListener("click",()=>{
-  $$(".subnav [data-unit]").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  ["samp","exp","prob","cond","rv"].forEach(u=>{$("#unit-"+u).hidden=b.dataset.unit!==u;});
-  if(b.dataset.unit==="prob") drawLLN();
-  if(b.dataset.unit==="cond") renderBayes();
-  if(b.dataset.unit==="rv") renderEV();
-}));
 
 /* ---------- random digit table reader ---------- */
 function renderRD(){
@@ -1734,12 +1987,533 @@ document.addEventListener("keydown",e=>{
   else if(e.key===" "&&document.activeElement.id!=="flash"){e.preventDefault();$("#flash").classList.toggle("flipped");}
 });
 
+/* ---------- 실전 모의고사 데이터 (prob#1) ---------- */
+const TOPICS={basic:"확률 계산 (합·곱·여사건)",cond:"조건부확률·베이즈",indep:"독립·배반",interp:"확률의 해석·큰 수의 법칙",sim:"시뮬레이션·표본공간",dist:"분포·표·그래프"};
+const XT=(rows,o={})=>{
+  const cap=o.cap?`<caption>${o.cap}</caption>`:"";
+  const body=rows.map((r,ri)=>`<tr>${r.map((c,ci)=>{
+    const head=(o.head!==false&&ri===0)||(o.rh&&ci===0);
+    return `<${head?"th":"td"}${(o.rh&&ci===0)?' class="rh"':""}>${c}</${head?"th":"td"}>`;}).join("")}</tr>`).join("");
+  return `<table class="xt">${cap}${body}</table>`;
+};
+function xchart(o){
+  const W=o.w||470,H=o.h||250,L=58,R=16,Tp=o.title?36:18,B=58;
+  const iw=W-L-R, ih=H-Tp-B, bw=iw/o.x.length, fmt=o.fmt||(v=>String(v));
+  let s=`<svg class="xchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||"막대그래프"}">`;
+  if(o.title) s+=`<text class="ct" x="${W/2}" y="20" text-anchor="middle">${o.title}</text>`;
+  for(let v=0;v<=o.max+1e-9;v+=o.step){const y=Tp+ih-v/o.max*ih; s+=`<line class="cg" x1="${L}" x2="${W-R}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}"/><text x="${L-7}" y="${(y+4).toFixed(1)}" text-anchor="end">${fmt(+v.toFixed(3))}</text>`;}
+  o.y.forEach((v,i)=>{const h=v/o.max*ih,x=L+i*bw+bw*.12,w=bw*.76,y=Tp+ih-h;
+    s+=`<rect class="cb" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(h,0).toFixed(2)}"/>`;
+    if(v>0) s+=`<text class="cv" x="${(x+w/2).toFixed(1)}" y="${(y-5).toFixed(1)}" text-anchor="middle">${o.lab?o.lab(v):v}</text>`;
+    s+=`<text x="${(x+w/2).toFixed(1)}" y="${Tp+ih+16}" text-anchor="middle">${o.x[i]}</text>`;});
+  if(o.xl) s+=`<text class="cl" x="${L+iw/2}" y="${H-12}" text-anchor="middle">${o.xl}</text>`;
+  if(o.yl) s+=`<text class="cl" transform="translate(14 ${Tp+ih/2}) rotate(-90)" text-anchor="middle">${o.yl}</text>`;
+  return s+"</svg>";
+}
+const f3=v=>v.toFixed(3), f2=v=>v.toFixed(2), f1=v=>v.toFixed(1);
+const miniT=(h)=>`<div class="mini-t">${h}</div>`;
+const PS_=(s)=>`<i>P</i>(${s})`;
+const EXAM=[
+{n:1,topic:"basic",q:`According to a report for veterinarians in the United States, 36.5 percent of households in the United States own dogs and 30.4 percent of households in the United States own cats. If one household in the United States is selected at random, what is the probability that the selected household will own a dog or a cat?`,
+ c:["0.331","0.558","0.669","Not enough information is given to determine the probability."],a:3,
+ e:`P(개 또는 고양이) = P(개) + P(고양이) − P(둘 다) 인데 <b>둘 다 키우는 가구의 비율</b>을 알 수 없습니다. 배반이라는 정보도, 독립이라는 정보도 없으니 계산할 수 없어요. (0.669는 배반일 때, 0.558은 독립일 때의 값)`},
+{n:2,topic:"basic",q:`A complex electronic device contains three components, A, B, and C. The probabilities of failure for each component in any one year are 0.01, 0.03, and 0.04, respectively. If any one component fails, the device will fail. If the components fail independently of one another, what is the probability that the device will <b>not</b> fail in one year?`,
+ c:["Less than 0.01","0.080","0.922","Greater than 0.99"],a:2,
+ e:`세 부품이 모두 고장 나지 않아야 합니다. 독립이므로 곱합니다: 0.99 × 0.97 × 0.96 ≈ <b>0.922</b>. (0.080은 고장 확률을 단순히 더한 값)`},
+{n:3,topic:"basic",q:`A contestant's final winnings on a game show are determined by a random selection of a base amount and a possible multiplier. For the base amount, the contestant randomly selects one of four cards, where two cards are marked $1,000, one card is marked $2,000, and one card is marked $5,000. After choosing the card, the contestant randomly selects one of five chips, where three chips are red and two chips are white. If the selected chip is red, the contestant's final winnings are twice the value of the base amount. If the selected chip is white, the contestant's final winnings are the value of the base amount.<br>What is the probability that a contestant's final winnings are exactly $2,000?`,
+ c:["0.100","0.250","0.325","0.400"],a:3,
+ e:`최종 상금이 $2,000이 되는 경우는 두 가지입니다.<br>① 기본 $1,000 카드(2/4)이고 빨간 칩(3/5, 2배): 0.5 × 0.6 = 0.30<br>② 기본 $2,000 카드(1/4)이고 흰 칩(2/5, 1배): 0.25 × 0.4 = 0.10<br>두 경우는 배반이므로 더하면 <b>0.40</b>.`},
+{n:4,topic:"indep",q:`Ali surveyed 200 students at a school and recorded the eye color and the gender of each student. Of the 80 male students who were surveyed, 60 had brown eyes. If eye color and gender are independent, how many female students surveyed would be expected to have brown eyes?`,
+ c:["20","30","90","100"],a:2,
+ e:`남학생 중 갈색 눈 비율 = 60/80 = 0.75. 독립이면 여학생도 같은 비율이어야 합니다. 여학생은 200 − 80 = 120명 → 120 × 0.75 = <b>90명</b>.`},
+{n:5,topic:"cond",q:`All bags entering a research facility are screened. Ninety-seven percent of the bags that contain forbidden material trigger an alarm. Fifteen percent of the bags that do not contain forbidden material also trigger the alarm. If 1 out of every 1,000 bags entering the building contains forbidden material, what is the probability that a bag that triggers the alarm will actually contain forbidden material?`,
+ c:["0.00097","0.00640","0.14550","0.97000"],a:1,
+ e:`베이즈 정리: P(금지물|경보) = (0.97 × 0.001) / (0.97 × 0.001 + 0.15 × 0.999) = 0.00097 / 0.15082 ≈ <b>0.0064</b>. 금지물이 아주 드물어서 경보가 울려도 대부분 위양성입니다.`},
+{n:6,topic:"cond",q:`The following table shows the classification of all 51 dogs from an animal shelter by whether the dogs lived mostly outdoors or mostly indoors before coming to the shelter and whether they tested positive or negative for a certain skin condition.`,
+ fig:XT([["","Positive","Negative","Total"],["Mostly Outdoors",10,20,30],["Mostly Indoors",8,13,21],["Total",18,33,51]],{rh:true}),
+ q2:`One dog from the animal shelter will be selected at random. Based on the table, which of the following statements is correct?`,
+ c:["The probability of selecting a dog that lived mostly indoors is greater than 0.5.","The probability of selecting a dog that tested positive is greater than the probability of selecting a dog that tested negative.","The probability of selecting a dog that tested positive given that the dog lived mostly outdoors is less than the probability of selecting a dog that tested positive given that the dog lived mostly indoors.","The probability of selecting a dog that lived mostly outdoors given that the dog tested positive is greater than the probability of selecting a dog that lived mostly outdoors given that the dog tested negative."],a:2,
+ e:`(A) 실내 21/51 ≈ 0.41 &lt; 0.5 ✗ &nbsp;(B) 양성 18 &lt; 음성 33 ✗<br>(C) P(양성|실외) = 10/30 ≈ 0.333, P(양성|실내) = 8/21 ≈ 0.381 → 앞이 더 작음 ✓<br>(D) P(실외|양성) = 10/18 ≈ 0.556, P(실외|음성) = 20/33 ≈ 0.606 → 앞이 더 작음 ✗`},
+{n:7,topic:"basic",q:`A police officer is using a radar device to check motorists' speeds. Prior to beginning the speed check, the officer estimates that 40 percent of motorists will be driving more than 5 miles per hour over the speed limit. Assuming that the police officer's estimate is correct, what is the probability that among 4 randomly selected motorists, the officer will find at least 1 motorist driving more than 5 miles per hour over the speed limit?`,
+ c:["0.1296","0.3456","0.8704","0.9744"],a:2,
+ e:`적어도 1명 = 1 − (4명 모두 아님) = 1 − 0.6⁴ = 1 − 0.1296 = <b>0.8704</b>.`},
+{n:8,topic:"indep",q:`A high school science teacher has 78 students. Of those students, 35 are in the band and 32 are on a sports team. There are 16 students who are <b>not</b> in the band or on a sports team. One student from the 78 students will be selected at random. Let event <i>B</i> represent the event of selecting a student in the band, and let event <i>S</i> represent the event of selecting a student on a sports team.<br>Are <i>B</i> and <i>S</i> mutually exclusive events?`,
+ c:[`No, because <i>P</i>(<i>B</i> ∩ <i>S</i>) = ${F(5,78)}.`,`No, because <i>P</i>(<i>B</i> ∩ <i>S</i>) = ${F(48,78)}.`,`No, because <i>P</i>(<i>B</i> ∩ <i>S</i>) = ${F(62,78)}.`,`Yes, because <i>P</i>(<i>B</i> ∩ <i>S</i>) = ${F(5,78)}.`],a:0,
+ e:`밴드 또는 운동부인 학생 = 78 − 16 = 62명. 교집합 = 35 + 32 − 62 = 5명 → P(B∩S) = 5/78 ≠ 0 이므로 <b>배반이 아닙니다</b>. (배반이려면 P(B∩S) = 0)`},
+{n:9,topic:"interp",q:`A financial analyst reports that for people who work in the finance industry, the probability that a randomly selected person will have a tattoo is 0.20.<br>Which of the following is the best interpretation of the probability 0.20 ?`,
+ c:["For all workers in the United States, 20% will work in finance.","For all finance workers, 20% will have a tattoo.","For all people with tattoos, 20% will work in finance.","For a specific group of 5 finance workers, 1 will have a tattoo."],a:1,
+ e:`0.20은 "금융업 종사자"라는 조건 안에서의 비율(장기 상대도수)입니다. 금융업 종사자 전체의 20%가 문신이 있다는 (B). (D)처럼 5명 중 정확히 1명이라는 뜻은 아니에요.`},
+{n:10,topic:"indep",fig:XT([["","Team","",""],["","Home","Away","Total"],["Purchased food",120,40,160],["Did not purchase food",60,30,90],["Total",180,70,250]],{head:false,rh:true}),
+ q:`The table shows data that were collected from people who attended a certain high school basketball game and indicates the team each person rooted for and whether each of these people purchased food during the game. A person who attended the game will be selected at random. Which of the following correctly interprets mutually exclusive events represented by the table?`,
+ c:["Rooting for the home team and rooting for the away team","Rooting for the home team and purchasing food during the game","Rooting for the home team and <u>not</u> purchasing food during the game","<u>Not</u> rooting for the home team and <u>not</u> purchasing food during the game"],a:0,
+ e:`한 사람이 홈팀과 원정팀을 <b>동시에 응원할 수 없으므로</b> 두 사건은 배반입니다. 나머지는 표에 겹치는 사람이 있어요. (B) 홈팀 & 음식 구매 120명, (C) 홈팀 & 구매 안 함 60명 …`},
+{n:11,topic:"sim",q:`In a certain population of birds, about 40 percent of the birds have a wingspan greater than 10 inches. Biologists studying the birds will create a simulation with random numbers to estimate the probability of finding one bird in a sample of six birds with a wingspan greater than 10 inches.<br>Which of the following assignments of the digits 0 to 9 will model the population?`,
+ c:["Let the even digits represent birds with a wingspan greater than 10 inches and the odd digits represent birds with a wingspan less than or equal to 10 inches.","Let the digits from 0 to 2 represent birds with a wingspan greater than 10 inches and the remaining digits represent birds with a wingspan less than or equal to 10 inches.","Let the digits from 0 to 3 represent birds with a wingspan greater than 10 inches and the remaining digits represent birds with a wingspan less than or equal to 10 inches.","Let the digits from 0 to 4 represent birds with a wingspan greater than 10 inches and the remaining digits represent birds with a wingspan less than or equal to 10 inches."],a:2,
+ e:`숫자 0~9는 10개이므로 40%에 해당하는 <b>4개 숫자(0~3)</b>를 날개폭 10인치 초과에 배정해야 합니다. (A) 50%, (B) 30%, (D) 50%.`},
+{n:12,topic:"indep",q:`At a local elementary school, 35 percent of all students have brown eyes, 45 percent have brown hair, and 60 percent have brown eyes or brown hair. A student will be selected at random from the school. Let <i>E</i> represent the event that the selected person has brown eyes, and let <i>H</i> represent the event that the selected person has brown hair.<br>Are <i>E</i> and <i>H</i> mutually exclusive events?`,
+ c:["Yes, because <i>P</i>(<i>E</i> ∩ <i>H</i>) = 0.2.","Yes, because <i>P</i>(<i>E</i> ∩ <i>H</i>) = 0.6.","No, because <i>P</i>(<i>E</i> ∩ <i>H</i>) = 0.2.","No, because <i>P</i>(<i>E</i> ∩ <i>H</i>) = 0.6."],a:2,
+ e:`P(E∩H) = P(E) + P(H) − P(E∪H) = 0.35 + 0.45 − 0.60 = 0.20 ≠ 0 → <b>배반이 아님</b>.`},
+{n:13,topic:"basic",q:`At a sporting event, cheerleaders will throw 50 bundled T-shirts into the crowd. The T-shirt sizes consist of 10 small, 15 medium, and the remainder either large or extra large. Suppose Ana catches a T-shirt. What is the probability that she will catch a T-shirt that is <u>not</u> a size small?`,
+ c:["0.20","0.50","0.67","0.80"],a:3,
+ e:`작지 않은 티셔츠 = 50 − 10 = 40장 → 40/50 = <b>0.80</b>. (여사건: 1 − 10/50)`},
+{n:14,topic:"basic",q:`A middle school chess club has 5 members: Adam, Bradley, Carol, Dave, and Ella. Two students from the club will be selected at random to participate in the county chess tournament. What is the probability that Adam and Ella will be selected?`,
+ c:[F(1,20),F(1,10),F(1,8),F(1,4)],a:1,
+ e:`5명 중 2명을 뽑는 경우의 수 = <sub>5</sub>C<sub>2</sub> = 10가지, 그중 Adam과 Ella가 뽑히는 경우는 1가지 → <b>1/10</b>.`},
+{n:15,topic:"indep",q:`A prize game at a circus has a spinner with 12 sections, where each section is equally likely to be selected when the spinner is spun. There are 7 blue sections and 5 orange sections. Camille has spun the spinner 4 times and the pattern of outcomes was orange, blue, orange, blue. Camille will spin the spinner two more times.<br>Which of the following statements is true?`,
+ c:["On Camille's fifth spin of the spinner, the probability that the spinner will land in a blue-colored section is equal to the probability that the spinner will land in an orange-colored section.","On Camille's fifth spin of the spinner, the probability that the spinner will land in a blue-colored section is less than the probability that the spinner will land in an orange-colored section.","On Camille's fifth and sixth spins of the spinner, the probability that the spinner will land in a blue-colored section for both spins is equal to the probability that the spinner will land in an orange-colored section for both spins.","On Camille's fifth and sixth spins of the spinner, the probability that the spinner will land in a blue-colored section for both spins is greater than the probability that the spinner will land in an orange-colored section for both spins."],a:3,
+ e:`스핀은 서로 독립이라 앞의 결과가 영향을 주지 않습니다. 한 번에 파랑 7/12 &gt; 주황 5/12 이고, 두 번 모두 파랑 (7/12)² = 49/144 &gt; 두 번 모두 주황 (5/12)² = 25/144 → <b>(D)</b>.`},
+{n:16,topic:"basic",q:`At Mike's favorite coffee shop, the coffee of the day is either a dark roast, a medium roast, or a light roast. From past experience, Mike knows that the probability of the coffee being a light roast is 0.15 and the probability of the coffee being a dark roast is 0.25.<br>What is the probability of the coffee of the day not being a light roast or a dark roast on the next day that Mike visits the coffee shop?`,
+ c:["0.15","0.25","0.40","0.60"],a:3,
+ e:`light 0.15 + dark 0.25 = 0.40 이므로 medium일 확률 = 1 − 0.40 = <b>0.60</b>.`},
+{n:17,topic:"sim",q:`Each person in a group of 20 people at a restaurant orders one meal, chosen from oatmeal, eggs, or pancakes, and one hot beverage, chosen from coffee or tea. One person will be selected at random from the 20 people.<br>What is the sample space for the meal and beverage for the person selected?`,
+ c:["{(oatmeal, eggs, pancakes), (coffee, tea)}","{oatmeal, coffee, pancakes, eggs, tea}","{(coffee, tea, oatmeal), (coffee, tea, eggs), (coffee, tea, pancakes)}","{(oatmeal, coffee), (oatmeal, tea), (eggs, coffee), (eggs, tea), (pancakes, coffee), (pancakes, tea)}"],a:3,
+ e:`표본공간은 가능한 (식사, 음료) <b>쌍을 모두 나열</b>한 것입니다. 식사 3가지 × 음료 2가지 = 6개의 순서쌍.`},
+{n:18,topic:"indep",q:`Events <i>D</i> and <i>E</i> are independent, with <i>P</i>(<i>D</i>) = 0.6 and <i>P</i>(<i>D</i> and <i>E</i>) = 0.18. Which of the following is true?`,
+ c:["<i>P</i>(<i>E</i>) = 0.12","<i>P</i>(<i>E</i>) = 0.4","<i>P</i>(<i>D</i> or <i>E</i>) = 0.72","<i>P</i>(<i>D</i> or <i>E</i>) = 0.9"],a:2,
+ e:`독립이므로 P(D and E) = P(D)P(E) → 0.18 = 0.6·P(E) → P(E) = 0.3. P(D or E) = 0.6 + 0.3 − 0.18 = <b>0.72</b>.`},
+{n:19,topic:"cond",q:`One student from a high school will be selected at random. Let <i>A</i> be the event that the selected student is a student athlete, and let <i>B</i> be the event that the selected student drives to school. If <i>P</i>(<i>A</i> ∩ <i>B</i>) = 0.08 and <i>P</i>(<i>B</i>|<i>A</i>) = 0.25, what is the probability that the selected student will be a student athlete?`,
+ c:["0.02","0.17","0.32","0.33"],a:2,
+ e:`P(B|A) = P(A∩B)/P(A) → P(A) = 0.08/0.25 = <b>0.32</b>.`},
+{n:20,topic:"cond",q:`Each of the faces of a fair six-sided number cube is numbered with one of the numbers 1 through 6, with a different number appearing on each face. Two such number cubes will be tossed, and the sum of the numbers appearing on the faces that land up will be recorded. What is the probability that the sum will be 4, given that the sum is less than or equal to 6 ?`,
+ c:[F(2,36),F(3,36),F(3,15),F(2,9)],a:2,
+ e:`합이 6 이하인 경우: 합 2(1가지) + 3(2) + 4(3) + 5(4) + 6(5) = 15가지. 그중 합이 4인 경우는 3가지 → <b>3/15</b>.`},
+{n:21,topic:"indep",q:`As a promotion, the first 50 customers who entered a certain store at a mall were asked to choose from one of two discounts. The first discount choice was 20% off all purchases made that day. The second discount choice was 10% off all purchases for the week. Of those who received the discounts, 28 chose the first discount and 22 chose the second discount. One customer will be selected at random from those who received a discount. Let <i>F</i> represent the event that the selected person chose the first discount, and let <i>S</i> represent the event that the selected person chose the second discount.<br>Are <i>F</i> and <i>S</i> mutually exclusive events?`,
+ c:["Yes, because <i>P</i>(<i>F</i> ∩ <i>S</i>) = 0.","Yes, because <i>P</i>(<i>F</i> ∩ <i>S</i>) = 0.12.","Yes, because <i>P</i>(<i>F</i> ∩ <i>S</i>) = 1.","No, because <i>P</i>(<i>F</i> ∩ <i>S</i>) = 0."],a:0,
+ e:`각 손님은 둘 중 <b>하나의 할인만</b> 선택했으므로 F와 S는 동시에 일어날 수 없습니다 → P(F∩S) = 0, 배반.`},
+{n:22,topic:"dist",q:`An online customer service department estimates that about 15 percent of callers have to wait more than 8 minutes to have their calls answered by a person. The department conducted a simulation of 1,000 trials to estimate the probabilities that a certain number of callers out of the next 10 callers will have to wait more than 8 minutes to have their calls answered. The simulation is shown in the following histogram.`,
+ fig:xchart({x:[0,1,2,3,4,5,6,7],y:[0.181,0.345,0.284,0.142,0.039,0.008,0,0.001],max:0.35,step:0.05,fmt:f2,lab:f3,xl:"Number of Callers",yl:"Relative Frequency",alt:"전화 대기 시뮬레이션 상대도수 히스토그램"}),
+ q2:`Based on the simulation, what is the probability that at most 2 of the next 10 callers will have to wait more than 8 minutes to have their calls answered?`,
+ c:["0.190","0.474","0.526","0.810"],a:3,
+ e:`"최대 2명" = 0명 + 1명 + 2명 = 0.181 + 0.345 + 0.284 = <b>0.810</b>.`},
+{n:23,topic:"indep",stem:`The probability that a customer at a large grocery store purchases dairy products (<i>D</i>) is 0.75. The probability that a customer at that same store purchases fresh vegetables (<i>V</i>) is 0.90. Assume that purchasing dairy products and fresh vegetables are independent events. A customer is selected at random.`,
+ q:`What is the probability that the customer purchased both dairy products and fresh vegetables?`,c:["0.150","0.675","0.975","1.650"],a:1,
+ e:`독립이므로 P(D∩V) = 0.75 × 0.90 = <b>0.675</b>.`},
+{n:24,topic:"indep",stem:`(23번과 같은 상황) 유제품(D) 구매 확률 0.75, 신선 채소(V) 구매 확률 0.90, 두 사건은 독립.`,
+ q:`What is the probability that the customer purchased dairy products or fresh vegetables?`,c:["0.150","0.675","0.975","1.650"],a:2,
+ e:`P(D∪V) = 0.75 + 0.90 − 0.675 = <b>0.975</b>. (1.650은 교집합을 빼지 않은 합 → 확률이 1을 넘을 수 없음)`},
+{n:25,topic:"indep",stem:`(23번과 같은 상황) 유제품(D) 구매 확률 0.75, 신선 채소(V) 구매 확률 0.90, 두 사건은 독립.`,
+ q:`Which of the following describes the relationship between Events <i>D</i> and <i>V</i>?`,
+ c:["Events <i>D</i> and <i>V</i> are mutually exclusive because <i>P</i>(<i>D</i> ∩ <i>V</i>) = 0.","Events <i>D</i> and <i>V</i> are not mutually exclusive because <i>P</i>(<i>D</i> ∩ <i>V</i>) = 0.","Events <i>D</i> and <i>V</i> are mutually exclusive because the events are independent.","Events <i>D</i> and <i>V</i> are not mutually exclusive because the events are independent."],a:3,
+ e:`P(D∩V) = 0.675 ≠ 0 이므로 배반이 아닙니다. 확률이 0이 아닌 두 독립 사건은 배반일 수 없어요. (C)는 "독립이라서 배반"이라는 틀린 이유, (B)는 P = 0이라는 틀린 수치.`},
+{n:26,topic:"cond",q:`For a lunch special at a high school cafeteria, students can choose either salad or fries as a side order. The table shows the number of each side order chosen for the lunch specials purchased on one day, classified by the grade of the student.`,
+ fig:XT([["","Grade 9","Grade 10","Grade 11","Grade 12","Total"],["Salad",37,34,21,28,120],["Fries",83,71,57,37,248],["Total",120,105,78,65,368]],{rh:true,cap:"Lunch Side Orders Grouped by Grade Level"}),
+ q2:`From those who purchased the lunch special that day, one student will be selected at random. What is the probability that the student selected will be in grade 10 given that the student chose fries as the side order?`,
+ c:[F(71,368),F(71,248),F(71,105),F(248,368)],a:1,
+ e:`조건 "튀김을 선택" → 분모는 튀김 합계 248명, 그중 10학년 71명 → <b>71/248</b>.`},
+{n:27,topic:"indep",q:`The students at a certain school have an elective period, when each student chooses an elective from among four options. The table shows the number of students who selected each elective for the 1,500 students at the school.`,
+ fig:XT([["Art","Music","Physical Education","Engineering","Total"],[385,365,380,370,"1,500"]],{cap:"Student Elective Choices"}),
+ q2:`One student from the school will be selected at random. What is the probability that the selected student chose the art elective and the music elective?`,
+ c:["0",F(365,750),F(750,"1,500"),F(385,750)],a:0,
+ e:`각 학생은 선택과목을 <b>하나만</b> 고르므로 미술과 음악을 동시에 고를 수 없습니다 → <b>0</b>.`},
+{n:28,topic:"basic",q:`For flights from a particular airport in January, there is a 30 percent chance of a flight being delayed because of icy weather. If a flight is delayed because of icy weather, there is a 10 percent chance the flight will also be delayed because of a mechanical problem. If a flight is not delayed because of icy weather, there is a 5 percent chance that it will be delayed because of a mechanical problem. If one flight is selected at random from the airport in January, what is the probability that the flight selected will have at least one of the two types of delays?`,
+ c:["0.065","0.335","0.350","0.450"],a:1,
+ e:`적어도 하나 = 1 − P(결빙 지연 없음 & 정비 지연 없음) = 1 − (0.70)(0.95) = 1 − 0.665 = <b>0.335</b>. (또는 0.30 + 0.70 × 0.05 = 0.335)`},
+{n:29,topic:"basic",q:`The probability that a particular electrical component operates successfully is ${F(3,4)}. An electrical system consists of three such components that operate independently. The system will function successfully if at least one of the three components operates successfully.<br>What is the probability that the system will function successfully?`,
+ c:[F(1,64),F(27,64),F(37,64),F(63,64)],a:3,
+ e:`적어도 하나 작동 = 1 − P(셋 다 고장) = 1 − (1/4)³ = <b>63/64</b>. (27/64는 셋 다 작동할 확률)`},
+{n:30,topic:"cond",q:`A fair coin will be tossed three times. The set of possible outcomes may be described by the ordered triples {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}, where H represents heads and T represents tails.<br>What is the probability that all three tosses result in heads, given that the three tosses result in more heads than tails?`,
+ c:[F(1,8),F(1,4),F(3,8),F(1,2)],a:1,
+ e:`앞면이 더 많은 경우: HHH, HHT, HTH, THH → 4가지. 그중 HHH는 1가지 → <b>1/4</b>.`},
+{n:31,topic:"interp",q:`A fair die with its faces numbered from 1 to 6 will be rolled. Which of the following is the best interpretation of the probability that the number landing face up will be less than 3 ?`,
+ c:[`For many rolls of the die, the long-run relative frequency of a number less than 3 landing face up is ${F(1,3)}.`,`For many rolls of the die, the long-run relative frequency of a number less than 3 landing face up is ${F(1,2)}.`,`For many rolls of the die, the long-run relative frequency of a number less than 3 landing face up is ${F(2,3)}.`,"For three rolls of the die, a number less than 3 will land face up one time."],a:0,
+ e:`3 미만은 {1, 2} → 2/6 = 1/3. 확률은 <b>많이 반복했을 때의 장기 상대도수</b>로 해석합니다. (D)처럼 세 번 굴리면 정확히 한 번이라는 뜻이 아니에요.`},
+{n:32,topic:"sim",q:`Mateo plays on his school basketball team. From past history, he knows that his probability of making a basket on a free throw is 0.8. Suppose he wants to create a simulation using random numbers to estimate the probability of making at least 3 baskets on his next 5 free throw attempts. Which of the following assignments of the digits 0 to 9 could be used for the simulation?`,
+ c:["Let the digits 0 and 1 represent making a basket and the digits from 2 to 9 represent not making a basket.","Let the digits from 0 to 3 represent making a basket and the digits from 4 to 9 represent not making a basket.","Let the digits from 0 to 6 represent making a basket and the digits from 7 to 9 represent not making a basket.","Let the digits from 0 to 7 represent making a basket and the digits 8 and 9 represent not making a basket."],a:3,
+ e:`성공 확률 0.8 → 10개 숫자 중 <b>8개(0~7)</b>를 성공에 배정해야 합니다.`},
+{n:33,topic:"basic",q:`Amy has 12 brown golf tees, 8 white golf tees, 10 red golf tees, 6 blue golf tees, and 12 green golf tees in her golf bag. She selects one of the tees from the bag at random. What is the probability that the selected tee is not brown or blue?<br><span style="font-size:.9rem;color:var(--ink-3)">tees: small peg of wood or plastic used to hold a golf ball</span>`,
+ c:[F(3,8),F(5,8),F(3,4),F(7,8)],a:1,
+ e:`전체 12 + 8 + 10 + 6 + 12 = 48개. 갈색 또는 파랑 = 18개이므로 "둘 다 아님" = 30개 → <b>30/48 = 5/8</b>. ("not (brown or blue)"로 읽은 풀이)`},
+{n:34,topic:"cond",q:`The seniors at three high schools were surveyed about their plans after graduation. The following table shows the responses, classified by high school.`,
+ fig:XT([["","Work","Military","College","Undecided","Total"],["High School A",99,49,138,63,349],["High School B",62,26,156,54,298],["High School C",83,31,124,71,309],["Total",244,106,418,188,956]],{rh:true}),
+ q2:`One senior from the high schools will be selected at random. What is the probability that the senior selected will <u>not</u> be from High School B given that the senior responded with a choice other than college?`,
+ c:[F(538,956),F(262,418),F(658,956),F(396,538)],a:3,
+ e:`조건: 대학 이외의 응답 = 956 − 418 = 538명. 그중 High School B = 298 − 156 = 142명 → B가 아닌 사람 = 538 − 142 = 396명 → <b>396/538</b>.`},
+{n:35,topic:"dist",q:`The number of points, <i>X</i>, scored in a game has the probability distribution below.`,
+ fig:xchart({x:[0,1,2],y:[0.4,0.3,0.3],max:0.5,step:0.1,fmt:f1,lab:f1,xl:"X",yl:"Probability",w:330,alt:"X의 확률분포 막대그래프"}),
+ q2:`The number of points obtained in one game is independent of the number of points obtained in a second game. When the game is played twice, the sum of the number of points for both times could be 0, 1, 2, 3, or 4. If <i>Y</i> represents the sampling distribution of the sum of the scores when the game is played twice, for which value of <i>Y</i> will the probability be greatest?`,
+ c:["0","2","3","4"],a:1,
+ e:`그래프에서 P(0) = 0.4, P(1) = 0.3, P(2) = 0.3. 두 게임의 합 Y:<br>P(0) = 0.16, P(1) = 2(0.4)(0.3) = 0.24, P(2) = 2(0.4)(0.3) + 0.3² = <b>0.33</b>, P(3) = 2(0.3)(0.3) = 0.18, P(4) = 0.09 → Y = 2가 가장 큽니다.`},
+{n:36,topic:"dist",q:`A consumer group is investigating the number of flights at a certain airline that are overbooked. They conducted a simulation to estimate the probability of overbooked flights in the next five flights. The results of 1,000 trials are shown in the histogram.`,
+ fig:xchart({x:[0,1,2,3,4,5],y:[0.007,0.049,0.181,0.317,0.332,0.114],max:0.35,step:0.05,fmt:f2,lab:f3,xl:"Number of Overbooked Flights",yl:"Relative Frequency",title:"Simulation to Estimate the Probability of the Next Five Flights Being Overbooked",w:560,alt:"초과 예약 항공편 수 시뮬레이션 히스토그램"}),
+ q2:`Based on the histogram, what is the probability that at least 4 of the next 5 flights at the airline will be overbooked?<br><span style="font-size:.9rem;color:var(--ink-3)">overbooked: not enough airplane seats on that flight for all of the passengers with tickets for that flight</span>`,
+ c:["0.114","0.332","0.446","0.886"],a:2,
+ e:`"적어도 4개" = 4개 + 5개 = 0.332 + 0.114 = <b>0.446</b>.`},
+{n:37,topic:"basic",q:`In a hockey all-star game, the Division Y all-star players compete against the Division Z all-star players.<br>The Division Y team has: 8 players from Country K, 14 players from Country L, 2 players from Country M.<br>The Division Z team has: 12 players from Country K, 8 players from Country L, 4 players from Country M.<br>If one player is randomly selected from the Division Y team and one player is randomly selected from the Division Z team, what is the probability that neither player is from Country L?`,
+ c:[F(112,576),F(160,576),F(464,576),F(676,"2,304")],a:1,
+ e:`두 선택은 독립입니다. Y팀(24명)에서 L국이 아닌 선수 = 10명 → 10/24, Z팀(24명)에서 L국이 아닌 선수 = 16명 → 16/24. 곱 = 160/576 → <b>(B)</b>.`},
+{n:38,topic:"basic",q:`In a certain school, 17 percent of the students are enrolled in a psychology course, 28 percent are enrolled in a foreign language course, and 32 percent are enrolled in either a psychology course or a foreign language course or both. What is the probability that a student chosen at random from this school will be enrolled in both a foreign language course and a psychology course?`,
+ c:["0.32","0.20","0.13","0.05"],a:2,
+ e:`덧셈 공식: P(둘 다) = P(심리) + P(외국어) − P(둘 중 하나 이상) = 0.17 + 0.28 − 0.32 = <b>0.13</b>.`},
+{n:39,topic:"indep",q:`The SC Electric Company has bid on two electrical wiring jobs. The owner of the company believes that<br>• the probability of being awarded the first job (event <i>A</i>) is 0.75;<br>• the probability of being awarded the second job (event <i>B</i>) is 0.5; and<br>• the probability of being awarded both jobs (event (<i>A</i> and <i>B</i>)) is 0.375.<br>If the owner's beliefs are correct, which of the following statements must be true concerning event <i>A</i> and event <i>B</i> ?`,
+ c:["Event <i>A</i> and event <i>B</i> are mutually exclusive and are independent.","Event <i>A</i> and event <i>B</i> are mutually exclusive and are <u>not</u> independent.","Event <i>A</i> and event <i>B</i> are <u>not</u> mutually exclusive and are independent.","Event <i>A</i> and event <i>B</i> are <u>not</u> mutually exclusive and are <u>not</u> independent."],a:2,
+ e:`P(A)P(B) = 0.75 × 0.5 = 0.375 = P(A∩B) → <b>독립</b>. P(A∩B) = 0.375 ≠ 0 이므로 <b>배반이 아님</b>.`},
+{n:40,topic:"indep",q:`Given independent events <i>A</i> and <i>B</i> such that <i>P</i>(<i>A</i>) = 0.3 and <i>P</i>(<i>B</i>) = 0.5, which of the following statements is correct?`,
+ c:["<i>P</i>(<i>B</i>|<i>A</i>) = 0.3","<i>P</i>(<i>A</i>|<i>B</i>) = 0.5","<i>P</i>(<i>A</i> ∪ <i>B</i>) = 0.65","<i>P</i>(<i>A</i> ∪ <i>B</i>) = 0.80"],a:2,
+ e:`독립이면 P(B|A) = P(B) = 0.5, P(A|B) = P(A) = 0.3 이므로 (A)(B)는 틀림. P(A∪B) = 0.3 + 0.5 − 0.15 = <b>0.65</b>. (0.80은 교집합을 안 뺀 값)`},
+{n:41,topic:"indep",q:`For which of the following probability assignments are events <i>A</i> and <i>B</i> independent?`,
+ c:["<i>P</i>(<i>A</i> ∩ <i>B</i><sup>c</sup>) = 0.3, <i>P</i>(<i>A</i> ∩ <i>B</i>) = 0.12, and <i>P</i>(<i>A</i><sup>c</sup> ∩ <i>B</i>) = 0.4.","<i>P</i>(<i>A</i> ∩ <i>B</i><sup>c</sup>) = 0.3, <i>P</i>(<i>A</i> ∩ <i>B</i>) = 0.3, and <i>P</i>(<i>A</i><sup>c</sup> ∩ <i>B</i>) = 0.3.","<i>P</i>(<i>A</i> ∩ <i>B</i><sup>c</sup>) = 0.1, <i>P</i>(<i>A</i> ∩ <i>B</i>) = 0.1, and <i>P</i>(<i>A</i><sup>c</sup> ∩ <i>B</i>) = 0.4.","<i>P</i>(<i>A</i> ∩ <i>B</i><sup>c</sup>) = 0.3, <i>P</i>(<i>A</i> ∩ <i>B</i>) = 0.0, and <i>P</i>(<i>A</i><sup>c</sup> ∩ <i>B</i>) = 0.2."],a:2,
+ e:`P(A) = P(A∩Bᶜ) + P(A∩B), P(B) = P(A∩B) + P(Aᶜ∩B)를 구해서 P(A∩B) = P(A)P(B)인지 확인합니다.<br>(C): P(A) = 0.2, P(B) = 0.5 → 0.2 × 0.5 = 0.1 = P(A∩B) ✓ <b>독립</b>.<br>(A) 0.42 × 0.52 ≠ 0.12, (B) 0.6 × 0.6 ≠ 0.3, (D) 0.3 × 0.2 ≠ 0.`},
+{n:42,topic:"indep",q:`Joe and Matthew plan to visit a bookstore. Based on their previous visits to this bookstore, the probability distributions of the number of books they will buy are given below.`,
+ fig:miniT(XT([["Number of books Joe will buy",0,1,2],["Probability",0.50,0.25,0.25]],{rh:true}))+miniT(XT([["Number of books Matthew will buy",0,1,2],["Probability",0.25,0.50,0.25]],{rh:true})),
+ q2:`Assuming that Joe and Matthew make their decisions independently, what is the probability that they will purchase no books on this visit to the bookstore?`,
+ c:["0.1250","0.1875","0.2500","0.7500"],a:0,
+ e:`독립이므로 곱합니다: P(Joe 0권) × P(Matthew 0권) = 0.50 × 0.25 = <b>0.125</b>.`},
+{n:43,topic:"cond",q:`At a small company, 40 percent of the employees are classified as junior level, and 32 percent of the employees work in department A. Of those classified as junior level, 55 percent work in department A. One employee will be selected at random.<br>What is the probability that the selected employee works in department A and is <u>not</u> classified as junior level?`,
+ c:["0.10","0.19","0.22","0.32"],a:0,
+ e:`junior이면서 A: 0.40 × 0.55 = 0.22. A 전체가 0.32이므로 A이면서 junior가 아닌 비율 = 0.32 − 0.22 = <b>0.10</b>.`},
+{n:44,topic:"basic",q:`While investigating customer complaints, the customer relations department of Sonic Air found the following information.<br>• 15% of flights arrive early.<br>• 25% of flights arrive on time.<br>• 65% of flights are overbooked.<br>• 72% of flights are either late or not overbooked.<br>If one Sonic Air flight is selected at random, what is the probability that the flight selected will be late and not overbooked?<br><span style="font-size:.9rem;color:var(--ink-3)">overbooked: allowed for more seat tickets to be purchased for a flight than there are seats on the flight</span>`,
+ c:["0.21","0.23","0.26","0.39"],a:1,
+ e:`늦게 도착 = 1 − 0.15 − 0.25 = 0.60, overbooked가 아님 = 1 − 0.65 = 0.35. P(late 또는 not over) = 0.72 이므로 P(late ∩ not over) = 0.60 + 0.35 − 0.72 = <b>0.23</b>.`},
+{n:45,topic:"cond",q:`At a large school, 40 percent of the students walk to school, 32 percent of the students have been late to school at least once, and 37.5 percent of the students who walk to school have been late to school at least once. One student from the school will be selected at random.<br>What is the probability that the student selected will be one who both walks to school and has been late to school at least once?`,
+ c:["0.1500","0.1700","0.1875","0.7200"],a:0,
+ e:`곱셈 법칙: P(걸어서 ∩ 지각) = P(걸어서) × P(지각|걸어서) = 0.40 × 0.375 = <b>0.15</b>.`},
+{n:46,topic:"interp",q:`A store owner reports that the probability that a customer who purchases a lawn mower will also purchase an extended warranty is 0.68.<br>Which of the following is the best interpretation of the probability 0.68 ?`,
+ c:["For all customers who purchase a lawn mower, 68% will also purchase an extended warranty.","For all customers of the store, 68% will purchase a lawn mower.","For all customers who purchase an extended warranty, 68% will use the warranty.","From the next 25 customers, 17 will purchase an extended warranty."],a:0,
+ e:`0.68은 "잔디깎이를 산 고객"이라는 <b>조건 안에서의 비율</b>입니다. 잔디깎이를 산 고객 전체의 68%가 연장 보증도 산다는 (A).`},
+{n:47,topic:"basic",q:`A high school theater club has 40 students, of whom 6 are left-handed. Two students from the club will be selected at random, one at a time without replacement.<br>What is the probability that the 2 students selected will both be left-handed?`,
+ c:[F(6,40),F(30,"1,560"),F(30,"1,600"),F(36,"1,600")],a:1,
+ e:`비복원 추출: (6/40) × (5/39) = <b>30/1,560</b>. (36/1,600은 복원 추출일 때의 값)`},
+{n:48,topic:"cond",q:`The table shows the responses from 103 people when asked if they support a proposal to expand the public library.`,
+ fig:XT([["","Under the Age of 55","Age 55 or Older","Total"],["Yes",17,8,25],["No",42,36,78],["Total",59,44,103]],{rh:true}),
+ q2:`One person from those who responded will be selected at random. Which of the following is closest to the probability that the person selected will be someone who responded no, given that the person selected is age 55 or older?`,
+ c:["0.350","0.462","0.757","0.818"],a:3,
+ e:`조건 "55세 이상" → 분모는 44명, 그중 No = 36명 → 36/44 ≈ <b>0.818</b>.`},
+{n:49,topic:"dist",q:`Mating eagle pairs typically have two baby eagles (called eaglets). When there are two eaglets, the parents always feed the older eaglet until it has had its fill, and then they feed the younger eaglet. This results in an unequal chance of survival for the two eaglets. Suppose that the older eaglet has a 50 percent chance of survival. If the older eaglet survives, the younger eaglet has a 10 percent chance of survival. If the older eaglet does not survive, the younger eaglet has a 30 percent chance of survival. Let <i>X</i> be the number of eaglets that survive. Which of the following tables shows the probability distribution of <i>X</i> ?`,
+ c:[miniT(XT([["<i>x</i>",0,1,2],["<i>p</i>(<i>x</i>)",F(1,4),F(1,2),F(1,4)]],{rh:true})),miniT(XT([["<i>x</i>",0,1,2],["<i>p</i>(<i>x</i>)","0.35","0.60","0.05"]],{rh:true})),miniT(XT([["<i>x</i>",0,1,2],["<i>p</i>(<i>x</i>)","0.05","0.90","0.05"]],{rh:true})),miniT(XT([["<i>x</i>",0,1,2],["<i>p</i>(<i>x</i>)","0.10","0.30","0.50"]],{rh:true}))],a:1,
+ e:`X = 0: 큰 새끼 사망(0.5) × 작은 새끼 사망(0.7) = 0.35<br>X = 2: 큰 새끼 생존(0.5) × 작은 새끼 생존(0.1) = 0.05<br>X = 1: 1 − 0.35 − 0.05 = 0.60 (= 0.5 × 0.9 + 0.5 × 0.3)<br>확률의 합이 1인지도 확인하세요. (D)는 합이 0.9.`},
+{n:50,topic:"indep",q:`A company is considering purchasing the mineral rights to two different mountains. The probability that it will purchase the mineral rights to the first mountain is 0.55. The probability that it will purchase the mineral rights to the second mountain is 0.4. Assuming the decisions to purchase the mineral rights to each mountain are made independently, what is the probability that it will purchase the mineral rights to exactly one of the two mountains?`,
+ c:["0.22","0.33","0.51","0.95"],a:2,
+ e:`정확히 하나 = (첫째만) + (둘째만) = 0.55 × 0.60 + 0.45 × 0.40 = 0.33 + 0.18 = <b>0.51</b>.`},
+{n:51,topic:"interp",q:`A business journal reports that the probability that Internet users in the United States will use a mobile payment app is 0.60. The journal claims this indicates that out of 5 randomly selected Internet users, 3 will use the mobile payment app.<br>Is the business journal interpreting the probability correctly?`,
+ c:["No, because the Internet users are not independent of each other.","No, because 0.60 represents probability in the long run for many Internet users.","Yes, because Internet users are selected at random.","Yes, because 3 out of 5 is equal to 60%."],a:1,
+ e:`확률 0.60은 <b>아주 많이 반복했을 때의 장기 상대도수</b>입니다. 5명 중 정확히 3명이라고 보장하는 값이 아니에요.`},
+{n:52,topic:"indep",q:`Ms. Tucker travels through two intersections with traffic lights as she drives to the market. The traffic lights operate independently. The probability that both lights will be red when she reaches them is 0.22. The probability that the first light will be red and the second light will <u>not</u> be red is 0.33. What is the probability that the second light will be red when she reaches it?`,
+ c:["0.40","0.45","0.50","0.55"],a:0,
+ e:`P(첫째 빨강) = 0.22 + 0.33 = 0.55. 독립이므로 P(둘 다 빨강) = P(첫째)·P(둘째) → 0.22 = 0.55 × P(둘째) → P(둘째 빨강) = <b>0.40</b>.`},
+{n:53,topic:"cond",q:`Ninety percent of the people who have a particular disease will have a positive result on a given diagnostic test. Ninety percent of the people who do not have the disease will have a negative result on this test. If 5 percent of a certain population has the disease, what percent of that population would test positive for the disease?`,
+ c:["4.5%","5%","14%","90%"],a:2,
+ e:`전체확률의 법칙: P(양성) = 0.05 × 0.90 + 0.95 × 0.10 = 0.045 + 0.095 = 0.14 → <b>14%</b>. (병이 없는 사람의 90%가 음성이면 10%가 위양성)`},
+{n:54,topic:"interp",q:`The probability that a randomly selected visitor to a certain website will be asked to participate in an online survey is 0.40. Avery claims that for the next 5 visitors to the site, 2 will be asked to participate in the survey.<br>Is Avery interpreting the probability correctly?`,
+ c:["Yes, because 2 out of 5 is equal to 40%.","No, because there could be voluntary response bias.","No, because only 40% of all people will visit the site.","No, because 0.40 represents probability in the long run over many visits to the site."],a:3,
+ e:`0.40은 방문이 매우 많을 때의 <b>장기 상대도수</b>입니다. 다음 5명 중 정확히 2명이라고 보장하지 않아요.`},
+{n:55,topic:"cond",q:`Students at a local elementary school were shown a painting and asked which emotion—joy, happiness, love, or anger—they felt by looking at the painting. The students were classified by their age. The following table summarizes the responses of the students by age-group.`,
+ fig:XT([["","Joy","Happiness","Love","Anger","Total"],["6 to 8 years",28,20,40,18,106],["9 to 11 years",61,25,80,60,226],["Total",89,45,120,78,332]],{rh:true}),
+ q2:`One student from the school will be selected at random. What is the probability that the student is in the age-group of 6 to 8 years given that the selected student responded joy?`,
+ c:[F(28,332),F(28,106),F(106,332),F(28,89)],a:3,
+ e:`조건 "joy를 고른 학생" → 분모는 89명, 그중 6~8세 = 28명 → <b>28/89</b>.`},
+{n:56,topic:"basic",q:`In a parking lot with 200 cars, 50 cars are white, 30 cars are red, and 20 cars are silver. One car will be selected at random from the parking lot. If each car in the parking has only one color, which of the following <u>cannot</u> be the probability that the selected car will be green?`,
+ c:["0","0.2","0.5","0.6"],a:3,
+ e:`흰색 + 빨강 + 은색 = 100대이고 나머지 100대는 다른 색(초록일 수도 있음)입니다. 초록일 확률은 최대 100/200 = 0.5이므로 <b>0.6은 불가능</b>.`},
+{n:57,topic:"indep",q:`A survey of people about their pizza preferences indicated that 55 percent preferred pepperoni only, 30 percent preferred mushroom only, and 15 percent preferred something other than pepperoni and mushroom. Suppose one person who was surveyed will be selected at random. Let <i>P</i> represent the event that the selected person preferred pepperoni, and let <i>M</i> represent the event that the selected person preferred mushroom.<br>Are <i>P</i> and <i>M</i> mutually exclusive events for the people in this survey?`,
+ c:["Yes, because the joint probability of <i>P</i> and <i>M</i> is greater than 0.","Yes, because the joint probability of <i>P</i> and <i>M</i> is greater than 1.","Yes, because the joint probability of <i>P</i> and <i>M</i> is equal to 0.","No, because the joint probability of <i>P</i> and <i>M</i> is equal to 1."],a:2,
+ e:`"pepperoni only"와 "mushroom only"로 나뉘고 합이 55 + 30 + 15 = 100%이므로 둘 다 선호하는 사람은 없습니다. P(P∩M) = 0 → <b>배반</b>.`},
+{n:58,topic:"dist",frq:true,q:`At a community festival, local businesses gave away raffle prizes. Individuals submitted entries to the raffle by writing their name and contact information on a slip of paper and placing their paper entry inside a large glass bowl. Before putting in their entries, Alyse left her paper flat, whereas Jocelyn folded hers in half, claiming that a folded entry is more likely to be selected.<br>To investigate this claim, a researcher conducted a study using 100 equal-sized entries; 34 entries were folded in half, and the remaining 66 were left flat. The entries were placed in the bowl and mixed well. These quantities are shown in the table.`,
+ fig:XT([["Entry Method","Folded","Flat","Total Entries"],["Number of entries",34,66,100]],{rh:true,cap:"Number of Each Type of Entry Placed in the Bowl"})+`<p class="ex-text" style="max-width:62ch">As individuals walked by, they were asked to help by selecting one winner at random from the bowl. For each selected entry, the researcher recorded whether the entry was folded or flat. The entry was then replaced, and the bowl was mixed again before the next selection. Results from 200 trials are summarized in the bar graph.</p>`+xchart({x:["Folded","Flat"],y:[73,127],max:140,step:20,lab:v=>v,xl:"Entry Method",yl:"Number of Entries",title:"Number of Entries by Entry Method Selected (200 Trials)",w:420,alt:"200번 시행에서 선택된 entry 종류별 개수"}),
+ q2:`Respond to parts A, B, C, D, and E, and any subparts. <b>Part A</b> (Using the table, show your work for all calculations.)`,
+ parts:[
+  {k:"i",l:`i. Assuming that leaving an entry flat does not affect the probability of winning, <b>calculate</b> the number of flat entries expected to be selected from the 200 trials.`,a:132,tol:0.5,e:`flat의 비율 = 66/100 = 0.66 → 기댓값 = 200 × 0.66 = <b>132개</b>.`},
+  {k:"ii",l:`ii. Assuming that leaving an entry flat does not affect the probability of winning and using your results from part A (i), <b>calculate</b> the probability of randomly selecting 127 or fewer flat entries from the 200 trials.`,a:0.2495,tol:0.03,e:`flat 개수 X ~ 이항분포(n = 200, p = 0.66), 평균 132, 표준편차 √(200·0.66·0.34) ≈ 6.70.<br>정확한 값: P(X ≤ 127) = binomcdf(200, 0.66, 127) ≈ <b>0.2495</b>. (정규근사 z = (127 − 132)/6.70 ≈ −0.75 → 약 0.23)`}],
+ e:`part A만 수록된 문항입니다 (B~E는 PDF에 포함되지 않음). 관측값 127은 기댓값 132보다 약간 적을 뿐이라 "flat이 불리하다"고 보기 어렵습니다.`},
+{n:59,topic:"basic",q:`The distribution of colors of candies in a bag is as follows.`,
+ fig:XT([["Color","Brown","Red","Yellow","Green","Orange"],["Proportion",0.3,0.2,0.2,0.2,0.1]],{rh:true}),
+ q2:`If two candies are randomly drawn from the bag with replacement, what is the probability that they are the same color?`,
+ c:["0.09","0.22","0.25","0.78"],a:1,
+ e:`복원 추출이므로 두 번은 독립입니다. 같은 색일 확률 = 0.3² + 0.2² + 0.2² + 0.2² + 0.1² = 0.09 + 0.04 + 0.04 + 0.04 + 0.01 = <b>0.22</b>.`},
+{n:60,topic:"cond",q:`Traffic data revealed that 35 percent of automobiles traveling along a portion of an interstate highway were exceeding the legal speed limit. Using highway cameras and license plate registrations, it was also determined that 52 percent of sports cars were also speeding along the same portion of the highway. What is the probability that a randomly selected car along the same portion of the highway was a speeding sports car?`,
+ c:["0.673","0.182","0.170","It cannot be determined from the information given."],a:3,
+ e:`P(스포츠카 ∩ 과속) = P(스포츠카) × P(과속|스포츠카) = P(스포츠카) × 0.52 인데, <b>전체 차 중 스포츠카의 비율</b>을 모릅니다. 35%는 전체 차량의 과속 비율이라 대신 쓸 수 없어요.`},
+{n:61,topic:"cond",q:`The probability that a new microwave oven will stop working in less than 2 years is 0.05. The probability that a new microwave oven is damaged during delivery and stops working in less than 2 years is 0.04. The probability that a new microwave oven is damaged during delivery is 0.10. Given that a new microwave oven is damaged during delivery, what is the probability that it stops working in less than 2 years?`,
+ c:["0.05","0.06","0.10","0.40"],a:3,
+ e:`P(고장|배송 중 파손) = P(파손 ∩ 고장) / P(파손) = 0.04 / 0.10 = <b>0.40</b>. (0.05는 조건 없는 고장 확률)`},
+{n:62,topic:"basic",q:`Clark drives through two traffic lights on his way to work each day. From experience, he estimates that the probability that the first light will be red when he reaches it is 0.3. He also estimates that the probability that the second light will be red when he reaches it is 0.45. The lights are far enough apart that they can be considered to operate independently of each other.<br>Based on Clark's estimates, what is the probability that <u>at least</u> one of the two lights will be red on a randomly selected drive to work?`,
+ c:["0.135","0.385","0.615","0.750"],a:2,
+ e:`적어도 하나 빨강 = 1 − (둘 다 빨강이 아님) = 1 − (0.7)(0.55) = 1 − 0.385 = <b>0.615</b>. (0.385는 둘 다 빨강이 아닐 확률)`},
+{n:63,topic:"interp",q:`Joslyn performed an experiment using a die with its faces numbered from 1 to 6. She rolled the die and recorded whether the 5 landed face up. She repeated the process many times and kept a cumulative record of the total number of rolls and the total number of 5s landing face up. The following table shows part of her record.`,
+ fig:XT([["Total Number of Rolls","Total Number of 5s"],[5,1],[10,2],[15,2],[20,3]]),
+ q2:`Suppose Joslyn could roll the die 10,000 times and keep a record of the total number of 5s landing face up in the 10,000 rolls. What would such a record illustrate?`,
+ c:["The multiplication rule","The addition rule","The law of large numbers","The property of mutually exclusive events"],a:2,
+ e:`굴린 횟수가 많아질수록 5가 나온 <b>상대도수가 이론 확률 1/6에 가까워집니다</b> → 큰 수의 법칙.`},
+{n:64,topic:"sim",q:`Consider rolling two fair, balanced number cubes, each with faces numbered from 1 to 6. Because the cubes are fair, each face is equally likely to land face up. The cubes will be rolled, and the sum of the numbers landing face up will be recorded. Let event <i>E</i> represent the event of rolling a sum of 5.<br>How many outcomes are in the collection for event <i>E</i>?`,
+ c:["One","Two","Four","Six"],a:2,
+ e:`합이 5인 경우: (1,4), (2,3), (3,2), (4,1) → <b>4가지</b>. (두 주사위를 구별하므로 (1,4)와 (4,1)은 다른 결과)`},
+{n:65,topic:"cond",q:`A student is applying to two different agencies for scholarships. Based on the student's academic record, the probability that the student will be awarded a scholarship from Agency A is 0.55 and the probability that the student will be awarded a scholarship from Agency B is 0.40. Furthermore, if the student is awarded a scholarship from Agency A, the probability that the student will be awarded a scholarship from Agency B is 0.60. What is the probability that the student will be awarded at least one of the two scholarships?`,
+ c:["0.62","0.71","0.73","0.95"],a:0,
+ e:`P(A∩B) = P(A)·P(B|A) = 0.55 × 0.60 = 0.33. P(A∪B) = 0.55 + 0.40 − 0.33 = <b>0.62</b>.`},
+{n:66,topic:"interp",q:`A certain spinner is divided into 6 sectors of equal size, and the spinner is equally likely to land in any sector. Four of the 6 sectors are shaded, and the remaining sectors are not shaded.<br>Which of the following is the best interpretation of the probability that one spin of the spinner will land in a shaded sector?`,
+ c:[`For many spins, the long-run relative frequency with which the spinner will land in a shaded sector is ${F(1,3)}.`,`For many spins, the long-run relative frequency with which the spinner will land in a shaded sector is ${F(1,2)}.`,`For many spins, the long-run relative frequency with which the spinner will land in a shaded sector is ${F(2,3)}.`,"For 6 spins, the spinner will land in a shaded sector 4 times."],a:2,
+ e:`6칸 중 4칸이 색칠 → 4/6 = 2/3의 <b>장기 상대도수</b>. (D)처럼 6번 돌리면 정확히 4번이라는 뜻은 아닙니다.`},
+{n:67,topic:"indep",q:`Karmen and Sophia are on a swim team and race in different events at a swim meet. The probability that Karmen will win her race at the swim meet is 0.1. The probability that Sophia will win her race at the swim meet is 0.3.<br>If the events of Karmen winning her race and Sophia winning her race are independent, what is the probability that either Karmen or Sophia will win her race at the swim meet?`,
+ c:["0.03","0.30","0.37","0.40"],a:2,
+ e:`독립: 둘 다 못 이길 확률 = 0.9 × 0.7 = 0.63 → 적어도 한 명 = 1 − 0.63 = <b>0.37</b>. (또는 0.1 + 0.3 − 0.03)`},
+{n:68,topic:"dist",frq:true,q:`According to a 2024 national survey of 400 randomly selected offices in a certain country, the average number of water bottle refilling stations was 2.6 with a standard deviation of 1.6 stations. Erika is a marketer at a water bottle company, and she wants to investigate whether the average number of refilling stations per office has changed from 2024 to 2025. In 2025, she selected a random sample of 350 offices in the country and asked how many refilling stations were in each office. The results of the 2025 sample are summarized in the table.`,
+ fig:XT([["Number of Refilling Stations",0,1,2,3,4,5,6],["Proportion of Offices",0.04,0.13,0.21,0.35,0.19,0.05,0.03]],{rh:true,cap:"Number of Water Bottle Refilling Stations and Proportions of Offices in 2025"})+`<p class="ex-text">Erika also found the standard deviation for the sample to be 1.31 refilling stations.</p>`,
+ q2:`Respond to parts A, B, C, D, and E, and any subparts. <b>Part A</b> (Use the table to respond to the following. Show all work for calculations.)`,
+ parts:[
+  {k:"i",l:`i. An office from the sample will be selected at random. <b>Calculate</b> the probability that an office had 3 or more refilling stations in 2025.`,a:0.62,tol:0.001,e:`P(3개 이상) = 0.35 + 0.19 + 0.05 + 0.03 = <b>0.62</b>. (여사건: 1 − (0.04 + 0.13 + 0.21) = 0.62)`},
+  {k:"ii",l:`ii. <b>Calculate</b> the average number of refilling stations per office for the sample of offices in 2025.`,a:2.79,tol:0.005,e:`평균 = Σ x·P(x) = 0(0.04) + 1(0.13) + 2(0.21) + 3(0.35) + 4(0.19) + 5(0.05) + 6(0.03) = 0 + 0.13 + 0.42 + 1.05 + 0.76 + 0.25 + 0.18 = <b>2.79개</b>.`}],
+ e:`part A만 수록된 문항입니다 (B~E는 PDF에 포함되지 않음). 표본 평균 2.79가 2024년의 2.6보다 크지만, 변화가 유의한지는 이후 파트(추론)에서 다룹니다.`}
+];
+
+/* ---------- 실전 모의고사: 풀이 · OMR · 채점 ---------- */
+const LET="ABCD";
+const ex=store.exam;
+const exBy=n=>EXAM.find(q=>q.n===n);
+const exMC=EXAM.filter(q=>!q.frq);
+let exAsk=false, exAnim=false, exRvMode="wrong", exResetArm=false;
+const fmtTime=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+function exAns(q){return q.frq?q.parts.some(p=>String(ex.frq[q.n+"-"+p.k]||"").trim()!==""):ex.ans[q.n]!==undefined;}
+function exDone(){return EXAM.filter(exAns).length;}
+function exPartOk(q,p){const v=parseNum(ex.frq[q.n+"-"+p.k]||"");return !isNaN(v)&&Math.abs(v-p.a)<=p.tol;}
+function exGradeAll(){
+  const r={ok:0,no:0,skip:0,topics:{},frqOk:0,frqTot:0};
+  Object.keys(TOPICS).forEach(k=>{r.topics[k]={t:0,c:0};});
+  EXAM.forEach(q=>{
+    if(q.frq){q.parts.forEach(p=>{r.frqTot++;if(exPartOk(q,p))r.frqOk++;});return;}
+    const u=ex.ans[q.n],t=r.topics[q.topic];t.t++;
+    if(u===undefined)r.skip++;else if(u===q.a){r.ok++;t.c++;}else r.no++;
+  });
+  return r;
+}
+
+/* --- 화면 조각 --- */
+function exIntroHTML(){
+  return `<div class="ex-intro">
+    <div class="page-head"><p class="eyebrow">Probability practice · prob#1</p><h2>실전 모의고사</h2></div>
+    <div class="ex-hero">
+      <p class="lead">AP Statistics 확률 단원 문제 <b>객관식 66문항(A–D)</b>과 <b>서술형 2문항</b>입니다. 시험지처럼 한 문제씩 풀고 제출하면, 내가 고른 답이 <b>OMR 답안지에 마킹된 모습</b>으로 한꺼번에 나타납니다. 그다음 채점하면 정답과 해설이 나와요.</p>
+      <div class="ex-facts">
+        <div class="fact"><b>66 + 2</b><span>객관식 + 서술형(계산)</span></div>
+        <div class="fact"><b>A – D</b><span>보기 4개 중 하나 선택</span></div>
+        <div class="fact"><b>제한 없음</b><span>경과 시간만 기록</span></div>
+      </div>
+      <ul class="clean" style="color:var(--ink-2);font-size:.92rem">
+        <li>제출하기 전까지 정답은 보이지 않고, 답은 언제든 바꿀 수 있어요.</li>
+        <li>키보드: A–D(또는 1–4)로 답 선택, ← → 로 문항 이동.</li>
+        <li>풀이 상태는 이 브라우저에 자동 저장됩니다.</li>
+      </ul>
+      <div class="ex-actions" style="margin-bottom:0"><button class="btn primary" data-ex="start">시험 시작하기</button></div>
+    </div></div>`;
+}
+function exNavHTML(){
+  return `<aside class="ex-nav" id="exNav"><p class="eyebrow">문항 이동</p><div class="exn-grid">`+EXAM.map(q=>`<button class="exn${exAns(q)?" ans":""}${q.frq?" frq":""}${ex.flags.includes(q.n)?" flag":""}${q.n===ex.cur?" cur":""}" data-go-n="${q.n}" aria-label="${q.n}번${exAns(q)?", 답함":""}${ex.flags.includes(q.n)?", 나중에 볼 문제":""}">${q.n}</button>`).join("")+`</div><div class="ex-legend"><span><i class="f"></i>답함</span><span><i></i>아직</span><span>⚑ 나중에</span></div></aside>`;
+}
+function exQHTML(q){
+  const flag=ex.flags.includes(q.n);
+  let h=`<article class="ex-q"><div class="ex-qhead"><span class="ex-num">${q.n}</span><span class="pill">${q.frq?"서술형 · 계산 확인":TOPICS[q.topic]}</span><button class="starbtn" data-ex="flag" aria-pressed="${flag}"><span class="st">${flag?"⚑":"⚐"}</span>나중에 볼래요</button></div>`;
+  if(q.stem)h+=`<div class="ex-stem">${q.stem}</div>`;
+  h+=`<div class="ex-text">${q.q}</div>`;
+  if(q.fig)h+=`<div class="ex-fig">${q.fig}</div>`;
+  if(q.q2)h+=`<div class="ex-text">${q.q2}</div>`;
+  if(q.frq){
+    h+=`<div class="ex-frq">`+q.parts.map(p=>`<div class="ex-part"><label for="frq-${q.n}-${p.k}">${p.l}</label><input id="frq-${q.n}-${p.k}" data-frq="${q.n}-${p.k}" inputmode="decimal" autocomplete="off" placeholder="숫자로 입력 (예: 0.62)" value="${esc(ex.frq[q.n+"-"+p.k]||"")}"></div>`).join("")+`</div><p class="numhint">계산 결과만 입력합니다. 풀이 과정은 종이에 쓰고 해설과 비교하세요.</p>`;
+  }else{
+    h+=`<div class="ex-choices" role="radiogroup" aria-label="보기">`+q.c.map((c,i)=>`<button class="ex-ch${ex.ans[q.n]===i?" on":""}" data-ch="${i}" role="radio" aria-checked="${ex.ans[q.n]===i}"><span class="bub">${LET[i]}</span><span class="txt">${c}</span></button>`).join("")+`</div>`;
+  }
+  h+=`<div class="qnav"><button class="btn" data-ex="prev" ${q.n===1?"disabled":""}>← 이전</button><div class="mid"><button class="btn ghost" data-ex="clear">선택 지우기</button></div><button class="btn primary" data-ex="next" ${q.n===EXAM.length?"disabled":""}>다음 →</button></div></article>`;
+  return h;
+}
+function exSolveHTML(){
+  const q=exBy(ex.cur),done=exDone(),total=EXAM.length;
+  return `<div class="ex-top">
+    <div class="ex-title"><b>prob#1</b><span>AP Statistics · Test Booklet</span></div>
+    <div class="ex-meta"><span id="exTimer">${fmtTime(ex.sec)}</span><span id="exProg">${done} / ${total}</span><div class="bar"><i id="exBar" style="width:${done/total*100}%"></i></div></div>
+    <button class="btn primary" data-ex="submit">제출하기</button>
+    ${exAsk?`<div class="ex-confirm"><span>아직 답을 고르지 않은 문항이 <b>${total-done}개</b> 있어요. 그래도 제출할까요?</span><button class="btn" data-ex="keep">계속 풀기</button><button class="btn primary" data-ex="force">제출하기</button></div>`:""}
+  </div>
+  <div class="ex-body">${exQHTML(q)}${exNavHTML()}</div>`;
+}
+function omrHTML(g){
+  const cols=[0,1,2,3].map(ci=>EXAM.slice(ci*17,ci*17+17));
+  const body=cols.map(col=>`<div class="omr-col">`+col.map(q=>{
+    if(q.frq){const ok=q.parts.filter(p=>exPartOk(q,p)).length;return `<div class="omr-row frq"><span class="omr-n">${q.n}</span><span class="omr-frq">서술형${g?` · ${ok}/${q.parts.length}`:""}</span></div>`;}
+    const u=ex.ans[q.n],st=g?(u===undefined?"skip":(u===q.a?"ok":"no")):"";
+    let bs="";
+    for(let i=0;i<4;i++){
+      let c="omr-b";const on=u===i;
+      if(on)c+=" on";
+      if(g&&on)c+=(i===q.a?" good":" miss");
+      if(g&&i===q.a&&!on)c+=" key";
+      bs+=`<span class="${c}" style="--d:${q.n*22}ms">${LET[i]}</span>`;
+    }
+    const mk=g?(u===undefined?"–":(u===q.a?"✓":"✗")):"";
+    return `<div class="omr-row ${st}" data-n="${q.n}"><span class="omr-n">${q.n}</span>${bs}<span class="omr-m" style="--d:${q.n*22+160}ms">${mk}</span></div>`;
+  }).join("")+`</div>`).join("");
+  const sc=exGradeAll();
+  return `<div class="omr${exAnim?" anim":""}" id="omr">
+    <div class="omr-head">
+      <div class="omr-title">AP Statistics · Answer Sheet<b>prob#1 답안지</b></div>
+      <div class="omr-fields">
+        <label class="omr-field">Name<input id="exName" maxlength="12" placeholder="이름" value="${esc(ex.name||"")}"></label>
+        <div class="omr-field">Date<span>${new Date().toLocaleDateString("ko-KR")}</span></div>
+        ${g?`<div class="omr-field">Score<span>${sc.ok} / ${exMC.length}</span></div>`:""}
+      </div>
+    </div>
+    <div class="omr-cols">${body}</div>
+    <div class="omr-foot">${g?`<span><i class="g"></i>내 답 (정답)</span><span><i class="r"></i>내 답 (오답)</span><span><i class="k"></i>정답이었던 보기</span><span>– 미응답</span>`:`<span><i class="f"></i>내가 마킹한 답</span><span>서술형 58·68번은 계산 입력으로 채점</span>`}</div>
+  </div>`;
+}
+function exReviewItem(q){
+  const u=ex.ans[q.n];
+  let head,body="";
+  if(q.stem)body+=`<div class="ex-stem">${q.stem}</div>`;
+  body+=`<div class="ex-text">${q.q}</div>`;
+  if(q.fig)body+=`<div class="ex-fig">${q.fig}</div>`;
+  if(q.q2)body+=`<div class="ex-text">${q.q2}</div>`;
+  if(q.frq){
+    const ok=q.parts.filter(p=>exPartOk(q,p)).length;
+    head=`<span class="mono">No.${q.n}</span><span class="pill ${ok===q.parts.length?"st-right":"st-wrong"}">서술형 ${ok}/${q.parts.length}</span><span class="pill src">${TOPICS[q.topic]}</span>`;
+    body+=q.parts.map(p=>{const mine=String(ex.frq[q.n+"-"+p.k]||"").trim();return `<div class="rv-ex"><p style="font-family:var(--f-math)">${p.l}</p><p style="margin-top:6px">내 답 <b class="mono">${mine?esc(mine):"–"}</b> · 정답 <b class="mono">${p.a}</b> ${mine?(exPartOk(q,p)?"✓":"✗"):""}</p><p style="margin-top:6px">${p.e}</p></div>`;}).join("")+`<div class="rv-ex">${q.e}</div>`;
+  }else{
+    const st=u===undefined?"미응답":(u===q.a?"정답":"오답");
+    head=`<span class="mono">No.${q.n}</span><span class="pill ${u===q.a?"st-right":"st-wrong"}">${st}</span><span class="pill src">내 답 ${u===undefined?"–":LET[u]} · 정답 ${LET[q.a]}</span><span class="pill src">${TOPICS[q.topic]}</span>`;
+    body+=q.c.map((c,i)=>`<div class="rv-ch${i===q.a?" is-key":""}${u===i?" is-mine":""}"><span class="bub">${LET[i]}</span><span>${c}</span></div>`).join("")+`<div class="rv-ex"><b>해설</b><br>${q.e}</div>`;
+  }
+  return `<details class="rv"><summary>${head}</summary><div class="rv-body">${body}</div></details>`;
+}
+function exResultHTML(graded){
+  const g=exGradeAll(),total=exMC.length,pct=Math.round(g.ok/total*100);
+  let h=`<div class="page-head"><p class="eyebrow">prob#1 · 제출 완료 · 경과 ${fmtTime(ex.sec)}</p><h2>${graded?"채점 결과":"내가 마킹한 OMR 답안지"}</h2><p class="lead">${graded?"초록 원은 맞은 답, 빨강은 틀린 답, 초록 테두리는 정답이었던 보기입니다. 아래에서 틀린 문제 해설을 펼쳐 볼 수 있어요.":`내가 고른 답이 답안지에 그대로 표시됐어요. 미응답 <b>${g.skip}문항</b>${g.skip?"은 비어 있습니다":"은 없어요"}. 준비되면 채점해 보세요.`}</p></div>`;
+  if(graded){
+    h+=`<div class="ex-score">
+      <div class="sc"><b data-count="${g.ok}">${g.ok}<small> / ${total}</small></b><span>점수 (객관식)</span></div>
+      <div class="sc"><b>${pct}<small>%</small></b><span>정답률</span></div>
+      <div class="sc"><b>${g.no}<small> 오답</small></b><span>미응답 ${g.skip}문항</span></div>
+      <div class="sc"><b>${g.frqOk}<small> / ${g.frqTot}</small></b><span>서술형 계산 (58·68)</span></div>
+      <div class="sc"><b>${fmtTime(ex.sec)}</b><span>경과 시간</span></div>
+    </div>`;
+  }
+  h+=omrHTML(graded);
+  h+=`<div class="ex-actions">${graded?`<button class="btn" data-ex="tomark">마킹만 보기</button>`:`<button class="btn primary" data-ex="grade">채점하기</button><button class="btn" data-ex="resume">답 고치러 가기</button>`}<button class="btn ghost" data-ex="reset">${exResetArm?"한 번 더 누르면 처음부터 다시 풀어요":"처음부터 다시 풀기"}</button></div>`;
+  if(graded){
+    h+=`<h3 class="h-sec">주제별 정답률</h3><div class="sec" style="padding:14px 20px">`+Object.keys(TOPICS).map(k=>{const t=g.topics[k];const p=t.t?t.c/t.t*100:0;return `<div class="tp-row"><span>${TOPICS[k]}</span><div class="bar"><i style="width:${p}%;background:${p>=70?"var(--ok)":p>=50?"var(--star)":"var(--bad)"}"></i></div><span class="mono">${t.c}/${t.t}</span></div>`;}).join("")+`</div>`;
+    h+=`<h3 class="h-sec">문제별 해설</h3><div class="subnav"><button class="chip" data-rvm="wrong" aria-pressed="${exRvMode==="wrong"}">틀린·미응답·서술형</button><button class="chip" data-rvm="all" aria-pressed="${exRvMode==="all"}">전체 68문항</button></div><div class="rv-list">`
+      +EXAM.filter(q=>exRvMode==="all"||q.frq||ex.ans[q.n]!==q.a).map(exReviewItem).join("")+`</div>`;
+    if(!g.no&&!g.skip&&exRvMode==="wrong")h+=`<p class="empty">객관식은 전부 맞았어요. 서술형 해설만 아래에 있습니다.</p>`;
+  }
+  return h;
+}
+function exRender(){
+  const el=$("#exArea");
+  if(ex.phase==="solve")el.innerHTML=exSolveHTML();
+  else if(ex.phase==="marked")el.innerHTML=exResultHTML(false);
+  else if(ex.phase==="graded")el.innerHTML=exResultHTML(true);
+  else el.innerHTML=exIntroHTML();
+  exAnim=false;
+  const c=el.querySelector("[data-count]");
+  if(c&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+    const end=+c.dataset.count,small=c.querySelector("small").outerHTML,t0=performance.now();
+    const step=t=>{const k=Math.min(1,(t-t0)/700);c.innerHTML=Math.round(end*k)+small;if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);
+  }
+  renderShellStats();
+}
+function exChrome(){
+  const done=exDone(),total=EXAM.length;
+  const p=$("#exProg");if(p)p.textContent=done+" / "+total;
+  const b=$("#exBar");if(b)b.style.width=(done/total*100)+"%";
+  const n=$("#exNav");if(n)n.outerHTML=exNavHTML();
+  renderShellStats();
+}
+function exSetAns(n,i){if(ex.ans[n]===i)delete ex.ans[n];else ex.ans[n]=i;save();exRender();}
+function exGo(n){ex.cur=Math.max(1,Math.min(EXAM.length,n));exAsk=false;save();exRender();window.scrollTo({top:0});}
+$("#exArea").addEventListener("click",e=>{
+  const t=e.target;
+  const ch=t.closest("[data-ch]");if(ch){exSetAns(ex.cur,+ch.dataset.ch);return;}
+  const gn=t.closest("[data-go-n]");if(gn){exGo(+gn.dataset.goN);return;}
+  const rv=t.closest("[data-rvm]");if(rv){exRvMode=rv.dataset.rvm;exRender();return;}
+  const b=t.closest("[data-ex]");if(!b)return;
+  const a=b.dataset.ex;
+  if(a==="start"){ex.phase="solve";ex.cur=ex.cur||1;save();exRender();window.scrollTo({top:0});}
+  else if(a==="prev")exGo(ex.cur-1);
+  else if(a==="next")exGo(ex.cur+1);
+  else if(a==="clear"){delete ex.ans[ex.cur];["i","ii"].forEach(k=>delete ex.frq[ex.cur+"-"+k]);save();exRender();}
+  else if(a==="flag"){const i=ex.flags.indexOf(ex.cur);if(i>=0)ex.flags.splice(i,1);else ex.flags.push(ex.cur);save();exRender();}
+  else if(a==="submit"){if(exDone()<EXAM.length){exAsk=true;exRender();}else{exSubmit();}}
+  else if(a==="keep"){exAsk=false;exRender();}
+  else if(a==="force")exSubmit();
+  else if(a==="grade"){ex.phase="graded";exAnim=true;save();exRender();window.scrollTo({top:0});}
+  else if(a==="tomark"){ex.phase="marked";exAnim=true;save();exRender();window.scrollTo({top:0});}
+  else if(a==="resume"){ex.phase="solve";save();exRender();window.scrollTo({top:0});}
+  else if(a==="reset"){
+    if(!exResetArm){exResetArm=true;setTimeout(()=>{if(exResetArm){exResetArm=false;if(ex.phase!=="solve")exRender();}},3500);exRender();return;}
+    exResetArm=false;ex.ans={};ex.frq={};ex.flags=[];ex.cur=1;ex.sec=0;ex.phase="intro";save();exRender();window.scrollTo({top:0});
+  }
+});
+function exSubmit(){exAsk=false;ex.phase="marked";exAnim=true;save();exRender();window.scrollTo({top:0});}
+$("#exArea").addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset&&t.dataset.frq){ex.frq[t.dataset.frq]=t.value;save();exChrome();}
+  else if(t.id==="exName"){ex.name=t.value;save();}
+});
+document.addEventListener("keydown",e=>{
+  if($("#panel-exam").hidden||ex.phase!=="solve")return;
+  if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||e.metaKey||e.ctrlKey||e.altKey)return;
+  const q=exBy(ex.cur),k=e.key.toLowerCase();
+  if(!q.frq&&k.length===1&&("abcd".includes(k)||"1234".includes(k))){e.preventDefault();exSetAns(ex.cur,"abcd".includes(k)?"abcd".indexOf(k):+k-1);}
+  else if(e.key==="ArrowRight"){e.preventDefault();exGo(ex.cur+1);}
+  else if(e.key==="ArrowLeft"){e.preventDefault();exGo(ex.cur-1);}
+});
+setInterval(()=>{
+  if(ex.phase!=="solve"||document.hidden||$("#panel-exam").hidden)return;
+  ex.sec++;const t=$("#exTimer");if(t)t.textContent=fmtTime(ex.sec);
+  if(ex.sec%10===0)save();
+},1000);
+
+/* ---------- 홈 · 사이드바 요약 ---------- */
+const UNITS=[
+  {k:"samp",t:"Ch.3 자료 수집·표본추출",d:"편향 · 4가지 추출법 · 추출법 적용(필출)"},
+  {k:"exp",t:"실험 설계",d:"용어 · 4원리 · CRD / RBD 도식"},
+  {k:"prob",t:"Ch.4 확률 기초",d:"경우의 수 · 확률 규칙 · 큰 수의 법칙"},
+  {k:"cond",t:"Ch.4 조건부·베이즈·몬티홀",d:"조건부 · 독립 · 베이즈 · 몬티홀"},
+  {k:"rv",t:"Ch.4 확률변수·기댓값",d:"이산/연속 · 확률분포 · 기댓값"}
+];
+function renderHome(){
+  if(!$("#homeTiles"))return;
+  const a=store.answers,done=Q.filter(q=>a[q.id]).length,right=Q.filter(q=>a[q.id]&&a[q.id].status==="right").length,wrong=done-right,stars=store.stars.length;
+  const pct=done?Math.round(right/done*100):0,g=exGradeAll();
+  let exLabel="미시작",exBtn="실전 모의고사 시작",sub="실전 모의고사 prob#1(66문항)이 준비돼 있어요. 풀고 나면 OMR 답안지로 정리해 줍니다.";
+  if(ex.phase==="solve"){exLabel=exDone()+" / "+EXAM.length;exBtn="모의고사 이어서 풀기";sub=`모의고사를 풀던 중이에요. ${exDone()} / ${EXAM.length}문항 답함.`;}
+  else if(ex.phase==="marked"||ex.phase==="graded"){exLabel=ex.phase==="graded"?g.ok+" / "+exMC.length:"제출함";exBtn="모의고사 결과 보기";sub=ex.phase==="graded"?`최근 모의고사 ${g.ok} / ${exMC.length} (${Math.round(g.ok/exMC.length*100)}%). 틀린 문제 해설을 복습해 보세요.`:"모의고사를 제출했어요. OMR 답안지를 확인하고 채점해 보세요.";}
+  $("#homeSub").textContent=sub;$("#homeExam").textContent=exBtn;
+  $("#homeTiles").innerHTML=`
+    <div class="tile"><span class="k">푼 문제</span><b>${done}<small> / ${Q.length}</small></b><div class="bar"><i style="width:${done/Q.length*100}%"></i></div></div>
+    <div class="tile"><span class="k">정답률</span><b>${pct}<small>%</small></b><span class="k">${done?right+"개 맞음":"아직 푼 문제가 없어요"}</span></div>
+    <div class="tile"><span class="k">다시 볼 문제</span><b>${wrong}<small> 오답 · ★ ${stars}</small></b><button class="go" data-go="practice" data-filter="${wrong?"wrong":(stars?"star":"all")}">${wrong?"오답 복습하기":(stars?"별표 문제 보기":"문제 풀러 가기")} →</button></div>
+    <div class="tile"><span class="k">실전 모의고사</span><b>${exLabel}</b><button class="go" data-go="exam">${exBtn} →</button></div>`;
+  $("#unitGrid").innerHTML=UNITS.map(u=>{
+    const qs=Q.filter(q=>q.unit===u.k),d=qs.filter(q=>a[q.id]).length,r=qs.filter(q=>a[q.id]&&a[q.id].status==="right").length;
+    return `<div class="ucard"><div><h4>${u.t}</h4><p>${u.d}</p></div><div class="meta"><span>${d}/${qs.length} 풀이</span><span>${d?Math.round(r/d*100)+"% 정답":"—"}</span></div><div class="bar"><i style="width:${qs.length?d/qs.length*100:0}%"></i></div><div class="acts"><button class="btn" data-unit-go="${u.k}">개념 보기</button><button class="btn primary" data-go="practice" data-filter="${u.k}">문제 풀기</button></div></div>`;
+  }).join("");
+}
+function renderSb(){
+  const a=store.answers,done=Q.filter(q=>a[q.id]).length;
+  const sp=$("#sbPrac");if(sp)sp.textContent=done+"/"+Q.length;
+  const se=$("#sbExam");if(se)se.textContent=ex.phase==="solve"?exDone()+"/"+EXAM.length:(ex.phase==="graded"?exGradeAll().ok+"/"+exMC.length:"OMR");
+  const pr=$("#sbProg");if(pr)pr.innerHTML=`<div style="display:flex;justify-content:space-between"><span>연습 진행</span><span class="mono">${Math.round(done/Q.length*100)}%</span></div><div class="bar"><i style="width:${done/Q.length*100}%"></i></div>`;
+}
+function renderShellStats(){renderHome();renderSb();}
+
+/* ---------- 화면 모드 · 모바일 메뉴 ---------- */
+(function(){
+  const root=document.documentElement;
+  let saved=null;try{saved=localStorage.getItem("apstat-theme");}catch(e){}
+  if(saved==="dark"||saved==="light")root.setAttribute("data-theme",saved);
+  const cur=()=>root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  const lbl=()=>{$("#themeLbl").textContent=cur()==="dark"?"라이트 모드로 전환":"다크 모드로 전환";};
+  const toggle=()=>{const n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("apstat-theme",n);}catch(e){}lbl();};
+  ["#themeBtn","#themeBtn2"].forEach(id=>$(id).addEventListener("click",toggle));lbl();
+  $("#menuBtn").addEventListener("click",()=>document.body.classList.toggle("nav-open"));
+  $("#scrim").addEventListener("click",()=>document.body.classList.remove("nav-open"));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classList.remove("nav-open");});
+})();
+
 /* ---------- init ---------- */
 applySet("all");
 fcFilter();
+showUnit(store.unit||"samp");
 const h=(location.hash||"").slice(1);
-showTab(TABS.includes(h)?h:"learn",false);
+showTab(TABS.includes(h)?h:"home",false);
 resetFlips();
+renderShellStats();
 })();
 </script>
 
