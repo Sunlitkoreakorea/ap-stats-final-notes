@@ -466,6 +466,37 @@ details.rv[open]>summary::after{content:"−"}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
 }
+
+/* ---------- 개념 검색 ---------- */
+.sb-search{display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:11px;padding:8px 12px;color:var(--ink-3);cursor:pointer;font-size:.88rem;text-align:left}
+.sb-search:hover{border-color:var(--ink-3);color:var(--ink)}
+.sb-search kbd{margin-left:auto;font-family:var(--f-mono);font-size:.64rem;border:1px solid var(--line-2);border-radius:5px;padding:0 5px;color:var(--ink-3)}
+.sx{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-start;justify-content:center;padding:max(60px,9vh) 16px 16px;background:rgba(10,13,28,.52);backdrop-filter:blur(3px)}
+.sx[hidden]{display:none}
+.sx-box{width:min(700px,100%);max-height:min(76vh,680px);display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+.sx-in{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.sx-in .ic{color:var(--ink-3)}
+.sx-in input{flex:1;border:0;outline:none;background:transparent;font-size:1.05rem;min-width:0}
+.sx-x{border:1px solid var(--line);background:var(--surface);border-radius:8px;font-family:var(--f-mono);font-size:.68rem;padding:2px 8px;color:var(--ink-3);cursor:pointer}
+.sx-list{overflow-y:auto;padding:8px;flex:1;min-height:80px}
+.sx-h{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding:10px 10px 4px}
+.sx-item{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:12px;padding:9px 12px;cursor:pointer}
+.sx-item[aria-selected="true"]{background:var(--accent-bg)}
+.sx-t{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:.95rem}
+.sx-t small{font-weight:400;color:var(--ink-3);font-size:.76rem}
+.sx-s{display:block;font-size:.83rem;color:var(--ink-2);margin-top:3px;line-height:1.55}
+.sx-s mark,.sx-t mark{background:var(--hl);color:#10152A;border-radius:3px;padding:0 1px}
+.sx-chips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 10px 12px}
+.sx-empty{padding:26px 14px;text-align:center;color:var(--ink-2);font-size:.92rem}
+.sx-foot{display:flex;gap:16px;flex-wrap:wrap;font-size:.72rem;color:var(--ink-3);padding:9px 18px;border-top:1px solid var(--line)}
+.sx-foot kbd{font-family:var(--f-mono);border:1px solid var(--line-2);border-radius:4px;padding:0 4px;margin-right:4px}
+body.sx-open{overflow:hidden}
+article.sec,.panel h3{scroll-margin-top:84px}
+.sec.hit{animation:hitbox 2.2s ease-out}
+h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
+@keyframes hitbox{0%,55%{box-shadow:0 0 0 3px var(--hl),0 0 0 9px var(--hl-soft)}100%{box-shadow:var(--shadow)}}
+@keyframes hith3{0%,55%{background:var(--hl)}100%{background:transparent}}
+@media (max-width:960px){.sx{padding-top:calc(14px + env(safe-area-inset-top,0px))}.sx-box{max-height:84vh}.sx-foot{display:none}}
 </style>
 
 </head>
@@ -476,6 +507,7 @@ details.rv[open]>summary::after{content:"−"}
     <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="4.5" height="9" rx="1.2" fill="#DEF247"/><rect x="9.75" y="7" width="4.5" height="14" rx="1.2" fill="#fff"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.2" fill="#DEF247"/></svg></span>
     <div><b>AP Stats 기말 노트</b><span>2026-2 · AP STATISTICS I</span></div>
   </div>
+  <button class="sb-search" id="sbSearch" type="button" aria-label="개념 검색 열기"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>개념 검색</span><kbd id="sxKbd">Ctrl K</kbd></button>
   <nav class="sb-nav" role="tablist" aria-label="섹션">
     <button class="tab" role="tab" id="tab-home" data-tab="home" aria-selected="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>홈</button>
     <p class="sb-label">학습</p>
@@ -504,6 +536,7 @@ details.rv[open]>summary::after{content:"−"}
 <header class="mbar">
   <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="4.5" height="9" rx="1.2" fill="#DEF247"/><rect x="9.75" y="7" width="4.5" height="14" rx="1.2" fill="#fff"/><rect x="16.5" y="3" width="4.5" height="18" rx="1.2" fill="#DEF247"/></svg></span>
   <b>AP Stats 기말 노트</b>
+  <button class="iconbtn" id="searchBtn2" type="button" aria-label="개념 검색"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
   <button class="iconbtn" id="themeBtn2" type="button" aria-label="화면 모드 전환"><svg class="ic" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg></button>
 </header>
 <main class="wrap">
@@ -1197,6 +1230,18 @@ details.rv[open]>summary::after{content:"−"}
 </div>
 
 
+<div class="sx" id="sx" hidden>
+  <div class="sx-box" role="dialog" aria-modal="true" aria-label="개념 검색">
+    <div class="sx-in">
+      <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="sxInput" type="search" autocomplete="off" spellcheck="false" placeholder="개념, 용어, 공식 검색 (예: 베이즈, 편향, CRD)" aria-label="검색어">
+      <button class="sx-x" id="sxClose" type="button">Esc</button>
+    </div>
+    <div class="sx-list" id="sxList" role="listbox" aria-label="검색 결과"></div>
+    <div class="sx-foot"><span><kbd>↑</kbd><kbd>↓</kbd>이동</span><span><kbd>Enter</kbd>열기</span><span><kbd>Esc</kbd>닫기</span><span>한국어·영어 모두 검색돼요</span></div>
+  </div>
+</div>
+
 <script>
 (function(){
 "use strict";
@@ -1209,6 +1254,7 @@ const R=s=>`<span class="mr">${s}</span>`;
 const KEY="apstat-notes-v1";
 let store={answers:{},known:[],stars:[],tab:"home",unit:"samp",exam:{}};
 try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){}
+if(!Array.isArray(store.recent)) store.recent=[];
 store.exam=Object.assign({ans:{},frq:{},flags:[],cur:1,sec:0,phase:"intro",name:""},store.exam||{});
 if(!Array.isArray(store.stars)) store.stars=[];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
@@ -2505,6 +2551,146 @@ function renderShellStats(){renderHome();renderSb();}
   $("#scrim").addEventListener("click",()=>document.body.classList.remove("nav-open"));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classList.remove("nav-open");});
 })();
+
+/* ---------- 개념 검색 ---------- */
+const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["전체확률","total probability"]];
+const SX_SUGGEST=["편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
+let sxIndex=null,sxItems=[],sxTerms=[],sxActive=0;
+const sxNorm=t=>String(t).replace(/\s+/g," ").trim();
+const sxRe=t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+function sxBuild(){
+  const idx=[];
+  UNITS.forEach(u=>{
+    const root=$("#unit-"+u.k);if(!root)return;
+    root.querySelectorAll("article.sec").forEach(sec=>{
+      const h=sec.querySelector(".sec-head h2"),title=sxNorm(h?h.textContent:""),body=sxNorm(sec.textContent);
+      idx.push({kind:"sec",unit:u.k,unitT:u.t,title,sub:"",el:sec,raw:body,low:body.toLowerCase(),tl:title.toLowerCase()});
+      sec.querySelectorAll("h3").forEach(h3=>{
+        const t=sxNorm(h3.textContent);let txt=t,n=h3.nextElementSibling;
+        while(n&&n.tagName!=="H3"){txt+=" "+sxNorm(n.textContent);n=n.nextElementSibling;}
+        idx.push({kind:"sub",unit:u.k,unitT:u.t,title:t,sub:title,el:h3,raw:txt,low:txt.toLowerCase(),tl:t.toLowerCase()});
+      });
+    });
+  });
+  VOCAB.forEach(v=>{const raw=sxNorm(`${v.en} ${v.sub||""} ${v.ko} ${v.def}`);idx.push({kind:"term",title:v.en,sub:v.ko,v,raw,low:raw.toLowerCase(),tl:(v.en+" "+(v.sub||"")+" "+v.ko).toLowerCase()});});
+  return idx;
+}
+function sxAlts(term){
+  const set=new Set([term]);
+  if(term.length>=2)SX_ALIAS.forEach(g=>{if(g.some(t=>t.includes(term)||term.includes(t)))g.forEach(t=>set.add(t));});
+  return [...set];
+}
+function sxSearch(q){
+  const norm=sxNorm(q).toLowerCase(),whole=norm.replace(/ /g,"");
+  let terms=null;
+  if(whole.length>=3){const g=SX_ALIAS.find(g=>g.some(t=>t.replace(/ /g,"")===whole));if(g)terms=[g];}
+  if(!terms)terms=norm.split(" ").filter(Boolean).map(sxAlts);
+  sxTerms=terms;
+  if(!terms.length)return [];
+  const out=[],subCount={};
+  sxIndex.forEach(it=>{
+    let score=0,ok=true;
+    for(const alts of terms){
+      let best=0;
+      for(const a of alts){
+        if(it.tl.includes(a))best=Math.max(best,it.tl.startsWith(a)?16:10);
+        else{const c=it.low.split(a).length-1;if(c)best=Math.max(best,Math.min(c,5));}
+      }
+      if(!best){ok=false;break;}
+      score+=best;
+    }
+    if(ok){score+=it.kind==="term"?3:(it.kind==="sec"?2:0);out.push({it,score});}
+  });
+  out.sort((a,b)=>b.score-a.score);
+  const res=[];
+  out.forEach(o=>{
+    if(o.it.kind==="sub"){const k=o.it.sub;subCount[k]=(subCount[k]||0)+1;if(subCount[k]>3)return;}
+    res.push(o.it);
+  });
+  return res;
+}
+function sxMark(text){
+  const flat=[...new Set(sxTerms.flat())].sort((a,b)=>b.length-a.length);
+  const html=esc(text);
+  if(!flat.length)return html;
+  return html.replace(new RegExp("("+flat.map(t=>sxRe(esc(t))).join("|")+")","gi"),"<mark>$1</mark>");
+}
+function sxSnippet(it){
+  const flat=sxTerms.flat();let pos=-1;
+  flat.forEach(a=>{const i=it.low.indexOf(a);if(i>=0&&(pos<0||i<pos))pos=i;});
+  if(pos<0)pos=0;
+  const s=Math.max(0,pos-38),e=Math.min(it.raw.length,pos+120);
+  return (s>0?"… ":"")+sxMark(it.raw.slice(s,e))+(e<it.raw.length?" …":"");
+}
+function sxRender(){
+  const q=$("#sxInput").value,box=$("#sxList");
+  if(!sxNorm(q)){
+    sxItems=[];sxActive=0;
+    const rec=store.recent.map(r=>`<button class="chip" data-sxq="${esc(r)}">↺ ${esc(r)}</button>`).join("");
+    box.innerHTML=(rec?`<p class="sx-h">최근 검색</p><div class="sx-chips">${rec}</div>`:"")+`<p class="sx-h">추천 검색어</p><div class="sx-chips">${SX_SUGGEST.map(r=>`<button class="chip" data-sxq="${esc(r)}">${esc(r)}</button>`).join("")}</div><p class="sx-empty">개념 문단과 용어 카드를 한 번에 찾아 줍니다.<br>결과를 열면 해당 위치로 바로 이동해요.</p>`;
+    return;
+  }
+  const res=sxSearch(q);
+  const con=res.filter(r=>r.kind!=="term").slice(0,10),ter=res.filter(r=>r.kind==="term").slice(0,6);
+  sxItems=[...con,...ter];sxActive=0;
+  if(!sxItems.length){box.innerHTML=`<p class="sx-empty">"${esc(sxNorm(q))}"에 맞는 결과가 없어요.<br>다른 표현(예: 영어 용어, 줄임말)으로 검색해 보세요.</p>`;return;}
+  const row=(it,i)=>`<button class="sx-item" role="option" data-i="${i}" aria-selected="${i===sxActive}"><span class="sx-t"><span class="pill${it.kind==="term"?" src":""}">${it.kind==="term"?"용어":"개념"}</span><span>${sxMark(it.title)}</span>${it.kind==="term"?`<small>${sxMark(it.sub)}</small>`:`<small>${it.kind==="sub"?"↳ "+esc(it.sub)+" · ":""}${esc(it.unitT)}</small>`}</span><span class="sx-s">${it.kind==="term"?sxMark(it.v.def.slice(0,150)+(it.v.def.length>150?"…":"")):sxSnippet(it)}</span></button>`;
+  let h="";
+  if(con.length)h+=`<p class="sx-h">개념 · ${con.length}</p>`+con.map((it,i)=>row(it,i)).join("");
+  if(ter.length)h+=`<p class="sx-h">용어 카드 · ${ter.length}</p>`+ter.map((it,i)=>row(it,con.length+i)).join("");
+  box.innerHTML=h;
+}
+function sxSetActive(i){
+  if(!sxItems.length)return;
+  sxActive=(i+sxItems.length)%sxItems.length;
+  $$("#sxList .sx-item").forEach(b=>b.setAttribute("aria-selected",+b.dataset.i===sxActive));
+  const a=$(`#sxList .sx-item[data-i="${sxActive}"]`);if(a)a.scrollIntoView({block:"nearest"});
+}
+function fcShow(en){
+  fcSet="all";fcI=Math.max(0,VOCAB.findIndex(v=>v.en===en));fcFilter();
+  $("#flash").classList.add("flipped");
+}
+function sxGo(it){
+  const q=sxNorm($("#sxInput").value);
+  if(q){store.recent=[q,...store.recent.filter(r=>r!==q)].slice(0,5);save();}
+  sxClose();
+  if(it.kind==="term"){showTab("cards",true);fcShow(it.v.en);return;}
+  showTab("learn",true);showUnit(it.unit);
+  requestAnimationFrame(()=>{
+    it.el.scrollIntoView({block:"start"});
+    it.el.classList.remove("hit");void it.el.offsetWidth;it.el.classList.add("hit");
+    setTimeout(()=>it.el.classList.remove("hit"),2400);
+  });
+}
+function sxOpen(){
+  if(!sxIndex)sxIndex=sxBuild();
+  document.body.classList.remove("nav-open");
+  $("#sx").hidden=false;document.body.classList.add("sx-open");
+  const i=$("#sxInput");i.value="";sxRender();i.focus();
+}
+function sxClose(){$("#sx").hidden=true;document.body.classList.remove("sx-open");}
+$("#sbSearch").addEventListener("click",sxOpen);
+$("#searchBtn2").addEventListener("click",sxOpen);
+$("#sxClose").addEventListener("click",sxClose);
+$("#sx").addEventListener("mousedown",e=>{if(e.target.id==="sx")sxClose();});
+$("#sxInput").addEventListener("input",sxRender);
+$("#sxInput").addEventListener("keydown",e=>{
+  if(e.key==="ArrowDown"){e.preventDefault();sxSetActive(sxActive+1);}
+  else if(e.key==="ArrowUp"){e.preventDefault();sxSetActive(sxActive-1);}
+  else if(e.key==="Enter"){e.preventDefault();if(sxItems[sxActive])sxGo(sxItems[sxActive]);}
+});
+$("#sxList").addEventListener("click",e=>{
+  const c=e.target.closest("[data-sxq]");
+  if(c){const i=$("#sxInput");i.value=c.dataset.sxq;sxRender();i.focus();return;}
+  const b=e.target.closest(".sx-item");if(b&&sxItems[+b.dataset.i])sxGo(sxItems[+b.dataset.i]);
+});
+$("#sxList").addEventListener("mousemove",e=>{const b=e.target.closest(".sx-item");if(b&&+b.dataset.i!==sxActive)sxSetActive(+b.dataset.i);});
+document.addEventListener("keydown",e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("#sx").hidden?sxOpen():sxClose();return;}
+  if(e.key==="Escape"&&!$("#sx").hidden){sxClose();return;}
+  if(e.key==="/"&&$("#sx").hidden&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();sxOpen();}
+});
+try{if(/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent))$("#sxKbd").textContent="⌘ K";}catch(e){}
 
 /* ---------- init ---------- */
 applySet("all");
