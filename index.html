@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수, 개념 정리와 연습 문제 117개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·분산, 개념 정리와 연습 문제 135개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -529,7 +529,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       <button class="unit" data-unit="exp" aria-pressed="false">실험 설계</button>
       <button class="unit" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
       <button class="unit" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
-      <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값</button>
+      <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
     </div>
     <p class="sb-label">연습</p>
     <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제 풀기<span class="badge" id="sbPrac"></span></button>
@@ -586,7 +586,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     <button class="chip" data-unit="exp" aria-pressed="false">실험 설계</button>
     <button class="chip" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
     <button class="chip" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
-    <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값</button>
+    <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
   </div>
 
   <!-- Ch.3 자료 수집 -->
@@ -960,9 +960,9 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     </article>
   </div>
 
-  <!-- Ch.4 확률변수·기댓값 -->
+  <!-- Ch.4 확률변수·기댓값·분산 -->
   <div id="unit-rv" hidden>
-    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 4 프린트 7쪽: 2. Random Variables. 확률변수, 이산·연속, 확률분포, 기댓값.</div>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 4 프린트 7~10쪽: 2. Random Variables. 확률변수, 이산·연속, 확률분포, 기댓값, 분산·표준편차, 확률변수의 합과 차.</div>
 
     <article class="sec">
       <div class="sec-head"><span class="num">2-1</span><h2>What is a Random Variable? <span class="gloss">확률변수</span></h2></div>
@@ -1045,12 +1045,14 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       </div>
       <div class="callout warn"><b class="tag">주의</b>Problem 2는 값이 <b>상금이 아니라 순이익</b>입니다. 참가비 $2를 반드시 빼야 해요(8, 1, −2). E(X) ≈ −$0.27이므로 이 게임은 여러 번 하면 한 판당 평균 약 27센트씩 잃는, 참가자에게 불리한 게임입니다.</div>
       <div class="tool">
-        <b style="font-size:.95rem">기댓값 계산기</b>
+        <b style="font-size:.95rem">기댓값·분산 계산기</b>
         <p style="font-size:.85rem;color:var(--ink-soft);margin-top:2px">한 줄에 "값, 확률"을 쓰세요. 확률은 0.4나 3/45처럼 분수도 됩니다. 분포 조건(확률 합 = 1)도 같이 확인해 줍니다.</p>
         <div class="tool-row" style="margin-top:10px">
           <button class="btn" data-evp="orange">오렌지 (문제 1)</button>
           <button class="btn" data-evp="carnival">카니발 (문제 2)</button>
           <button class="btn" data-evp="coin">동전 3번</button>
+          <button class="btn" data-evp="p3">수리 요청 (P3)</button>
+          <button class="btn" data-evp="p4">빨간불 (P4)</button>
         </div>
         <label class="field" for="evIn" style="margin-top:10px">값, 확률 (한 줄에 하나)
           <textarea id="evIn" rows="5" style="font-family:var(--f-mono);resize:vertical">25, 0.1
@@ -1060,6 +1062,114 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
         </label>
         <div class="outs" id="evOut"></div>
         <div id="evBars" style="margin-top:10px;display:flex;flex-direction:column;gap:4px"></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="rv">확률변수 문제 풀러 가기 →</button></p>
+    </article>
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-4</span><h2>Variance and Standard Deviation <span class="gloss">분산·표준편차</span></h2></div>
+      <div class="callout"><b class="tag">기댓값의 해석</b>확률변수를 아주 많이 관찰하면, 관찰값의 평균이 가까워지는 값이 기댓값입니다. (장기 평균)</div>
+      <p>분산은 <b>평균에서 떨어진 거리의 제곱</b>이 보통 얼마인지를 잽니다. 표준편차는 분산의 제곱근이라 <span class="mk">X와 단위가 같아요</span>.</p>
+      <div class="formula">Var(X) = σ<sub>X</sub><sup>2</sup> = E[(X − μ<sub>X</sub>)<sup>2</sup>] = Σ (x<sub>i</sub> − μ<sub>X</sub>)<sup>2</sup>·P(X = x<sub>i</sub>), &nbsp;&nbsp; σ<sub>X</sub> = √σ<sub>X</sub><sup>2</sup></div>
+      <h3>계산은 이 공식으로 <span class="gloss">이걸 쓸 일이 더 많음</span></h3>
+      <div class="formula">Var(X) = E(X<sup>2</sup>) − [E(X)]<sup>2</sup> = E(X<sup>2</sup>) − μ<sub>X</sub><sup>2</sup></div>
+      <div class="box"><h4>증명</h4>
+        <p class="mr">Var(X) = E[(X − μ)²] = E(X² − 2μX + μ²) = E(X²) − 2μ·E(X) + μ² = E(X²) − 2μ² + μ² = <b>E(X²) − μ²</b></p>
+        <p style="font-size:.88rem;color:var(--ink-2);margin-top:6px">μ는 상수라서 E(2μX) = 2μ·E(X) = 2μ², E(μ²) = μ² 입니다.</p></div>
+      <div class="grid2">
+        <div class="box">
+          <h4>Problem 3 · 수리 요청 전화</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">한 시간 동안 수리점에 오는 전화 수의 분포</p>
+          <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>전화 수</th><th class="mono">0</th><th class="mono">1</th><th class="mono">2</th><th class="mono">3</th></tr></thead><tbody><tr><td class="term">확률</td><td class="mono">0.1</td><td class="mono">0.3</td><td class="mono">0.4</td><td class="mono">0.2</td></tr></tbody></table></div>
+          <ul class="sol">
+            <li>(a) E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = <b>1.7통</b></li>
+            <li>(b) E(X²) = 0 + 0.3 + 1.6 + 1.8 = 3.7 → Var = 3.7 − 1.7² = 0.81 → <b>SD = 0.9통</b></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Problem 4 · 신호등 5개</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">출근길에 걸리는 빨간불 수 X의 분포</p>
+          <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>X</th><th class="mono">0</th><th class="mono">1</th><th class="mono">2</th><th class="mono">3</th><th class="mono">4</th><th class="mono">5</th></tr></thead><tbody><tr><td class="term">P</td><td class="mono">0.05</td><td class="mono">0.25</td><td class="mono">0.35</td><td class="mono">0.15</td><td class="mono">0.15</td><td class="mono">0.05</td></tr></tbody></table></div>
+          <ul class="sol">
+            <li>(a) E(X) = 0 + 0.25 + 0.70 + 0.45 + 0.60 + 0.25 = <b>2.25개</b></li>
+            <li>(b) E(X²) = 0 + 0.25 + 1.4 + 1.35 + 2.4 + 1.25 = 6.65 → Var = 6.65 − 2.25² = 1.5875 → <b>SD = √1.5875 ≈ 1.26개</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout warn"><b class="tag">노트 보완</b>Problem 4(a) 필기의 첫 항은 0 × 0.05 = <b>0</b>이에요(0.05로 적혀 있지만 합계 2.25는 맞아요). (b)는 √1.5875 ≈ 1.26까지 계산하면 됩니다.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">2-5</span><h2>Sums and Differences of Random Variables <span class="gloss">확률변수의 합과 차</span></h2></div>
+      <h3>기댓값 <span class="gloss">독립 상관없이 성립</span></h3>
+      <div class="tbl-wrap"><table><tbody>
+        <tr><td class="term">E(aX + b)</td><td class="mr"><b>a·E(X) + b</b></td><td style="font-size:.88rem;color:var(--ink-2)">Σ(ax<sub>i</sub> + b)P = aΣx<sub>i</sub>P + bΣP = aE(X) + b</td></tr>
+        <tr><td class="term">E(X + Y)</td><td class="mr"><b>E(X) + E(Y)</b></td><td style="font-size:.88rem;color:var(--ink-2)">ΣΣ(x<sub>i</sub> + y<sub>j</sub>)P(X=x<sub>i</sub>, Y=y<sub>j</sub>)를 나눠서 합하면 각자의 기댓값. 독립이 아니어도 됩니다.</td></tr>
+        <tr><td class="term">E(X − Y)</td><td class="mr"><b>E(X) − E(Y)</b></td><td style="font-size:.88rem;color:var(--ink-2)">같은 방법</td></tr>
+      </tbody></table></div>
+      <h3>확률변수의 독립</h3>
+      <p>모든 x<sub>i</sub>, y<sub>j</sub> 쌍에 대해 <span class="mr">P(X = x<sub>i</sub>, Y = y<sub>j</sub>) = P(X = x<sub>i</sub>)·P(Y = y<sub>j</sub>)</span>이면 X와 Y는 독립입니다. 한 변수가 다른 변수의 확률에 영향을 주지 않는다는 뜻이에요.</p>
+      <div class="box"><h4>X, Y가 독립이면 E(XY) = E(X)·E(Y) <span class="gloss">숙제 증명</span></h4>
+        <p class="mr">E(XY) = ΣΣ x<sub>i</sub>y<sub>j</sub>·P(X=x<sub>i</sub>, Y=y<sub>j</sub>) = ΣΣ x<sub>i</sub>y<sub>j</sub>·P(X=x<sub>i</sub>)P(Y=y<sub>j</sub>) = [Σ x<sub>i</sub>P(X=x<sub>i</sub>)]·[Σ y<sub>j</sub>P(Y=y<sub>j</sub>)] = <b>E(X)·E(Y)</b></p>
+        <p style="font-size:.88rem;color:var(--ink-2);margin-top:6px">두 번째 등호에서 독립을 씁니다. 그다음 x<sub>i</sub>만 있는 부분과 y<sub>j</sub>만 있는 부분으로 나눠 묶어요.</p></div>
+      <h3>분산·표준편차 <span class="gloss">X, Y가 독립일 때</span></h3>
+      <div class="tbl-wrap"><table><tbody>
+        <tr><td class="term">Var(aX + b)</td><td class="mr"><b>a²·Var(X)</b></td><td style="font-size:.88rem;color:var(--ink-2)">더한 상수 b는 퍼짐을 바꾸지 않아요. SD(aX + b) = |a|·σ<sub>X</sub></td></tr>
+        <tr><td class="term">Var(X + Y)</td><td class="mr"><b>Var(X) + Var(Y)</b></td><td style="font-size:.88rem;color:var(--ink-2)">독립이 필요합니다.</td></tr>
+        <tr><td class="term">Var(X − Y)</td><td class="mr"><b>Var(X) + Var(Y)</b></td><td style="font-size:.88rem;color:var(--ink-2)">빼도 분산은 <b>더합니다</b>. Var(−Y) = (−1)²Var(Y) = Var(Y)</td></tr>
+        <tr><td class="term">SD(X ± Y)</td><td class="mr"><b>√(σ<sub>X</sub>² + σ<sub>Y</sub>²)</b></td><td style="font-size:.88rem;color:var(--ink-2)">합이든 차든 표준편차는 같아요.</td></tr>
+      </tbody></table></div>
+      <div class="callout warn"><b class="tag">자주 하는 실수</b>① 표준편차끼리 더하지 않습니다. <b>분산을 더한 다음</b> 제곱근을 씌워요. ② X − Y의 분산도 더합니다. ③ 독립인 두 개를 더한 Y<sub>1</sub> + Y<sub>2</sub>와 한 개를 두 배 한 2Y는 다릅니다: Var(Y<sub>1</sub> + Y<sub>2</sub>) = 2σ², Var(2Y) = 4σ².</div>
+      <div class="grid2">
+        <div class="box">
+          <h4>Problem 5 · 오락실 게임 두 판</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">X: 게임 1 토큰 0, 1, 2 (0.5, 0.3, 0.2) / Y: 게임 2 토큰 1, 2 (0.4, 0.6), 서로 독립</p>
+          <ul class="sol">
+            <li>(a) E(X) = 0.7, E(X²) = 1.1 → Var(X) = 0.61, <b>SD(X) ≈ 0.781</b></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp; E(Y) = 1.6, E(Y²) = 2.8 → Var(Y) = 0.24, <b>SD(Y) ≈ 0.490</b></li>
+            <li>(b) S = X + Y: <b>μ<sub>S</sub> = 0.7 + 1.6 = 2.3</b>, <b>σ<sub>S</sub>² = 0.61 + 0.24 = 0.85</b> (σ<sub>S</sub> ≈ 0.922)</li>
+          </ul>
+          <p style="font-size:.86rem;color:var(--ink-2);margin-top:6px">검산: S의 분포를 직접 만들면 1, 2, 3, 4가 0.20, 0.42, 0.26, 0.12 → 평균 2.3, 분산 0.85로 같아요.</p>
+        </div>
+        <div class="box">
+          <h4>Problem 6 · 평균과 표준편차만 주어질 때</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">X: 평균 80, SD 12 / Y: 평균 12, SD 3, 서로 독립</p>
+          <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th></th><th>평균</th><th>SD</th></tr></thead><tbody>
+            <tr><td class="term">(a) X − 20</td><td class="mono">60</td><td class="mono">12</td></tr>
+            <tr><td class="term">(b) 0.5Y</td><td class="mono">6</td><td class="mono">1.5</td></tr>
+            <tr><td class="term">(c) X + Y</td><td class="mono">92</td><td class="mono">√153 ≈ 12.37</td></tr>
+            <tr><td class="term">(d) X − Y</td><td class="mono">68</td><td class="mono">√153 ≈ 12.37</td></tr>
+            <tr><td class="term">(e) Y₁ + Y₂</td><td class="mono">24</td><td class="mono">√18 ≈ 4.24</td></tr>
+          </tbody></table></div>
+          <p style="font-size:.86rem;color:var(--ink-2);margin-top:6px">(e)는 2Y(SD 6)가 아니라 독립인 두 값의 합이라 √(3² + 3²)입니다.</p>
+        </div>
+      </div>
+      <div class="box">
+        <h4>Problem 7 · 돌림판 점수 XY</h4>
+        <p style="font-size:.9rem;color:var(--ink-2)">X: 기본 점수 1, 2 (0.7, 0.3) / Y: 배수 2, 3 (0.5, 0.5), 서로 독립. 최종 점수 = XY</p>
+        <div class="tbl-wrap" style="margin-top:8px;max-width:420px"><table><thead><tr><th>XY</th><th class="mono">2</th><th class="mono">3</th><th class="mono">4</th><th class="mono">6</th></tr></thead><tbody><tr><td class="term">P(XY = z)</td><td class="mono">0.35</td><td class="mono">0.35</td><td class="mono">0.15</td><td class="mono">0.15</td></tr></tbody></table></div>
+        <ul class="sol">
+          <li>각 칸은 독립이라 곱: 1·2 → 0.7 × 0.5 = 0.35, 1·3 → 0.35, 2·2 → 0.3 × 0.5 = 0.15, 2·3 → 0.15</li>
+          <li>E(XY) = 2(0.35) + 3(0.35) + 4(0.15) + 6(0.15) = <b>3.25</b> &nbsp;(= E(X)·E(Y) = 1.3 × 2.5 ✓)</li>
+          <li>E[(XY)²] = 4(0.35) + 9(0.35) + 16(0.15) + 36(0.15) = 12.35 → Var = 12.35 − 3.25² = 1.7875 → <b>SD ≈ 1.337</b></li>
+        </ul>
+      </div>
+      <div class="tool">
+        <b style="font-size:.95rem">두 확률변수 계산기 (독립)</b>
+        <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">X와 Y의 분포를 넣으면 X + Y, X − Y, XY의 분포를 직접 만들고, 공식으로 구한 값과 맞는지 확인해 줍니다.</p>
+        <div class="tool-row" style="margin-top:10px">
+          <button class="btn" data-cbp="p5">오락실 (P5)</button>
+          <button class="btn" data-cbp="p7">돌림판 (P7)</button>
+          <label class="field">계산<select id="cbOp"><option value="sum">X + Y</option><option value="diff">X − Y</option><option value="prod">XY</option></select></label>
+        </div>
+        <div class="grid2" style="margin-top:10px">
+          <label class="field" for="cbX">X: 값, 확률<textarea id="cbX" rows="4" style="font-family:var(--f-mono);resize:vertical">0, 0.5
+1, 0.3
+2, 0.2</textarea></label>
+          <label class="field" for="cbY">Y: 값, 확률<textarea id="cbY" rows="4" style="font-family:var(--f-mono);resize:vertical">1, 0.4
+2, 0.6</textarea></label>
+        </div>
+        <div id="cbTable" style="margin-top:12px;overflow-x:auto"></div>
+        <div class="outs" id="cbOut"></div>
       </div>
       <p><button class="btn primary" data-go="practice" data-filter="rv">확률변수 문제 풀러 가기 →</button></p>
     </article>
@@ -1323,6 +1433,10 @@ const VOCAB=[
  {en:"Continuous random variable",ko:"연속확률변수",cat:"prob",def:"구간 안의 모든 값을 가질 수 있는(셀 수 없는) 확률변수. 보통 측정으로 얻고, 한 점의 확률은 0, 확률은 밀도곡선 아래 넓이."},
  {en:"Density curve",ko:"밀도곡선",cat:"prob",def:"연속확률변수를 기술하는 곡선. 구간의 확률 = 그 구간 위의 곡선 아래 넓이이고, 전체 넓이는 1입니다."},
  {en:"Expected value",sub:"Mean",ko:"기댓값 = 장기 평균",cat:"prob",def:"같은 과정을 많이 반복했을 때 X의 장기적인 평균. μ = E(X) = Σ xᵢ P(X=xᵢ). X가 가질 수 없는 값일 수도 있습니다."},
+ {en:"Variance",ko:"분산",cat:"prob",def:"평균에서 떨어진 거리의 제곱의 기댓값. Var(X) = E[(X−μ)²] = E(X²) − μ². 계산은 뒤의 공식이 편합니다."},
+ {en:"Standard deviation",ko:"표준편차",cat:"prob",def:"분산의 제곱근 σ = √Var(X). X와 단위가 같아서 '보통 평균에서 얼마나 떨어지는지'로 해석합니다."},
+ {en:"Independent random variables",ko:"독립인 확률변수",cat:"prob",def:"모든 값의 쌍에 대해 P(X=x, Y=y) = P(X=x)P(Y=y). 이때 E(XY) = E(X)E(Y), Var(X±Y) = Var(X) + Var(Y)."},
+ {en:"Rules for sums of random variables",ko:"합과 차의 규칙",cat:"prob",def:"E(aX+b) = aE(X)+b, E(X±Y) = E(X)±E(Y)는 항상 성립. 독립이면 Var(X±Y) = Var(X)+Var(Y), Var(aX+b) = a²Var(X)."},
  {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
 ];
 $("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
@@ -1405,6 +1519,26 @@ const Q=[
  {id:"rv-11",unit:"rv",set:"rv",src:"Problem 2 · 카니발",type:"mc",q:`카니발 게임의 E(X) = −4/15 ≈ −0.267의 올바른 해석은?`,choices:["한 판을 하면 항상 정확히 $0.27을 잃는다","여러 번 하면 한 판당 평균 약 27센트씩 잃는다","이길 확률이 −4/15이다","참가자가 이기는 경우는 없다"],answer:1,explain:`기댓값은 장기 평균입니다. 한 판의 결과는 +8, +1, −2 중 하나지만, 아주 많이 반복하면 평균이 −0.267에 가까워져요.`},
  {id:"rv-12",unit:"rv",set:"rv",src:"2-3 기댓값",type:"tf",q:`기댓값 E(X)는 X가 실제로 가질 수 있는 값 중 하나여야 한다.`,answer:false,explain:`동전 3번의 앞면 수 평균 1.5처럼, 기댓값은 가능한 값이 아니어도 됩니다. 반복했을 때의 평균이기 때문이에요.`},
  {id:"rv-13",unit:"rv",set:"rv",src:"응용 · 주사위 게임",type:"num",q:`공정한 주사위를 던져 6이 나오면 $6를 받고, 그 외에는 $1를 잃는다. 순이익 X의 기댓값은? (분수 또는 소수)`,answer:1/6,answerText:"1/6 ≈ 0.167",tol:0.001,explain:`x = 6(확률 1/6), x = −1(확률 5/6). E(X) = 6·(1/6) − 1·(5/6) = 1 − 5/6 = <b>1/6 ≈ $0.167</b>. 플레이어에게 유리한 게임이에요.`},
+
+ // Ch.4 분산 · 합과 차
+ {id:"v-1",unit:"rv",set:"var",src:"Problem 3 · 수리 요청",type:"num",q:`수리점에 한 시간 동안 오는 전화 수 X의 분포: 0통(0.1), 1통(0.3), 2통(0.4), 3통(0.2). 한 시간에 평균 몇 통을 기대할 수 있나?`,answer:1.7,answerText:"1.7",explain:`E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = <b>1.7</b>.`},
+ {id:"v-2",unit:"rv",set:"var",src:"Problem 3 · 수리 요청",type:"num",q:`(같은 분포) 전화 수 X의 <b>표준편차</b>는?`,answer:0.9,answerText:"0.9",hint:"Var = E(X²) − μ²",explain:`E(X²) = 0 + 0.3 + 1.6 + 1.8 = 3.7, Var = 3.7 − 1.7² = 0.81, SD = √0.81 = <b>0.9</b>.`},
+ {id:"v-3",unit:"rv",set:"var",src:"Problem 4 · 신호등",type:"num",q:`출근길 빨간불 수 X의 분포: 0(0.05), 1(0.25), 2(0.35), 3(0.15), 4(0.15), 5(0.05). 하루 평균 몇 개의 빨간불에 걸리나?`,answer:2.25,answerText:"2.25",explain:`E(X) = 0 + 0.25 + 0.70 + 0.45 + 0.60 + 0.25 = <b>2.25</b>. 첫 항은 0 × 0.05 = 0이에요.`},
+ {id:"v-4",unit:"rv",set:"var",src:"Problem 4 · 신호등",type:"num",q:`(같은 분포) 빨간불 수 X의 <b>표준편차</b>는? (소수 둘째 자리)`,answer:Math.sqrt(1.5875),answerText:"√1.5875 ≈ 1.26",tol:0.006,explain:`E(X²) = 0 + 0.25 + 1.4 + 1.35 + 2.4 + 1.25 = 6.65, Var = 6.65 − 2.25² = 1.5875, SD = √1.5875 ≈ <b>1.26</b>.`},
+ {id:"v-5",unit:"rv",set:"var",src:"분산 공식",type:"num",q:`E(X) = 2, E(X²) = 5일 때 Var(X)는?`,answer:1,answerText:"1",explain:`Var(X) = E(X²) − [E(X)]² = 5 − 4 = <b>1</b>.`},
+ {id:"v-6",unit:"rv",set:"var",src:"Problem 5 · 오락실",type:"num",q:`게임 1의 토큰 X: 0개(0.5), 1개(0.3), 2개(0.2). X의 <b>표준편차</b>는? (소수 셋째 자리)`,answer:Math.sqrt(0.61),answerText:"√0.61 ≈ 0.781",tol:0.002,explain:`E(X) = 0.7, E(X²) = 0.3 + 0.8 = 1.1, Var = 1.1 − 0.49 = 0.61, SD ≈ <b>0.781</b>.`},
+ {id:"v-7",unit:"rv",set:"var",src:"Problem 5 · 오락실",type:"num",q:`게임 1의 토큰 X: 0(0.5), 1(0.3), 2(0.2), 게임 2의 토큰 Y: 1(0.4), 2(0.6)이고 두 게임은 독립이다. 총 토큰 S = X + Y의 <b>분산</b> σ<sub>S</sub>²은?`,answer:0.85,answerText:"0.85",hint:"독립이면 Var(X+Y) = Var(X) + Var(Y)",explain:`Var(X) = 0.61, Var(Y) = 2.8 − 1.6² = 0.24 → Var(S) = 0.61 + 0.24 = <b>0.85</b>. (μ<sub>S</sub> = 0.7 + 1.6 = 2.3)`},
+ {id:"v-8",unit:"rv",set:"var",src:"Problem 6",type:"num",q:`X의 평균 80, SD 12일 때 <b>X − 20</b>의 평균은?`,answer:60,answerText:"60 (SD는 12 그대로)",explain:`E(X − 20) = 80 − 20 = <b>60</b>. 상수를 빼도 퍼짐은 같아서 SD는 12 그대로입니다.`},
+ {id:"v-9",unit:"rv",set:"var",src:"Problem 6",type:"num",q:`Y의 평균 12, SD 3일 때 <b>0.5Y</b>의 표준편차는?`,answer:1.5,answerText:"1.5",explain:`SD(aY) = |a|·SD(Y) = 0.5 × 3 = <b>1.5</b>. (평균은 6)`},
+ {id:"v-10",unit:"rv",set:"var",src:"Problem 6",type:"num",q:`독립인 X(평균 80, SD 12)와 Y(평균 12, SD 3)에 대해 <b>X + Y</b>의 표준편차는? (소수 둘째 자리)`,answer:Math.sqrt(153),answerText:"√153 ≈ 12.37",tol:0.006,explain:`Var(X + Y) = 12² + 3² = 153 → SD = √153 ≈ <b>12.37</b>. SD끼리 더한 15가 아니에요. (평균은 92)`},
+ {id:"v-11",unit:"rv",set:"var",src:"Problem 6",type:"mc",q:`독립인 X(평균 80, SD 12)와 Y(평균 12, SD 3)에 대해 <b>X − Y</b>의 평균과 표준편차는?`,choices:["68, 9","68, √153 ≈ 12.37","92, √153 ≈ 12.37","68, √135 ≈ 11.62"],answer:1,explain:`평균 = 80 − 12 = 68. 분산은 빼도 더합니다: 144 + 9 = 153 → SD ≈ 12.37.`},
+ {id:"v-12",unit:"rv",set:"var",src:"Problem 6",type:"mc",q:`Y의 평균 12, SD 3이고 Y₁, Y₂는 Y와 같은 분포를 따르는 <b>독립</b>인 두 값이다. Y₁ + Y₂의 표준편차는?`,choices:["6","√18 ≈ 4.24","3","18"],answer:1,explain:`Var(Y₁ + Y₂) = 9 + 9 = 18 → SD = √18 ≈ <b>4.24</b>. 2Y(SD 6)와 헷갈리지 마세요. (평균은 24)`},
+ {id:"v-13",unit:"rv",set:"var",src:"Problem 7 · 돌림판",type:"num",q:`독립인 돌림판: 기본 점수 X는 1(0.7), 2(0.3), 배수 Y는 2(0.5), 3(0.5). 최종 점수 XY의 기댓값은?`,answer:3.25,answerText:"3.25",explain:`XY 분포: 2(0.35), 3(0.35), 4(0.15), 6(0.15) → E(XY) = 0.7 + 1.05 + 0.6 + 0.9 = <b>3.25</b>. 독립이라 E(X)E(Y) = 1.3 × 2.5 = 3.25와도 같아요.`},
+ {id:"v-14",unit:"rv",set:"var",src:"Problem 7 · 돌림판",type:"num",q:`(같은 돌림판) 최종 점수 XY의 <b>표준편차</b>는? (소수 셋째 자리)`,answer:Math.sqrt(1.7875),answerText:"√1.7875 ≈ 1.337",tol:0.002,explain:`E[(XY)²] = 4(0.35) + 9(0.35) + 16(0.15) + 36(0.15) = 12.35, Var = 12.35 − 3.25² = 1.7875, SD ≈ <b>1.337</b>.`},
+ {id:"v-15",unit:"rv",set:"var",src:"합과 차",type:"tf",q:`X, Y가 독립이면 Var(X − Y) = Var(X) − Var(Y)이다.`,answer:false,explain:`Var(X − Y) = Var(X) + Var(−Y) = Var(X) + (−1)²Var(Y) = <b>Var(X) + Var(Y)</b>. 빼도 퍼짐은 커집니다.`},
+ {id:"v-16",unit:"rv",set:"var",src:"합과 차",type:"tf",q:`E(X + Y) = E(X) + E(Y)는 X와 Y가 독립이 아니어도 성립한다.`,answer:true,explain:`기댓값의 덧셈은 항상 성립합니다. 독립이 필요한 건 분산의 덧셈과 E(XY) = E(X)E(Y)예요.`},
+ {id:"v-17",unit:"rv",set:"var",src:"합과 차",type:"tf",q:`X, Y가 독립이면 SD(X + Y) = SD(X) + SD(Y)이다.`,answer:false,explain:`더해지는 건 분산입니다. SD(X + Y) = √(σ<sub>X</sub>² + σ<sub>Y</sub>²) ≤ σ<sub>X</sub> + σ<sub>Y</sub>.`},
+ {id:"v-18",unit:"rv",set:"var",src:"선형변환",type:"mc",q:`Var(aX + b)로 옳은 것은?`,choices:["a·Var(X) + b","a²·Var(X) + b","a²·Var(X)","a·Var(X)"],answer:2,explain:`상수 b는 모든 값을 똑같이 옮길 뿐이라 퍼짐에 영향이 없고, a배 하면 거리의 제곱이 a²배가 됩니다 → <b>a²·Var(X)</b>.`},
 
  // Problem set #1
  {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
@@ -1515,7 +1649,8 @@ const SETS=[
  {key:"cond",label:"Ch.4 조건부·독립",fn:q=>q.unit==="cond"},
  {key:"bayes",label:"베이즈",fn:q=>q.set==="bayes"},
  {key:"monty",label:"몬티홀",fn:q=>q.set==="monty"},
- {key:"rv",label:"확률변수·기댓값",fn:q=>q.unit==="rv"},
+ {key:"rv",label:"확률변수·기댓값·분산",fn:q=>q.unit==="rv"},
+ {key:"var",label:"분산·합과 차",fn:q=>q.set==="var"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
@@ -1746,7 +1881,7 @@ function renderBayes(){
 ["#bp","#bs","#bf"].forEach(id=>$(id).addEventListener("input",renderBayes)); renderBayes();
 
 /* ---------- Expected value calculator ---------- */
-const EVP={orange:"25, 0.1\n30, 0.4\n35, 0.3\n40, 0.2",carnival:"8, 3/45\n1, 16/45\n-2, 26/45",coin:"0, 1/8\n1, 3/8\n2, 3/8\n3, 1/8"};
+const EVP={orange:"25, 0.1\n30, 0.4\n35, 0.3\n40, 0.2",carnival:"8, 3/45\n1, 16/45\n-2, 26/45",coin:"0, 1/8\n1, 3/8\n2, 3/8\n3, 1/8",p3:"0, 0.1\n1, 0.3\n2, 0.4\n3, 0.2",p4:"0, 0.05\n1, 0.25\n2, 0.35\n3, 0.15\n4, 0.15\n5, 0.05"};
 function renderEV(){
   const rows=[], bad=[];
   ($("#evIn").value||"").split("\n").map(s=>s.trim()).filter(Boolean).forEach((ln,i)=>{
@@ -1757,16 +1892,45 @@ function renderEV(){
   const out=$("#evOut"), bars=$("#evBars");
   if(bad.length){out.innerHTML=`<div class="out">${bad.join(", ")}번째 줄을 "값, 확률" 형식으로 써 주세요.</div>`;bars.innerHTML="";return;}
   if(!rows.length){out.innerHTML=`<div class="out">값과 확률을 입력하세요.</div>`;bars.innerHTML="";return;}
-  const sum=rows.reduce((a,r)=>a+r.p,0), ev=rows.reduce((a,r)=>a+r.x*r.p,0);
+  const sum=rows.reduce((a,r)=>a+r.p,0), ev=rows.reduce((a,r)=>a+r.x*r.p,0), e2=rows.reduce((a,r)=>a+r.x*r.x*r.p,0), vr=Math.max(0,e2-ev*ev);
   const inRange=rows.every(r=>r.p>=0&&r.p<=1), okSum=Math.abs(sum-1)<1e-9;
   const f=v=>(Math.round(v*10000)/10000).toString();
-  out.innerHTML=`<div class="out"><span>ΣP</span>${f(sum)}</div><div class="out"><span>분포 조건</span>${inRange&&okSum?"만족 ✓":(!inRange?"확률이 0~1을 벗어남":"합이 1이 아님")}</div><div class="out"><span>E(X)</span><b>${f(ev)}</b></div>`;
+  out.innerHTML=`<div class="out"><span>ΣP</span>${f(sum)}</div><div class="out"><span>분포 조건</span>${inRange&&okSum?"만족 ✓":(!inRange?"확률이 0~1을 벗어남":"합이 1이 아님")}</div><div class="out"><span>E(X)</span><b>${f(ev)}</b></div><div class="out"><span>E(X²)</span>${f(e2)}</div><div class="out"><span>Var(X) = E(X²) − μ²</span><b>${f(vr)}</b></div><div class="out"><span>SD(X)</span><b>${f(Math.sqrt(vr))}</b></div>`;
   const mx=Math.max(...rows.map(r=>r.p),1e-9);
   bars.innerHTML=rows.map(r=>`<div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.8rem"><span style="width:44px;text-align:right;color:var(--ink-soft)">${f(r.x)}</span><span style="height:12px;border-radius:3px;background:var(--blue);width:${Math.max(0,r.p/mx*60)}%;min-width:2px"></span><span style="color:var(--ink-faint)">${f(r.p)}</span></div>`).join("");
 }
 $("#evIn").addEventListener("input",renderEV);
 $$("[data-evp]").forEach(b=>b.addEventListener("click",()=>{$("#evIn").value=EVP[b.dataset.evp];renderEV();}));
 renderEV();
+
+
+/* ---------- 두 확률변수 계산기 ---------- */
+const CBP={p5:{x:"0, 0.5\n1, 0.3\n2, 0.2",y:"1, 0.4\n2, 0.6",op:"sum"},p7:{x:"1, 0.7\n2, 0.3",y:"2, 0.5\n3, 0.5",op:"prod"}};
+function cbParse(txt){
+  const rows=[];let bad=0;
+  String(txt||"").split("\n").map(t=>t.trim()).filter(Boolean).forEach((ln,i)=>{const pr=ln.split(/[,\s]+/).filter(Boolean),x=parseNum(pr[0]||""),p=parseNum(pr[1]||"");if(pr.length<2||isNaN(x)||isNaN(p))bad=i+1;else rows.push({x,p});});
+  return {rows,bad};
+}
+function cbMom(rows){const m=rows.reduce((a,r)=>a+r.x*r.p,0),e2=rows.reduce((a,r)=>a+r.x*r.x*r.p,0);return {m,v:Math.max(0,e2-m*m)};}
+function renderCB(){
+  const X=cbParse($("#cbX").value),Y=cbParse($("#cbY").value),op=$("#cbOp").value,out=$("#cbOut"),tb=$("#cbTable");
+  const f=v=>(Math.round(v*10000)/10000).toString();
+  if(X.bad||Y.bad||!X.rows.length||!Y.rows.length){out.innerHTML=`<div class="out">${X.bad?"X의 "+X.bad+"번째 줄":Y.bad?"Y의 "+Y.bad+"번째 줄":"X와 Y"}을(를) "값, 확률" 형식으로 써 주세요.</div>`;tb.innerHTML="";return;}
+  const acc=new Map();
+  X.rows.forEach(a=>Y.rows.forEach(b=>{const z=op==="sum"?a.x+b.x:op==="diff"?a.x-b.x:a.x*b.x,k=Math.round(z*1e6)/1e6;acc.set(k,(acc.get(k)||0)+a.p*b.p);}));
+  const Z=[...acc.entries()].sort((a,b)=>a[0]-b[0]).map(([x,p])=>({x,p}));
+  const lab=op==="sum"?"X + Y":op==="diff"?"X − Y":"XY";
+  tb.innerHTML=`<table class="xt"><tr><th class="rh">${lab}</th>${Z.map(r=>`<td>${f(r.x)}</td>`).join("")}</tr><tr><th class="rh">P</th>${Z.map(r=>`<td>${f(r.p)}</td>`).join("")}</tr></table>`;
+  const mx=cbMom(X.rows),my=cbMom(Y.rows),mz=cbMom(Z);
+  const fe=op==="sum"?mx.m+my.m:op==="diff"?mx.m-my.m:mx.m*my.m;
+  const fv=op==="prod"?null:mx.v+my.v;
+  const ok=(a,b)=>Math.abs(a-b)<1e-9?" ✓":" ✗";
+  out.innerHTML=`<div class="out"><span>X</span>평균 ${f(mx.m)} · SD ${f(Math.sqrt(mx.v))}</div><div class="out"><span>Y</span>평균 ${f(my.m)} · SD ${f(Math.sqrt(my.v))}</div><div class="out"><span>${lab} 직접 계산</span><b>평균 ${f(mz.m)} · 분산 ${f(mz.v)} · SD ${f(Math.sqrt(mz.v))}</b></div><div class="out"><span>공식</span>${op==="prod"?`E(X)E(Y) = ${f(fe)}${ok(fe,mz.m)}`:`평균 ${op==="sum"?"E(X)+E(Y)":"E(X)−E(Y)"} = ${f(fe)}${ok(fe,mz.m)} · 분산 Var(X)+Var(Y) = ${f(fv)}${ok(fv,mz.v)}`}</div>`;
+}
+["#cbX","#cbY","#cbOp"].forEach(id=>$(id).addEventListener("input",renderCB));
+$("#cbOp").addEventListener("change",renderCB);
+$$("[data-cbp]").forEach(b=>b.addEventListener("click",()=>{const p=CBP[b.dataset.cbp];$("#cbX").value=p.x;$("#cbY").value=p.y;$("#cbOp").value=p.op;renderCB();}));
+renderCB();
 
 /* ---------- Monty Hall simulator ---------- */
 let mh={games:0,stay:0,sw:0};
@@ -2527,7 +2691,7 @@ const UNITS=[
   {k:"exp",t:"실험 설계",d:"용어 · 4원리 · CRD / RBD 도식"},
   {k:"prob",t:"Ch.4 확률 기초",d:"경우의 수 · 확률 규칙 · 큰 수의 법칙"},
   {k:"cond",t:"Ch.4 조건부·베이즈·몬티홀",d:"조건부 · 독립 · 베이즈 · 몬티홀"},
-  {k:"rv",t:"Ch.4 확률변수·기댓값",d:"이산/연속 · 확률분포 · 기댓값"}
+  {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"}
 ];
 function renderHome(){
   if(!$("#homeTiles"))return;
@@ -2570,7 +2734,7 @@ function renderShellStats(){renderHome();renderSb();}
 })();
 
 /* ---------- 개념 검색 ---------- */
-const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["전체확률","total probability"]];
+const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
 const SX_SUGGEST=["편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
 let sxIndex=null,sxItems=[],sxTerms=[],sxActive=0;
 const sxNorm=t=>String(t).replace(/\s+/g," ").trim();
