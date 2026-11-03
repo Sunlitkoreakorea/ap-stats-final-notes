@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·분산, 개념 정리와 연습 문제 135개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·분산·이항분포, 개념 정리와 연습 문제 150개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -530,6 +530,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       <button class="unit" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
       <button class="unit" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
       <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
+      <button class="unit" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항분포</button>
     </div>
     <p class="sb-label">연습</p>
     <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제 풀기<span class="badge" id="sbPrac"></span></button>
@@ -587,6 +588,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     <button class="chip" data-unit="prob" aria-pressed="false">Ch.4 확률 기초</button>
     <button class="chip" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
     <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
+    <button class="chip" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항분포</button>
   </div>
 
   <!-- Ch.3 자료 수집 -->
@@ -1175,6 +1177,108 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     </article>
   </div>
 
+  <!-- Ch.4 확률 모형·이항분포 -->
+  <div id="unit-bin" hidden>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 4 프린트 11~12쪽: 3. Probability Models. 베르누이 분포, 이항분포, 이항분포의 확률·평균·분산.</div>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3-1</span><h2>Bernoulli Distribution <span class="gloss">베르누이 분포</span></h2></div>
+      <p class="lead"><b>베르누이 시행</b>은 결과가 <span class="mk">딱 두 가지</span>(성공·실패)뿐인 무작위 과정입니다. P(성공) = p 이고, X = 1(성공), X = 0(실패)로 놓으면 <b>X ~ Bernoulli(p)</b>라고 씁니다.</p>
+      <div class="tbl-wrap" style="max-width:420px"><table><thead><tr><th>X</th><th class="mono">0</th><th class="mono">1</th></tr></thead><tbody><tr><td class="term">P(X = x)</td><td class="mono">1 − p</td><td class="mono">p</td></tr></tbody></table></div>
+      <div class="grid2">
+        <div class="box"><h4>직접 계산한 평균·분산</h4>
+          <ul class="sol">
+            <li>평균: E(X) = 0·(1 − p) + 1·p = <b>p</b></li>
+            <li>분산: E(X²) = p 이므로 Var(X) = p − p² = <b>p(1 − p)</b></li>
+            <li>표준편차: <b>√(p(1 − p))</b></li>
+          </ul></div>
+        <div class="box"><h4>예</h4>
+          <ul class="clean">
+            <li>자유투 한 번 (성공 p / 실패 1 − p)</li>
+            <li>무작위로 고른 전구 하나 확인 (정상 / 불량)</li>
+            <li>게임에서 희귀 아이템 얻기 (나옴 / 안 나옴)</li>
+          </ul></div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">3-2</span><h2>Binomial Distribution <span class="gloss">이항분포 · 중요</span></h2></div>
+      <p>성공 확률이 같은 p인 <b>독립</b> 베르누이 시행을 n번 합니다. i번째 시행이 성공이면 X<sub>i</sub> = 1, 실패면 0으로 놓으면 각 X<sub>i</sub>는 평균 p, 분산 p(1 − p)인 베르누이 확률변수예요.</p>
+      <div class="formula">X = X<sub>1</sub> + X<sub>2</sub> + ⋯ + X<sub>n</sub> &nbsp;=&nbsp; n번 시행 중 성공한 횟수 &nbsp;&nbsp; → &nbsp; <b>X ~ B(n, p)</b>, &nbsp; X = 0, 1, 2, …, n</div>
+      <p><span class="pen">n번 할 거고, 성공 확률은 p야</span> 라고 읽으면 됩니다.</p>
+      <div class="tbl-wrap"><table><thead><tr><th>상황</th><th>X</th><th>분포</th></tr></thead><tbody>
+        <tr><td>동전을 5번 던진다</td><td>앞면의 수</td><td class="mr">B(5, 1/2)</td></tr>
+        <tr><td>친구 8명에게 문자, 각자 독립적으로 0.8 확률로 답장</td><td>답장 수</td><td class="mr">B(8, 0.8)</td></tr>
+        <tr><td>공정한 주사위를 12번 굴린다</td><td>6이 나온 횟수</td><td class="mr">B(12, 1/6)</td></tr>
+      </tbody></table></div>
+      <h3>이항분포인지 확인하기: BINS</h3>
+      <div class="principles">
+        <div class="pr"><h4>B · Binary</h4><p>각 시행의 결과가 두 가지(성공/실패)뿐</p></div>
+        <div class="pr"><h4>I · Independent</h4><p>시행끼리 서로 영향을 주지 않음</p></div>
+        <div class="pr"><h4>N · Number fixed</h4><p>시행 횟수 n이 미리 정해져 있음</p></div>
+        <div class="pr"><h4>S · Same probability</h4><p>매 시행의 성공 확률 p가 같음</p></div>
+      </div>
+      <div class="callout warn"><b class="tag">BINS가 깨지는 예</b>"6이 나올 때까지 굴린다"는 n이 정해져 있지 않아요(N 위반). 카드 52장에서 <b>비복원</b>으로 5장을 뽑아 하트 수를 세면 매번 확률이 바뀌고 서로 독립도 아니에요(I·S 위반).</div>
+
+      <h3>(1) 이항분포의 확률</h3>
+      <div class="formula">P(X = k) = <sub>n</sub>C<sub>k</sub> · p<sup>k</sup> · (1 − p)<sup>n − k</sup>, &nbsp;&nbsp; k = 0, 1, …, n</div>
+      <ul class="clean">
+        <li>p<sup>k</sup>(1 − p)<sup>n − k</sup>: 성공 k번, 실패 n − k번이 <b>정해진 순서로</b> 나올 확률</li>
+        <li><sub>n</sub>C<sub>k</sub>: n번 중 어느 k번이 성공인지 고르는 경우의 수</li>
+        <li>이항정리 (a + b)<sup>n</sup> = Σ <sub>n</sub>C<sub>k</sub> a<sup>k</sup> b<sup>n − k</sup>에 a = p, b = 1 − p를 넣으면 확률의 합이 (p + 1 − p)<sup>n</sup> = 1이 됩니다.</li>
+      </ul>
+      <div class="grid2">
+        <div class="box">
+          <h4>Problem 8 · 자유투 70%</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">10번 던져서 성공이 <b>3번 이하</b>일 확률은? X ~ B(10, 0.7)</p>
+          <p class="mr" style="margin-top:8px;font-size:.98rem">P(X ≤ 3) = Σ<sub>k=0</sub><sup>3</sup> <sub>10</sub>C<sub>k</sub> (0.7)<sup>k</sup>(0.3)<sup>10−k</sup></p>
+          <ul class="sol" style="font-size:.9rem">
+            <li>k = 0: 0.000006 · k = 1: 0.000138</li>
+            <li>k = 2: 0.001447 · k = 3: 0.009002</li>
+            <li>합 ≈ <b>0.0106</b> &nbsp;(계산기: binomcdf(10, 0.7, 3))</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Problem 9 · 찍어서 맞히기</h4>
+          <p style="font-size:.9rem;color:var(--ink-2)">보기 4개짜리 6문제를 모두 찍을 때 <b>정확히 1문제</b> 맞힐 확률은? X ~ B(6, 0.25)</p>
+          <p class="mr" style="margin-top:8px;font-size:.98rem">P(X = 1) = <sub>6</sub>C<sub>1</sub> (0.25)<sup>1</sup>(0.75)<sup>5</sup> = 6 × 0.25 × 0.2373 ≈ <b>0.356</b></p>
+          <p style="font-size:.86rem;color:var(--ink-2);margin-top:6px">계산기: binompdf(6, 0.25, 1)</p>
+        </div>
+      </div>
+
+      <h3>(2) 평균과 분산</h3>
+      <p>이항확률변수 X는 <b>n개의 독립 베르누이 확률변수의 합</b>입니다. 합의 규칙(2-5)을 그대로 쓰면 됩니다.</p>
+      <div class="box">
+        <ul class="sol">
+          <li>E(X) = E(X<sub>1</sub>) + ⋯ + E(X<sub>n</sub>) = p + ⋯ + p = <b>np</b></li>
+          <li>Var(X) = Var(X<sub>1</sub>) + ⋯ + Var(X<sub>n</sub>) = <b>np(1 − p)</b> &nbsp;(시행이 독립이라 분산을 더할 수 있음)</li>
+        </ul>
+      </div>
+      <div class="callout"><b class="tag">Must-Know</b><span class="mr" style="font-size:1.08rem">X ~ B(n, p) 이면 &nbsp; E(X) = <b>np</b>, &nbsp; Var(X) = <b>np(1 − p)</b>, &nbsp; σ(X) = <b>√(np(1 − p))</b></span></div>
+      <p style="font-size:.92rem;color:var(--ink-2)">예: B(8, 0.8)의 평균 = 6.4명, B(12, 1/6)의 표준편차 = √(12 · 1/6 · 5/6) ≈ 1.29번.</p>
+
+      <div class="tool">
+        <b style="font-size:.95rem">이항분포 계산기</b>
+        <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">n, p, k와 조건을 고르면 확률을 계산하고, 해당하는 막대를 표시합니다.</p>
+        <div class="tool-row" style="margin-top:10px">
+          <button class="btn" data-bp="p8">자유투 (P8)</button>
+          <button class="btn" data-bp="p9">찍기 (P9)</button>
+          <button class="btn" data-bp="coin">동전 5번</button>
+          <button class="btn" data-bp="frq58">모의고사 58번</button>
+        </div>
+        <div class="tool-row" style="margin-top:10px">
+          <label class="field">n<input type="number" id="bnN" value="10" min="1" max="500"></label>
+          <label class="field">p<input type="number" id="bnP" value="0.7" min="0" max="1" step="0.01"></label>
+          <label class="field">조건<select id="bnOp"><option value="le">X ≤ k</option><option value="eq">X = k</option><option value="ge">X ≥ k</option><option value="lt">X &lt; k</option><option value="gt">X &gt; k</option></select></label>
+          <label class="field">k<input type="number" id="bnK" value="3" min="0" max="500"></label>
+        </div>
+        <div class="outs" id="bnOut"></div>
+        <div id="bnChart" style="margin-top:12px;overflow-x:auto"></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="bin">이항분포 문제 풀러 가기 →</button></p>
+    </article>
+  </div>
+
   <!-- 실험 설계 -->
   <div id="unit-exp" hidden>
     <article class="sec">
@@ -1437,6 +1541,11 @@ const VOCAB=[
  {en:"Standard deviation",ko:"표준편차",cat:"prob",def:"분산의 제곱근 σ = √Var(X). X와 단위가 같아서 '보통 평균에서 얼마나 떨어지는지'로 해석합니다."},
  {en:"Independent random variables",ko:"독립인 확률변수",cat:"prob",def:"모든 값의 쌍에 대해 P(X=x, Y=y) = P(X=x)P(Y=y). 이때 E(XY) = E(X)E(Y), Var(X±Y) = Var(X) + Var(Y)."},
  {en:"Rules for sums of random variables",ko:"합과 차의 규칙",cat:"prob",def:"E(aX+b) = aE(X)+b, E(X±Y) = E(X)±E(Y)는 항상 성립. 독립이면 Var(X±Y) = Var(X)+Var(Y), Var(aX+b) = a²Var(X)."},
+ {en:"Bernoulli trial",ko:"베르누이 시행",cat:"prob",def:"결과가 성공·실패 딱 두 가지인 무작위 과정. X = 1(성공), 0(실패), P(성공) = p. 평균 p, 분산 p(1−p)."},
+ {en:"Binomial distribution",ko:"이항분포",cat:"prob",def:"성공 확률 p인 독립 베르누이 시행을 n번 했을 때의 성공 횟수 X ~ B(n, p). X = 0, 1, …, n."},
+ {en:"BINS",sub:"Binary · Independent · Number · Same",ko:"이항분포 조건",cat:"prob",def:"결과 두 가지(Binary), 시행끼리 독립(Independent), 시행 횟수 고정(Number), 성공 확률 동일(Same probability)."},
+ {en:"Binomial probability",ko:"이항분포의 확률",cat:"prob",def:"P(X = k) = nCk · p^k · (1−p)^(n−k). 계산기는 binompdf(n, p, k), 누적은 binomcdf(n, p, k)."},
+ {en:"Binomial mean and variance",ko:"이항분포의 평균·분산",cat:"prob",def:"X ~ B(n, p)이면 E(X) = np, Var(X) = np(1−p), σ = √(np(1−p))."},
  {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
 ];
 $("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
@@ -1539,6 +1648,23 @@ const Q=[
  {id:"v-16",unit:"rv",set:"var",src:"합과 차",type:"tf",q:`E(X + Y) = E(X) + E(Y)는 X와 Y가 독립이 아니어도 성립한다.`,answer:true,explain:`기댓값의 덧셈은 항상 성립합니다. 독립이 필요한 건 분산의 덧셈과 E(XY) = E(X)E(Y)예요.`},
  {id:"v-17",unit:"rv",set:"var",src:"합과 차",type:"tf",q:`X, Y가 독립이면 SD(X + Y) = SD(X) + SD(Y)이다.`,answer:false,explain:`더해지는 건 분산입니다. SD(X + Y) = √(σ<sub>X</sub>² + σ<sub>Y</sub>²) ≤ σ<sub>X</sub> + σ<sub>Y</sub>.`},
  {id:"v-18",unit:"rv",set:"var",src:"선형변환",type:"mc",q:`Var(aX + b)로 옳은 것은?`,choices:["a·Var(X) + b","a²·Var(X) + b","a²·Var(X)","a·Var(X)"],answer:2,explain:`상수 b는 모든 값을 똑같이 옮길 뿐이라 퍼짐에 영향이 없고, a배 하면 거리의 제곱이 a²배가 됩니다 → <b>a²·Var(X)</b>.`},
+
+ // Ch.4 확률 모형 · 이항분포
+ {id:"bn-1",unit:"bin",set:"bin",src:"3-1 Bernoulli",type:"tf",q:`베르누이 시행은 결과가 정확히 두 가지(성공, 실패)뿐인 무작위 과정이다.`,answer:true,explain:`맞아요. P(성공) = p, P(실패) = 1 − p이고 X = 1, 0으로 둡니다.`},
+ {id:"bn-2",unit:"bin",set:"bin",src:"3-1 Bernoulli",type:"mc",q:`X ~ Bernoulli(p)일 때 E(X)와 Var(X)는?`,choices:["E = p, Var = p","E = p, Var = p(1 − p)","E = 1 − p, Var = p(1 − p)","E = p², Var = p − p²"],answer:1,explain:`E(X) = 0(1 − p) + 1·p = p, E(X²) = p → Var = p − p² = <b>p(1 − p)</b>.`},
+ {id:"bn-3",unit:"bin",set:"bin",src:"3-1 Bernoulli",type:"num",q:`성공 확률 0.3인 베르누이 확률변수의 <b>분산</b>은?`,answer:0.21,answerText:"0.21",explain:`p(1 − p) = 0.3 × 0.7 = <b>0.21</b>.`},
+ {id:"bn-4",unit:"bin",set:"bin",src:"3-2 BINS",type:"mc",q:`다음 중 이항분포를 따르는 것은?`,choices:["6이 나올 때까지 주사위를 굴린 횟수","동전을 10번 던졌을 때 앞면의 수","카드 52장에서 비복원으로 5장을 뽑을 때 하트의 수","학생 20명의 키"],answer:1,explain:`(B)는 BINS를 모두 만족: 결과 두 가지, 독립, n = 10 고정, p = 1/2 동일. (A) n이 정해지지 않음, (C) 비복원이라 독립이 아니고 확률이 바뀜, (D) 결과가 두 가지가 아님.`},
+ {id:"bn-5",unit:"bin",set:"bin",src:"3-2 BINS",type:"mc",q:`카드 52장에서 <b>비복원</b>으로 5장을 뽑아 하트의 수를 셀 때, 이항분포가 아닌 주된 이유는?`,choices:["결과가 두 가지가 아니다","시행 횟수가 정해져 있지 않다","뽑을 때마다 확률이 바뀌고 시행이 독립이 아니다","하트가 나올 확률이 0이다"],answer:2,explain:`비복원이라 앞에서 뽑은 카드가 다음 확률을 바꿉니다 → Independent, Same probability 위반.`},
+ {id:"bn-6",unit:"bin",set:"bin",src:"3-2 표기",type:"mc",q:`공정한 주사위를 12번 굴려 6이 나온 횟수 X의 분포는?`,choices:["B(6, 1/12)","B(12, 1/6)","B(12, 1/2)","Bernoulli(1/6)"],answer:1,explain:`n = 12번 시행, 성공(6) 확률 p = 1/6 → <b>B(12, 1/6)</b>.`},
+ {id:"bn-7",unit:"bin",set:"bin",src:"3-2 표기",type:"mc",q:`X ~ B(n, p)가 가질 수 있는 값은?`,choices:["1, 2, …, n","0, 1, …, n","0과 1","0, 1, …, n − 1"],answer:1,explain:`성공 횟수라서 한 번도 성공 못한 0부터 모두 성공한 n까지 → <b>0, 1, …, n</b>.`},
+ {id:"bn-8",unit:"bin",set:"bin",src:"Problem 8 · 자유투",type:"num",q:`자유투 성공률이 70%인 선수가 10번 던질 때 <b>3번 이하</b> 성공할 확률은? (소수 넷째 자리)`,answer:0.0105920784,answerText:"≈ 0.0106",tol:0.0002,hint:"P(X=0)+P(X=1)+P(X=2)+P(X=3), 또는 binomcdf(10, 0.7, 3)",explain:`X ~ B(10, 0.7). P(X ≤ 3) = Σ<sub>k=0</sub><sup>3</sup> <sub>10</sub>C<sub>k</sub>(0.7)<sup>k</sup>(0.3)<sup>10−k</sup> = 0.000006 + 0.000138 + 0.001447 + 0.009002 ≈ <b>0.0106</b>.`},
+ {id:"bn-9",unit:"bin",set:"bin",src:"Problem 9 · 찍기",type:"num",q:`보기가 4개인 6문제를 모두 찍을 때 <b>정확히 1문제</b>를 맞힐 확률은? (소수 셋째 자리)`,answer:0.35595703125,answerText:"≈ 0.356",tol:0.001,explain:`X ~ B(6, 0.25). P(X = 1) = <sub>6</sub>C<sub>1</sub>(0.25)(0.75)<sup>5</sup> = 6 × 0.25 × 0.2373 ≈ <b>0.356</b>.`},
+ {id:"bn-10",unit:"bin",set:"bin",src:"3-2 확률",type:"num",q:`동전을 5번 던져 앞면이 <b>정확히 2번</b> 나올 확률은?`,answer:0.3125,answerText:"10/32 = 0.3125",explain:`<sub>5</sub>C<sub>2</sub>(1/2)<sup>5</sup> = 10/32 = <b>0.3125</b>.`},
+ {id:"bn-11",unit:"bin",set:"bin",src:"3-2 확률",type:"num",q:`X ~ B(4, 0.4)일 때 P(X ≥ 1)은?`,answer:0.8704,answerText:"0.8704",hint:"여사건: 1 − P(X = 0)",explain:`1 − P(X = 0) = 1 − 0.6<sup>4</sup> = 1 − 0.1296 = <b>0.8704</b>. (모의고사 7번과 같은 구조)`},
+ {id:"bn-12",unit:"bin",set:"bin",src:"3-2 평균·분산",type:"num",q:`친구 8명이 각각 독립적으로 0.8의 확률로 답장할 때, 답장 수의 <b>기댓값</b>은?`,answer:6.4,answerText:"6.4",explain:`X ~ B(8, 0.8) → E(X) = np = 8 × 0.8 = <b>6.4</b>.`},
+ {id:"bn-13",unit:"bin",set:"bin",src:"3-2 평균·분산",type:"num",q:`X ~ B(10, 0.7)의 <b>분산</b>은?`,answer:2.1,answerText:"2.1",explain:`np(1 − p) = 10 × 0.7 × 0.3 = <b>2.1</b>.`},
+ {id:"bn-14",unit:"bin",set:"bin",src:"3-2 평균·분산",type:"num",q:`주사위를 12번 굴려 6이 나온 횟수의 <b>표준편차</b>는? (소수 둘째 자리)`,answer:Math.sqrt(5/3),answerText:"√(5/3) ≈ 1.29",tol:0.006,explain:`X ~ B(12, 1/6) → σ = √(12 × 1/6 × 5/6) = √(5/3) ≈ <b>1.29</b>.`},
+ {id:"bn-15",unit:"bin",set:"bin",src:"3-2 평균·분산",type:"tf",q:`X ~ B(n, p)의 분산이 np(1 − p)인 것은 X가 n개의 독립 베르누이 확률변수의 합이고, 독립이면 분산을 더할 수 있기 때문이다.`,answer:true,explain:`Var(X) = Var(X<sub>1</sub>) + ⋯ + Var(X<sub>n</sub>) = n · p(1 − p). 독립이 꼭 필요합니다.`},
 
  // Problem set #1
  {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
@@ -1651,6 +1777,7 @@ const SETS=[
  {key:"monty",label:"몬티홀",fn:q=>q.set==="monty"},
  {key:"rv",label:"확률변수·기댓값·분산",fn:q=>q.unit==="rv"},
  {key:"var",label:"분산·합과 차",fn:q=>q.set==="var"},
+ {key:"bin",label:"이항분포",fn:q=>q.unit==="bin"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
@@ -1695,7 +1822,7 @@ function renderScore(){
   const right=done.filter(q=>a[q.id].status==="right").length;
   $("#scoreBig").innerHTML=`${right}<small> / ${done.length} 푼 문제 · 전체 ${Q.length}</small>`;
   $("#scoreBar").style.width=(done.length?right/done.length*100:0)+"%";
-  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"],["rv","Ch.4 확률변수"]].map(([u,l])=>{
+  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"],["rv","Ch.4 확률변수"],["bin","Ch.4 이항분포"]].map(([u,l])=>{
     const qs=Q.filter(q=>q.unit===u), d=qs.filter(q=>a[q.id]), r=d.filter(q=>a[q.id].status==="right").length;
     return `<div class="unitline"><span>${l}</span><span class="mono">${r}/${d.length} · 남은 ${qs.length-d.length}</span></div>`;
   }).join("");
@@ -1716,7 +1843,7 @@ function renderQ(){
     return;
   }
   const q=list[idx], rec=store.answers[q.id];
-  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",rv:"Ch.4 확률변수",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
+  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",rv:"Ch.4 확률변수",bin:"Ch.4 이항분포",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
   const typeLabel={mc:"객관식",tf:"True / False",num:"답 입력",open:"서술형 · 자가 채점"}[q.type];
   let body="";
   if(q.type==="mc"){
@@ -1819,7 +1946,7 @@ $("#resetAll").addEventListener("click",e=>{
 
 /* ---------- tabs ---------- */
 const TABS=["home","learn","practice","exam","diagram","cards"];
-const UNITK=["samp","exp","prob","cond","rv"];
+const UNITK=["samp","exp","prob","cond","rv","bin"];
 function showTab(name,push){
   if(!TABS.includes(name)) name="home";
   $$(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===name));
@@ -1840,6 +1967,7 @@ function showUnit(u){
   if(u==="prob") drawLLN();
   if(u==="cond") renderBayes();
   if(u==="rv") renderEV();
+  if(u==="bin") renderBin();
 }
 $$(".tab").forEach(t=>t.addEventListener("click",()=>showTab(t.dataset.tab,true)));
 $$("[data-unit]").forEach(b=>b.addEventListener("click",()=>{showTab("learn",true);showUnit(b.dataset.unit);}));
@@ -2691,7 +2819,8 @@ const UNITS=[
   {k:"exp",t:"실험 설계",d:"용어 · 4원리 · CRD / RBD 도식"},
   {k:"prob",t:"Ch.4 확률 기초",d:"경우의 수 · 확률 규칙 · 큰 수의 법칙"},
   {k:"cond",t:"Ch.4 조건부·베이즈·몬티홀",d:"조건부 · 독립 · 베이즈 · 몬티홀"},
-  {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"}
+  {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"},
+  {k:"bin",t:"Ch.4 확률 모형·이항분포",d:"베르누이 · 이항분포 · BINS 조건 · np, np(1−p)"}
 ];
 function renderHome(){
   if(!$("#homeTiles"))return;
@@ -2733,8 +2862,41 @@ function renderShellStats(){renderHome();renderSb();}
   document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classList.remove("nav-open");});
 })();
 
+/* ---------- 이항분포 계산기 ---------- */
+const BNP={p8:[10,0.7,"le",3],p9:[6,0.25,"eq",1],coin:[5,0.5,"eq",2],frq58:[200,0.66,"le",127]};
+function binPmf(n,p){
+  const a=new Array(n+1).fill(0);
+  if(p<=0){a[0]=1;return a;} if(p>=1){a[n]=1;return a;}
+  const lq=Math.log(1-p),lp=Math.log(p);let lc=0;
+  for(let k=0;k<=n;k++){if(k>0)lc+=Math.log(n-k+1)-Math.log(k);a[k]=Math.exp(lc+k*lp+(n-k)*lq);}
+  return a;
+}
+function renderBin(){
+  const n=parseInt($("#bnN").value,10),p=parseNum($("#bnP").value),k=parseInt($("#bnK").value,10),op=$("#bnOp").value,out=$("#bnOut"),ch=$("#bnChart");
+  if(isNaN(n)||n<1||n>500||isNaN(p)||p<0||p>1||isNaN(k)){out.innerHTML=`<div class="out">1 ≤ n ≤ 500, 0 ≤ p ≤ 1 범위로 입력하세요.</div>`;ch.innerHTML="";return;}
+  const pm=binPmf(n,p),inc=i=>op==="le"?i<=k:op==="lt"?i<k:op==="eq"?i===k:op==="ge"?i>=k:i>k;
+  let pr=0;pm.forEach((v,i)=>{if(inc(i))pr+=v;});
+  const sym={le:"≤",lt:"<",eq:"=",ge:"≥",gt:">"}[op];
+  const fn=op==="eq"?`binompdf(${n}, ${p}, ${k})`:op==="le"?`binomcdf(${n}, ${p}, ${k})`:op==="lt"?`binomcdf(${n}, ${p}, ${k-1})`:op==="ge"?`1 − binomcdf(${n}, ${p}, ${k-1})`:`1 − binomcdf(${n}, ${p}, ${k})`;
+  const mu=n*p,sd=Math.sqrt(n*p*(1-p));
+  out.innerHTML=`<div class="out"><span>P(X ${sym} ${k})</span><b>${pr<1e-4&&pr>0?pr.toExponential(3):(Math.round(pr*10000)/10000)}</b></div><div class="out"><span>계산기</span>${fn}</div><div class="out"><span>평균 np</span>${Math.round(mu*1000)/1000}</div><div class="out"><span>SD √(np(1−p))</span>${Math.round(sd*1000)/1000}</div>`;
+  let lo=0,hi=n;
+  if(n>40){lo=Math.max(0,Math.floor(mu-4*sd));hi=Math.min(n,Math.ceil(mu+4*sd));}
+  const idx=[];for(let i=lo;i<=hi;i++)idx.push(i);
+  const W=Math.max(320,Math.min(760,idx.length*22+60)),H=170,L=40,B=26,T=10,iw=W-L-10,ih=H-T-B,bw=iw/idx.length,mx=Math.max(...idx.map(i=>pm[i]),1e-12);
+  const step=Math.max(1,Math.ceil(idx.length/16));
+  let sv=`<svg class="xchart" viewBox="0 0 ${W} ${H}" style="max-width:${W}px" role="img" aria-label="이항분포 막대그래프">`;
+  [0,.5,1].forEach(f=>{const y=T+ih-f*ih;sv+=`<line class="cg" x1="${L}" x2="${W-10}" y1="${y}" y2="${y}"/><text x="${L-5}" y="${y+4}" text-anchor="end">${(mx*f).toFixed(mx*f<0.01&&f>0?4:2)}</text>`;});
+  idx.forEach((i,j)=>{const h=pm[i]/mx*ih,x=L+j*bw+bw*.12,w=bw*.76,y=T+ih-h;sv+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(h,0).toFixed(2)}" style="fill:${inc(i)?"var(--accent)":"var(--line-2)"}"><title>P(X=${i}) = ${pm[i].toFixed(5)}</title></rect>`;if(j%step===0)sv+=`<text x="${(x+w/2).toFixed(1)}" y="${H-8}" text-anchor="middle">${i}</text>`;});
+  ch.innerHTML=sv+`</svg>${n>40?`<p style="font-size:.78rem;color:var(--ink-3)">n이 커서 평균 ± 4SD 범위(${lo}~${hi})만 그렸어요.</p>`:""}`;
+}
+["#bnN","#bnP","#bnK","#bnOp"].forEach(id=>$(id).addEventListener("input",renderBin));
+$("#bnOp").addEventListener("change",renderBin);
+$$("[data-bp]").forEach(b=>b.addEventListener("click",()=>{const v=BNP[b.dataset.bp];$("#bnN").value=v[0];$("#bnP").value=v[1];$("#bnOp").value=v[2];$("#bnK").value=v[3];renderBin();}));
+renderBin();
+
 /* ---------- 개념 검색 ---------- */
-const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
+const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["베르누이","bernoulli"],["이항","binomial","binom"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
 const SX_SUGGEST=["편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
 let sxIndex=null,sxItems=[],sxTerms=[],sxActive=0;
 const sxNorm=t=>String(t).replace(/\s+/g," ").trim();
