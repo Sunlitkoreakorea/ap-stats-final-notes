@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수, 개념 정리와 연습 문제 179개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수, 개념 정리와 연습 문제 117개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -531,7 +531,8 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       <button class="unit" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
       <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
       <button class="unit" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항·기하</button>
-      <button class="unit" data-unit="norm" aria-pressed="false">Ch.5 정규분포</button>
+      <button class="unit" data-unit="norm" aria-pressed="false">Ch.5 정규분포·정규근사</button>
+      <button class="unit" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·표본비율</button>
     </div>
     <p class="sb-label">연습</p>
     <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제 풀기<span class="badge" id="sbPrac"></span></button>
@@ -580,7 +581,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
 <section class="panel" id="panel-learn" role="tabpanel" aria-labelledby="tab-learn">
   <div class="page-head">
     <p class="eyebrow">개념 정리</p>
-    <h2>표본추출 · 실험 설계 · 확률 · 정규분포</h2>
+    <h2>표본추출 · 실험 설계 · 확률 · 정규분포 · 표본분포</h2>
     <p class="lead">프린트 필기를 단원별로 정리했습니다. <span class="pen">CRD 그리는 거 기말고사 나온다!</span></p>
   </div>
   <div class="subnav strip" role="group" aria-label="단원">
@@ -590,7 +591,8 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     <button class="chip" data-unit="cond" aria-pressed="false">Ch.4 조건부·베이즈·몬티홀</button>
     <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
     <button class="chip" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항·기하</button>
-    <button class="chip" data-unit="norm" aria-pressed="false">Ch.5 정규분포</button>
+    <button class="chip" data-unit="norm" aria-pressed="false">Ch.5 정규분포·정규근사</button>
+    <button class="chip" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·표본비율</button>
   </div>
 
   <!-- Ch.3 자료 수집 -->
@@ -1379,7 +1381,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
 
   <!-- Ch.5 정규분포 -->
   <div id="unit-norm" hidden>
-    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 1~2쪽: 1. Normal Distribution. 정규분포의 밀도곡선, 표준정규분포, 확률 계산.</div>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 1~4쪽 위: 1. Normal Distribution. 정규분포의 밀도곡선, 표준정규분포, 확률 계산, 이항분포의 정규근사.</div>
 
     <article class="sec">
       <div class="sec-head"><span class="num">5-1</span><h2>Normal Distribution <span class="gloss">정규분포</span></h2></div>
@@ -1427,7 +1429,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
         <b style="font-size:.95rem">정규분포 계산기</b>
         <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">평균과 표준편차, 구간을 넣으면 z-점수와 넓이(확률)를 그림과 함께 보여줍니다. 한쪽을 비우면 무한대로 봐요.</p>
         <div class="tool-row" style="margin-top:10px">
-          <button class="btn" data-np="b">P1(b)</button><button class="btn" data-np="c">P1(c)</button><button class="btn" data-np="d">P1(d)</button><button class="btn" data-np="e">P1(e)</button><button class="btn" data-np="f">P1(f)</button><button class="btn" data-np="t1">P2(a)</button><button class="btn" data-np="t2">P2(b)</button><button class="btn" data-np="t3">P2(c)</button>
+          <button class="btn" data-np="b">P1(b)</button><button class="btn" data-np="c">P1(c)</button><button class="btn" data-np="d">P1(d)</button><button class="btn" data-np="e">P1(e)</button><button class="btn" data-np="f">P1(f)</button><button class="btn" data-np="t1">P2(a)</button><button class="btn" data-np="t2">P2(b)</button><button class="btn" data-np="t3">P2(c)</button><button class="btn" data-np="p4">P4</button><button class="btn" data-np="p5">P5</button><button class="btn" data-np="p6">P6</button><button class="btn" data-np="p7">P7 (x̄)</button>
         </div>
         <div class="tool-row" style="margin-top:10px">
           <label class="field">평균 μ<input type="number" id="nMu" value="100" step="any"></label>
@@ -1440,6 +1442,186 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
         <div id="nChart" style="margin-top:12px;overflow-x:auto"></div>
       </div>
       <p><button class="btn primary" data-go="practice" data-filter="norm">정규분포 문제 풀러 가기 →</button></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-3</span><h2>Normal Approximation to the Binomial <span class="gloss">이항분포의 정규근사</span></h2></div>
+      <p class="lead">X ~ B(100, 0.4)에서 P(X ≥ 60)을 이항 공식으로 구하려면 <b>P(X = 60) + P(X = 61) + … + P(X = 100)</b>, 41개 항을 더해야 해요. 계산기 binomcdf로 할 수는 있지만 n이 커질수록 정확한 계산은 점점 힘들어집니다.</p>
+      <p>n이 큰 이항분포의 히스토그램은 종 모양처럼 보여요. <span class="pen">n이 커질수록 normal dist와 비슷해진다</span> 우연이 아니라, 이항확률변수는 <b>독립인 베르누이 n개의 합</b>이고, 독립인 것을 많이 더하면 정규분포에 가까워지기 때문이에요. 이 생각은 뒤에서 표본평균의 분포(<b>중심극한정리</b>)로 더 일반적으로 다시 나옵니다.</p>
+      <div class="formula">X ~ B(n, p) 이면 &nbsp; E(X) = np, &nbsp; σ(X) = √(np(1 − p))</div>
+      <h3>"n이 충분히 크다"의 뜻: Large Counts Condition</h3>
+      <div class="formula">np ≥ 10 &nbsp; 그리고 &nbsp; n(1 − p) ≥ 10</div>
+      <p><span class="pen">이거 기말 나온다~</span> 성공 기대 횟수와 실패 기대 횟수가 <b>둘 다</b> 10 이상이어야 해요. Success-Failure Condition이라고도 부릅니다.</p>
+      <p>조건을 만족하면 평균과 표준편차가 같은 정규곡선으로 근사합니다.</p>
+      <div class="formula">X ≈ N(np, np(1 − p)) &nbsp;&nbsp;<span style="color:var(--ink-3);font-size:.85em">(수업 표기: 괄호 두 번째 = 분산)</span></div>
+      <p>이산분포를 연속분포로 바꾸는 거라서 <b>근사일 뿐</b>이고, 조건이 맞을 때만 잘 맞아요.</p>
+      <div class="box"><h4>★ Normal Approximation 3단계 ★</h4>
+        <ol class="steps">
+          <li><b>Step 1</b>: 확률변수 X와 이항 상황을 밝히고 <b>n</b>과 <b>p</b>를 쓴다. (Let X be the number of …, X ~ B(n, p))</li>
+          <li><b>Step 2</b>: <b>Large Counts Condition</b> 확인: np ≥ 10, n(1 − p) ≥ 10</li>
+          <li><b>Step 3</b>: <b>μ = np</b>, <b>σ = √(np(1 − p))</b>를 구하고 근사 모형 <b>N(μ, σ²)</b>를 쓴 뒤 z로 바꿔 계산</li>
+        </ol></div>
+      <div class="box"><h4>Problem 3 · 정규근사를 써도 될까?</h4>
+        <div class="tbl-wrap" style="margin-top:6px"><table><thead><tr><th></th><th>np</th><th>n(1 − p)</th><th>판정</th></tr></thead><tbody>
+          <tr><td class="term">(a) B(50, 0.5)</td><td class="mono">25 ≥ 10</td><td class="mono">25 ≥ 10</td><td><b>가능</b></td></tr>
+          <tr><td class="term">(b) B(200, 0.03)</td><td class="mono">6 &lt; 10</td><td class="mono">194 ≥ 10</td><td><b>불가</b> (성공 쪽이 부족)</td></tr>
+          <tr><td class="term">(c) B(30, 0.8)</td><td class="mono">24 ≥ 10</td><td class="mono">6 &lt; 10</td><td><b>불가</b> (실패 쪽이 부족)</td></tr>
+          <tr><td class="term">(d) B(1000, 0.99)</td><td class="mono">990 ≥ 10</td><td class="mono">10 ≥ 10</td><td><b>가능</b> (딱 10도 통과)</td></tr>
+        </tbody></table></div>
+        <p style="font-size:.88rem;color:var(--ink-2);margin-top:6px">n이 커도 p가 0이나 1에 너무 가까우면 (b)처럼 안 돼요. 두 값을 <b>모두</b> 확인해야 합니다.</p></div>
+      <div class="box"><h4>Problem 4 · 동전 100번, 앞면 60번 이상</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>Let X be the number of heads. X ~ B(100, 0.5)</li>
+          <li>np = 50 ≥ 10, n(1 − p) = 50 ≥ 10 → 정규근사 가능</li>
+          <li>μ = 50, σ = √25 = 5 → X ≈ N(50, 5²)</li>
+          <li>P(X ≥ 60) ≈ P(Z ≥ (60 − 50)/5) = P(Z ≥ 2) ≈ <b>0.0228</b></li>
+        </ul></div>
+      <div class="box"><h4>Problem 5 · 5지선다 100문제를 전부 찍기, 25개 이상 맞힐 확률</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>Let X be the number of correct answers. X ~ B(100, 0.2)</li>
+          <li>np = 20 ≥ 10, n(1 − p) = 80 ≥ 10 → 가능</li>
+          <li>μ = 20, σ = √16 = 4 → X ≈ N(20, 4²)</li>
+          <li>P(X ≥ 25) ≈ P(Z ≥ 5/4) = P(Z ≥ 1.25) ≈ <b>0.1056</b></li>
+        </ul></div>
+      <div class="box"><h4>Problem 6 · 지지율 45%, 400명 중 160~200명(포함)이 지지할 확률</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>Let X be the number of voters who support the measure. X ~ B(400, 0.45)</li>
+          <li>np = 180 ≥ 10, n(1 − p) = 220 ≥ 10 → 가능</li>
+          <li>μ = 180, σ = √99 ≈ 9.95 → X ≈ N(180, 99)</li>
+          <li>P(160 ≤ X ≤ 200) ≈ P(−2.01 ≤ Z ≤ 2.01) = 1 − 2(0.0222) ≈ <b>0.9556</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2);margin-top:6px">정규근사는 연속이라 "포함(≤)"이든 "&lt;"이든 값이 같아요.</p></div>
+      <div class="callout"><b class="tag">근사라서 차이 남</b>정확한 이항 계산값은 P4 0.0284, P5 0.1314, P6 0.9608이에요. 수업 방식(연속성 수정 없음)으로 근사하면 위 답처럼 조금 차이가 나는데, 근사 문제에서는 근사값을 쓰면 됩니다. 위 <b>정규분포 계산기</b>의 P4·P5·P6 버튼으로 그림과 함께 확인할 수 있어요.</div>
+      <p><button class="btn primary" data-go="practice" data-filter="napx">정규근사 문제 풀러 가기 →</button></p>
+    </article>
+  </div>
+
+  <!-- Ch.5 표본분포·CLT·표본비율 -->
+  <div id="unit-clt" hidden>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 4~6쪽: 2. The Central Limit Theorem (표본분포, 중심극한정리, 불편추정량), 3. Sampling Distribution for Sample Proportions.</div>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-4</span><h2>Sampling Distribution <span class="gloss">표본분포</span></h2></div>
+      <div class="grid2">
+        <div class="box"><h4>Parameter (모수)</h4><p style="font-size:.92rem"><b>모집단</b>을 설명하는 수. 예: 모평균 μ, 모비율 p, 모표준편차 σ. 보통 <b>모른다</b>.</p></div>
+        <div class="box"><h4>Statistic (통계량)</h4><p style="font-size:.92rem"><b>표본</b>을 설명하는 수. 예: 표본평균 x̄, 표본비율 p̂, 표본표준편차 s. 모르는 parameter를 <b>추정</b>하는 데 씀.</p></div>
+      </div>
+      <p style="font-size:.9rem;color:var(--ink-2)">외우는 법: <b>P</b>arameter ↔ <b>P</b>opulation, <b>S</b>tatistic ↔ <b>S</b>ample.</p>
+      <p>문제는 통계량이 <b>표본마다 달라진다</b>는 거예요. 다른 랜덤 표본을 뽑으면 다른 x̄가 나와요. 그래서 x̄ 자체가 <b>확률변수(random variable)</b>이고, 분포를 가집니다.</p>
+      <div class="callout"><b class="tag">정의</b><b>Sampling distribution</b>: 같은 모집단에서 같은 크기 n으로 뽑을 수 있는 <b>모든 표본</b>에 대해, 통계량이 가지는 값들의 분포.</div>
+      <div class="box"><h4>Example · 모집단 {1, 3, 5}(각각 같은 확률)에서 n = 2 복원추출</h4>
+        <p style="font-size:.92rem">가능한 표본은 3 × 3 = <b>9개</b>이고 모두 같은 확률이에요. (1,3)과 (3,1)은 다른 표본이라 확률이 2/9.</p>
+        <div class="tbl-wrap" style="margin-top:6px"><table><thead><tr><th>표본</th><th>(1,1)</th><th>(1,3) (3,1)</th><th>(1,5) (5,1) (3,3)</th><th>(3,5) (5,3)</th><th>(5,5)</th></tr></thead><tbody>
+          <tr><td class="term">x̄</td><td class="mono">1</td><td class="mono">2</td><td class="mono">3</td><td class="mono">4</td><td class="mono">5</td></tr>
+          <tr><td class="term">P(X̄ = x̄)</td><td class="mono">1/9</td><td class="mono">2/9</td><td class="mono">3/9</td><td class="mono">2/9</td><td class="mono">1/9</td></tr>
+        </tbody></table></div>
+        <ul class="sol" style="font-size:.93rem">
+          <li>E(X̄) = (1·1 + 2·2 + 3·3 + 4·2 + 5·1)/9 = 27/9 = <b>3</b> → 모평균 μ = 3과 같음</li>
+          <li>Var(X̄) = [(−2)²·1 + (−1)²·2 + 0 + 1²·2 + 2²·1]/9 = 12/9 = <b>4/3</b>, SD(X̄) = √(4/3) ≈ <b>1.155</b></li>
+          <li>확인: 모분산 σ² = [(1−3)² + 0 + (5−3)²]/3 = 8/3이고, σ²/n = (8/3)/2 = <b>4/3</b>. 다음 절의 공식 Var(X̄) = σ²/n과 딱 맞아요.</li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">모집단은 1, 3, 5가 고르게 퍼진 평평한 모양인데, x̄의 분포는 가운데(3)가 볼록한 산 모양이 됐어요. 아래 시뮬레이터에서 "1, 3, 5 예제"를 고르고 n = 2로 두면 같은 모양이 나옵니다.</p></div>
+      <p style="font-size:.88rem;color:var(--ink-3)">프린트의 시뮬레이션 사이트: <a href="https://onlinestatbook.com/stat_sim/sampling_dist/index.html" target="_blank" rel="noopener">onlinestatbook 표본분포</a> · <a href="https://www.statslearn.org/interactives/sampling-distribution-clt" target="_blank" rel="noopener">statslearn CLT</a></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-5</span><h2>Central Limit Theorem <span class="gloss">중심극한정리</span></h2></div>
+      <p class="lead"><span class="pen">통계에서 가장 중요한 정리</span> X<sub>1</sub>, …, X<sub>n</sub>이 평균 μ, 표준편차 σ인 같은 모집단에서 뽑은 독립인 확률변수이고 X̄ = (X<sub>1</sub> + … + X<sub>n</sub>)/n이라고 해요. <b>모집단의 모양은 아무거나</b> 괜찮습니다.</p>
+      <div class="formula">n이 커질수록 &nbsp; X̄ ≈ N(μ, <span class="fr"><i>σ²</i><i>n</i></span>)</div>
+      <p><span class="pen">n이 커질수록 x̄가 이것이 된다. 모양을 알 수 없다는 것이 중요</span> 모집단이 치우쳐 있든, 봉우리가 두 개든, 모양을 몰라도 <b>x̄의 분포는 정규분포에 가까워진다</b>는 게 핵심이에요.</p>
+      <h3>평균과 분산이 왜 이렇게 되나</h3>
+      <div class="formula">E(X̄) = <span class="fr"><i>1</i><i>n</i></span>{E(X<sub>1</sub>) + … + E(X<sub>n</sub>)} = <span class="fr"><i>1</i><i>n</i></span>· nμ = <b>μ</b></div>
+      <div class="formula">Var(X̄) = <span class="fr"><i>1</i><i>n²</i></span>{Var(X<sub>1</sub>) + … + Var(X<sub>n</sub>)} = <span class="fr"><i>1</i><i>n²</i></span>· nσ² = <b><span class="fr"><i>σ²</i><i>n</i></span></b>, &nbsp; SD(X̄) = <b><span class="fr"><i>σ</i><i>√n</i></span></b></div>
+      <p style="font-size:.92rem">분산은 1/n² 이 밖으로 나오고(상수배는 제곱), 독립이라 분산끼리 더할 수 있어서 이렇게 돼요. n을 4배로 늘리면 SD(X̄)는 절반이 됩니다.</p>
+      <h3>AP 통계에서 쓰는 기준</h3>
+      <ul class="clean">
+        <li>모집단이 <b>정규분포가 아니면</b>: <b>n ≥ 30</b>일 때 X̄를 근사적으로 정규로 봄</li>
+        <li>모집단이 <b>이미 정규분포면</b>: X̄는 <b>n에 상관없이</b> 정규분포</li>
+        <li>모집단이 <b>심하게 치우쳤거나 이상값</b>이 있으면: 더 큰 n이 필요할 수 있음</li>
+      </ul>
+      <p style="font-size:.88rem;color:var(--ink-3)"><span class="pen">n이 2이면 N처럼 안 보임</span> 모집단이 정규가 아닐 때 n이 작으면 아직 종 모양이 안 나와요.</p>
+      <div class="box"><h4>Problem 7 · 대기 시간: 오른쪽으로 심하게 치우침, μ = 8분, σ = 6분, n = 36</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>Let X̄ be the sample mean wait time.</li>
+          <li>모집단은 치우쳤지만 n = 36 ≥ 30이라 <b>by CLT</b>, X̄ ≈ N(8, (6/√36)²) = N(8, 1²)</li>
+          <li>P(X̄ &gt; 10) = P(Z &gt; (10 − 8)/1) = P(Z &gt; 2) ≈ <b>0.0228</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">주의: σ = 6을 그대로 쓰면 안 되고, <b>x̄의 SD인 σ/√n = 1</b>을 써야 해요. 또 이건 <b>한 손님</b>이 아니라 <b>36명 평균</b>에 대한 확률이에요. 한 손님의 대기 시간은 치우친 분포라 정규로 계산할 수 없어요.</p></div>
+      <div class="box"><h4>Problem 8</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(a) CLT는 데이터를 더 모으면 <b>모집단 자체</b>가 정규분포에 가까워진다는 뜻인가? → <b>False</b>. 모집단 모양은 그대로이고, 정규에 가까워지는 건 <b>표본평균 x̄의 분포</b>예요.</li>
+          <li>(b) 표본 크기가 아주 작아도 x̄의 표본분포가 정규일 수 있나? → <b>True</b>. <b>모집단이 정규분포</b>면 n = 1, 2여도 x̄는 정확히 정규예요. (모집단이 정규가 아니면 작은 n에서는 보장 안 됨)</li>
+        </ul></div>
+      <div class="tool">
+        <b style="font-size:.95rem">표본평균 시뮬레이터 (CLT)</b>
+        <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">모집단을 고르고 n을 바꿔 보세요. 크기 n인 표본을 뽑아 x̄를 구하는 걸 2000번 반복해서 x̄들의 분포를 막대로 그려요. 점선은 CLT가 예측하는 N(μ, σ²/n)입니다.</p>
+        <div class="tool-row" style="margin-top:10px">
+          <label class="field">모집단<select id="cPop"><option value="skew">대기 시간 (오른쪽 꼬리, μ=8, σ=6) · P7</option><option value="ex">1, 3, 5 중 하나 (예제)</option><option value="die">주사위 1~6</option><option value="bi">두 봉우리 (1~10)</option></select></label>
+          <label class="field">표본 크기 n<input type="number" id="cN" value="36" min="1" max="100" step="1"></label>
+          <button class="btn" id="cGo">다시 뽑기</button>
+        </div>
+        <div class="tool-row" style="margin-top:8px">
+          <button class="btn" data-cn="1">n = 1</button><button class="btn" data-cn="2">n = 2</button><button class="btn" data-cn="5">n = 5</button><button class="btn" data-cn="10">n = 10</button><button class="btn" data-cn="30">n = 30</button><button class="btn" data-cn="36">n = 36</button>
+        </div>
+        <div class="outs" id="cOut"></div>
+        <p style="font-size:.8rem;color:var(--ink-3);margin-top:10px">모집단 분포</p>
+        <div id="cPopChart" style="overflow-x:auto"></div>
+        <p style="font-size:.8rem;color:var(--ink-3);margin-top:6px">x̄ 2000개의 분포</p>
+        <div id="cChart" style="overflow-x:auto"></div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-6</span><h2>Biased and Unbiased Estimator <span class="gloss">편향·불편 추정량</span></h2></div>
+      <p class="lead">통계량의 분포 중심(모든 가능한 표본에 대한 평균)이 parameter와 같으면 그 통계량은 <b>불편추정량(unbiased estimator)</b>이에요. 아니면 <b>편향(biased)</b>.</p>
+      <div class="formula">E(estimator) = parameter &nbsp;→&nbsp; unbiased</div>
+      <div class="callout warn"><b class="tag">헷갈림 주의</b><b>Unbiased는 "정확하다"는 뜻이 아니에요.</b> 표본 하나의 x̄는 μ와 거의 절대 똑같지 않아요. 불편이란 추정값이 <b>체계적으로 너무 크거나 너무 작게 나오지 않는다</b>는 뜻입니다. 과녁으로 치면, 화살이 흩어져 있어도 그 중심이 정가운데면 불편이에요.</div>
+      <div class="tbl-wrap"><table><thead><tr><th>Parameter</th><th>Unbiased estimator</th><th>왜 불편인가</th></tr></thead><tbody>
+        <tr><td class="term">모평균 μ</td><td>표본평균 x̄</td><td class="mr">E(X̄) = μ</td></tr>
+        <tr><td class="term">모비율 p</td><td>표본비율 p̂ = (X<sub>1</sub> + … + X<sub>n</sub>)/n &nbsp;(X<sub>i</sub> = 0 또는 1)</td><td class="mr">X<sub>1</sub> + … + X<sub>n</sub> ~ B(n, p) → E(p̂) = np/n = p</td></tr>
+        <tr><td class="term">모분산 σ²</td><td>표본분산 s² = <span class="fr"><i>Σ(x<sub>i</sub> − x̄)²</i><i>n − 1</i></span> &nbsp;<span class="pen">이거 시험에 나옴</span></td><td class="mr">E(s²) = σ²</td></tr>
+      </tbody></table></div>
+      <h3>E(s²) = σ² 증명 (n − 1로 나누는 이유)</h3>
+      <p style="font-size:.92rem">재료: E(X<sub>i</sub>) = μ, Var(X<sub>i</sub>) = σ² 이니까 E(X<sub>i</sub>²) = σ² + μ². 또 E(X̄) = μ, Var(X̄) = σ²/n 이니까 E(X̄²) = σ²/n + μ². (E(X²) = Var(X) + [E(X)]²)</p>
+      <ol class="steps">
+        <li>먼저 정리: Σ(X<sub>i</sub> − X̄)² = ΣX<sub>i</sub>² − 2X̄·ΣX<sub>i</sub> + nX̄² = ΣX<sub>i</sub>² − nX̄² &nbsp;(ΣX<sub>i</sub> = nX̄이라서)</li>
+        <li>기댓값: E[Σ(X<sub>i</sub> − X̄)²] = ΣE(X<sub>i</sub>²) − nE(X̄²) = n(σ² + μ²) − n(σ²/n + μ²)</li>
+        <li>= nσ² + nμ² − σ² − nμ² = <b>(n − 1)σ²</b></li>
+        <li>그래서 E(s²) = (n − 1)σ²/(n − 1) = <b>σ²</b> ✓</li>
+      </ol>
+      <div class="callout"><b class="tag">핵심</b>n으로 나누면 기댓값이 (n − 1)σ²/n으로 σ²보다 <b>작아져서(과소추정) 편향</b>돼요. x̄가 표본에 맞춰 정해진 값이라 편차들이 실제보다 작게 나오기 때문이에요. n − 1로 나눠야 불편이 됩니다.</div>
+      <div class="callout warn"><b class="tag">노트 보완</b>필기의 증명이 "Σ(σ² + μ²) − n(σ…" 에서 끊겨 있어요. 위 3~4단계처럼 n(σ²/n + μ²)까지 쓰면 μ²이 지워지고 (n − 1)σ²이 남습니다.</div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-7</span><h2>Sampling Distribution of a Sample Proportion <span class="gloss">표본비율의 표본분포</span></h2></div>
+      <p class="lead">자료가 범주형(예/아니오, 성공/실패)이면 관심 있는 parameter는 <b>모비율 p</b>이고, <b>표본비율 p̂</b>으로 추정해요.</p>
+      <div class="formula">p̂ = <span class="fr"><i>X<sub>1</sub> + X<sub>2</sub> + … + X<sub>n</sub></i><i>n</i></span> = (표본에서 성공한 수) / n, &nbsp; X<sub>i</sub> = 1(성공) 또는 0(실패)</div>
+      <h3>프린트 빈칸 채우기</h3>
+      <ul class="clean">
+        <li>각 관측값은 베르누이 확률변수: <b>X<sub>i</sub> ~ Bernoulli(p)</b> (= B(1, p))</li>
+        <li>크기 n인 표본의 성공 횟수는 <b>이항(binomial)</b> 분포: <b>X<sub>1</sub> + … + X<sub>n</sub> ~ B(n, p)</b></li>
+        <li>표본이 충분히 크면(<b>np ≥ 10 그리고 n(1 − p) ≥ 10</b>), 이항분포를 <b>정규(normal)</b> 분포로 근사할 수 있음</li>
+        <li>그래서 p̂의 표본분포는 근사적으로 &nbsp;<b>p̂ ≈ N(p, p(1 − p)/n)</b></li>
+      </ul>
+      <div class="formula">E(p̂) = <span class="fr"><i>np</i><i>n</i></span> = <b>p</b>, &nbsp; Var(p̂) = <span class="fr"><i>np(1 − p)</i><i>n²</i></span> = <b><span class="fr"><i>p(1 − p)</i><i>n</i></span></b>, &nbsp; SD(p̂) = <b>√(p(1 − p)/n)</b></div>
+      <div class="callout"><b class="tag">AP 추가</b>프린트에는 없지만 AP 시험에서는 <b>10% condition</b>도 같이 써요. 비복원으로 뽑을 때 n ≤ (모집단 크기의 10%)여야 관측값들을 독립으로 볼 수 있어요. 예: "고등학생 64명은 전체 고등학생의 10%보다 훨씬 적다."</div>
+      <div class="box"><h4>Problem 9 · 디지털 교과서 선호 60%, 고등학생 64명 랜덤 표본</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(a) 모비율 <b>p = 0.6</b> (전국 고등학생 중 디지털 교과서를 선호하는 비율)</li>
+          <li>(b) Large Counts: np = 64(0.6) = <b>38.4 ≥ 10</b>, n(1 − p) = 64(0.4) = <b>25.6 ≥ 10</b> → 정규근사 가능. (10%: 64명은 전체 고등학생의 10% 미만)</li>
+          <li>그러면 p̂ ≈ N(0.6, 0.24/64), SD(p̂) = √(0.6·0.4/64) ≈ <b>0.0612</b></li>
+          <li>더 연습: P(p̂ &gt; 0.7) = P(Z &gt; 0.1/0.0612) = P(Z &gt; 1.63) ≈ <b>0.0512</b></li>
+        </ul></div>
+      <h3>x̄와 p̂ 한눈에 비교</h3>
+      <div class="tbl-wrap"><table><thead><tr><th></th><th>표본평균 x̄ (양적 자료)</th><th>표본비율 p̂ (범주형 자료)</th></tr></thead><tbody>
+        <tr><td class="term">추정하는 parameter</td><td>μ</td><td>p</td></tr>
+        <tr><td class="term">평균</td><td class="mr">E(X̄) = μ</td><td class="mr">E(p̂) = p</td></tr>
+        <tr><td class="term">표준편차</td><td class="mr">σ/√n</td><td class="mr">√(p(1 − p)/n)</td></tr>
+        <tr><td class="term">정규로 보는 조건</td><td>모집단이 정규 또는 n ≥ 30 (CLT)</td><td>np ≥ 10, n(1 − p) ≥ 10</td></tr>
+        <tr><td class="term">근사 모형</td><td class="mr">N(μ, σ²/n)</td><td class="mr">N(p, p(1 − p)/n)</td></tr>
+      </tbody></table></div>
+      <p><button class="btn primary" data-go="practice" data-filter="clt">표본분포·CLT 문제 풀러 가기 →</button></p>
     </article>
   </div>
 
@@ -1714,6 +1896,13 @@ const VOCAB=[
  {en:"Normal distribution",ko:"정규분포",cat:"prob",def:"평균 μ, 표준편차 σ로 정해지는 종 모양의 연속 분포 X ~ N(μ, σ²). μ에 대해 대칭이라 평균=중앙값=최빈값, σ가 작을수록 높고 좁다."},
  {en:"Standard normal distribution",ko:"표준정규분포",cat:"prob",def:"평균 0, 표준편차 1인 정규분포 Z ~ N(0, 1). 모든 정규분포는 표준화하면 이 곡선 하나로 계산할 수 있다."},
  {en:"z-score",sub:"Standardization",ko:"표준화 점수",cat:"prob",def:"z = (x − μ)/σ. 값이 평균에서 표준편차 몇 개만큼 떨어져 있는지. P(a ≤ X ≤ b) = P((a−μ)/σ ≤ Z ≤ (b−μ)/σ)."},
+ {en:"Large Counts Condition",sub:"Success-Failure Condition",ko:"정규근사 조건",cat:"prob",def:"np ≥ 10 그리고 n(1 − p) ≥ 10. 이걸 만족하면 B(n, p)를 N(np, np(1 − p))로 근사할 수 있어요. 기말 출제 예고."},
+ {en:"Parameter",ko:"모수",cat:"prob",def:"모집단을 설명하는 수(μ, p, σ). 보통 모르는 값이라 통계량으로 추정합니다."},
+ {en:"Statistic",ko:"통계량",cat:"prob",def:"표본을 설명하는 수(x̄, p̂, s). 표본마다 값이 달라지는 확률변수예요."},
+ {en:"Sampling distribution",ko:"표본분포",cat:"prob",def:"같은 모집단에서 같은 크기 n으로 뽑을 수 있는 모든 표본에 대해 통계량이 가지는 값들의 분포."},
+ {en:"Central Limit Theorem",sub:"CLT",ko:"중심극한정리",cat:"prob",def:"모집단 모양과 상관없이 n이 커지면 X̄ ≈ N(μ, σ²/n). AP 기준: 모집단이 정규가 아니면 n ≥ 30."},
+ {en:"Unbiased estimator",ko:"불편추정량",cat:"prob",def:"E(통계량) = parameter인 통계량. x̄(μ), p̂(p), s² = Σ(xᵢ − x̄)²/(n − 1)(σ²). 정확하다는 뜻이 아니라 체계적으로 치우치지 않는다는 뜻."},
+ {en:"Sample proportion",sub:"p-hat",ko:"표본비율",cat:"prob",def:"p̂ = 성공 수 / n. E(p̂) = p, SD(p̂) = √(p(1 − p)/n), Large Counts를 만족하면 p̂ ≈ N(p, p(1 − p)/n)."},
  {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
 ];
 $("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
@@ -1866,6 +2055,34 @@ const Q=[
  {id:"n-13",unit:"norm",set:"norm",src:"5-1 밀도곡선",type:"tf",q:`정규분포 밀도곡선 아래의 전체 넓이는 1이다.`,answer:true,explain:`전체 확률이 1이라서 곡선 아래 넓이도 항상 <b>1</b>입니다.`},
  {id:"n-14",unit:"norm",set:"norm",src:"5-1 밀도곡선",type:"mc",q:`평균은 같고 표준편차만 작아지면 정규곡선은?`,choices:["좌우로 이동한다","더 높고 좁아진다","더 낮고 넓어진다","변하지 않는다"],answer:1,explain:`σ가 작으면 값이 평균 근처에 몰려서 <b>높고 좁은</b> 곡선이 됩니다. 넓이는 1로 유지돼요. (μ를 바꾸면 좌우 이동)`},
  {id:"n-15",unit:"norm",set:"norm",src:"5-1 밀도곡선",type:"tf",q:`정규분포에서는 평균, 중앙값, 최빈값이 모두 같다.`,answer:true,explain:`곡선이 x = μ에 대해 대칭이고 봉우리도 μ에 있어서 <b>셋 다 μ</b>입니다.`},
+ // Ch.5 정규근사
+ {id:"na-1",unit:"norm",set:"napx",src:"5-3 Problem 3(a)",type:"tf",q:`X ~ B(50, 0.5)는 정규분포로 근사해도 된다.`,answer:true,explain:`np = 25 ≥ 10, n(1 − p) = 25 ≥ 10이라 <b>가능</b>.`},
+ {id:"na-2",unit:"norm",set:"napx",src:"5-3 Problem 3(b)",type:"tf",q:`X ~ B(200, 0.03)는 정규분포로 근사해도 된다.`,answer:false,explain:`np = 6 &lt; 10이라 <b>불가</b>. n이 커도 p가 0에 너무 가까우면 안 돼요.`},
+ {id:"na-3",unit:"norm",set:"napx",src:"5-3 Problem 3(c)",type:"tf",q:`X ~ B(30, 0.8)는 정규분포로 근사해도 된다.`,answer:false,explain:`np = 24는 괜찮지만 n(1 − p) = 6 &lt; 10이라 <b>불가</b>. 두 값을 모두 봐야 해요.`},
+ {id:"na-4",unit:"norm",set:"napx",src:"5-3 Problem 3(d)",type:"tf",q:`X ~ B(1000, 0.99)는 정규분포로 근사해도 된다.`,answer:true,explain:`np = 990, n(1 − p) = 10 → 둘 다 10 이상(딱 10도 통과)이라 <b>가능</b>.`},
+ {id:"na-5",unit:"norm",set:"napx",src:"5-3 Large Counts",type:"mc",q:`이항분포를 정규분포로 근사할 수 있는 조건(Large Counts Condition)은?`,choices:["n ≥ 30","np ≥ 10 그리고 n(1 − p) ≥ 10","np ≥ 10 또는 n(1 − p) ≥ 10","p ≥ 0.5"],answer:1,explain:`성공 기대 횟수 np와 실패 기대 횟수 n(1 − p)가 <b>둘 다</b> 10 이상. n ≥ 30은 표본평균(CLT) 기준이라 헷갈리지 마세요.`},
+ {id:"na-6",unit:"norm",set:"napx",src:"5-3 근사 모형",type:"mc",q:`X ~ B(100, 0.4)를 근사하는 정규분포는? (괄호 두 번째 = 분산)`,choices:["N(40, 0.24)","N(40, 24)","N(60, 24)","N(40, 40)"],answer:1,explain:`μ = np = 40, σ² = np(1 − p) = 100(0.4)(0.6) = 24 → <b>N(40, 24)</b>, σ = √24 ≈ 4.90.`},
+ {id:"na-7",unit:"norm",set:"napx",src:"5-3 Problem 4",type:"num",q:`공정한 동전을 100번 던질 때 앞면이 60번 이상 나올 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.0227501,answerText:"≈ 0.0228",tol:0.002,hint:"X ~ B(100, 0.5) → μ = 50, σ = 5",explain:`X ≈ N(50, 5²). P(X ≥ 60) ≈ P(Z ≥ 2) ≈ <b>0.0228</b>. (정확한 이항값은 0.0284)`},
+ {id:"na-8",unit:"norm",set:"napx",src:"5-3 Problem 5",type:"num",q:`5지선다 100문제를 모두 찍을 때 25개 이상 맞힐 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.1056498,answerText:"≈ 0.1056",tol:0.002,hint:"X ~ B(100, 0.2) → μ = 20, σ = 4",explain:`np = 20, n(1 − p) = 80 → 근사 가능. X ≈ N(20, 4²). P(X ≥ 25) ≈ P(Z ≥ 1.25) ≈ <b>0.1056</b>.`},
+ {id:"na-9",unit:"norm",set:"napx",src:"5-3 Problem 6",type:"num",q:`지지율 45%인 도시에서 400명을 랜덤으로 뽑을 때 160명 이상 200명 이하가 지지할 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.9555768,answerText:"≈ 0.9556",tol:0.003,hint:"μ = 180, σ = √99",explain:`X ≈ N(180, 99), σ ≈ 9.95. P(160 ≤ X ≤ 200) ≈ P(−2.01 ≤ Z ≤ 2.01) = 1 − 2(0.0222) ≈ <b>0.9556</b>.`},
+ // Ch.5 표본분포·CLT·표본비율
+ {id:"c-1",unit:"clt",set:"clt",src:"5-4 Parameter·Statistic",type:"mc",q:`학교 학생 300명을 랜덤으로 뽑아 잰 평균 키 170.2cm는?`,choices:["parameter (모수)","statistic (통계량)","population (모집단)","sampling distribution (표본분포)"],answer:1,explain:`<b>표본</b>에서 계산한 수라서 statistic(x̄)이에요. 전교생 전체의 평균 키라면 parameter(μ).`},
+ {id:"c-2",unit:"clt",set:"clt",src:"5-4 표본분포",type:"tf",q:`표본평균 x̄는 표본마다 값이 달라지므로 확률변수이고, 그 분포를 표본분포라고 한다.`,answer:true,explain:`같은 크기 n인 모든 가능한 표본에 대해 통계량이 가지는 값들의 분포 = <b>sampling distribution</b>.`},
+ {id:"c-3",unit:"clt",set:"clt",src:"5-4 Example",type:"num",q:`모집단 {1, 3, 5}(각각 같은 확률)에서 n = 2로 복원추출할 때 E(X̄)는?`,answer:3,answerText:"3",explain:`x̄ 분포: 1(1/9), 2(2/9), 3(3/9), 4(2/9), 5(1/9). E(X̄) = 27/9 = <b>3</b> = μ.`},
+ {id:"c-4",unit:"clt",set:"clt",src:"5-4 Example",type:"num",q:`모집단 {1, 3, 5}(각각 같은 확률)에서 n = 2로 복원추출할 때 X̄의 표준편차는? (소수 셋째 자리)`,answer:1.1547005,answerText:"√(4/3) ≈ 1.155",tol:0.01,hint:"σ² = 8/3, Var(X̄) = σ²/n",explain:`Var(X̄) = 12/9 = 4/3 (직접 계산) = (8/3)/2 (σ²/n). SD = √(4/3) ≈ <b>1.155</b>.`},
+ {id:"c-5",unit:"clt",set:"clt",src:"5-5 CLT 공식",type:"mc",q:`모평균 μ, 모표준편차 σ인 모집단에서 크기 n인 표본을 뽑을 때 X̄의 표준편차는?`,choices:["σ","σ/n","σ/√n","σ²/n"],answer:2,explain:`Var(X̄) = σ²/n이라 SD(X̄) = <b>σ/√n</b>. σ²/n은 분산이에요.`},
+ {id:"c-6",unit:"clt",set:"clt",src:"5-5 CLT 공식",type:"mc",q:`표본 크기를 4배로 늘리면 X̄의 표준편차는?`,choices:["4배가 된다","2배가 된다","절반이 된다","1/4이 된다"],answer:2,explain:`σ/√(4n) = (1/2)·σ/√n → <b>절반</b>.`},
+ {id:"c-7",unit:"clt",set:"clt",src:"5-5 AP 기준",type:"mc",q:`모집단이 정규분포가 아닐 때, AP 통계에서 X̄를 근사적으로 정규로 보는 기준은?`,choices:["n ≥ 10","n ≥ 30","np ≥ 10","항상 정규"],answer:1,explain:`<b>n ≥ 30</b>. 모집단이 이미 정규면 n에 상관없이 정규, 심하게 치우치면 더 큰 n이 필요할 수 있어요.`},
+ {id:"c-8",unit:"clt",set:"clt",src:"5-5 Problem 7",type:"num",q:`대기 시간이 오른쪽으로 심하게 치우쳐 있고 μ = 8분, σ = 6분이다. 손님 36명을 랜덤으로 뽑을 때 평균 대기 시간이 10분을 넘을 확률은? (소수 넷째 자리)`,answer:0.0227501,answerText:"≈ 0.0228",tol:0.002,hint:"n = 36 ≥ 30 → CLT, SD(X̄) = 6/√36",explain:`by CLT, X̄ ≈ N(8, 1²). P(X̄ &gt; 10) = P(Z &gt; 2) ≈ <b>0.0228</b>. σ = 6이 아니라 σ/√n = 1을 써야 해요.`},
+ {id:"c-9",unit:"clt",set:"clt",src:"5-5 Problem 8(a)",type:"tf",q:`중심극한정리에 따르면 데이터를 더 많이 모을수록 모집단 자체가 정규분포에 가까워진다.`,answer:false,explain:`<b>False</b>. 모집단 모양은 그대로이고, 정규에 가까워지는 건 <b>표본평균 x̄의 분포</b>예요.`},
+ {id:"c-10",unit:"clt",set:"clt",src:"5-5 Problem 8(b)",type:"tf",q:`표본 크기가 아주 작아도 표본평균의 표본분포가 정규분포일 수 있다.`,answer:true,explain:`<b>True</b>. 모집단이 정규분포면 n이 1, 2여도 X̄는 정확히 정규예요.`},
+ {id:"c-11",unit:"clt",set:"clt",src:"5-6 불편추정량",type:"tf",q:`x̄가 μ의 불편추정량이라는 것은 표본 하나의 x̄가 μ와 같다는 뜻이다.`,answer:false,explain:`불편 = <b>E(X̄) = μ</b>, 즉 체계적으로 크거나 작게 나오지 않는다는 뜻. 표본 하나의 x̄는 μ와 거의 절대 같지 않아요.`},
+ {id:"c-12",unit:"clt",set:"clt",src:"5-6 표본분산 (시험)",type:"mc",q:`모분산 σ²의 불편추정량인 표본분산 s²는?`,choices:["Σ(xᵢ − x̄)² / n","Σ(xᵢ − x̄)² / (n − 1)","Σ(xᵢ − μ)² / (n − 1)","Σ|xᵢ − x̄| / n"],answer:1,explain:`<b>s² = Σ(xᵢ − x̄)²/(n − 1)</b>이면 E(s²) = σ². n으로 나누면 기댓값이 (n − 1)σ²/n이 돼서 σ²을 과소추정(편향)해요.`},
+ {id:"c-13",unit:"clt",set:"clt",src:"5-6 E(s²) 증명 (시험)",type:"open",q:`E(Xᵢ) = μ, Var(Xᵢ) = σ²일 때 s² = Σ(Xᵢ − X̄)²/(n − 1)이 σ²의 불편추정량임을 보이세요. (종이에 쓰고 확인)`,model:`<ol class="steps"><li>Σ(Xᵢ − X̄)² = ΣXᵢ² − nX̄²</li><li>E(Xᵢ²) = σ² + μ², E(X̄²) = Var(X̄) + [E(X̄)]² = σ²/n + μ²</li><li>E[Σ(Xᵢ − X̄)²] = n(σ² + μ²) − n(σ²/n + μ²) = nσ² − σ² = (n − 1)σ²</li><li>E(s²) = (n − 1)σ²/(n − 1) = σ² → unbiased</li></ol>`},
+ {id:"c-14",unit:"clt",set:"clt",src:"5-7 표본비율",type:"mc",q:`크기 n인 표본의 표본비율 p̂의 평균과 표준편차는?`,choices:["평균 np, 표준편차 √(np(1 − p))","평균 p, 표준편차 √(p(1 − p)/n)","평균 p, 표준편차 p(1 − p)/n","평균 p/n, 표준편차 √(p(1 − p))"],answer:1,explain:`성공 수 ~ B(n, p)를 n으로 나눈 것: E(p̂) = np/n = <b>p</b>, Var(p̂) = np(1 − p)/n² = p(1 − p)/n → SD = <b>√(p(1 − p)/n)</b>. 첫 번째 보기는 성공 <b>횟수</b>의 평균·SD.`},
+ {id:"c-15",unit:"clt",set:"clt",src:"5-7 Problem 9(b)",type:"mc",q:`p = 0.6, n = 64일 때 p̂의 표본분포를 정규분포로 근사할 수 있는가?`,choices:["예. np = 38.4 ≥ 10, n(1 − p) = 25.6 ≥ 10","아니오. n이 100보다 작다","아니오. n(1 − p) = 25.6이 30보다 작다","알 수 없다"],answer:0,explain:`Large Counts: np = 38.4, n(1 − p) = 25.6 → 둘 다 10 이상이라 <b>가능</b>. (10%: 64명은 전체 고등학생의 10% 미만)`},
+ {id:"c-16",unit:"clt",set:"clt",src:"5-7 Problem 9",type:"num",q:`p = 0.6, n = 64일 때 p̂의 표준편차는? (소수 넷째 자리)`,answer:0.0612372,answerText:"≈ 0.0612",tol:0.001,explain:`√(0.6 × 0.4 / 64) = √0.00375 ≈ <b>0.0612</b>.`},
+ {id:"c-17",unit:"clt",set:"clt",src:"5-7 추가 연습",type:"num",q:`p = 0.6, n = 64일 때 표본비율 p̂이 0.7보다 클 확률은? (소수 넷째 자리)`,answer:0.0512352,answerText:"≈ 0.0512",tol:0.003,hint:"p̂ ≈ N(0.6, 0.0612²)",explain:`z = (0.7 − 0.6)/0.0612 ≈ 1.63 → P(Z &gt; 1.63) ≈ <b>0.0512</b>.`},
 
  // Problem set #1
  {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
@@ -1980,7 +2197,9 @@ const SETS=[
  {key:"var",label:"분산·합과 차",fn:q=>q.set==="var"},
  {key:"bin",label:"이항·기하분포",fn:q=>q.unit==="bin"},
  {key:"geo",label:"기하분포",fn:q=>q.set==="geo"},
- {key:"norm",label:"Ch.5 정규분포",fn:q=>q.unit==="norm"},
+ {key:"norm",label:"Ch.5 정규분포·정규근사",fn:q=>q.unit==="norm"},
+ {key:"napx",label:"정규근사",fn:q=>q.set==="napx"},
+ {key:"clt",label:"Ch.5 표본분포·CLT",fn:q=>q.unit==="clt"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
@@ -2025,7 +2244,7 @@ function renderScore(){
   const right=done.filter(q=>a[q.id].status==="right").length;
   $("#scoreBig").innerHTML=`${right}<small> / ${done.length} 푼 문제 · 전체 ${Q.length}</small>`;
   $("#scoreBar").style.width=(done.length?right/done.length*100:0)+"%";
-  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"],["rv","Ch.4 확률변수"],["bin","Ch.4 이항·기하"],["norm","Ch.5 정규분포"]].map(([u,l])=>{
+  $("#unitScores").innerHTML=[["samp","Ch.3 표본추출"],["exp","실험 설계"],["prob","Ch.4 확률 기초"],["cond","Ch.4 조건부"],["rv","Ch.4 확률변수"],["bin","Ch.4 이항·기하"],["norm","Ch.5 정규분포"],["clt","Ch.5 표본분포·CLT"]].map(([u,l])=>{
     const qs=Q.filter(q=>q.unit===u), d=qs.filter(q=>a[q.id]), r=d.filter(q=>a[q.id].status==="right").length;
     return `<div class="unitline"><span>${l}</span><span class="mono">${r}/${d.length} · 남은 ${qs.length-d.length}</span></div>`;
   }).join("");
@@ -2046,7 +2265,7 @@ function renderQ(){
     return;
   }
   const q=list[idx], rec=store.answers[q.id];
-  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",rv:"Ch.4 확률변수",bin:"Ch.4 이항·기하",norm:"Ch.5 정규분포",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
+  const unitLabel={prob:"Ch.4 확률 기초",cond:"Ch.4 조건부",rv:"Ch.4 확률변수",bin:"Ch.4 이항·기하",norm:"Ch.5 정규분포",clt:"Ch.5 표본분포·CLT",exp:"실험 설계",samp:"Ch.3 표본추출"}[q.unit];
   const typeLabel={mc:"객관식",tf:"True / False",num:"답 입력",open:"서술형 · 자가 채점"}[q.type];
   let body="";
   if(q.type==="mc"){
@@ -2149,7 +2368,7 @@ $("#resetAll").addEventListener("click",e=>{
 
 /* ---------- tabs ---------- */
 const TABS=["home","learn","practice","exam","diagram","cards"];
-const UNITK=["samp","exp","prob","cond","rv","bin","norm"];
+const UNITK=["samp","exp","prob","cond","rv","bin","norm","clt"];
 function showTab(name,push){
   if(!TABS.includes(name)) name="home";
   $$(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===name));
@@ -2172,6 +2391,7 @@ function showUnit(u){
   if(u==="rv") renderEV();
   if(u==="bin"){renderBin();renderGeo();}
   if(u==="norm") renderNorm();
+  if(u==="clt") renderClt();
 }
 $$(".tab").forEach(t=>t.addEventListener("click",()=>showTab(t.dataset.tab,true)));
 $$("[data-unit]").forEach(b=>b.addEventListener("click",()=>{showTab("learn",true);showUnit(b.dataset.unit);}));
@@ -3025,7 +3245,8 @@ const UNITS=[
   {k:"cond",t:"Ch.4 조건부·베이즈·몬티홀",d:"조건부 · 독립 · 베이즈 · 몬티홀"},
   {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"},
   {k:"bin",t:"Ch.4 확률 모형·이항·기하",d:"베르누이 · 이항분포 · 기하분포 · 요약표"},
-  {k:"norm",t:"Ch.5 정규분포",d:"정규분포 · 표준정규분포 · z-점수 · 확률 계산"}
+  {k:"norm",t:"Ch.5 정규분포·정규근사",d:"정규분포 · 표준정규분포 · z-점수 · 이항의 정규근사"},
+  {k:"clt",t:"Ch.5 표본분포·CLT·표본비율",d:"모수·통계량 · 중심극한정리 · 불편추정량 · p̂의 분포"}
 ];
 function renderHome(){
   if(!$("#homeTiles"))return;
@@ -3122,7 +3343,7 @@ renderGeo();
 /* ---------- 정규분포 계산기 ---------- */
 function erfA(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+0.3275911*x);const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;}
 const PhiN=z=>z===Infinity?1:z===-Infinity?0:0.5*(1+erfA(z/Math.SQRT2));
-const NRP={b:[100,15,"in",85,130],c:[100,15,"in","",120],d:[100,15,"in",130,""],e:[100,15,"out",70,115],f:[100,15,"in",90,110],t1:[12,3,"in","",9],t2:[12,3,"in",10,15],t3:[12,3,"in",18,""]};
+const NRP={b:[100,15,"in",85,130],c:[100,15,"in","",120],d:[100,15,"in",130,""],e:[100,15,"out",70,115],f:[100,15,"in",90,110],t1:[12,3,"in","",9],t2:[12,3,"in",10,15],t3:[12,3,"in",18,""],p4:[50,5,"in",60,""],p5:[20,4,"in",25,""],p6:[180,9.9499,"in",160,200],p7:[8,1,"in",10,""]};
 function nCurve(mu,sd,shade,W,H){
   const L=12,R=12,T=10,B=26,iw=W-L-R,ih=H-T-B,xs=x=>L+(x-mu+4*sd)/(8*sd)*iw,f=x=>Math.exp(-0.5*((x-mu)/sd)**2),ys=x=>T+ih-f(x)*ih;
   let path="",N=160;for(let i=0;i<=N;i++){const x=mu-4*sd+8*sd*i/N;path+=(i?"L":"M")+xs(x).toFixed(1)+","+ys(x).toFixed(1);}
@@ -3153,9 +3374,64 @@ renderNorm();
   const curve=sd=>{let d="";for(let i=0;i<=160;i++){const x=-5+10*i/160,y=Math.exp(-0.5*(x/sd)**2)/sd;d+=(i?"L":"M")+xs(x).toFixed(1)+","+(T+ih-y*ih).toFixed(1);}return d;};
   $("#nCompare").innerHTML=`<path d="${curve(1)}" style="fill:none;stroke:var(--accent);stroke-width:2.2"/><path d="${curve(2)}" style="fill:none;stroke:var(--pen);stroke-width:2.2;stroke-dasharray:6 4"/><line x1="${L}" x2="${W-12}" y1="${T+ih}" y2="${T+ih}" style="stroke:var(--ink-3)"/><line x1="${xs(0)}" x2="${xs(0)}" y1="${T}" y2="${T+ih}" style="stroke:var(--ink-3);stroke-dasharray:3 3"/><text x="${xs(0)}" y="${H-8}" text-anchor="middle" style="fill:var(--ink-2);font-size:12px">μ</text><text x="${xs(1.15)}" y="${T+18}" style="fill:var(--accent);font-size:12px">σ 작음: 높고 좁음</text><text x="${xs(2.1)}" y="${T+ih-34}" style="fill:var(--pen);font-size:12px">σ 큼: 낮고 넓음</text>`;})();
 
+/* ---------- CLT 시뮬레이터 ---------- */
+const CPOP={
+  skew:{label:"대기 시간",cont:true,mu:8,sd:6,k:16/9,th:4.5,min:0,max:Infinity},
+  ex:{label:"1, 3, 5",vals:[1,3,5],pr:[1/3,1/3,1/3],step:2},
+  die:{label:"주사위",vals:[1,2,3,4,5,6],pr:[1,1,1,1,1,1].map(x=>x/6),step:1},
+  bi:{label:"두 봉우리",vals:[1,2,3,4,5,6,7,8,9,10],pr:[.15,.2,.1,.03,.02,.02,.03,.1,.2,.15],step:1}
+};
+Object.values(CPOP).forEach(P=>{if(P.cont)return;P.mu=P.vals.reduce((a,v,i)=>a+v*P.pr[i],0);P.sd=Math.sqrt(P.vals.reduce((a,v,i)=>a+(v-P.mu)**2*P.pr[i],0));P.min=P.vals[0];P.max=P.vals[P.vals.length-1];P.cum=[];let c=0;P.pr.forEach(p=>{c+=p;P.cum.push(c);});});
+function cRandN(){let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function cGamma(k,th){const d=k-1/3,c=1/Math.sqrt(9*d);for(;;){const z=cRandN(),v=(1+c*z)**3;if(v<=0)continue;const u=Math.random();if(Math.log(u)<0.5*z*z+d-d*v+d*Math.log(v))return d*v*th;}}
+function cDraw(P){if(P.cont)return cGamma(P.k,P.th);const u=Math.random();for(let i=0;i<P.cum.length;i++)if(u<=P.cum[i])return P.vals[i];return P.vals[P.vals.length-1];}
+const cR=v=>Math.round(v*1000)/1000;
+function renderClt(){
+  const pk=$("#cPop").value,P=CPOP[pk],n=parseInt($("#cN").value,10),out=$("#cOut");
+  if(!P||isNaN(n)||n<1||n>100){out.innerHTML=`<div class="out">1 ≤ n ≤ 100으로 입력하세요.</div>`;$("#cChart").innerHTML="";return;}
+  const R=2000,means=new Float64Array(R);
+  for(let r=0;r<R;r++){let t=0;for(let i=0;i<n;i++)t+=cDraw(P);means[r]=t/n;}
+  let m=0;for(const x of means)m+=x;m/=R;let v=0;for(const x of means)v+=(x-m)**2;const sdS=Math.sqrt(v/(R-1)),se=P.sd/Math.sqrt(n);
+  let over=0;for(const x of means)if(x>P.mu+2*se)over++;
+  out.innerHTML=`<div class="out"><span>모집단</span>μ = ${cR(P.mu)}, σ = ${cR(P.sd)}</div><div class="out"><span>x̄들의 평균 (CLT: μ)</span><b>${cR(m)}</b> &nbsp;vs ${cR(P.mu)}</div><div class="out"><span>x̄들의 SD (CLT: σ/√n)</span><b>${cR(sdS)}</b> &nbsp;vs ${cR(se)}</div><div class="out"><span>x̄ &gt; μ + 2σ/√n 비율</span><b>${cR(over/R)}</b> &nbsp;vs 정규면 0.0228</div>`;
+  // population chart
+  const W=560,H=130,L=12,Rr=12,T=8,B=22,iw=W-L-Rr,ih=H-T-B;
+  let ps=`<svg class="xchart" viewBox="0 0 ${W} ${H}" style="max-width:${W}px" role="img" aria-label="모집단 분포">`;
+  if(P.cont){const X1=32,xs=x=>L+x/X1*iw,f=x=>x<=0?0:Math.pow(x,P.k-1)*Math.exp(-x/P.th);let mx=0;for(let i=1;i<=200;i++)mx=Math.max(mx,f(X1*i/200));let d=`M${xs(0)},${T+ih}`;for(let i=1;i<=200;i++){const x=X1*i/200;d+=`L${xs(x).toFixed(1)},${(T+ih-f(x)/mx*ih).toFixed(1)}`;}
+    ps+=`<path d="${d}" style="fill:var(--line-2);stroke:var(--ink-3);stroke-width:1.5"/>`;for(let t=0;t<=32;t+=4)ps+=`<text x="${xs(t)}" y="${H-6}" text-anchor="middle">${t}</text>`;}
+  else{const nv=P.vals.length,lo=P.min-P.step/2,hi=P.max+P.step/2,xs=x=>L+(x-lo)/(hi-lo)*iw,mx=Math.max(...P.pr),bw=Math.min(iw/((hi-lo)/P.step)*.7,60);
+    P.vals.forEach((x,i)=>{const h=P.pr[i]/mx*ih;ps+=`<rect x="${(xs(x)-bw/2).toFixed(1)}" y="${(T+ih-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" style="fill:var(--line-2)"/><text x="${xs(x)}" y="${H-6}" text-anchor="middle">${x}</text>`;});}
+  ps+=`<line x1="${L}" x2="${W-Rr}" y1="${T+ih}" y2="${T+ih}" style="stroke:var(--ink-3)"/></svg>`;
+  $("#cPopChart").innerHTML=ps;
+  // sampling distribution chart
+  let lo=Math.max(P.min,P.mu-4.2*se),hi=Math.min(P.max,P.mu+4.2*se);
+  for(const x of means){if(x<lo)lo=x;if(x>hi)hi=x;}
+  let edges=[],bw;
+  if(!P.cont){const d=P.step/n,a=P.min+Math.floor((lo-P.min)/d+1e-9)*d,b=P.min+Math.ceil((hi-P.min)/d-1e-9)*d,cnt=Math.round((b-a)/d)+1;
+    if(cnt<=60){bw=d;for(let i=0;i<=cnt;i++)edges.push(a-d/2+i*d);}}
+  if(!edges.length){const nb=40;bw=(hi-lo)/nb||1;for(let i=0;i<=nb;i++)edges.push(lo+i*bw);}
+  const nb=edges.length-1,counts=new Array(nb).fill(0),e0=edges[0];
+  for(const x of means){let j=Math.floor((x-e0)/bw+1e-9);if(j<0)j=0;if(j>=nb)j=nb-1;counts[j]++;}
+  const H2=200,ih2=H2-T-B,xmin=edges[0],xmax=edges[nb],xs2=x=>L+(x-xmin)/(xmax-xmin)*iw,pdf=x=>Math.exp(-0.5*((x-P.mu)/se)**2)/(se*Math.sqrt(2*Math.PI));
+  const dens=counts.map(c=>c/(R*bw)),ymax=Math.max(...dens,pdf(P.mu))*1.05,ys=y=>T+ih2-y/ymax*ih2;
+  let sv=`<svg class="xchart" viewBox="0 0 ${W} ${H2}" style="max-width:${W}px" role="img" aria-label="표본평균 2000개의 분포와 CLT 정규곡선">`;
+  dens.forEach((y,j)=>{const x0=xs2(edges[j]),x1=xs2(edges[j+1]),w=Math.max((x1-x0)*.86,1);sv+=`<rect x="${(x0+(x1-x0)*.07).toFixed(1)}" y="${ys(y).toFixed(1)}" width="${w.toFixed(1)}" height="${(T+ih2-ys(y)).toFixed(1)}" style="fill:var(--accent);fill-opacity:.55"/>`;});
+  let d="";for(let i=0;i<=160;i++){const x=xmin+(xmax-xmin)*i/160;d+=(i?"L":"M")+xs2(x).toFixed(1)+","+ys(pdf(x)).toFixed(1);}
+  sv+=`<path d="${d}" style="fill:none;stroke:var(--pen);stroke-width:2;stroke-dasharray:6 4"/>`;
+  sv+=`<line x1="${xs2(P.mu)}" x2="${xs2(P.mu)}" y1="${T}" y2="${T+ih2}" style="stroke:var(--ink-3);stroke-dasharray:2 3"/>`;
+  sv+=`<line x1="${L}" x2="${W-Rr}" y1="${T+ih2}" y2="${T+ih2}" style="stroke:var(--ink-3)"/>`;
+  if(!P.cont&&bw===P.step/n&&nb<=16){for(let j=0;j<nb;j++){const x=(edges[j]+edges[j+1])/2;sv+=`<text x="${xs2(x).toFixed(1)}" y="${H2-6}" text-anchor="middle">${Math.round(x*100)/100}</text>`;}}
+  else{const tstep=(xmax-xmin)/8;for(let i=0;i<=8;i++){const x=xmin+i*tstep;sv+=`<text x="${xs2(x).toFixed(1)}" y="${H2-6}" text-anchor="middle">${Math.round(x*100)/100}</text>`;}}
+  $("#cChart").innerHTML=sv+`</svg>`;
+}
+$("#cPop").addEventListener("change",()=>{const pk=$("#cPop").value;if(pk==="ex")$("#cN").value=2;if(pk==="skew")$("#cN").value=36;renderClt();});
+$("#cN").addEventListener("change",renderClt);
+$("#cGo").addEventListener("click",renderClt);
+$$("[data-cn]").forEach(b=>b.addEventListener("click",()=>{$("#cN").value=b.dataset.cn;renderClt();}));
+
 /* ---------- 개념 검색 ---------- */
-const SX_ALIAS=[["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["베르누이","bernoulli"],["이항","binomial","binom"],["기하","geometric","geo"],["정규","normal"],["표준정규","standard normal","z-score","z점수","표준화"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
-const SX_SUGGEST=["편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
+const SX_ALIAS=[["중심극한정리","central limit","clt"],["불편추정량","불편","unbiased","biased","편향추정"],["표본비율","sample proportion","p-hat","p̂"],["정규근사","normal approximation","large counts","success-failure"],["모수","parameter"],["통계량","statistic"],["표본분포","sampling distribution"],["표본분산","sample variance","n-1","n − 1"],["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["베르누이","bernoulli"],["이항","binomial","binom"],["기하","geometric","geo"],["정규","normal"],["표준정규","standard normal","z-score","z점수","표준화"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
+const SX_SUGGEST=["중심극한정리","정규근사","편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
 let sxIndex=null,sxItems=[],sxTerms=[],sxActive=0;
 const sxNorm=t=>String(t).replace(/\s+/g," ").trim();
 const sxRe=t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
