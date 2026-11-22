@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수, 개념 정리와 연습 문제 117개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·이항·기하분포, 5장 정규분포·중심극한정리·표본비율, 개념 정리와 연습 문제 231개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -1277,6 +1277,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
           <button class="btn" data-bp="p9">찍기 (P9)</button>
           <button class="btn" data-bp="coin">동전 5번</button>
           <button class="btn" data-bp="frq58">모의고사 58번</button>
+          <button class="btn" data-bp="s3">PS2-3</button><button class="btn" data-bp="s4">PS2-4</button><button class="btn" data-bp="s6">PS2-6</button>
         </div>
         <div class="tool-row" style="margin-top:10px">
           <label class="field">n<input type="number" id="bnN" value="10" min="1" max="500"></label>
@@ -1354,7 +1355,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
         <b style="font-size:.95rem">기하분포 계산기</b>
         <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">성공 확률 p와 k, 조건을 고르면 확률과 평균·표준편차를 보여줍니다.</p>
         <div class="tool-row" style="margin-top:10px">
-          <button class="btn" data-gp="p10">자유투 (P10)</button><button class="btn" data-gp="p11a">상담 (P11a)</button><button class="btn" data-gp="p11b">상담 (P11b)</button><button class="btn" data-gp="p12a">주사위 (P12a)</button><button class="btn" data-gp="p12b">주사위 (P12b)</button>
+          <button class="btn" data-gp="s7">PS2-7</button><button class="btn" data-gp="s9">PS2-9</button><button class="btn" data-gp="p10">자유투 (P10)</button><button class="btn" data-gp="p11a">상담 (P11a)</button><button class="btn" data-gp="p11b">상담 (P11b)</button><button class="btn" data-gp="p12a">주사위 (P12a)</button><button class="btn" data-gp="p12b">주사위 (P12b)</button>
         </div>
         <div class="tool-row" style="margin-top:10px">
           <label class="field">p (분수 가능)<input type="text" inputmode="decimal" id="gP" value="0.6" style="width:84px;font-family:var(--f-mono)"></label>
@@ -1376,6 +1377,34 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
           <li>(c) 설문에 응해 줄 사람(p = 0.4)이 나올 때까지 물어본 사람 수 → <b>기하</b>. 첫 성공까지의 시행 횟수.</li>
         </ul></div>
       <p><button class="btn primary" data-go="practice" data-filter="geo">기하분포 문제 풀러 가기 →</button></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">PS2</span><h2>Problem set #2 <span class="gloss">이항·기하 연습 10문제</span></h2></div>
+      <p class="lead">10문제 모두 "<b>성공/실패 · 독립 · 확률 일정</b>"인 반복 시행이에요. 먼저 <b>몇 번 할지 정해져 있으면 이항</b>, <b>첫 성공까지 하면 기하</b>로 나누면 됩니다.</p>
+      <div class="tbl-wrap"><table><thead><tr><th>#</th><th>모형</th><th>식</th><th>답</th></tr></thead><tbody>
+        <tr><td class="term">1. 동전 5번, 앞면 정확히 3번</td><td>B(5, 1/2)</td><td class="mr">₅C₃(1/2)⁵ = 10/32</td><td class="mono"><b>0.3125</b></td></tr>
+        <tr><td class="term">2. 동전 6번, 앞 3 뒤 3</td><td>B(6, 1/2)</td><td class="mr">₆C₃(1/2)⁶ = 20/64</td><td class="mono"><b>0.3125</b></td></tr>
+        <tr><td class="term">3. 주사위 2개를 3번, 합 7이 정확히 1번</td><td>B(3, 1/6)</td><td class="mr">₃C₁(1/6)(5/6)² = 75/216</td><td class="mono"><b>≈ 0.3472</b></td></tr>
+        <tr><td class="term">4. 주사위 7번, 6이 정확히 4번</td><td>B(7, 1/6)</td><td class="mr">₇C₄(1/6)⁴(5/6)³ = 4375/279936</td><td class="mono"><b>≈ 0.0156</b></td></tr>
+        <tr><td class="term">5. 아이 4명 중 아들 정확히 2명</td><td>B(4, 1/2)</td><td class="mr">₄C₂(1/2)⁴ = 6/16</td><td class="mono"><b>0.375</b></td></tr>
+        <tr><td class="term">6. 동전 4번, 앞면 2번 이상</td><td>B(4, 1/2)</td><td class="mr">1 − P(0) − P(1) = 1 − 5/16</td><td class="mono"><b>11/16 = 0.6875</b></td></tr>
+        <tr><td class="term">7. 첫 뇌우가 10월 15일 (가을 10월 1일 시작, p = 0.05)</td><td>Geo(0.05)</td><td class="mr">(0.95)¹⁴(0.05)</td><td class="mono"><b>≈ 0.0244</b></td></tr>
+        <tr><td class="term">8. 흰 3·검 3 복원추출 4번, 흰 공 정확히 2개</td><td>B(4, 1/2)</td><td class="mr">₄C₂(1/2)⁴ = 6/16</td><td class="mono"><b>0.375</b></td></tr>
+        <tr><td class="term">9. 네 번째에 처음 앞면</td><td>Geo(1/2)</td><td class="mr">(1/2)³(1/2)</td><td class="mono"><b>1/16 = 0.0625</b></td></tr>
+        <tr><td class="term">10. 앞면 3번 나올 때까지, 정확히 6번에 끝나고 5·6번째가 앞면</td><td>이항 + 곱셈</td><td class="mr">₄C₁(1/2)⁴ × (1/2)(1/2) = 4/64</td><td class="mono"><b>1/16 = 0.0625</b></td></tr>
+      </tbody></table></div>
+      <h3>헷갈리기 쉬운 문제</h3>
+      <ul class="clean">
+        <li><b>3번</b>: "성공"은 <b>한 번 굴릴 때 합이 7</b>이 나오는 것. 36가지 중 (1,6) (2,5) (3,4) (4,3) (5,2) (6,1)의 6가지라 p = 1/6이고, n은 굴리는 횟수 3이에요. 주사위가 2개라서 n = 6이 아니에요.</li>
+        <li><b>7번</b>: 10월 1일이 1번째 날이라 10월 15일은 <b>15번째 날</b>. 앞의 14일 동안 뇌우가 없고 15번째에 처음 → (0.95)¹⁴(0.05). 13이나 15제곱으로 세지 않게 조심.</li>
+        <li><b>8번</b>: 공을 <b>다시 넣으니까(복원)</b> 매번 흰 공 확률이 3/6 = 1/2로 같아서 이항. 다시 안 넣으면 확률이 바뀌어서 이항이 아니에요.</li>
+        <li><b>9번</b>: "네 번 던져야 처음 앞면" = 앞 3번 뒷면, 4번째 앞면 → 기하 P(X = 4).</li>
+        <li><b>10번</b>: 6번째에 끝났다는 건 <b>6번째가 세 번째 앞면</b>이라는 뜻. 5번째도 앞면이니까 <b>처음 4번 중 앞면은 정확히 1번</b>이어야 해요. 그래서 ₄C₁(1/2)⁴ × (5번째 앞) × (6번째 앞) = 4/64 = 1/16.</li>
+        <li><b>6번</b>: "at least"는 여사건으로. 1 − P(0번) − P(1번) = 1 − 1/16 − 4/16.</li>
+      </ul>
+      <p style="font-size:.88rem;color:var(--ink-2)">위 이항분포 계산기(PS2-3·4·6)와 기하분포 계산기(PS2-7·9) 버튼으로 바로 확인할 수 있어요.</p>
+      <p><button class="btn primary" data-go="practice" data-filter="ps2">Problem set #2 풀러 가기 →</button></p>
     </article>
   </div>
 
@@ -2156,6 +2185,19 @@ const Q=[
  {id:"c-30",unit:"clt",set:"d2p",src:"5-8 Problem 11",type:"num",q:`북 60%(150명), 남 50%(200명)일 때 북쪽 표본비율이 남쪽보다 낮을 확률은? (소수 넷째 자리)`,answer:0.0305,answerText:"≈ 0.0305 (표 z = −1.87: 0.0307)",tol:0.003,hint:"N(0.1, 0.24/150 + 0.25/200)",explain:`SD = √(0.0016 + 0.00125) ≈ 0.0534, z = −0.1/0.0534 ≈ −1.87 → <b>≈ 0.0307</b>.`},
  {id:"c-31",unit:"clt",set:"d2p",src:"5-8 Problem 10 서술 (계산기 없이)",type:"open",q:`Problem 10 (n₁ = 80, p₁ = 0.7, n₂ = 100, p₂ = 0.65)의 (a) 정규 확인, (b) 평균·SD, (c) P(p̂₁ − p̂₂ > 0.15) = P(Z > z)의 z를 계산기 없이 시험 답안처럼 쓰세요.`,model:`<ol class="steps"><li>(a) n₁p₁ = 56, n₁(1 − p₁) = 24, n₂p₂ = 65, n₂(1 − p₂) = 35 are all at least 10, so p̂₁ − p̂₂ is approximately normal.</li><li>(b) μ = 0.7 − 0.65 = 0.05, σ = √(0.7×0.3/80 + 0.65×0.35/100)</li><li>(c) z = (0.15 − 0.05) / √(0.7×0.3/80 + 0.65×0.35/100)  (= 0.10/0.07 ≈ 1.43)</li></ol>`},
 
+ // Problem set #2
+ {id:"ps2-1",unit:"bin",set:"ps2",src:"Problem set #2 · 1",type:"num",q:`공정한 동전을 5번 던질 때 앞면이 정확히 3번 나올 확률은?`,answer:0.3125,answerText:"10/32 = 0.3125",tol:0.001,hint:"X ~ B(5, 1/2)",explain:`₅C₃(1/2)³(1/2)² = 10/32 = <b>0.3125</b>.`},
+ {id:"ps2-2",unit:"bin",set:"ps2",src:"Problem set #2 · 2",type:"num",q:`공정한 동전을 6번 연속 던질 때 앞면 3번, 뒷면 3번이 나올 확률은?`,answer:0.3125,answerText:"20/64 = 0.3125",tol:0.001,explain:`X ~ B(6, 1/2), P(X = 3) = ₆C₃/2⁶ = 20/64 = <b>0.3125</b>.`},
+ {id:"ps2-3",unit:"bin",set:"ps2",src:"Problem set #2 · 3",type:"num",q:`공정한 주사위 2개를 3번 굴린다(독립). 매번 두 눈의 합을 볼 때, 세 번 중 정확히 한 번만 합이 7일 확률은? (소수 넷째 자리)`,answer:0.3472222,answerText:"75/216 ≈ 0.3472",tol:0.002,hint:"한 번 굴릴 때 합이 7일 확률 = 6/36",explain:`성공 = 합 7, p = 6/36 = 1/6, n = 3번. ₃C₁(1/6)(5/6)² = 75/216 ≈ <b>0.3472</b>. 주사위가 2개라고 n = 6으로 두면 안 돼요.`},
+ {id:"ps2-4",unit:"bin",set:"ps2",src:"Problem set #2 · 4",type:"num",q:`주사위를 7번 굴릴 때 6이 정확히 4번 나올 확률은? (소수 넷째 자리)`,answer:0.0156286,answerText:"35·5³/6⁷ ≈ 0.0156",tol:0.0005,explain:`₇C₄(1/6)⁴(5/6)³ = 35 × 125 / 279936 ≈ <b>0.0156</b>.`},
+ {id:"ps2-5",unit:"bin",set:"ps2",src:"Problem set #2 · 5",type:"num",q:`아이가 정확히 4명인 가정에서 각 아이가 아들·딸일 확률이 같고 서로 독립일 때, 아들이 정확히 2명일 확률은?`,answer:0.375,answerText:"6/16 = 0.375",tol:0.001,explain:`B(4, 1/2): ₄C₂/16 = <b>6/16 = 0.375</b>.`},
+ {id:"ps2-6",unit:"bin",set:"ps2",src:"Problem set #2 · 6",type:"num",q:`공정한 동전을 4번 던질 때 앞면이 적어도 2번 나올 확률은?`,answer:0.6875,answerText:"11/16 = 0.6875",tol:0.001,hint:"여사건: 0번 또는 1번",explain:`1 − P(0) − P(1) = 1 − 1/16 − 4/16 = <b>11/16 = 0.6875</b>.`},
+ {id:"ps2-7",unit:"bin",set:"ps2",src:"Problem set #2 · 7",type:"num",q:`가을(10월 1일 시작) 중 어느 날이든 뇌우가 올 확률이 0.05이고 날마다 독립이다. 첫 뇌우가 10월 15일에 올 확률은? (소수 넷째 자리)`,answer:0.0243837,answerText:"(0.95)¹⁴(0.05) ≈ 0.0244",tol:0.001,hint:"10월 15일은 몇 번째 날?",explain:`10월 15일 = 15번째 날 → 기하 P(X = 15) = (0.95)¹⁴(0.05) ≈ <b>0.0244</b>.`},
+ {id:"ps2-8",unit:"bin",set:"ps2",src:"Problem set #2 · 8",type:"num",q:`흰 공 3개, 검은 공 3개가 든 항아리에서 공을 뽑고 다시 넣은 뒤 또 뽑는 것을 반복한다. 처음 뽑은 4개 중 정확히 2개가 흰 공일 확률은?`,answer:0.375,answerText:"6/16 = 0.375",tol:0.001,explain:`복원추출이라 매번 p = 1/2 → B(4, 1/2), P(X = 2) = <b>6/16 = 0.375</b>.`},
+ {id:"ps2-9",unit:"bin",set:"ps2",src:"Problem set #2 · 9",type:"num",q:`공정한 동전을 던질 때 네 번째 던져서야 처음으로 앞면이 나올 확률은?`,answer:0.0625,answerText:"1/16 = 0.0625",tol:0.001,explain:`기하 Geo(1/2): (1/2)³(1/2) = <b>1/16</b>.`},
+ {id:"ps2-10",unit:"bin",set:"ps2",src:"Problem set #2 · 10",type:"num",q:`앞면이 세 번 나올 때까지 동전을 던진다. 정확히 6번 만에 끝나고, 6번째뿐 아니라 5번째도 앞면일 확률은?`,answer:0.0625,answerText:"4/64 = 1/16",tol:0.001,hint:"6번째 = 세 번째 앞면, 5번째도 앞면 → 처음 4번에는 앞면이 몇 번?",explain:`처음 4번 중 앞면 정확히 1번(₄C₁/16 = 4/16) × 5번째 앞(1/2) × 6번째 앞(1/2) = 4/64 = <b>1/16</b>.`},
+ {id:"ps2-11",unit:"bin",set:"ps2",src:"Problem set #2 · 모형 고르기",type:"mc",q:`Problem set #2의 7번(첫 뇌우가 10월 15일)과 9번(네 번째에 처음 앞면)에 맞는 모형은?`,choices:["둘 다 이항분포","둘 다 기하분포","7번 이항, 9번 기하","7번 기하, 9번 이항"],answer:1,explain:`둘 다 "<b>처음</b> 성공이 k번째" → <b>기하분포</b> P(X = k) = (1 − p)^(k−1)p.`},
+ {id:"ps2-12",unit:"bin",set:"ps2",src:"Problem set #2 · 8 변형",type:"tf",q:`8번에서 공을 다시 넣지 않고(비복원) 4개를 뽑아도 흰 공의 개수는 이항분포 B(4, 1/2)를 따른다.`,answer:false,explain:`비복원이면 뽑을 때마다 흰 공 확률이 바뀌어서 "확률이 매번 같음" 조건이 깨져요 → 이항이 아님. (비복원 답: ₃C₂·₃C₂/₆C₄ = 9/15 = 0.6)`},
  // Problem set #1
  {id:"ps1-1",unit:"prob",set:"ps1",src:PS+" · (1)",type:"mc",
   q:`${R("P("+M("A")+") = 0.25")}, ${R("P("+M("B")+") = 0.9")}일 때 ${R("P("+M("A")+"∩"+M("B")+")")}가 가질 수 있는 <b>가장 작은 값</b>은?`,
@@ -2274,6 +2316,7 @@ const SETS=[
  {key:"clt",label:"Ch.5 표본분포·CLT",fn:q=>q.unit==="clt"},
  {key:"d2p",label:"두 비율의 차",fn:q=>q.set==="d2p"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
+ {key:"ps2",label:"Problem set #2",fn:q=>q.set==="ps2"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
  {key:"tae",label:"현성이 실험",fn:q=>q.set==="tae"},
  {key:"star",label:"★ 별표",fn:q=>store.stars.includes(q.id)},
@@ -3317,7 +3360,7 @@ const UNITS=[
   {k:"prob",t:"Ch.4 확률 기초",d:"경우의 수 · 확률 규칙 · 큰 수의 법칙"},
   {k:"cond",t:"Ch.4 조건부·베이즈·몬티홀",d:"조건부 · 독립 · 베이즈 · 몬티홀"},
   {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"},
-  {k:"bin",t:"Ch.4 확률 모형·이항·기하",d:"베르누이 · 이항분포 · 기하분포 · 요약표"},
+  {k:"bin",t:"Ch.4 확률 모형·이항·기하",d:"베르누이 · 이항분포 · 기하분포 · 요약표 · Problem set #2"},
   {k:"norm",t:"Ch.5 정규분포·정규근사",d:"정규분포 · 표준정규분포 · z-점수 · 이항의 정규근사"},
   {k:"clt",t:"Ch.5 표본분포·CLT·표본비율",d:"모수·통계량 · 중심극한정리 · 불편추정량 · p̂의 분포 · 두 비율의 차"}
 ];
@@ -3362,7 +3405,7 @@ function renderShellStats(){renderHome();renderSb();}
 })();
 
 /* ---------- 이항분포 계산기 ---------- */
-const BNP={p8:[10,0.7,"le",3],p9:[6,0.25,"eq",1],coin:[5,0.5,"eq",2],frq58:[200,0.66,"le",127]};
+const BNP={p8:[10,0.7,"le",3],p9:[6,0.25,"eq",1],coin:[5,0.5,"eq",2],frq58:[200,0.66,"le",127],s3:[3,0.1666667,"eq",1],s4:[7,0.1666667,"eq",4],s6:[4,0.5,"ge",2]};
 function binPmf(n,p){
   const a=new Array(n+1).fill(0);
   if(p<=0){a[0]=1;return a;} if(p>=1){a[n]=1;return a;}
@@ -3395,7 +3438,7 @@ $$("[data-bp]").forEach(b=>b.addEventListener("click",()=>{const v=BNP[b.dataset
 renderBin();
 
 /* ---------- 기하분포 계산기 ---------- */
-const GEP={p10:["0.6","eq",4],p11a:["1/3","eq",3],p11b:["1/3","gt",3],p12a:["1/6","eq",5],p12b:["1/6","gt",3]};
+const GEP={p10:["0.6","eq",4],p11a:["1/3","eq",3],p11b:["1/3","gt",3],p12a:["1/6","eq",5],p12b:["1/6","gt",3],s7:["0.05","eq",15],s9:["1/2","eq",4]};
 function renderGeo(){
   const p=parseNum($("#gP").value),k=parseInt($("#gK").value,10),op=$("#gOp").value,out=$("#gOut");
   if(isNaN(p)||p<=0||p>1||isNaN(k)||k<1){out.innerHTML=`<div class="out">0 &lt; p ≤ 1, k ≥ 1로 입력하세요.</div>`;return;}
