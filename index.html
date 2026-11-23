@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·이항·기하분포, 5장 정규분포·중심극한정리·표본비율·표본평균, 개념 정리와 연습 문제 259개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·이항·기하분포, 5장 정규분포·중심극한정리·표본비율·표본평균, 개념 정리와 연습 문제 262개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -1528,7 +1528,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
   <!-- Ch.5 표본분포·CLT·비율·평균 -->
   <div id="unit-clt" hidden>
     <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 4~12쪽: 2. The Central Limit Theorem (표본분포, 중심극한정리, 불편추정량), 3. Sampling Distribution for Sample Proportions (표본비율, 두 비율의 차), 3. Sampling Distribution for Sample Means (표본평균, 두 표본평균의 차), ★Additional Exercises★. 선생님이 말한 이번 학기 범위(약 12쪽)까지 다 들어왔어요.</div>
-    <div class="callout warn" style="margin-bottom:18px"><b class="tag">수업 녹음 메모</b><ul class="clean" style="margin:4px 0 0"><li><b>기말은 계산기 없이</b> 볼 예정. 두 비율의 차 문제는 <b>z가 어떻게 생겼는지 식만</b> 쓰면 되고, √ 안을 계산하거나 통분하지 않아도 돼요. 예: z = (0.15 − 0.05) / √(0.7×0.3/80 + 0.65×0.35/100)</li><li>단, Large Counts 확인(np, n(1 − p))은 <b>실제로 계산한 값을 꼭 써야</b> 해요.</li><li>z는 소수 둘째 자리까지 맞춰서 표에서 찾기. √0.24 ≈ 0.49처럼 필요한 근삿값은 문제에서 줌.</li><li>표기: 진짜로 그 분포를 따르면 물결 하나(X ~ B(n, p)), 근사면 물결 두 개(p̂ ≈ N(…)).</li><li>진도는 이번 학기 약 12쪽까지(남은 것: 표본평균, 두 표본평균의 차, 시뮬레이션).</li></ul></div>
+    <div class="callout warn" style="margin-bottom:18px"><b class="tag">수업 녹음 메모</b><ul class="clean" style="margin:4px 0 0"><li><b>기말은 계산기 없이</b> 볼 예정. 두 비율의 차 문제는 <b>z가 어떻게 생겼는지 식만</b> 쓰면 되고, √ 안을 계산하거나 통분하지 않아도 돼요. 예: z = (0.15 − 0.05) / √(0.7×0.3/80 + 0.65×0.35/100)</li><li>단, Large Counts 확인(np, n(1 − p))은 <b>실제로 계산한 값을 꼭 써야</b> 해요.</li><li>z는 소수 둘째 자리까지 맞춰서 표에서 찾기. √0.24 ≈ 0.49처럼 필요한 근삿값은 문제에서 줌.</li><li>표기: 진짜로 그 분포를 따르면 물결 하나(X ~ B(n, p)), 근사면 물결 두 개(p̂ ≈ N(…)).</li><li>진도는 이번 학기 12쪽까지. 남은 건 AP FRQ 한 문제와 복습.</li><li><b>Unbiased estimator 다시 강조</b>("제가 중요하다고 했습니다").</li><li><b>분산은 음수가 될 수 없다</b> → 차(difference)에서도 분산은 <b>무조건 더한다</b>고 외우기.</li><li><b>개별 값(X)과 표본평균(X̄)을 구분</b>하는지 보려고 Problem 16을 냈음. 한 명을 뽑아 비교하면 X(바 없음, n 필요 없음), 여러 명의 평균을 비교하면 X̄. "이거 진짜 중요"</li><li>계산기 없는 시험이라 z는 <b>√까지 들어간 식</b>으로만 쓰면 됨. 표가 필요한 건 값이 깔끔하게 나오는 문제뿐.</li><li>답이 맞는지 감으로 확인하기: Problem 15는 평균적으로 주니어가 더 오래 걸리니까, "주니어가 더 짧을 확률"은 <b>작게</b> 나와야 자연스러움.</li><li>Additional Exercises 1~3번은 <b>올해 수능 확률과 통계</b> 문제(3번은 29번). 4·5번은 프린트 문제와 비슷하지만 조금 더 어려움.</li></ul></div>
 
     <article class="sec">
       <div class="sec-head"><span class="num">5-4</span><h2>Sampling Distribution <span class="gloss">표본분포</span></h2></div>
@@ -1768,7 +1768,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
           <li>SD(X̄<sub>1</sub>) = 1.8/6 = 0.3, SD(X̄<sub>2</sub>) = 2.8/7 = 0.4 → X̄<sub>1</sub> − X̄<sub>2</sub> ≈ N(0.8, 0.3² + 0.4²) = N(0.8, 0.5²)</li>
           <li>P(Z &lt; (0 − 0.8)/0.5) = P(Z &lt; −1.6) ≈ <b>0.0548</b></li>
         </ul>
-        <p style="font-size:.88rem;color:var(--ink-2)">필기에 P(Z &lt; 1.6)으로 적혀 있는데 <b>−1.6</b>이에요(답 0.0548은 −1.6일 때 값이라 맞음). 0.3, 0.4, 0.5가 3-4-5 직각삼각형처럼 딱 떨어지게 만든 문제예요.</p></div>
+        <p style="font-size:.88rem;color:var(--ink-2)">필기에 P(Z &lt; 1.6)으로 적혀 있는데 <b>−1.6</b>이에요(답 0.0548은 −1.6일 때 값이라 맞음). 0.3, 0.4, 0.5가 3-4-5 직각삼각형처럼 딱 떨어지게 만든 문제예요. 평균적으로 주니어가 더 오래 걸리니까 "주니어가 더 짧을 확률"은 작게 나와야 맞아요. 0.0548은 작지만 일어날 수는 있는 정도.</p></div>
       <div class="box"><h4>Problem 16 · IQ: East ~ N(130, 8²), West ~ N(120, 10²)</h4>
         <ul class="sol" style="font-size:.93rem">
           <li>(a) East 한 명이 125 이상: z = (125 − 130)/8 = −0.625 → P(Z ≥ −0.63) ≈ <b>0.7357</b> (정확히 0.7340)</li>
@@ -1777,6 +1777,14 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
           <li>(d) East 3명 평균이 West 3명 평균보다 5점 이상 높을 확률: D = X̄<sub>E</sub> − X̄<sub>W</sub> ~ N(10, 64/3 + 100/3) = N(10, 164/3), σ<sub>D</sub> ≈ 7.39. P(Z ≥ −5/√(164/3)) = P(Z ≥ −0.68) ≈ <b>0.7517</b></li>
         </ul>
         <p style="font-size:.88rem;color:var(--ink-2)">(b) 필기에 σ<sub>D</sub> = √64로 적혀 있지만 계산한 z(−0.3904)는 √164로 한 값이라 답은 맞아요. West 분산 100을 꼭 더해야 해요. 모집단이 둘 다 정규라서 (c)(d)는 n = 3처럼 작아도 정규를 써도 돼요.</p></div>
+      <div class="callout warn"><b class="tag">핵심: 개별 값 vs 평균</b>선생님이 Problem 16을 낸 이유예요. 문제가 <b>한 명</b>을 묻는지 <b>여러 명의 평균</b>을 묻는지 먼저 보세요.
+        <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th></th><th>무엇을 비교?</th><th>확률변수</th><th>분포</th></tr></thead><tbody>
+          <tr><td class="term">(a)</td><td>East 한 명</td><td class="mr">X<sub>E</sub> (바 없음)</td><td class="mr">N(130, 8²)</td></tr>
+          <tr><td class="term">(b)</td><td>East 한 명 vs West 한 명</td><td class="mr">X<sub>E</sub> − X<sub>W</sub></td><td class="mr">N(10, 64 + 100)</td></tr>
+          <tr><td class="term">(c)</td><td>West 3명의 평균</td><td class="mr">X̄<sub>W</sub></td><td class="mr">N(120, 100/3)</td></tr>
+          <tr><td class="term">(d)</td><td>East 3명 평균 vs West 3명 평균</td><td class="mr">X̄<sub>E</sub> − X̄<sub>W</sub></td><td class="mr">N(10, 64/3 + 100/3)</td></tr>
+        </tbody></table></div>
+        <p style="font-size:.88rem;margin-top:6px">(a)(b)는 n으로 나누지 않고, (c)(d)는 각 분산을 표본 크기로 나눈 뒤 더해요. (d)의 분산은 <b>164/3</b>이에요(수업에서 "3분의 124"로 들렸는데 64 + 100 = 164).</p></div>
       <div class="tool">
         <b style="font-size:.95rem">표본평균·평균의 차 계산기</b>
         <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">한 명은 n = 1로 두면 돼요. 조건(모집단 정규 또는 n ≥ 30), 평균·SD, z 식, 확률을 보여줘요.</p>
@@ -1806,7 +1814,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
 
     <article class="sec">
       <div class="sec-head"><span class="num">AX</span><h2>★Additional Exercises★ <span class="gloss">종합 연습 5문제</span></h2></div>
-      <p class="lead">4장(확률 규칙·이항·확률변수)과 5장(CLT·표본비율)이 섞인 종합 문제예요.</p>
+      <p class="lead">4장(확률 규칙·이항·확률변수)과 5장(CLT·표본비율)이 섞인 종합 문제예요. <b>1~3번은 올해 수능 확률과 통계</b> 문제(3번은 29번 킬러 문항)이고, 선생님이 1번 답 1/6, 2번 답 120을 확인해 줬어요. 3번은 다음 시간에 풀이 예정이에요.</p>
       <div class="box"><h4>Problem 1 · P(A ∪ B) = 3/4, P(A) = 1/2, P(B) = 5/12일 때 P(A ∩ B)</h4>
         <ul class="sol" style="font-size:.93rem"><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B) → P(A ∩ B) = 6/12 + 5/12 − 9/12 = 2/12 = <b>1/6</b></li></ul></div>
       <div class="box"><h4>Problem 2 · X ~ B(n, 2/3), σ(X) = 4일 때 n + E(X)</h4>
@@ -1821,7 +1829,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
           <li>k²을 최대로 하려면 5a² − 3a + 2를 최소로: 꼭짓점 a = 3/10 (b = 0.11 ≥ 0이라 가능), 최솟값 1.55</li>
           <li>k² = 1/(2 × 1.55) = <b>10/31</b> ≈ 0.3226</li>
         </ol>
-        <p style="font-size:.88rem;color:var(--ink-2)">a의 범위(b ≥ 0이 되려면 a² + a ≤ 1/2, a ≤ 0.366) 안에 꼭짓점 0.3이 들어가는지 확인하는 게 마지막 함정이에요.</p></div>
+        <p style="font-size:.88rem;color:var(--ink-2)">a의 범위(b ≥ 0이 되려면 a² + a ≤ 1/2, a ≤ 0.366) 안에 꼭짓점 0.3이 들어가는지 확인하는 게 마지막 함정이에요. 수업 힌트: ① 확률의 합 2(a² + b + a) = 1, ② "1 ≤ Var ≤ σ"는 Var = 1을 돌려 말한 것, ③ 대칭이라 평균 0 → E(X²) = 1, ④ k²을 a, b로 나타내 최댓값 찾기(이차함수, 공통수학). 묻는 건 최댓값뿐이라 a 값은 답이 아니에요.</p></div>
       <div class="box"><h4>Problem 4 · $10 내고 주사위: 6이면 $50, 아니면 한 번 더, 그때 6이면 $10 돌려받음</h4>
         <div class="tbl-wrap" style="margin-top:6px"><table><thead><tr><th>(a) 결과</th><th>순이익 X</th><th>확률</th></tr></thead><tbody>
           <tr><td class="term">첫 번째에 6</td><td class="mono">+$40</td><td class="mono">1/6</td></tr>
@@ -2349,6 +2357,9 @@ const Q=[
  {id:"ax-9",unit:"clt",set:"ax",src:"Additional 5(c)",type:"num",q:`대출자 7%가 연체할 때 200건 중 10%보다 많이 연체할 확률은? (소수 넷째 자리)`,answer:0.0482,answerText:"≈ 0.048 (표 z = 1.66: 0.0485)",tol:0.003,explain:`np = 14, n(1 − p) = 186 ≥ 10. z = 0.03/0.01804 ≈ 1.66 → <b>≈ 0.0485</b>.`},
  {id:"ax-10",unit:"clt",set:"ax",src:"Additional 5(b) 서술",type:"open",q:`대출 문제(p = 0.07, n = 200)에서 정규모형의 가정과 조건을 쓰고 만족하는지 설명하세요.`,model:`<ul class="clean"><li><b>Random/representative</b>: 200건이 전체 대출자를 대표하는 랜덤 표본이라고 가정.</li><li><b>Independence (10%)</b>: 고객들의 상환은 서로 독립이고, 200건은 전체 대출의 10% 미만.</li><li><b>Large Counts</b>: np = 200(0.07) = 14 ≥ 10, n(1 − p) = 186 ≥ 10 → 만족.</li><li>So p̂ ≈ N(0.07, 0.07(0.93)/200).</li></ul>`},
  {id:"u-1",unit:"clt",set:"clt",src:"5-6 불편추정량 종합 (기말)",type:"mc",q:`다음 중 괄호 안 parameter의 불편추정량이 <b>아닌</b> 것은?`,choices:["x̄ (μ)","p̂₁ − p̂₂ (p₁ − p₂)","Σ(xᵢ − x̄)²/n (σ²)","x̄₁ − x̄₂ (μ₁ − μ₂)"],answer:2,explain:`n으로 나누면 기댓값이 (n − 1)σ²/n이라 <b>biased</b>(과소추정). n − 1로 나눈 s²가 불편추정량이에요.`},
+ {id:"m-18",unit:"clt",set:"xbar",src:"5-10 Problem 16 개별 vs 평균",type:"mc",q:`East ~ N(130, 8²), West ~ N(120, 10²). "각 학교에서 <b>한 명씩</b> 뽑아 East 학생 IQ가 5점 이상 높을 확률"에 쓰는 분포는?`,choices:["X_E − X_W ~ N(10, 64 + 100)","X̄_E − X̄_W ~ N(10, 64/3 + 100/3)","X_E − X_W ~ N(10, 100 − 64)","X̄_E − X̄_W ~ N(10, 164/2)"],answer:0,explain:`한 명끼리 비교라 <b>개별 확률변수</b> X(바 없음)를 쓰고, n으로 나누지 않아요: N(10, 164). 평균끼리 비교할 때만 각 분산을 n으로 나눠요.`},
+ {id:"m-19",unit:"clt",set:"xbar",src:"5-10 Problem 16 개별 vs 평균",type:"tf",q:`Problem 16의 (a)와 (b)는 표본평균 X̄에 관한 문제이다.`,answer:false,explain:`(a)(b)는 <b>한 명</b>을 뽑는 문제라 개별 확률변수 X에 관한 것이고, (c)(d)가 3명의 <b>평균</b> X̄에 관한 문제예요. 선생님이 이 구분을 보려고 낸 문제.`},
+ {id:"m-20",unit:"clt",set:"xbar",src:"5-10 분산 (수업)",type:"tf",q:`X̄₁ − X̄₂의 분산은 σ₁²/n₁ − σ₂²/n₂처럼 빼서 구할 수도 있다.`,answer:false,explain:`분산은 음수가 될 수 없어서 빼면 안 돼요. 차여도 <b>σ₁²/n₁ + σ₂²/n₂</b>로 더해요.`},
 
  // Problem set #2
  {id:"ps2-1",unit:"bin",set:"ps2",src:"Problem set #2 · 1",type:"num",q:`공정한 동전을 5번 던질 때 앞면이 정확히 3번 나올 확률은?`,answer:0.3125,answerText:"10/32 = 0.3125",tol:0.001,hint:"X ~ B(5, 1/2)",explain:`₅C₃(1/2)³(1/2)² = 10/32 = <b>0.3125</b>.`},
