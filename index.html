@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·이항·기하분포, 5장 정규분포·중심극한정리·표본비율, 개념 정리와 연습 문제 231개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
+<meta name="description" content="AP Statistics I 기말 대비: 3장 자료 수집·표본추출, 실험 설계, 4장 확률·조건부확률·베이즈·몬티홀·확률변수·이항·기하분포, 5장 정규분포·중심극한정리·표본비율·표본평균, 개념 정리와 연습 문제 259개, OMR 답안지로 정리되는 실전 모의고사 66문항, 실험 설계도 그리기, 용어 카드.">
 <meta name="theme-color" content="#1C2745">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C2745'/%3E%3Crect x='14' y='34' width='8' height='16' fill='%23DDEF48'/%3E%3Crect x='28' y='22' width='8' height='28' fill='%23fff'/%3E%3Crect x='42' y='14' width='8' height='36' fill='%23DDEF48'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -532,7 +532,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       <button class="unit" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
       <button class="unit" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항·기하</button>
       <button class="unit" data-unit="norm" aria-pressed="false">Ch.5 정규분포·정규근사</button>
-      <button class="unit" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·표본비율</button>
+      <button class="unit" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·비율·평균</button>
     </div>
     <p class="sb-label">연습</p>
     <button class="tab" role="tab" id="tab-practice" data-tab="practice" aria-selected="false"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/></svg>문제 풀기<span class="badge" id="sbPrac"></span></button>
@@ -592,7 +592,7 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     <button class="chip" data-unit="rv" aria-pressed="false">Ch.4 확률변수·기댓값·분산</button>
     <button class="chip" data-unit="bin" aria-pressed="false">Ch.4 확률 모형·이항·기하</button>
     <button class="chip" data-unit="norm" aria-pressed="false">Ch.5 정규분포·정규근사</button>
-    <button class="chip" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·표본비율</button>
+    <button class="chip" data-unit="clt" aria-pressed="false">Ch.5 표본분포·CLT·비율·평균</button>
   </div>
 
   <!-- Ch.3 자료 수집 -->
@@ -1525,9 +1525,9 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
     </article>
   </div>
 
-  <!-- Ch.5 표본분포·CLT·표본비율 -->
+  <!-- Ch.5 표본분포·CLT·비율·평균 -->
   <div id="unit-clt" hidden>
-    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 4~8쪽: 2. The Central Limit Theorem (표본분포, 중심극한정리, 불편추정량), 3. Sampling Distribution for Sample Proportions (표본비율, 두 비율의 차). 8쪽 맨 아래 "Sample Means"는 다음 시간 도입부예요.</div>
+    <div class="callout" style="margin-bottom:18px"><b class="tag">범위</b>Chap 5 Sampling Distribution 프린트 4~12쪽: 2. The Central Limit Theorem (표본분포, 중심극한정리, 불편추정량), 3. Sampling Distribution for Sample Proportions (표본비율, 두 비율의 차), 3. Sampling Distribution for Sample Means (표본평균, 두 표본평균의 차), ★Additional Exercises★. 선생님이 말한 이번 학기 범위(약 12쪽)까지 다 들어왔어요.</div>
     <div class="callout warn" style="margin-bottom:18px"><b class="tag">수업 녹음 메모</b><ul class="clean" style="margin:4px 0 0"><li><b>기말은 계산기 없이</b> 볼 예정. 두 비율의 차 문제는 <b>z가 어떻게 생겼는지 식만</b> 쓰면 되고, √ 안을 계산하거나 통분하지 않아도 돼요. 예: z = (0.15 − 0.05) / √(0.7×0.3/80 + 0.65×0.35/100)</li><li>단, Large Counts 확인(np, n(1 − p))은 <b>실제로 계산한 값을 꼭 써야</b> 해요.</li><li>z는 소수 둘째 자리까지 맞춰서 표에서 찾기. √0.24 ≈ 0.49처럼 필요한 근삿값은 문제에서 줌.</li><li>표기: 진짜로 그 분포를 따르면 물결 하나(X ~ B(n, p)), 근사면 물결 두 개(p̂ ≈ N(…)).</li><li>진도는 이번 학기 약 12쪽까지(남은 것: 표본평균, 두 표본평균의 차, 시뮬레이션).</li></ul></div>
 
     <article class="sec">
@@ -1605,12 +1605,16 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
       <div class="sec-head"><span class="num">5-6</span><h2>Biased and Unbiased Estimator <span class="gloss">편향·불편 추정량</span></h2></div>
       <p class="lead">통계량의 분포 중심(모든 가능한 표본에 대한 평균)이 parameter와 같으면 그 통계량은 <b>불편추정량(unbiased estimator)</b>이에요. 아니면 <b>편향(biased)</b>.</p>
       <div class="formula">E(estimator) = parameter &nbsp;→&nbsp; unbiased</div>
+      <div class="callout" style="border-color:var(--pen)"><b class="tag" style="background:var(--pen);color:#fff">기말 출제 유력</b>선생님이 11월 23일 수업에서 <b>unbiased estimator가 중요하다</b>고 다시 강조했어요. 정의(E(estimator) = parameter), 아래 표의 다섯 가지, 그리고 E(s²) = σ² 증명까지 꼭 챙기세요.</div>
       <div class="callout warn"><b class="tag">헷갈림 주의</b><b>Unbiased는 "정확하다"는 뜻이 아니에요.</b> 표본 하나의 x̄는 μ와 거의 절대 똑같지 않아요. 불편이란 추정값이 <b>체계적으로 너무 크거나 너무 작게 나오지 않는다</b>는 뜻입니다. 과녁으로 치면, 화살이 흩어져 있어도 그 중심이 정가운데면 불편이에요.</div>
       <div class="tbl-wrap"><table><thead><tr><th>Parameter</th><th>Unbiased estimator</th><th>왜 불편인가</th></tr></thead><tbody>
         <tr><td class="term">모평균 μ</td><td>표본평균 x̄</td><td class="mr">E(X̄) = μ</td></tr>
         <tr><td class="term">모비율 p</td><td>표본비율 p̂ = (X<sub>1</sub> + … + X<sub>n</sub>)/n &nbsp;(X<sub>i</sub> = 0 또는 1)</td><td class="mr">X<sub>1</sub> + … + X<sub>n</sub> ~ B(n, p) → E(p̂) = np/n = p</td></tr>
         <tr><td class="term">모분산 σ²</td><td>표본분산 s² = <span class="fr"><i>Σ(x<sub>i</sub> − x̄)²</i><i>n − 1</i></span> &nbsp;<span class="pen">이거 시험에 나옴</span></td><td class="mr">E(s²) = σ²</td></tr>
+        <tr><td class="term">두 모비율의 차 p<sub>1</sub> − p<sub>2</sub></td><td>p̂<sub>1</sub> − p̂<sub>2</sub> &nbsp;<span style="color:var(--ink-3)">(5-8)</span></td><td class="mr">E(p̂<sub>1</sub>) − E(p̂<sub>2</sub>) = p<sub>1</sub> − p<sub>2</sub></td></tr>
+        <tr><td class="term">두 모평균의 차 μ<sub>1</sub> − μ<sub>2</sub></td><td>x̄<sub>1</sub> − x̄<sub>2</sub> &nbsp;<span style="color:var(--ink-3)">(5-10)</span></td><td class="mr">E(X̄<sub>1</sub>) − E(X̄<sub>2</sub>) = μ<sub>1</sub> − μ<sub>2</sub></td></tr>
       </tbody></table></div>
+      <p style="font-size:.9rem;color:var(--ink-2)">차의 경우는 전부 "기댓값은 나눠진다(E(A − B) = E(A) − E(B))" 한 줄로 증명돼요. 반대로 Σ(x<sub>i</sub> − x̄)²을 <b>n</b>으로 나눈 것은 σ²의 <b>biased</b> estimator예요(기댓값 (n − 1)σ²/n).</p>
       <h3>E(s²) = σ² 증명 (n − 1로 나누는 이유)</h3>
       <p style="font-size:.92rem">재료: E(X<sub>i</sub>) = μ, Var(X<sub>i</sub>) = σ² 이니까 E(X<sub>i</sub>²) = σ² + μ². 또 E(X̄) = μ, Var(X̄) = σ²/n 이니까 E(X̄²) = σ²/n + μ². (E(X²) = Var(X) + [E(X)]²)</p>
       <ol class="steps">
@@ -1707,6 +1711,136 @@ h3.hit{animation:hith3 2.2s ease-out;border-radius:6px}
         <div id="dChart" style="margin-top:12px;overflow-x:auto"></div>
       </div>
       <p><button class="btn primary" data-go="practice" data-filter="clt">표본분포·CLT 문제 풀러 가기 →</button></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-9</span><h2>Sampling Distribution of a Sample Mean <span class="gloss">표본평균의 표본분포</span></h2></div>
+      <p class="lead">자료가 양적(quantitative)이면 관심 있는 parameter는 보통 <b>모평균 μ</b>이고, <b>표본평균 x̄ = (x<sub>1</sub> + … + x<sub>n</sub>)/n</b>으로 추정해요. 표본마다 X̄가 달라서, 크기 n인 모든 가능한 표본에 대한 X̄의 분포가 표본분포예요. X̄는 확률변수들의 합에 1/n을 곱한 것으로 보면 됩니다.</p>
+      <div class="formula">μ<sub>X̄</sub> = E(X̄) = <b>μ</b>, &nbsp;&nbsp; σ²<sub>X̄</sub> = Var(X̄) = <b><span class="fr"><i>σ²</i><i>n</i></span></b> &nbsp; <span class="pen">외우기!! (CLT 부분에 나옴)</span></div>
+      <ul class="clean">
+        <li>모집단이 <b>정규</b>면 X̄는 <b>어떤 n이든 정규</b> <span class="pen">n = 2여도 됨!</span></li>
+        <li>모집단이 정규가 아니면 <b>중심극한정리(Central Limit Theorem)</b>로 n이 충분히 클 때(AP 기준 <b>n ≥ 30</b>) 근사적으로 정규</li>
+      </ul>
+      <div class="formula">X̄ ≈ N(μ, σ²/n)</div>
+      <div class="box"><h4>★ Step ★</h4>
+        <ol class="steps">
+          <li><b>μ, σ, n</b>을 찾는다.</li>
+          <li>조건 확인: <b>random sample</b>, 그리고 <b>Normal/Large sample</b> (모집단이 정규 또는 n ≥ 30) <span class="pen">이래야 CLT 적용</span></li>
+          <li>X̄의 모형 N(μ, σ²/n)을 쓰고 <b>Z로 표준화</b>해서 계산</li>
+        </ol></div>
+      <div class="box"><h4>Problem 12 · 성인 여성 키 ~ N(161.5, 6²)</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(a) 한 명이 166보다 클 확률: z = (166 − 161.5)/6 = 0.75 → P(Z &gt; 0.75) ≈ <b>0.2266</b></li>
+          <li>(b) n = 9명의 평균이 159보다 작을 확률: 모집단이 정규라 n = 9여도 X̄ ~ N(161.5, (6/√9)²) = N(161.5, 2²). z = (159 − 161.5)/2 = −1.25 → <b>≈ 0.1056</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">(a)는 <b>한 명</b>이라 σ = 6, (b)는 <b>평균</b>이라 σ/√n = 2. 이 구분이 핵심이에요.</p></div>
+      <div class="box"><h4>Problem 13 · 카페 지출: 오른쪽으로 치우침, μ = 45, σ = 28, n = 49</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>모집단이 치우쳤지만 n = 49 ≥ 30 → <b>by the CLT</b>, X̄ ≈ N(45, (28/7)²) = N(45, 4²)</li>
+          <li>P(X̄ &gt; 41) = P(Z &gt; (41 − 45)/4) = P(Z &gt; −1) ≈ <b>0.8413</b></li>
+        </ul></div>
+      <div class="box"><h4>Problem 14 · σ = 18, σ(X̄) ≤ 2가 되려면 최소 n은?</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>18/√n ≤ 2 → √n ≥ 9 → n ≥ 81 → 최소 <b>n = 81</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">SD를 절반으로 줄이려면 n은 4배가 필요해요(√n에 반비례).</p></div>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">5-10</span><h2>Difference of Two Sample Means <span class="gloss">두 표본평균의 차</span></h2></div>
+      <p class="lead">두 그룹의 평균을 비교하는 질문도 많아요. 주니어가 시니어보다 숙제를 더 오래 할까? 한 기계가 다른 기계보다 병을 더 많이 채울까? 평균 μ<sub>1</sub>, μ<sub>2</sub>, 표준편차 σ<sub>1</sub>, σ<sub>2</sub>인 두 모집단에서 <b>각각 독립인 랜덤 표본</b>을 뽑아 표본평균을 비교합니다. 통계량은 <b>x̄<sub>1</sub> − x̄<sub>2</sub></b>.</p>
+      <div class="formula">E(X̄<sub>1</sub>) = μ<sub>1</sub>, &nbsp; E(X̄<sub>2</sub>) = μ<sub>2</sub>, &nbsp; Var(X̄<sub>1</sub>) = σ<sub>1</sub>²/n<sub>1</sub>, &nbsp; Var(X̄<sub>2</sub>) = σ<sub>2</sub>²/n<sub>2</sub></div>
+      <div class="formula">μ<sub>X̄₁−X̄₂</sub> = E(X̄<sub>1</sub>) − E(X̄<sub>2</sub>) = <b>μ<sub>1</sub> − μ<sub>2</sub></b> &nbsp;→ X̄<sub>1</sub> − X̄<sub>2</sub>는 μ<sub>1</sub> − μ<sub>2</sub>의 <b>unbiased estimator</b></div>
+      <div class="formula">σ²<sub>X̄₁−X̄₂</sub> = Var(X̄<sub>1</sub> − X̄<sub>2</sub>) = <span class="fr"><i>σ<sub>1</sub>²</i><i>n<sub>1</sub></i></span> + <span class="fr"><i>σ<sub>2</sub>²</i><i>n<sub>2</sub></i></span> &nbsp; (차여도 분산은 더함)</div>
+      <h3>정규로 볼 조건: 두 표본 모두</h3>
+      <p>독립인 두 정규변수의 차는 정규라서, X̄<sub>1</sub>과 X̄<sub>2</sub>가 <b>각각</b> 근사적으로 정규면 차도 근사적으로 정규예요. 각 표본마다:</p>
+      <ul class="clean">
+        <li><b>모집단이 원래 정규</b>이거나</li>
+        <li><b>표본 크기가 커서(n ≥ 30) CLT 적용</b> → 둘 다 정규가 아니면 n<sub>1</sub>, n<sub>2</sub> ≥ 30</li>
+      </ul>
+      <p style="font-size:.9rem">이게 <b>두 표본 모두</b>에서 성립해야 해요.</p>
+      <div class="formula">X̄<sub>1</sub> − X̄<sub>2</sub> ≈ N(μ<sub>1</sub> − μ<sub>2</sub>, &nbsp;σ<sub>1</sub>²/n<sub>1</sub> + σ<sub>2</sub>²/n<sub>2</sub>)</div>
+      <div class="callout warn"><b class="tag">노트 보완</b>필기 옆에 "σ<sub>2</sub>²/n<sub>2</sub> = SD"라고 적혀 있는데, σ²/n은 <b>분산</b>이에요. SD는 <b>√(σ<sub>1</sub>²/n<sub>1</sub> + σ<sub>2</sub>²/n<sub>2</sub>)</b>처럼 루트를 씌워야 해요. 각각의 SD를 그냥 더하면(σ<sub>1</sub>/√n<sub>1</sub> + σ<sub>2</sub>/√n<sub>2</sub>) 틀려요.</div>
+      <div class="box"><h4>Problem 15 · 숙제 시간(둘 다 오른쪽 치우침): 주니어 μ<sub>1</sub> = 5, σ<sub>1</sub> = 1.8, n<sub>1</sub> = 36 · 시니어 μ<sub>2</sub> = 4.2, σ<sub>2</sub> = 2.8, n<sub>2</sub> = 49</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>구할 것: P(X̄<sub>1</sub> &lt; X̄<sub>2</sub>) = <b>P(X̄<sub>1</sub> − X̄<sub>2</sub> &lt; 0)</b></li>
+          <li>n<sub>1</sub> = 36 ≥ 30, n<sub>2</sub> = 49 ≥ 30 → by the CLT 둘 다 근사 정규</li>
+          <li>SD(X̄<sub>1</sub>) = 1.8/6 = 0.3, SD(X̄<sub>2</sub>) = 2.8/7 = 0.4 → X̄<sub>1</sub> − X̄<sub>2</sub> ≈ N(0.8, 0.3² + 0.4²) = N(0.8, 0.5²)</li>
+          <li>P(Z &lt; (0 − 0.8)/0.5) = P(Z &lt; −1.6) ≈ <b>0.0548</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">필기에 P(Z &lt; 1.6)으로 적혀 있는데 <b>−1.6</b>이에요(답 0.0548은 −1.6일 때 값이라 맞음). 0.3, 0.4, 0.5가 3-4-5 직각삼각형처럼 딱 떨어지게 만든 문제예요.</p></div>
+      <div class="box"><h4>Problem 16 · IQ: East ~ N(130, 8²), West ~ N(120, 10²)</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(a) East 한 명이 125 이상: z = (125 − 130)/8 = −0.625 → P(Z ≥ −0.63) ≈ <b>0.7357</b> (정확히 0.7340)</li>
+          <li>(b) 각 학교에서 한 명씩, East가 West보다 5점 이상 높을 확률: D = X<sub>E</sub> − X<sub>W</sub> ~ N(10, 8² + 10²) = N(10, 164), σ<sub>D</sub> = √164 ≈ 12.81. P(D ≥ 5) = P(Z ≥ −5/√164) = P(Z ≥ −0.39) ≈ <b>0.6517</b></li>
+          <li>(c) West 3명 평균이 125 이상: 모집단이 정규라 n = 3이어도 X̄<sub>W</sub> ~ N(120, 100/3). P(Z ≥ (125 − 120)/(10/√3)) = P(Z ≥ 0.87) ≈ <b>0.1922</b></li>
+          <li>(d) East 3명 평균이 West 3명 평균보다 5점 이상 높을 확률: D = X̄<sub>E</sub> − X̄<sub>W</sub> ~ N(10, 64/3 + 100/3) = N(10, 164/3), σ<sub>D</sub> ≈ 7.39. P(Z ≥ −5/√(164/3)) = P(Z ≥ −0.68) ≈ <b>0.7517</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">(b) 필기에 σ<sub>D</sub> = √64로 적혀 있지만 계산한 z(−0.3904)는 √164로 한 값이라 답은 맞아요. West 분산 100을 꼭 더해야 해요. 모집단이 둘 다 정규라서 (c)(d)는 n = 3처럼 작아도 정규를 써도 돼요.</p></div>
+      <div class="tool">
+        <b style="font-size:.95rem">표본평균·평균의 차 계산기</b>
+        <p style="font-size:.85rem;color:var(--ink-2);margin-top:2px">한 명은 n = 1로 두면 돼요. 조건(모집단 정규 또는 n ≥ 30), 평균·SD, z 식, 확률을 보여줘요.</p>
+        <div class="tool-row" style="margin-top:10px"><button class="btn" data-xm="p12a">P12(a)</button><button class="btn" data-xm="p12b">P12(b)</button><button class="btn" data-xm="p13">P13</button><button class="btn" data-xm="p15">P15</button><button class="btn" data-xm="p16a">P16(a)</button><button class="btn" data-xm="p16b">P16(b)</button><button class="btn" data-xm="p16c">P16(c)</button><button class="btn" data-xm="p16d">P16(d)</button><button class="btn" data-xm="ax4d">추가 4(d)</button></div>
+        <div class="tool-row" style="margin-top:10px">
+          <label class="field">대상<select id="xMode"><option value="one">x̄ 하나</option><option value="two">x̄₁ − x̄₂</option></select></label>
+          <label class="field">μ₁<input type="number" id="xM1" value="161.5" step="any"></label>
+          <label class="field">σ₁<input type="number" id="xS1" value="6" step="any" min="0"></label>
+          <label class="field">n₁<input type="number" id="xN1" value="9" step="1" min="1"></label>
+          <label class="field">모집단 1<select id="xD1"><option value="norm">정규</option><option value="not">정규 아님</option></select></label>
+        </div>
+        <div class="tool-row" id="xRow2" style="margin-top:8px">
+          <label class="field">μ₂<input type="number" id="xM2" value="120" step="any"></label>
+          <label class="field">σ₂<input type="number" id="xS2" value="10" step="any" min="0"></label>
+          <label class="field">n₂<input type="number" id="xN2" value="3" step="1" min="1"></label>
+          <label class="field">모집단 2<select id="xD2"><option value="norm">정규</option><option value="not">정규 아님</option></select></label>
+        </div>
+        <div class="tool-row" style="margin-top:8px">
+          <label class="field">구할 확률<select id="xOp"><option value="lt">P(통계량 &lt; c)</option><option value="gt">P(통계량 &gt; c)</option></select></label>
+          <label class="field">c<input type="number" id="xC" value="159" step="any"></label>
+        </div>
+        <div class="outs" id="xOut"></div>
+        <div id="xChart" style="margin-top:12px;overflow-x:auto"></div>
+      </div>
+      <p><button class="btn primary" data-go="practice" data-filter="xbar">표본평균·평균의 차 문제 풀러 가기 →</button></p>
+    </article>
+
+    <article class="sec">
+      <div class="sec-head"><span class="num">AX</span><h2>★Additional Exercises★ <span class="gloss">종합 연습 5문제</span></h2></div>
+      <p class="lead">4장(확률 규칙·이항·확률변수)과 5장(CLT·표본비율)이 섞인 종합 문제예요.</p>
+      <div class="box"><h4>Problem 1 · P(A ∪ B) = 3/4, P(A) = 1/2, P(B) = 5/12일 때 P(A ∩ B)</h4>
+        <ul class="sol" style="font-size:.93rem"><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B) → P(A ∩ B) = 6/12 + 5/12 − 9/12 = 2/12 = <b>1/6</b></li></ul></div>
+      <div class="box"><h4>Problem 2 · X ~ B(n, 2/3), σ(X) = 4일 때 n + E(X)</h4>
+        <ul class="sol" style="font-size:.93rem"><li>Var(X) = n·(2/3)(1/3) = 2n/9 = 16 → n = 72, E(X) = 72·(2/3) = 48 → n + E(X) = <b>120</b></li></ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">필기에 "X ≈ B(n, 2/3)"으로 물결 두 개를 썼는데, 실제로 이항분포를 따르는 거라 <b>X ~ B(n, 2/3)</b>(물결 하나)가 맞는 표기예요.</p></div>
+      <div class="box"><h4>Problem 3 · 확률분포 −3k(a²), −2k(b), −k(a), k(a), 2k(b), 3k(a²)에서 1 ≤ Var(X) ≤ σ<sub>X</sub>일 때 k²의 최댓값</h4>
+        <ol class="steps" style="font-size:.93rem">
+          <li>확률의 합: 2(a² + b + a) = 1 → b = 1/2 − a² − a, 그리고 a, b ≥ 0</li>
+          <li>대칭이라 E(X) = 0 → Var(X) = E(X²) − 0 = 2k²(9a² + 4b + a)</li>
+          <li>Var ≥ 1이고 Var ≤ σ = √Var. Var &gt; 1이면 √Var &lt; Var라 모순 → <b>Var(X) = 1</b> <span class="pen">√가 작을 수 없음</span></li>
+          <li>k² = 1 / [2(9a² + 4b + a)]. b를 대입하면 9a² + 4b + a = 5a² − 3a + 2</li>
+          <li>k²을 최대로 하려면 5a² − 3a + 2를 최소로: 꼭짓점 a = 3/10 (b = 0.11 ≥ 0이라 가능), 최솟값 1.55</li>
+          <li>k² = 1/(2 × 1.55) = <b>10/31</b> ≈ 0.3226</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)">a의 범위(b ≥ 0이 되려면 a² + a ≤ 1/2, a ≤ 0.366) 안에 꼭짓점 0.3이 들어가는지 확인하는 게 마지막 함정이에요.</p></div>
+      <div class="box"><h4>Problem 4 · $10 내고 주사위: 6이면 $50, 아니면 한 번 더, 그때 6이면 $10 돌려받음</h4>
+        <div class="tbl-wrap" style="margin-top:6px"><table><thead><tr><th>(a) 결과</th><th>순이익 X</th><th>확률</th></tr></thead><tbody>
+          <tr><td class="term">첫 번째에 6</td><td class="mono">+$40</td><td class="mono">1/6</td></tr>
+          <tr><td class="term">첫 번째 실패, 두 번째에 6</td><td class="mono">$0</td><td class="mono">5/36</td></tr>
+          <tr><td class="term">둘 다 실패</td><td class="mono">−$10</td><td class="mono">25/36</td></tr>
+        </tbody></table></div>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(b) E(X) = 40(1/6) + 0 − 10(25/36) = −10/36 ≈ <b>−$0.28</b>, E(X²) = 1600/6 + 100(25/36) = 12100/36 → SD = √(12100/36 − (10/36)²) ≈ <b>$18.33</b></li>
+          <li>(c) 5번 한 평균: E = <b>−$0.28</b> (그대로), SD = 18.33/√5 ≈ <b>$8.20</b></li>
+          <li>(d) 100명이 하면 n = 100 ≥ 30이라 CLT로 X̄ ≈ N(−0.28, (18.33/10)²) = N(−0.28, 1.83²). 운영자가 이익 = 참가자 평균 순이익 &lt; 0 → P(Z &lt; 0.28/1.83) = P(Z &lt; 0.15) ≈ <b>0.56</b></li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)">"win $50"을 낸 $10을 포함한 총액으로 보고 순이익 $40으로 둔 표준 풀이예요(교재 답 −$0.28, $18.33). 평균이 거의 0이라 운영자 이익 확률이 반을 겨우 넘어요.</p></div>
+      <div class="box"><h4>Problem 5 · 대출자의 7%가 연체, 200건 승인</h4>
+        <ul class="sol" style="font-size:.93rem">
+          <li>(a) 평균 = <b>0.07</b>, SD = √(0.07 × 0.93 / 200) ≈ <b>0.0180</b></li>
+          <li>(b) 가정: 200건이 <b>랜덤 표본</b>처럼 대표성이 있고, 고객끼리 <b>독립</b>(200건은 전체 대출의 10% 미만). 조건 확인: np = 14 ≥ 10, n(1 − p) = 186 ≥ 10 → Large Counts 만족이라 p̂ ≈ N(0.07, 0.018²)</li>
+          <li>(c) P(p̂ &gt; 0.10) = P(Z &gt; 0.03/0.018) = P(Z &gt; 1.66) ≈ <b>0.0485</b></li>
+        </ul></div>
+      <p><button class="btn primary" data-go="practice" data-filter="ax">Additional Exercises 풀러 가기 →</button></p>
     </article>
   </div>
 
@@ -1990,6 +2124,7 @@ const VOCAB=[
  {en:"Sample proportion",sub:"p-hat",ko:"표본비율",cat:"prob",def:"p̂ = 성공 수 / n. E(p̂) = p, SD(p̂) = √(p(1 − p)/n), Large Counts를 만족하면 p̂ ≈ N(p, p(1 − p)/n)."},
  {en:"Difference of two proportions",sub:"p̂₁ − p̂₂",ko:"두 표본비율의 차",cat:"prob",def:"E = p₁ − p₂(불편), Var = p₁(1 − p₁)/n₁ + p₂(1 − p₂)/n₂. 네 count가 모두 10 이상이면 근사적으로 정규."},
  {en:"Sum of independent normals",ko:"독립 정규변수의 합·차",cat:"prob",def:"X₁ ± X₂ ~ N(μ₁ ± μ₂, σ₁² + σ₂²). 차에서도 분산은 더함. 독립이어야 함."},
+ {en:"Difference of two sample means",sub:"x̄₁ − x̄₂",ko:"두 표본평균의 차",cat:"prob",def:"E = μ₁ − μ₂(불편), Var = σ₁²/n₁ + σ₂²/n₂. 두 표본 각각 모집단이 정규이거나 n ≥ 30이면 근사적으로 정규."},
  {en:"Sampling without replacement",ko:"비복원 추출",cat:"prob",def:"뽑은 것을 다시 넣지 않고 다음 것을 뽑음. 순열·조합 공식은 이것을 가정합니다."}
 ];
 $("#vocabBody").innerHTML=VOCAB.filter(v=>v.cat==="exp").map(v=>`<tr><td class="term">${v.en}${v.sub?`<small>(${v.sub})</small>`:""}<span class="gloss">${v.ko}</span></td><td>${v.def}</td></tr>`).join("");
@@ -2152,7 +2287,7 @@ const Q=[
  {id:"na-7",unit:"norm",set:"napx",src:"5-3 Problem 4",type:"num",q:`공정한 동전을 100번 던질 때 앞면이 60번 이상 나올 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.0227501,answerText:"≈ 0.0228",tol:0.002,hint:"X ~ B(100, 0.5) → μ = 50, σ = 5",explain:`X ≈ N(50, 5²). P(X ≥ 60) ≈ P(Z ≥ 2) ≈ <b>0.0228</b>. (정확한 이항값은 0.0284)`},
  {id:"na-8",unit:"norm",set:"napx",src:"5-3 Problem 5",type:"num",q:`5지선다 100문제를 모두 찍을 때 25개 이상 맞힐 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.1056498,answerText:"≈ 0.1056",tol:0.002,hint:"X ~ B(100, 0.2) → μ = 20, σ = 4",explain:`np = 20, n(1 − p) = 80 → 근사 가능. X ≈ N(20, 4²). P(X ≥ 25) ≈ P(Z ≥ 1.25) ≈ <b>0.1056</b>.`},
  {id:"na-9",unit:"norm",set:"napx",src:"5-3 Problem 6",type:"num",q:`지지율 45%인 도시에서 400명을 랜덤으로 뽑을 때 160명 이상 200명 이하가 지지할 확률을 정규근사로 구하면? (소수 넷째 자리)`,answer:0.9555768,answerText:"≈ 0.9556",tol:0.003,hint:"μ = 180, σ = √99",explain:`X ≈ N(180, 99), σ ≈ 9.95. P(160 ≤ X ≤ 200) ≈ P(−2.01 ≤ Z ≤ 2.01) = 1 − 2(0.0222) ≈ <b>0.9556</b>.`},
- // Ch.5 표본분포·CLT·표본비율
+ // Ch.5 표본분포·CLT·비율·평균
  {id:"c-1",unit:"clt",set:"clt",src:"5-4 Parameter·Statistic",type:"mc",q:`학교 학생 300명을 랜덤으로 뽑아 잰 평균 키 170.2cm는?`,choices:["parameter (모수)","statistic (통계량)","population (모집단)","sampling distribution (표본분포)"],answer:1,explain:`<b>표본</b>에서 계산한 수라서 statistic(x̄)이에요. 전교생 전체의 평균 키라면 parameter(μ).`},
  {id:"c-2",unit:"clt",set:"clt",src:"5-4 표본분포",type:"tf",q:`표본평균 x̄는 표본마다 값이 달라지므로 확률변수이고, 그 분포를 표본분포라고 한다.`,answer:true,explain:`같은 크기 n인 모든 가능한 표본에 대해 통계량이 가지는 값들의 분포 = <b>sampling distribution</b>.`},
  {id:"c-3",unit:"clt",set:"clt",src:"5-4 Example",type:"num",q:`모집단 {1, 3, 5}(각각 같은 확률)에서 n = 2로 복원추출할 때 E(X̄)는?`,answer:3,answerText:"3",explain:`x̄ 분포: 1(1/9), 2(2/9), 3(3/9), 4(2/9), 5(1/9). E(X̄) = 27/9 = <b>3</b> = μ.`},
@@ -2184,6 +2319,34 @@ const Q=[
  {id:"c-29",unit:"clt",set:"d2p",src:"5-8 Problem 11",type:"mc",q:`"북쪽 표본비율이 남쪽 표본비율보다 낮을 확률"(북 = 1, 남 = 2)을 식으로 쓰면?`,choices:["P(p̂₁ − p̂₂ &gt; 0)","P(p̂₁ − p̂₂ &lt; 0)","P(p₁ − p₂ &lt; 0)","P(p̂₁ − p̂₂ &lt; 0.1)"],answer:1,explain:`p̂₁ &lt; p̂₂ ⇔ <b>p̂₁ − p̂₂ &lt; 0</b>. 모자(^)를 빼먹으면 parameter라 확률이 아니에요.`},
  {id:"c-30",unit:"clt",set:"d2p",src:"5-8 Problem 11",type:"num",q:`북 60%(150명), 남 50%(200명)일 때 북쪽 표본비율이 남쪽보다 낮을 확률은? (소수 넷째 자리)`,answer:0.0305,answerText:"≈ 0.0305 (표 z = −1.87: 0.0307)",tol:0.003,hint:"N(0.1, 0.24/150 + 0.25/200)",explain:`SD = √(0.0016 + 0.00125) ≈ 0.0534, z = −0.1/0.0534 ≈ −1.87 → <b>≈ 0.0307</b>.`},
  {id:"c-31",unit:"clt",set:"d2p",src:"5-8 Problem 10 서술 (계산기 없이)",type:"open",q:`Problem 10 (n₁ = 80, p₁ = 0.7, n₂ = 100, p₂ = 0.65)의 (a) 정규 확인, (b) 평균·SD, (c) P(p̂₁ − p̂₂ > 0.15) = P(Z > z)의 z를 계산기 없이 시험 답안처럼 쓰세요.`,model:`<ol class="steps"><li>(a) n₁p₁ = 56, n₁(1 − p₁) = 24, n₂p₂ = 65, n₂(1 − p₂) = 35 are all at least 10, so p̂₁ − p̂₂ is approximately normal.</li><li>(b) μ = 0.7 − 0.65 = 0.05, σ = √(0.7×0.3/80 + 0.65×0.35/100)</li><li>(c) z = (0.15 − 0.05) / √(0.7×0.3/80 + 0.65×0.35/100)  (= 0.10/0.07 ≈ 1.43)</li></ol>`},
+ {id:"m-1",unit:"clt",set:"xbar",src:"5-9 Problem 12(a)",type:"num",q:`성인 여성 키 ~ N(161.5, 6²)에서 한 명을 뽑을 때 166보다 클 확률은? (소수 넷째 자리)`,answer:0.2266,answerText:"≈ 0.2266",tol:0.002,explain:`z = 4.5/6 = 0.75 → P(Z &gt; 0.75) ≈ <b>0.2266</b>. 한 명이라 σ = 6 그대로.`},
+ {id:"m-2",unit:"clt",set:"xbar",src:"5-9 Problem 12(b)",type:"num",q:`성인 여성 키 ~ N(161.5, 6²)에서 9명을 뽑을 때 평균 키가 159보다 작을 확률은? (소수 넷째 자리)`,answer:0.1056,answerText:"≈ 0.1056",tol:0.002,hint:"SD(X̄) = 6/√9",explain:`모집단이 정규라 n = 9여도 X̄ ~ N(161.5, 2²). z = −2.5/2 = −1.25 → <b>0.1056</b>.`},
+ {id:"m-3",unit:"clt",set:"xbar",src:"5-9 Problem 13",type:"num",q:`카페 지출이 오른쪽으로 치우쳐 있고 μ = 45, σ = 28이다. 49명 표본의 평균이 41을 넘을 확률은? (소수 넷째 자리)`,answer:0.8413,answerText:"≈ 0.8413",tol:0.002,hint:"n ≥ 30 → CLT, SD = 28/7",explain:`by the CLT X̄ ≈ N(45, 4²). P(Z &gt; −1) ≈ <b>0.8413</b>.`},
+ {id:"m-4",unit:"clt",set:"xbar",src:"5-9 Problem 14",type:"num",q:`모표준편차 σ = 18일 때 σ(X̄) ≤ 2가 되려면 최소 표본 크기는?`,answer:81,answerText:"81",explain:`18/√n ≤ 2 → √n ≥ 9 → <b>n ≥ 81</b>.`},
+ {id:"m-5",unit:"clt",set:"xbar",src:"5-9 조건",type:"tf",q:`모집단이 정규분포이면 표본 크기가 2여도 X̄는 정규분포를 따른다.`,answer:true,explain:`모집단이 정규면 <b>어떤 n이든</b> X̄는 정확히 정규. n ≥ 30은 모집단이 정규가 아닐 때의 기준이에요.`},
+ {id:"m-6",unit:"clt",set:"xbar",src:"5-9 Step",type:"mc",q:`X̄의 표본분포에 정규모형을 쓰기 전에 확인할 조건은?`,choices:["random sample, 그리고 모집단 정규 또는 n ≥ 30","np ≥ 10, n(1 − p) ≥ 10","n ≥ 10","σ를 알고 있으면 확인할 것 없음"],answer:0,explain:`<b>Random sample</b> + <b>Normal/Large sample</b>(모집단 정규 또는 n ≥ 30). np ≥ 10은 비율(p̂)의 조건이에요.`},
+ {id:"m-7",unit:"clt",set:"xbar",src:"5-10 분산",type:"mc",q:`독립인 두 표본에서 Var(X̄₁ − X̄₂)는?`,choices:["σ₁²/n₁ − σ₂²/n₂","σ₁²/n₁ + σ₂²/n₂","σ₁/√n₁ + σ₂/√n₂","(σ₁² + σ₂²)/(n₁ + n₂)"],answer:1,explain:`차여도 분산은 더해요: <b>σ₁²/n₁ + σ₂²/n₂</b>. SD는 여기에 루트. 각 SD를 더하는 건(세 번째 보기) 틀림.`},
+ {id:"m-8",unit:"clt",set:"xbar",src:"5-10 불편추정량 (기말)",type:"tf",q:`X̄₁ − X̄₂는 μ₁ − μ₂의 불편추정량이다.`,answer:true,explain:`E(X̄₁ − X̄₂) = E(X̄₁) − E(X̄₂) = μ₁ − μ₂ → <b>unbiased</b>.`},
+ {id:"m-9",unit:"clt",set:"xbar",src:"5-10 조건",type:"mc",q:`두 모집단이 모두 정규가 아닐 때 X̄₁ − X̄₂를 근사 정규로 보려면?`,choices:["n₁ + n₂ ≥ 30","n₁ ≥ 30 그리고 n₂ ≥ 30","n₁ ≥ 30 또는 n₂ ≥ 30","항상 정규"],answer:1,explain:`조건은 <b>두 표본 모두</b>에서 성립해야 해요 → n₁, n₂ ≥ 30.`},
+ {id:"m-10",unit:"clt",set:"xbar",src:"5-10 Problem 15",type:"num",q:`주니어(μ = 5, σ = 1.8, n = 36)와 시니어(μ = 4.2, σ = 2.8, n = 49)의 숙제 시간이 모두 오른쪽으로 치우쳐 있다. 주니어 표본평균이 시니어 표본평균보다 낮을 확률은? (소수 넷째 자리)`,answer:0.0548,answerText:"≈ 0.0548",tol:0.002,hint:"SD = √(0.3² + 0.4²)",explain:`X̄₁ − X̄₂ ≈ N(0.8, 0.5²). P(Z &lt; −1.6) ≈ <b>0.0548</b>.`},
+ {id:"m-11",unit:"clt",set:"xbar",src:"5-10 Problem 15",type:"num",q:`Problem 15에서 X̄₁ − X̄₂의 표준편차는?`,answer:0.5,answerText:"0.5",tol:0.001,explain:`√(1.8²/36 + 2.8²/49) = √(0.09 + 0.16) = <b>0.5</b>.`},
+ {id:"m-12",unit:"clt",set:"xbar",src:"5-10 Problem 16(a)",type:"num",q:`East State IQ ~ N(130, 8²)에서 한 명의 IQ가 125 이상일 확률은? (소수 넷째 자리)`,answer:0.734,answerText:"≈ 0.734 (표 z = −0.63: 0.7357)",tol:0.004,explain:`z = −5/8 = −0.625 → P(Z ≥ −0.63) ≈ <b>0.7357</b>.`},
+ {id:"m-13",unit:"clt",set:"xbar",src:"5-10 Problem 16(b)",type:"num",q:`East ~ N(130, 8²), West ~ N(120, 10²)에서 각각 한 명씩 뽑을 때 East 학생 IQ가 West 학생보다 5점 이상 높을 확률은? (소수 넷째 자리)`,answer:0.6519,answerText:"≈ 0.6519 (표 0.6517)",tol:0.003,hint:"D ~ N(10, 64 + 100)",explain:`σ_D = √164 ≈ 12.81, z = −5/12.81 ≈ −0.39 → <b>≈ 0.6517</b>.`},
+ {id:"m-14",unit:"clt",set:"xbar",src:"5-10 Problem 16(b)",type:"num",q:`Problem 16(b)에서 D = X_E − X_W의 표준편차는? (소수 둘째 자리)`,answer:12.806,answerText:"√164 ≈ 12.81",tol:0.02,explain:`√(8² + 10²) = <b>√164 ≈ 12.81</b>. West 분산 100을 빼먹으면 안 돼요.`},
+ {id:"m-15",unit:"clt",set:"xbar",src:"5-10 Problem 16(c)",type:"num",q:`West ~ N(120, 10²)에서 3명을 뽑을 때 평균 IQ가 125 이상일 확률은? (소수 넷째 자리)`,answer:0.1932,answerText:"≈ 0.1932 (표 z = 0.87: 0.1922)",tol:0.003,explain:`X̄ ~ N(120, 100/3), SD = 10/√3 ≈ 5.77. z ≈ 0.87 → <b>≈ 0.192</b>.`},
+ {id:"m-16",unit:"clt",set:"xbar",src:"5-10 Problem 16(d)",type:"num",q:`East 3명, West 3명을 뽑을 때 East 평균이 West 평균보다 5점 이상 높을 확률은? (소수 넷째 자리)`,answer:0.7506,answerText:"≈ 0.7506 (표 z = −0.68: 0.7517)",tol:0.003,hint:"Var = 64/3 + 100/3",explain:`D ~ N(10, 164/3), SD ≈ 7.39, z ≈ −0.68 → <b>≈ 0.75</b>.`},
+ {id:"m-17",unit:"clt",set:"xbar",src:"5-10 Problem 16(c)(d)",type:"tf",q:`Problem 16(c)(d)에서 n = 3으로 작지만 정규모형을 써도 된다.`,answer:true,explain:`두 모집단 모두 <b>정규</b>라서 n이 작아도 X̄는 정규예요.`},
+ {id:"ax-1",unit:"clt",set:"ax",src:"Additional 1",type:"num",q:`P(A ∪ B) = 3/4, P(A) = 1/2, P(B) = 5/12일 때 P(A ∩ B)는?`,answer:0.1666667,answerText:"1/6",tol:0.002,explain:`P(A ∩ B) = 1/2 + 5/12 − 3/4 = <b>1/6</b>.`},
+ {id:"ax-2",unit:"clt",set:"ax",src:"Additional 2",type:"num",q:`X ~ B(n, 2/3)이고 X의 표준편차가 4일 때 n + E(X)는?`,answer:120,answerText:"120",hint:"Var = n(2/3)(1/3) = 16",explain:`2n/9 = 16 → n = 72, E(X) = 48 → <b>120</b>.`},
+ {id:"ax-3",unit:"clt",set:"ax",src:"Additional 3",type:"num",q:`X가 −3k, −2k, −k, k, 2k, 3k를 각각 확률 a², b, a, a, b, a²로 가진다(k &gt; 0). 1 ≤ Var(X) ≤ σ_X일 때 k²의 최댓값은?`,answer:0.3225806,answerText:"10/31",tol:0.002,hint:"Var ≥ 1이고 Var ≤ √Var이면 Var = 1",explain:`Var = 1 → k² = 1/[2(9a² + 4b + a)], b = 1/2 − a² − a 대입하면 5a² − 3a + 2 최소(a = 0.3, 1.55) → k² = 1/3.1 = <b>10/31</b>.`},
+ {id:"ax-4",unit:"clt",set:"ax",src:"Additional 4(b)",type:"num",q:`$10를 내고 주사위를 굴려 6이면 $50, 아니면 한 번 더 굴려 6이면 $10를 돌려받는 게임. 순이익의 기댓값은? (달러, 소수 둘째 자리)`,answer:-0.2777778,answerText:"−10/36 ≈ −$0.28",tol:0.01,explain:`+40(1/6), 0(5/36), −10(25/36) → E = <b>−10/36 ≈ −0.28</b>.`},
+ {id:"ax-5",unit:"clt",set:"ax",src:"Additional 4(b)",type:"num",q:`위 게임에서 순이익의 표준편차는? (달러, 소수 둘째 자리)`,answer:18.331,answerText:"≈ $18.33",tol:0.05,explain:`E(X²) = 12100/36 ≈ 336.1, Var ≈ 336.1 − 0.08 → SD ≈ <b>18.33</b>.`},
+ {id:"ax-6",unit:"clt",set:"ax",src:"Additional 4(c)",type:"num",q:`위 게임을 5번 할 때 평균 순이익의 표준편차는? (달러, 소수 둘째 자리)`,answer:8.198,answerText:"18.33/√5 ≈ $8.20",tol:0.05,explain:`SD(X̄) = σ/√n = 18.33/√5 ≈ <b>8.20</b>. 평균은 그대로 −0.28.`},
+ {id:"ax-7",unit:"clt",set:"ax",src:"Additional 4(d)",type:"num",q:`위 게임을 100명이 할 때 운영자가 이익을 볼 확률은? (소수 둘째 자리)`,answer:0.56,answerText:"≈ 0.56",tol:0.01,hint:"참가자 평균 순이익 < 0, CLT",explain:`X̄ ≈ N(−0.28, 1.83²). P(X̄ &lt; 0) = P(Z &lt; 0.15) ≈ <b>0.56</b>.`},
+ {id:"ax-8",unit:"clt",set:"ax",src:"Additional 5(a)",type:"num",q:`대출자 7%가 연체할 때 200건 중 연체 비율의 표준편차는? (소수 넷째 자리)`,answer:0.0180416,answerText:"≈ 0.0180",tol:0.0005,explain:`√(0.07 × 0.93/200) ≈ <b>0.0180</b>. 평균은 0.07.`},
+ {id:"ax-9",unit:"clt",set:"ax",src:"Additional 5(c)",type:"num",q:`대출자 7%가 연체할 때 200건 중 10%보다 많이 연체할 확률은? (소수 넷째 자리)`,answer:0.0482,answerText:"≈ 0.048 (표 z = 1.66: 0.0485)",tol:0.003,explain:`np = 14, n(1 − p) = 186 ≥ 10. z = 0.03/0.018 ≈ 1.66 → <b>≈ 0.0485</b>.`},
+ {id:"ax-10",unit:"clt",set:"ax",src:"Additional 5(b) 서술",type:"open",q:`대출 문제(p = 0.07, n = 200)에서 정규모형의 가정과 조건을 쓰고 만족하는지 설명하세요.`,model:`<ul class="clean"><li><b>Random/representative</b>: 200건이 전체 대출자를 대표하는 랜덤 표본이라고 가정.</li><li><b>Independence (10%)</b>: 고객들의 상환은 서로 독립이고, 200건은 전체 대출의 10% 미만.</li><li><b>Large Counts</b>: np = 200(0.07) = 14 ≥ 10, n(1 − p) = 186 ≥ 10 → 만족.</li><li>So p̂ ≈ N(0.07, 0.07(0.93)/200).</li></ul>`},
+ {id:"u-1",unit:"clt",set:"clt",src:"5-6 불편추정량 종합 (기말)",type:"mc",q:`다음 중 괄호 안 parameter의 불편추정량이 <b>아닌</b> 것은?`,choices:["x̄ (μ)","p̂₁ − p̂₂ (p₁ − p₂)","Σ(xᵢ − x̄)²/n (σ²)","x̄₁ − x̄₂ (μ₁ − μ₂)"],answer:2,explain:`n으로 나누면 기댓값이 (n − 1)σ²/n이라 <b>biased</b>(과소추정). n − 1로 나눈 s²가 불편추정량이에요.`},
 
  // Problem set #2
  {id:"ps2-1",unit:"bin",set:"ps2",src:"Problem set #2 · 1",type:"num",q:`공정한 동전을 5번 던질 때 앞면이 정확히 3번 나올 확률은?`,answer:0.3125,answerText:"10/32 = 0.3125",tol:0.001,hint:"X ~ B(5, 1/2)",explain:`₅C₃(1/2)³(1/2)² = 10/32 = <b>0.3125</b>.`},
@@ -2315,6 +2478,8 @@ const SETS=[
  {key:"napx",label:"정규근사",fn:q=>q.set==="napx"},
  {key:"clt",label:"Ch.5 표본분포·CLT",fn:q=>q.unit==="clt"},
  {key:"d2p",label:"두 비율의 차",fn:q=>q.set==="d2p"},
+ {key:"xbar",label:"표본평균·평균의 차",fn:q=>q.set==="xbar"},
+ {key:"ax",label:"Additional Exercises",fn:q=>q.set==="ax"},
  {key:"ps1",label:"Problem set #1",fn:q=>q.set==="ps1"},
  {key:"ps2",label:"Problem set #2",fn:q=>q.set==="ps2"},
  {key:"lln",label:"LLN · T/F",fn:q=>q.set==="lln"},
@@ -3362,7 +3527,7 @@ const UNITS=[
   {k:"rv",t:"Ch.4 확률변수·기댓값·분산",d:"기댓값 · 분산·표준편차 · 확률변수의 합과 차"},
   {k:"bin",t:"Ch.4 확률 모형·이항·기하",d:"베르누이 · 이항분포 · 기하분포 · 요약표 · Problem set #2"},
   {k:"norm",t:"Ch.5 정규분포·정규근사",d:"정규분포 · 표준정규분포 · z-점수 · 이항의 정규근사"},
-  {k:"clt",t:"Ch.5 표본분포·CLT·표본비율",d:"모수·통계량 · 중심극한정리 · 불편추정량 · p̂의 분포 · 두 비율의 차"}
+  {k:"clt",t:"Ch.5 표본분포·CLT·비율·평균",d:"모수·통계량 · CLT · 불편추정량 · p̂ · 두 비율의 차 · x̄ · 두 평균의 차 · 종합 연습"}
 ];
 function renderHome(){
   if(!$("#homeTiles"))return;
@@ -3564,8 +3729,36 @@ $("#dOp").addEventListener("change",renderD2);
 $$("[data-d2]").forEach(b=>b.addEventListener("click",()=>{const v=D2P[b.dataset.d2];$("#dP1").value=v[0];$("#dN1").value=v[1];$("#dP2").value=v[2];$("#dN2").value=v[3];$("#dOp").value=v[4];$("#dC").value=v[5];renderD2();}));
 renderD2();
 
+/* ---------- 표본평균·평균의 차 계산기 ---------- */
+const XMP={p12a:["one",161.5,6,1,"norm","gt",166],p12b:["one",161.5,6,9,"norm","lt",159],p13:["one",45,28,49,"not","gt",41],
+  p15:["two",5,1.8,36,"not","lt",0,4.2,2.8,49,"not"],p16a:["one",130,8,1,"norm","gt",125],p16b:["two",130,8,1,"norm","gt",5,120,10,1,"norm"],
+  p16c:["one",120,10,3,"norm","gt",125],p16d:["two",130,8,3,"norm","gt",5,120,10,3,"norm"],ax4d:["one",-0.2778,18.33,100,"not","lt",0]};
+function renderXM(){
+  const two=$("#xMode").value==="two";$("#xRow2").hidden=!two;
+  const m1=parseNum($("#xM1").value),s1=parseNum($("#xS1").value),n1=parseInt($("#xN1").value,10),d1=$("#xD1").value,
+        m2=parseNum($("#xM2").value),s2=parseNum($("#xS2").value),n2=parseInt($("#xN2").value,10),d2=$("#xD2").value,op=$("#xOp").value,c=parseNum($("#xC").value),out=$("#xOut"),ch=$("#xChart");
+  const bad=[m1,s1,c].some(isNaN)||isNaN(n1)||n1<1||s1<=0||(two&&([m2,s2].some(isNaN)||isNaN(n2)||n2<1||s2<=0));
+  if(bad){out.innerHTML=`<div class="out">σ &gt; 0, n ≥ 1로 입력하세요.</div>`;ch.innerHTML="";return;}
+  const r=(v,d=4)=>Math.round(v*10**d)/10**d,ok1=d1==="norm"||n1>=30,ok2=!two||d2==="norm"||n2>=30;
+  const mu=two?m1-m2:m1,v=s1*s1/n1+(two?s2*s2/n2:0),sd=Math.sqrt(v),z=(c-mu)/sd,pr=op==="gt"?1-PhiN(z):PhiN(z),sym=op==="gt"?"&gt;":"&lt;";
+  const why=(d,n)=>d==="norm"?"모집단 정규":n>=30?`n = ${n} ≥ 30 (CLT)`:`모집단 정규 아님, n = ${n} &lt; 30`;
+  const lbl=two?"X̄₁ − X̄₂":(n1===1?"X":"X̄");
+  const vtxt=two?`${s1}²/${n1} + ${s2}²/${n2}`:`${s1}²/${n1}`;
+  out.innerHTML=`<div class="out"><span>조건</span>${why(d1,n1)}${two?" · "+why(d2,n2):""} → <b>${ok1&&ok2?"정규 사용 가능":"정규 쓰면 안 됨"}</b></div>`+
+   `<div class="out"><span>평균</span><b>${r(mu)}</b></div><div class="out"><span>분산 ${vtxt}</span>${r(v,5)}</div><div class="out"><span>SD</span><b>${r(sd)}</b></div>`+
+   `<div class="out"><span>z 식</span>z = (${c} − ${r(mu)}) / √(${vtxt}) ≈ <b>${r(z,2)}</b></div>`+
+   `<div class="out"><span>P(${lbl} ${sym} ${c})</span><b>${r(pr)}</b>${ok1&&ok2?"":" (참고만)"}</div>`;
+  const cc=nCurve(mu,sd,op==="gt"?[[c,Infinity]]:[[-Infinity,c]],560,180);
+  ch.innerHTML=`<svg class="xchart" viewBox="0 0 560 180" style="max-width:560px" role="img" aria-label="통계량의 정규곡선과 구한 넓이">${cc.fill}${cc.path}${cc.axis}</svg>`;
+}
+["#xM1","#xS1","#xN1","#xM2","#xS2","#xN2","#xC"].forEach(id=>$(id).addEventListener("input",renderXM));
+["#xMode","#xD1","#xD2","#xOp"].forEach(id=>$(id).addEventListener("change",renderXM));
+$$("[data-xm]").forEach(b=>b.addEventListener("click",()=>{const v=XMP[b.dataset.xm];$("#xMode").value=v[0];$("#xM1").value=v[1];$("#xS1").value=v[2];$("#xN1").value=v[3];$("#xD1").value=v[4];$("#xOp").value=v[5];$("#xC").value=v[6];
+  if(v[0]==="two"){$("#xM2").value=v[7];$("#xS2").value=v[8];$("#xN2").value=v[9];$("#xD2").value=v[10];}renderXM();}));
+renderXM();
+
 /* ---------- 개념 검색 ---------- */
-const SX_ALIAS=[["두 비율의 차","두 비율","difference of two proportions","p̂1 − p̂2","p1-p2"],["정규분포의 합","독립 정규","sum of independent","sum of two independent"],["중심극한정리","central limit","clt"],["불편추정량","불편","unbiased","biased","편향추정"],["표본비율","sample proportion","p-hat","p̂"],["정규근사","normal approximation","large counts","success-failure"],["모수","parameter"],["통계량","statistic"],["표본분포","sampling distribution"],["표본분산","sample variance","n-1","n − 1"],["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["베르누이","bernoulli"],["이항","binomial","binom"],["기하","geometric","geo"],["정규","normal"],["표준정규","standard normal","z-score","z점수","표준화"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
+const SX_ALIAS=[["두 평균의 차","두 표본평균","difference of two sample means","x̄1 − x̄2"],["표본평균","sample mean","x̄","x bar"],["추가 연습","종합 연습","additional exercises"],["두 비율의 차","두 비율","difference of two proportions","p̂1 − p̂2","p1-p2"],["정규분포의 합","독립 정규","sum of independent","sum of two independent"],["중심극한정리","central limit","clt"],["불편추정량","불편","unbiased","biased","편향추정"],["표본비율","sample proportion","p-hat","p̂"],["정규근사","normal approximation","large counts","success-failure"],["모수","parameter"],["통계량","statistic"],["표본분포","sampling distribution"],["표본분산","sample variance","n-1","n − 1"],["조건부","conditional"],["독립","independen"],["배반","disjoint","mutually exclusive","exclusive"],["베이즈","bayes"],["기댓값","기대값","expected","평균"],["큰 수의 법칙","큰수의법칙","law of large numbers","large numbers","lln"],["crd","completely randomized","완전 무작위"],["rbd","randomized block","랜덤 블록","블록 설계"],["srs","simple random"],["확률변수","random variable"],["이산","discrete"],["연속","continuous"],["표본추출","추출","sampling","sample"],["편향","bias"],["층화","stratified"],["군집","cluster"],["계통","systematic"],["무작위","random","랜덤"],["블록","block"],["대조군","control group","control"],["플라시보","placebo"],["교락","confounding","교란"],["몬티홀","monty"],["순열","permutation"],["조합","combination"],["여사건","complement"],["덧셈","addition"],["곱셈","multiplication"],["전수조사","census"],["관찰연구","observational"],["실험","experiment"],["눈가림","blinding","blind"],["반복","replication"],["도박사","gambler"],["밀도곡선","density"],["분할","partition"],["분산","variance"],["베르누이","bernoulli"],["이항","binomial","binom"],["기하","geometric","geo"],["정규","normal"],["표준정규","standard normal","z-score","z점수","표준화"],["표준편차","standard deviation","sd"],["전체확률","total probability"]];
 const SX_SUGGEST=["중심극한정리","정규근사","편향","CRD","조건부확률","베이즈","몬티홀","기댓값","큰 수의 법칙","독립","추출법 적용","플라시보"];
 let sxIndex=null,sxItems=[],sxTerms=[],sxActive=0;
 const sxNorm=t=>String(t).replace(/\s+/g," ").trim();
